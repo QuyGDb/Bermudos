@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Decoration
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 2425651459
+    locked: 0
+  - name: Decoration
+    uniqueID: 4250941897
+    locked: 0
+  - name: Instances
+    uniqueID: 4189426099
+    locked: 0
+  - name: Front
+    uniqueID: 36290061
+    locked: 0
+  - name: Collision
+    uniqueID: 2365219377
+    locked: 0
+  - name: Minimap
+    uniqueID: 487967311
+    locked: 0
