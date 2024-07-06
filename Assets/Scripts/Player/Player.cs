@@ -4,12 +4,15 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public MovementByVelocityEvent movementByVelocityEvent;
-    private MovementByVelocity movementByVelocity;
-
+    public IdleEvent idleEvent;
+    public AnimateEvent animateEvent;
+    public Animator animator;
     private void Awake()
     {
         // Load components
         movementByVelocityEvent = GetComponent<MovementByVelocityEvent>();
-        movementByVelocity = GetComponent<MovementByVelocity>();
+        idleEvent = GetComponent<IdleEvent>();
+        animateEvent = GetComponent<AnimateEvent>();
+        animator = GetComponent<Animator>();
     }
 }
