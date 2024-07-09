@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3725996059570656580}
   - component: {fileID: 1048293271081787987}
   - component: {fileID: 1388162648337859915}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 4266331236598964965}
   - component: {fileID: 8724968789351489723}
   - component: {fileID: 459665800968331519}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Decoration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -751,7 +751,7 @@ GameObject:
   - component: {fileID: 6136117362242738041}
   - component: {fileID: 585611952992506115}
   - component: {fileID: 1867471562040849702}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -885,7 +885,7 @@ Transform:
   m_GameObject: {fileID: 4330448577896301983}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0837117, y: 0.4085196, z: -0.027915696}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -903,7 +903,7 @@ GameObject:
   - component: {fileID: 4766515688483828260}
   - component: {fileID: 1615927329755837228}
   - component: {fileID: 4225382474551976219}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1023,7 +1023,7 @@ GameObject:
   - component: {fileID: 3249488956090773628}
   - component: {fileID: 7333918679805470766}
   - component: {fileID: 5773131581991885177}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Minimap
   m_TagString: Untagged
   m_Icon: {fileID: 0}

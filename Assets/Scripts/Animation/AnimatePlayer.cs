@@ -5,12 +5,13 @@ using UnityEngine;
 public class AnimatePlayer : MonoBehaviour
 {
     private Player player;
-
+    private Coroutine currentAnimationCoroutine;
     private void Awake()
     {
         // Load components
         player = GetComponent<Player>();
-
+        // Initialize aim animation parameters
+        player.animator.SetBool(Settings.aimDown, true);
     }
 
     private void OnEnable()
@@ -21,11 +22,19 @@ public class AnimatePlayer : MonoBehaviour
         player.idleEvent.OnIdle += IdleEvent_OnIdle;
 
         player.movementByVelocityEvent.OnMovementByVelocity += MovementByVelocityEvent_OnMovementByVelocity;
+
+        player.attackEvent.OnAttack += AttackEvent_OnAttack;
     }
     private void OnDisable()
     {
         // Unsubscribe from animate event
         player.animateEvent.OnAnimate -= AnimatePlayer_OnAnimate;
+
+        player.idleEvent.OnIdle -= IdleEvent_OnIdle;
+
+        player.movementByVelocityEvent.OnMovementByVelocity -= MovementByVelocityEvent_OnMovementByVelocity;
+
+        player.attackEvent.OnAttack -= AttackEvent_OnAttack;
     }
 
     private void AnimatePlayer_OnAnimate(AnimateEvent animateEvent, AnimateEventArgs animateEventArgs)
@@ -37,14 +46,28 @@ public class AnimatePlayer : MonoBehaviour
 
     private void IdleEvent_OnIdle(IdleEvent idleEvent)
     {
-        InitializeStateAnimationParameters();
-        player.animator.SetBool(Settings.isIdle, true);
+        if (currentAnimationCoroutine == null)
+        {
+            InitializeStateAnimationParameters();
+            player.animator.SetBool(Settings.isIdle, true);
+        }
     }
 
     private void MovementByVelocityEvent_OnMovementByVelocity(MovementByVelocityEvent movementByVelocityEvent, MovementByVelocityArgs movementByVelocityArgs)
     {
+        if (currentAnimationCoroutine == null)
+        {
+            InitializeStateAnimationParameters();
+            player.animator.SetBool(Settings.isMoving, true);
+        }
+    }
+
+    private void AttackEvent_OnAttack(AttackEvent attackEvent)
+    {
+
         InitializeStateAnimationParameters();
-        player.animator.SetBool(Settings.isMoving, true);
+        player.animator.SetBool(Settings.isAttack, true);
+        PlayAnimation();
     }
     private void InitializeAimAnimationParameters()
     {
@@ -96,5 +119,25 @@ public class AnimatePlayer : MonoBehaviour
         }
     }
 
+    public void PlayAnimation()
+    {
+        if (currentAnimationCoroutine != null)
+        {
+            StopCoroutine(currentAnimationCoroutine);
+        }
+        currentAnimationCoroutine = StartCoroutine(PlayAnimationCoroutine());
+    }
 
+    private IEnumerator PlayAnimationCoroutine()
+    {
+
+        // Wait until the current animation has finished playing
+        while (player.animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+        {
+            yield return null;
+        }
+
+        // Animation has finished
+        currentAnimationCoroutine = null;
+    }
 }

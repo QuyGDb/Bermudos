@@ -19,4 +19,6 @@ public static class Settings
     public static int isAttack = Animator.StringToHash("isAttack");
     public static int isFaint = Animator.StringToHash("isFaint");
     #endregion
+
+    public const float epsilon = 0.01f;
 }
