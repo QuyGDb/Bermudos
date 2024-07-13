@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -105541197
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 1213808554, guid: a12b58c4dba9aaf499e0228dcf0f5e82, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -195,7 +195,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -105541197
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 3
   m_Sprite: {fileID: 1679882564, guid: cdfa3d4b7f2713d4fa0c6ed7c584e656, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 6057006722962128203}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -292,7 +292,7 @@ SortingGroup:
   m_GameObject: {fileID: 3176905974167237993}
   m_Enabled: 1
   m_SortingLayerID: -105541197
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!95 &8248927959554455306
@@ -360,13 +360,25 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.34191436, y: 0.11724457}
-      - {x: 0, y: 0.7331454}
-      - {x: -0.334293, y: 0.12484745}
-      - {x: -0.3584454, y: -0.3174537}
+    - - {x: 0.3446498, y: 0.12506016}
+      - {x: 0.2816599, y: 0.1260783}
+      - {x: 0.2827642, y: 0.186469}
+      - {x: 0.22079404, y: 0.18926305}
+      - {x: 0.21767947, y: 0.621836}
+      - {x: 0.0050877035, y: 0.6975307}
+      - {x: -0.2178151, y: 0.6213801}
+      - {x: -0.2195239, y: 0.18829024}
+      - {x: -0.28191423, y: 0.18847477}
+      - {x: -0.2824136, y: 0.12585849}
+      - {x: -0.34463945, y: 0.12484745}
+      - {x: -0.3450561, y: -0.31223005}
+      - {x: -0.2836962, y: -0.31519663}
+      - {x: -0.2843812, y: -0.5040693}
+      - {x: -0.22093478, y: -0.5050256}
       - {x: -0.21921828, y: -0.56225103}
-      - {x: 0.2296904, y: -0.5710857}
-      - {x: 0.35730648, y: -0.31598288}
+      - {x: 0.21992818, y: -0.5631509}
+      - {x: 0.22009265, y: -0.31361327}
+      - {x: 0.34759933, y: -0.31736958}
   m_UseDelaunayMesh: 0
 --- !u!61 &-6112802702836229463
 BoxCollider2D:
@@ -400,7 +412,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000000059604645, y: -0.40840983}
+  m_Offset: {x: 0.000010356307, y: -0.37478706}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -411,7 +423,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.45996046, y: 0.28945434}
+  m_Size: {x: 0.43954274, y: 0.37577587}
   m_EdgeRadius: 0
 --- !u!50 &6956262689797343194
 Rigidbody2D:
@@ -425,7 +437,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.13313755
+  m_Mass: 0.16516955
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -578,7 +590,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -105541197
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 723702846, guid: c716ebe86e868f34da4b4667fc039ec3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -694,7 +706,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -105541197
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 3
   m_Sprite: {fileID: 819945084, guid: 85fa9b498b306544b9a785fa3249711a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -67,7 +67,7 @@ public class AnimatePlayer : MonoBehaviour
 
         InitializeStateAnimationParameters();
         player.animator.SetBool(Settings.isAttack, true);
-        PlayAnimation();
+        PlayAttackAnimation();
     }
     private void InitializeAimAnimationParameters()
     {
@@ -119,7 +119,7 @@ public class AnimatePlayer : MonoBehaviour
         }
     }
 
-    public void PlayAnimation()
+    public void PlayAttackAnimation()
     {
         if (currentAnimationCoroutine != null)
         {

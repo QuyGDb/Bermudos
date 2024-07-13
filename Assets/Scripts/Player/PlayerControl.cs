@@ -13,14 +13,8 @@ public class PlayerControl : MonoBehaviour
     private InputAction fire;
     private Vector2 direction;
     private Vector2 lastMoveDirection;
-    private int UpTimeCount = 0;
-    private int DownTimeCount = 0;
-    private int LeftTimeCount = 0;
-    private int RightTimeCount = 0;
-    private int UpLeftTimeCount = 0;
-    private int UpRightTimeCount = 0;
-    private int DownLeftTimeCount = 0;
-    private int DownRightTimeCount = 0;
+    private Vector2 previousLastDirection;
+
 
     private void Awake()
     {
@@ -56,55 +50,60 @@ public class PlayerControl : MonoBehaviour
     /// </summary>
     private void MovementInput()
     {
-        lastMoveDirection = move.ReadValue<Vector2>();
 
-        if ((lastMoveDirection.x != 0 || lastMoveDirection.y != 0) && (direction.x != 0 && direction.y != 0))
+        Vector2 currentMoveInput = move.ReadValue<Vector2>();
+        if ((currentMoveInput.x == 0 && currentMoveInput.y != 0 || currentMoveInput.x != 0 && currentMoveInput.y == 0) && (direction.x != 0 && direction.y != 0))
         {
             lastMoveDirection = direction;
         }
-
         // Create a direction vector based on the input
         direction = move.ReadValue<Vector2>();
 
-        // If there is movement either move or roll
         if (direction != Vector2.zero)
         {
-            if (direction == Vector2.up)
+            if (fire.ReadValue<float>() == 0)
             {
-                player.animateEvent.CallAnimateEvent(AimDirection.Up);
+                if (direction == Vector2.up)
+                {
+                    player.animateEvent.CallAnimateEvent(AimDirection.Up);
+                }
+                else if (direction == Vector2.down)
+                {
+                    player.animateEvent.CallAnimateEvent(AimDirection.Down);
+                }
+                else if (direction == Vector2.left)
+                {
+                    player.animateEvent.CallAnimateEvent(AimDirection.Left);
+                }
+                else if (direction == Vector2.right)
+                {
+                    player.animateEvent.CallAnimateEvent(AimDirection.Right);
+                }
+                else if (HelperUtilities.ApproximatelyEqual(direction, new Vector2(-0.71f, -0.71f), Settings.epsilon))
+                {
+                    player.animateEvent.CallAnimateEvent(AimDirection.DownLeft);
+                }
+                else if (HelperUtilities.ApproximatelyEqual(direction, new Vector2(0.71f, -0.71f), Settings.epsilon))
+                {
+                    player.animateEvent.CallAnimateEvent(AimDirection.DownRight);
+                }
+                else if (HelperUtilities.ApproximatelyEqual(direction, new Vector2(-0.71f, 0.71f), Settings.epsilon))
+                {
+                    player.animateEvent.CallAnimateEvent(AimDirection.UpLeft);
+                }
+                else if (HelperUtilities.ApproximatelyEqual(direction, new Vector2(0.71f, 0.71f), Settings.epsilon))
+                {
+                    player.animateEvent.CallAnimateEvent(AimDirection.UpRight);
+                }
+                // trigger movement event
+                player.movementByVelocityEvent.CallMovementByVelocityEvent(direction, moveSpeed);
             }
-            else if (direction == Vector2.down)
+            else
             {
-                player.animateEvent.CallAnimateEvent(AimDirection.Down);
+                player.attackEvent.CallAttackEvent();
             }
-            else if (direction == Vector2.left)
-            {
-                player.animateEvent.CallAnimateEvent(AimDirection.Left);
-            }
-            else if (direction == Vector2.right)
-            {
-                player.animateEvent.CallAnimateEvent(AimDirection.Right);
-            }
-            else if (HelperUtilities.ApproximatelyEqual(direction, new Vector2(-0.71f, -0.71f), Settings.epsilon))
-            {
-                player.animateEvent.CallAnimateEvent(AimDirection.DownLeft);
-            }
-            else if (HelperUtilities.ApproximatelyEqual(direction, new Vector2(0.71f, -0.71f), Settings.epsilon))
-            {
-                player.animateEvent.CallAnimateEvent(AimDirection.DownRight);
-            }
-            else if (HelperUtilities.ApproximatelyEqual(direction, new Vector2(-0.71f, 0.71f), Settings.epsilon))
-            {
-                player.animateEvent.CallAnimateEvent(AimDirection.UpLeft);
-            }
-            else if (HelperUtilities.ApproximatelyEqual(direction, new Vector2(0.71f, 0.71f), Settings.epsilon))
-            {
-                player.animateEvent.CallAnimateEvent(AimDirection.UpRight);
-            }
-            // trigger movement event
-            player.movementByVelocityEvent.CallMovementByVelocityEvent(direction, moveSpeed);
-
         }
+
         // else trigger idle event
         else
         {
@@ -115,25 +114,30 @@ public class PlayerControl : MonoBehaviour
             else
             {
                 player.idleEvent.CallIdleEvent();
-                if (HelperUtilities.ApproximatelyEqual(lastMoveDirection, new Vector2(-0.71f, -0.71f), Settings.epsilon))
+
+                if (previousLastDirection != lastMoveDirection)
                 {
-                    player.animateEvent.CallAnimateEvent(AimDirection.DownLeft);
-                }
-                else if (HelperUtilities.ApproximatelyEqual(lastMoveDirection, new Vector2(0.71f, -0.71f), Settings.epsilon))
-                {
-                    player.animateEvent.CallAnimateEvent(AimDirection.DownRight);
-                }
-                else if (HelperUtilities.ApproximatelyEqual(lastMoveDirection, new Vector2(-0.71f, 0.71f), Settings.epsilon))
-                {
-                    player.animateEvent.CallAnimateEvent(AimDirection.UpLeft);
-                }
-                else if (HelperUtilities.ApproximatelyEqual(lastMoveDirection, new Vector2(0.71f, 0.71f), Settings.epsilon))
-                {
-                    player.animateEvent.CallAnimateEvent(AimDirection.UpRight);
+                    previousLastDirection = lastMoveDirection;
+
+                    if (HelperUtilities.ApproximatelyEqual(lastMoveDirection, new Vector2(-0.71f, -0.71f), Settings.epsilon))
+                    {
+                        player.animateEvent.CallAnimateEvent(AimDirection.DownLeft);
+                    }
+                    else if (HelperUtilities.ApproximatelyEqual(lastMoveDirection, new Vector2(0.71f, -0.71f), Settings.epsilon))
+                    {
+                        player.animateEvent.CallAnimateEvent(AimDirection.DownRight);
+                    }
+                    else if (HelperUtilities.ApproximatelyEqual(lastMoveDirection, new Vector2(-0.71f, 0.71f), Settings.epsilon))
+                    {
+                        player.animateEvent.CallAnimateEvent(AimDirection.UpLeft);
+                    }
+                    else if (HelperUtilities.ApproximatelyEqual(lastMoveDirection, new Vector2(0.71f, 0.71f), Settings.epsilon))
+                    {
+                        player.animateEvent.CallAnimateEvent(AimDirection.UpRight);
+                    }
                 }
             }
         }
+
     }
-
-
 }

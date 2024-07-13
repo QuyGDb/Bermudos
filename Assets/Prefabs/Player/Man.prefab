@@ -8,6 +8,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 484147404745470907, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: m_labelHash
+      value: 2.2664278e-27
+      objectReference: {fileID: 0}
+    - target: {fileID: 484147404745470907, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: m_SpriteHash
+      value: 488201230
+      objectReference: {fileID: 0}
+    - target: {fileID: 484147404745470907, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: m_CategoryHash
+      value: 4.8434204e-20
+      objectReference: {fileID: 0}
     - target: {fileID: 756755436442007631, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -62,13 +77,33 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1916128836, guid: 15ec5557f81678841b2075c7b32f580c,
+      objectReference: {fileID: 723702846, guid: c716ebe86e868f34da4b4667fc039ec3,
         type: 3}
+    - target: {fileID: 935175343166164182, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410852394954328137, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: m_labelHash
+      value: 2.2664278e-27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410852394954328137, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: m_SpriteHash
+      value: 488201230
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410852394954328137, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: m_CategoryHash
+      value: 4.8434204e-20
+      objectReference: {fileID: 0}
     - target: {fileID: 2977365938837944826, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -447013197, guid: 4c2320ee74db8e6419054e270fb355bf,
+      objectReference: {fileID: 1679882564, guid: cdfa3d4b7f2713d4fa0c6ed7c584e656,
         type: 3}
     - target: {fileID: 3176905974167237993, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
@@ -81,6 +116,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7108339969198208228, guid: 57777440717fbbe40a32a7c4babbf850,
         type: 3}
+    - target: {fileID: 3992153586603576591, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: m_labelHash
+      value: 3.991422e-13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3992153586603576591, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: m_SpriteHash
+      value: 259702089
+      objectReference: {fileID: 0}
+    - target: {fileID: 3992153586603576591, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: m_CategoryHash
+      value: 0.009161512
+      objectReference: {fileID: 0}
     - target: {fileID: 4236184805013410323, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_SpriteLibraryAsset
@@ -97,8 +147,23 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1793445021, guid: 5a253367b54a67e408952a4e1ea085ac,
+      objectReference: {fileID: 819945084, guid: 85fa9b498b306544b9a785fa3249711a,
         type: 3}
+    - target: {fileID: 7525443577935927601, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: m_labelHash
+      value: 2.2664278e-27
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525443577935927601, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: m_SpriteHash
+      value: 488201230
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525443577935927601, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: m_CategoryHash
+      value: 4.8434204e-20
+      objectReference: {fileID: 0}
     - target: {fileID: 8003267310540547332, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_SpriteLibraryAsset
@@ -114,7 +179,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1640641288, guid: d7a66aa3fc8b62549b077ce00b83906d,
+      objectReference: {fileID: 1213808554, guid: a12b58c4dba9aaf499e0228dcf0f5e82,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Gate
   layers:
   - Default
   - TransparentFX
@@ -11,14 +12,14 @@ TagManager:
   - Ground
   - Water
   - UI
-  - Decoration
+  - Back
   - Instances
   - Front
   - Collision
   - Minimap
-  - 
-  - 
-  - 
+  - Environment
+  - Decor
+  - Shade
   - 
   - 
   - 
@@ -44,7 +45,10 @@ TagManager:
   - name: Ground
     uniqueID: 2425651459
     locked: 0
-  - name: Decoration
+  - name: Shade
+    uniqueID: 234579129
+    locked: 0
+  - name: Back
     uniqueID: 4250941897
     locked: 0
   - name: Instances
@@ -53,9 +57,15 @@ TagManager:
   - name: Front
     uniqueID: 36290061
     locked: 0
+  - name: Decor
+    uniqueID: 3150266075
+    locked: 0
   - name: Collision
     uniqueID: 2365219377
     locked: 0
   - name: Minimap
     uniqueID: 487967311
+    locked: 0
+  - name: Front 2
+    uniqueID: 204052301
     locked: 0
