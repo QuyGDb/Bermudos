@@ -99,6 +99,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 460609802, guid: 8e52957562cf246459d0f17ec5b76f8b,
         type: 3}
+    - target: {fileID: 807705261613205649, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 935175343166164182, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -255,6 +260,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1679882564, guid: cdfa3d4b7f2713d4fa0c6ed7c584e656,
         type: 3}
+    - target: {fileID: 2977365938837944826, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 3176905974167237993, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_Name
@@ -322,6 +332,11 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5949613967899660371, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 6956262689797343194, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_Mass
@@ -357,6 +372,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 14f14983f237e3b42a163816f06ce056, type: 2}
+    - target: {fileID: 8248927959554455306, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9030734883779235822, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_Sprite
@@ -378,6 +398,11 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9030734883779235822, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

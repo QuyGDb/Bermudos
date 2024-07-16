@@ -100,6 +100,7 @@ public class PlayerControl : MonoBehaviour
             }
             else
             {
+                player.movementByVelocityEvent.CallMovementByVelocityEvent(direction, 0);
                 player.attackEvent.CallAttackEvent();
             }
         }
@@ -138,6 +139,5 @@ public class PlayerControl : MonoBehaviour
                 }
             }
         }
-
     }
 }

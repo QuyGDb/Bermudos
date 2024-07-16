@@ -5,7 +5,8 @@ using UnityEngine;
 public class AnimatePlayer : MonoBehaviour
 {
     private Player player;
-    private Coroutine currentAnimationCoroutine;
+    private Coroutine attackAnimationCoroutine;
+    private bool isAttacking;
     private void Awake()
     {
         // Load components
@@ -46,7 +47,7 @@ public class AnimatePlayer : MonoBehaviour
 
     private void IdleEvent_OnIdle(IdleEvent idleEvent)
     {
-        if (currentAnimationCoroutine == null)
+        if (attackAnimationCoroutine == null)
         {
             InitializeStateAnimationParameters();
             player.animator.SetBool(Settings.isIdle, true);
@@ -55,7 +56,7 @@ public class AnimatePlayer : MonoBehaviour
 
     private void MovementByVelocityEvent_OnMovementByVelocity(MovementByVelocityEvent movementByVelocityEvent, MovementByVelocityArgs movementByVelocityArgs)
     {
-        if (currentAnimationCoroutine == null)
+        if (attackAnimationCoroutine == null)
         {
             InitializeStateAnimationParameters();
             player.animator.SetBool(Settings.isMoving, true);
@@ -121,23 +122,21 @@ public class AnimatePlayer : MonoBehaviour
 
     public void PlayAttackAnimation()
     {
-        if (currentAnimationCoroutine != null)
+        if (attackAnimationCoroutine != null)
         {
-            StopCoroutine(currentAnimationCoroutine);
+            StopCoroutine(attackAnimationCoroutine);
         }
-        currentAnimationCoroutine = StartCoroutine(PlayAnimationCoroutine());
+        attackAnimationCoroutine = StartCoroutine(PlayAnimationCoroutine());
     }
 
     private IEnumerator PlayAnimationCoroutine()
     {
-
         // Wait until the current animation has finished playing
         while (player.animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
         {
             yield return null;
         }
-
         // Animation has finished
-        currentAnimationCoroutine = null;
+        attackAnimationCoroutine = null;
     }
 }

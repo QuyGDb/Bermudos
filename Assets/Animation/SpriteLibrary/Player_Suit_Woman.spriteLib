@@ -597,10 +597,10 @@ MonoBehaviour:
       m_Hash: 212231600
       m_Sprite: {fileID: 495094684, guid: 29d3030d2577d064f94573e4ccba665c, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 495094684, guid: 29d3030d2577d064f94573e4ccba665c,
+      m_SpriteOverride: {fileID: -331083447, guid: bfe46c99cc79c734aac5330082b5d9f3,
         type: 3}
     m_FromMain: 1
-    m_EntryOverrideCount: 0
+    m_EntryOverrideCount: 1
   m_PrimaryLibraryGUID: 453ec958bd4deb642a976074b858c035
-  m_ModificationHash: 638557675660469554
+  m_ModificationHash: 638566357824060562
   m_Version: 1

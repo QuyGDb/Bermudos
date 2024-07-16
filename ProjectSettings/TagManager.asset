@@ -57,6 +57,9 @@ TagManager:
   - name: Front
     uniqueID: 36290061
     locked: 0
+  - name: Front 2
+    uniqueID: 204052301
+    locked: 0
   - name: Decor
     uniqueID: 3150266075
     locked: 0
@@ -66,6 +69,6 @@ TagManager:
   - name: Minimap
     uniqueID: 487967311
     locked: 0
-  - name: Front 2
-    uniqueID: 204052301
+  - name: Effect
+    uniqueID: 864944027
     locked: 0
