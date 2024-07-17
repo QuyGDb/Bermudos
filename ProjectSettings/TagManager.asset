@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Gate
+  - PlayerWeapon
   layers:
   - Default
   - TransparentFX
@@ -20,9 +21,9 @@ TagManager:
   - Environment
   - Decor
   - Shade
-  - 
-  - 
-  - 
+  - Map
+  - PlayerWeapon
+  - Player
   - 
   - 
   - 

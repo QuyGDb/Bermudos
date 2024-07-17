@@ -101,7 +101,7 @@ public class PlayerControl : MonoBehaviour
             else
             {
                 player.movementByVelocityEvent.CallMovementByVelocityEvent(direction, 0);
-                player.attackEvent.CallAttackEvent();
+                player.attackEvent.CallAttackEvent(true);
             }
         }
 
@@ -110,7 +110,7 @@ public class PlayerControl : MonoBehaviour
         {
             if (fire.ReadValue<float>() > 0)
             {
-                player.attackEvent.CallAttackEvent();
+                player.attackEvent.CallAttackEvent(true);
             }
             else
             {

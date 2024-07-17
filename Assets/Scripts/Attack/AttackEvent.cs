@@ -6,10 +6,15 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class AttackEvent : MonoBehaviour
 {
-    public event Action<AttackEvent> OnAttack;
-    public void CallAttackEvent()
+    public event Action<AttackEvent, AttackEventArgs> OnAttack;
+    public void CallAttackEvent(bool isAttacking)
     {
-        OnAttack?.Invoke(this);
+        OnAttack?.Invoke(this, new AttackEventArgs { isAttacking = isAttacking });
     }
+}
+
+public class AttackEventArgs : EventArgs
+{
+    public bool isAttacking;
 }
 
