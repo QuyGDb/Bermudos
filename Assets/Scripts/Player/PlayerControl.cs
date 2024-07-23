@@ -58,7 +58,6 @@ public class PlayerControl : MonoBehaviour
         }
         // Create a direction vector based on the input
         direction = move.ReadValue<Vector2>();
-
         if (direction != Vector2.zero)
         {
             if (fire.ReadValue<float>() == 0)
@@ -111,6 +110,7 @@ public class PlayerControl : MonoBehaviour
             if (fire.ReadValue<float>() > 0)
             {
                 player.attackEvent.CallAttackEvent(true);
+
             }
             else
             {

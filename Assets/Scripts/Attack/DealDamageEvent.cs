@@ -6,15 +6,12 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class DealDamageEvent : MonoBehaviour
 {
-    public event Action<DealDamageEvent, DealDamageEventArgs> OnDealDamage;
+    public event Action<DealDamageEvent> OnDealDamage;
 
-    public void CallTakeDamageEvent(bool isDealDamage)
+    public void CallTakeDamageEvent()
     {
-        OnDealDamage?.Invoke(this, new DealDamageEventArgs { isDealDamage = isDealDamage });
+        OnDealDamage?.Invoke(this);
     }
 
 }
-public class DealDamageEventArgs : EventArgs
-{
-    public bool isDealDamage;
-}
+

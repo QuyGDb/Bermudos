@@ -5,7 +5,9 @@ using UnityEngine;
 public class DealDamage : MonoBehaviour
 {
     [SerializeField] private Player player;
-    private bool isDealDamage;
+    private bool isDealDamage = false;
+    private bool hasAttack = false;
+
     private void OnEnable()
     {
         player.dealDamageEvent.OnDealDamage += DealDamageEvent_OnDealDamage;
@@ -15,16 +17,28 @@ public class DealDamage : MonoBehaviour
         player.dealDamageEvent.OnDealDamage -= DealDamageEvent_OnDealDamage;
     }
 
-    private void DealDamageEvent_OnDealDamage(DealDamageEvent dealDamageEvent, DealDamageEventArgs dealDamageEventArgs)
+    private void DealDamageEvent_OnDealDamage(DealDamageEvent dealDamageEvent)
     {
-        isDealDamage = dealDamageEventArgs.isDealDamage;
-        Debug.Log(isDealDamage);
+        if (isDealDamage == false)
+        {
+            isDealDamage = true;
+        }
+        else
+        {
+            isDealDamage = false;
+        }
+
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (isDealDamage)
-            Debug.Log("Deal Damage");
+        if (isDealDamage && !hasAttack)
+        {
+            hasAttack = true;
+        }
+        else if (!isDealDamage && hasAttack)
+        {
+            hasAttack = false;
+        }
     }
-
 }

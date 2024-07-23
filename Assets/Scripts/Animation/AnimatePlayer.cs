@@ -47,7 +47,6 @@ public class AnimatePlayer : MonoBehaviour
     private void AnimatePlayer_OnAnimate(AnimateEvent animateEvent, AnimateEventArgs animateEventArgs)
     {
         InitializeAimAnimationParameters();
-
         SetAimAnimationParameters(animateEventArgs.aimDirection);
     }
 
@@ -55,6 +54,7 @@ public class AnimatePlayer : MonoBehaviour
     {
         if (attackAnimationCoroutine == null)
         {
+
             InitializeStateAnimationParameters();
             player.animator.SetBool(Settings.isIdle, true);
         }
@@ -71,11 +71,12 @@ public class AnimatePlayer : MonoBehaviour
 
     private void AttackEvent_OnAttack(AttackEvent attackEvent, AttackEventArgs attackEventArgs)
     {
-
         InitializeStateAnimationParameters();
         player.animator.SetBool(Settings.isAttack, true);
         PlayAttackAnimation(attackEventArgs.isAttacking);
+
     }
+
     private void InitializeAimAnimationParameters()
     {
         player.animator.SetBool(Settings.aimUp, false);
@@ -86,8 +87,8 @@ public class AnimatePlayer : MonoBehaviour
         player.animator.SetBool(Settings.aimDown, false);
         player.animator.SetBool(Settings.aimDownRight, false);
         player.animator.SetBool(Settings.aimDownLeft, false);
-
     }
+
     private void InitializeStateAnimationParameters()
     {
         player.animator.SetBool(Settings.isIdle, false);
@@ -125,28 +126,25 @@ public class AnimatePlayer : MonoBehaviour
                 break;
         }
     }
-    public void PlayAttackAnimation(bool isAttacking)
+    private void PlayAttackAnimation(bool isAttacking)
     {
         if (attackAnimationCoroutine != null)
         {
             StopCoroutine(attackAnimationCoroutine);
         }
-        attackAnimationCoroutine = StartCoroutine(PlayAnimationCoroutine());
 
+        attackAnimationCoroutine = StartCoroutine(PlayAttackAnimationCoroutine());
     }
 
-    private IEnumerator PlayAnimationCoroutine()
+    private IEnumerator PlayAttackAnimationCoroutine()
     {
-        // Wait until the current animation has finished playing
+
         while (player.animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1.0f)
         {
-            // Call take damage event
-            player.dealDamageEvent.CallTakeDamageEvent(true);
+            // Animation has finished
             yield return null;
         }
         // Animation has finished
         attackAnimationCoroutine = null;
-        // Call take damage event
-        player.dealDamageEvent.CallTakeDamageEvent(false);
     }
 }
