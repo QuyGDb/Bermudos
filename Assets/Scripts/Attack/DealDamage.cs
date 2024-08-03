@@ -7,7 +7,7 @@ public class DealDamage : MonoBehaviour
     [SerializeField] private Player player;
     private bool isDealDamage = false;
     private bool hasAttack = false;
-
+    private int damage;
     private void OnEnable()
     {
         player.dealDamageEvent.OnDealDamage += DealDamageEvent_OnDealDamage;
@@ -17,10 +17,11 @@ public class DealDamage : MonoBehaviour
         player.dealDamageEvent.OnDealDamage -= DealDamageEvent_OnDealDamage;
     }
 
-    private void DealDamageEvent_OnDealDamage(DealDamageEvent dealDamageEvent)
+    private void DealDamageEvent_OnDealDamage(DealDamageEvent dealDamageEvent, DealDamageEventAgrs dealDamageEventAgrs)
     {
         if (isDealDamage == false)
         {
+            damage = dealDamageEventAgrs.damage;
             isDealDamage = true;
         }
         else
@@ -35,6 +36,12 @@ public class DealDamage : MonoBehaviour
         if (isDealDamage && !hasAttack)
         {
             hasAttack = true;
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                collision.GetComponent<Enemy>().damageEfect.CallDamageFlashEffect(GameResources.Instance.damegeFlashMaterial, GameResources.Instance.litMaterial, collision.GetComponent<SpriteRenderer>());
+                collision.GetComponent<Enemy>().damageEfect.DamagePushEfect();
+                collision.GetComponent<Enemy>().health.TakeDamage(damage);
+            }
         }
         else if (!isDealDamage && hasAttack)
         {

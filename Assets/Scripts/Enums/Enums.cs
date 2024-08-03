@@ -9,3 +9,13 @@ public enum AimDirection
     DownRight,
     DownLeft
 }
+
+public enum EnemyState
+{
+    Idle,
+    Roaming,
+    Chasing,
+    Attacking,
+    Dead,
+    GoBackToStart
+}

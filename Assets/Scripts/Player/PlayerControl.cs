@@ -1,8 +1,11 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Player))]
+[RequireComponent(typeof(MovementByVelocityEvent))]
+[DisallowMultipleComponent]
 public class PlayerControl : MonoBehaviour
 {
     private Player player;
@@ -15,7 +18,6 @@ public class PlayerControl : MonoBehaviour
     private Vector2 lastMoveDirection;
     private Vector2 previousLastDirection;
 
-
     private void Awake()
     {
         // Load components
@@ -26,6 +28,7 @@ public class PlayerControl : MonoBehaviour
         inputActions = new PlayerInput();
 
     }
+
     private void OnEnable()
     {
         move = inputActions.Player.Move;
@@ -35,16 +38,19 @@ public class PlayerControl : MonoBehaviour
         fire.Enable();
 
     }
+
     private void OnDisable()
     {
         move.Disable();
         fire.Disable();
 
     }
+
     private void Update()
     {
         MovementInput();
     }
+
     /// <summary>
     /// Player movement input
     /// </summary>
@@ -54,7 +60,7 @@ public class PlayerControl : MonoBehaviour
         Vector2 currentMoveInput = move.ReadValue<Vector2>();
         if ((currentMoveInput.x == 0 && currentMoveInput.y != 0 || currentMoveInput.x != 0 && currentMoveInput.y == 0) && (direction.x != 0 && direction.y != 0))
         {
-            lastMoveDirection = direction;
+            lastMoveDirection = direction; //ko thể lưu được tiếp direction cuối trước khi thả phím vào currentMoveInput được vì ngay frame sau nó sẽ đọc giá trị mới nên là cần một biến phụ lastdir để lưu
         }
         // Create a direction vector based on the input
         direction = move.ReadValue<Vector2>();
@@ -115,7 +121,7 @@ public class PlayerControl : MonoBehaviour
             else
             {
                 player.idleEvent.CallIdleEvent();
-
+                // nếu nhân vật di chuyển đường thằng, lastmovedirection sẽ không được cập nhật, previouslastDir sẽ bằng lastmovedir hiện tại ngăn animateEvent được gọi ngoài mong đợi
                 if (previousLastDirection != lastMoveDirection)
                 {
                     previousLastDirection = lastMoveDirection;
@@ -136,8 +142,10 @@ public class PlayerControl : MonoBehaviour
                     {
                         player.animateEvent.CallAnimateEvent(AimDirection.UpRight);
                     }
+
                 }
             }
+
         }
     }
 }

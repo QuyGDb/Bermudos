@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Gate
   - PlayerWeapon
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -24,8 +25,8 @@ TagManager:
   - Map
   - PlayerWeapon
   - Player
-  - 
-  - 
+  - Enemy
+  - EnemyAmmo
   - 
   - 
   - 
