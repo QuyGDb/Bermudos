@@ -29941,6 +29941,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MomoSlime
       objectReference: {fileID: 0}
+    - target: {fileID: 7245948656689240877, guid: 46fc9d64e4bf2244b805ab9b6488a296,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8914409654979657254, guid: 46fc9d64e4bf2244b805ab9b6488a296,
         type: 3}
       propertyPath: m_Mass
@@ -30033,7 +30038,7 @@ PrefabInstance:
     - target: {fileID: 7245948656689240877, guid: 46fc9d64e4bf2244b805ab9b6488a296,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8914409654979657254, guid: 46fc9d64e4bf2244b805ab9b6488a296,
         type: 3}
@@ -30217,7 +30222,7 @@ PrefabInstance:
     - target: {fileID: 7245948656689240877, guid: 46fc9d64e4bf2244b805ab9b6488a296,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8914409654979657254, guid: 46fc9d64e4bf2244b805ab9b6488a296,
         type: 3}

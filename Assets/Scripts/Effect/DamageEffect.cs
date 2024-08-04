@@ -7,11 +7,10 @@ public class DamageEfect : MonoBehaviour
 {
     public AnimationCurve damageFlashCurve;
     private Rigidbody2D rb;
-    private MovementToPositionEvent MovementToPositionEvent;
     private EnemyMovement enemyMovement;
     private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
     private Coroutine damagePushCoroutine;
-
+    private DamagePushEfectEvent damagePushEfectEvent;
     public float damageForce;
     public float duration = 0.25f;
 
@@ -19,8 +18,23 @@ public class DamageEfect : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        MovementToPositionEvent = GetComponent<MovementToPositionEvent>();
         enemyMovement = GetComponent<EnemyMovement>();
+        damagePushEfectEvent = GetComponent<DamagePushEfectEvent>();
+    }
+
+    private void OnEnable()
+    {
+        damagePushEfectEvent.OnDamagePushEfect += DamagePushEfectEvent_OnDamagePushEfect;
+    }
+
+    private void OnDisable()
+    {
+        damagePushEfectEvent.OnDamagePushEfect -= DamagePushEfectEvent_OnDamagePushEfect;
+    }
+
+    private void DamagePushEfectEvent_OnDamagePushEfect(DamagePushEfectEvent damagePushEfectEvent)
+    {
+        DamagePushEfect();
     }
     public void CallDamageFlashEffect(Material damageFlash, Material defaultMaterial, SpriteRenderer spriteRenderer)
     {
@@ -30,7 +44,7 @@ public class DamageEfect : MonoBehaviour
     private IEnumerator DamageFlasCoroutine(Material damageFlash, Material defaultMaterial, SpriteRenderer spriteRenderer)
     {
         spriteRenderer.material = damageFlash;
-
+        Debug.Log(spriteRenderer.material);
         float flashAmount = 0f;
 
         while (flashAmount < 1)
@@ -50,7 +64,6 @@ public class DamageEfect : MonoBehaviour
     /// </summary>
     public void DamagePushEfect()
     {
-        //rb.DOMove(rb.position + (damageForce * (rb.position - GameManager.Instance.player.GetPlayerPosition()).normalized), 0.25f);
         if (damagePushCoroutine != null)
         {
             StopCoroutine(damagePushCoroutine);
@@ -59,6 +72,7 @@ public class DamageEfect : MonoBehaviour
     }
     private IEnumerator DamagePushCoroutine(Vector3 targetPosition)
     {
+        Debug.Log(enemyMovement);
         Vector3 startPosition = rb.position;
         if (enemyMovement != null)
         {
