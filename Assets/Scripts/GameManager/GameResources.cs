@@ -45,7 +45,10 @@ public class GameResources : MonoBehaviour
     [Tooltip("Sprite-Lit-Default Material")]
     #endregion
     public Material litMaterial;
-
+    #region Tooltip
+    [Tooltip("Ammo Hit Effect Prefab")]
+    #endregion
+    public GameObject ammoHitEffectPrefab;
     #region Validation
 #if UNITY_EDITOR
     private void OnValidate()
@@ -54,6 +57,7 @@ public class GameResources : MonoBehaviour
         HelperUtilities.ValidateCheckNullValue(this, nameof(preferredEnemyPathTile), preferredEnemyPathTile);
         HelperUtilities.ValidateCheckNullValue(this, nameof(damegeFlashMaterial), damegeFlashMaterial);
         HelperUtilities.ValidateCheckNullValue(this, nameof(litMaterial), litMaterial);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(ammoHitEffectPrefab), ammoHitEffectPrefab);
     }
 #endif
     #endregion

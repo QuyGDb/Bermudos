@@ -1,5 +1,7 @@
 ﻿
+using System.Collections;
 using UnityEngine;
+
 [RequireComponent(typeof(EnemyStateEvent))]
 [RequireComponent(typeof(EnemyMovement))]
 [RequireComponent(typeof(EnemyAttack))]
@@ -11,6 +13,8 @@ public class EnemyAI : MonoBehaviour
     private EnemyStateEvent enemyStateEvent;
     private Enemy enemy;
     private EnemyState enemyState;
+    private Coroutine attackCoroutine;
+    private bool isAttack = true;
     private void Awake()
     {
 
@@ -32,6 +36,14 @@ public class EnemyAI : MonoBehaviour
     private void OnEnemyState(EnemyStateEvent enemyStateEvent, EnemyStateEventArgs enemyStateEventArgs)
     {
         enemyState = enemyStateEventArgs.enemyState;
+    }
+
+    private IEnumerator AttackCoroutine()
+    {
+        isAttack = false;
+        yield return new WaitForSeconds(1f);
+        enemyAttack.Shoot();
+        isAttack = true;
     }
 
     private void Update()
@@ -56,7 +68,11 @@ public class EnemyAI : MonoBehaviour
                 enemyMovement.GetAimDirection(false);
                 break;
             case EnemyState.Attacking:
-                enemyAttack.Shoot();
+                if (!isAttack)
+                    return;
+                if (attackCoroutine != null)
+                    StopCoroutine(attackCoroutine);
+                attackCoroutine = StartCoroutine(AttackCoroutine());
                 break;
         }
 

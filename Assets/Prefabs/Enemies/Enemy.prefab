@@ -298,6 +298,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  flashColor: {r: 4, g: 4, b: 4, a: 1}
   damageForce: 2
   duration: 0.25
 --- !u!114 &4480718574846664060

@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class Ammo : MonoBehaviour, IFireable
 {
+    private Vector3 shootDirection;
+    private DamageEfect damageEfects;
+    private DestroyedEvent destroyedEvent;
     private float speed;
     private int damage;
-    private Vector3 shootDirection;
 
+    private void Awake()
+    {
+        damageEfects = GetComponent<DamageEfect>();
+        destroyedEvent = GetComponent<DestroyedEvent>();
+    }
     private void Update()
     {
         transform.position += shootDirection * speed * Time.deltaTime;
@@ -34,15 +41,22 @@ public class Ammo : MonoBehaviour, IFireable
         if (health != null)
         {
             health.TakeDamage(damage);
+            StaticEventHandler.CallAmmoChangedEvent(this);
+            collision.GetComponent<DamageEfect>().DamagePushEfect(true);
+            collision.GetComponent<DamageEfect>().CallDamageFlashEffect(GameResources.Instance.damegeFlashMaterial, GameResources.Instance.litMaterial, collision.GetComponentsInChildren<SpriteRenderer>());
         }
+
         AmmoHitEffect();
         DisableAmmo();
     }
 
     private void AmmoHitEffect()
     {
-
+        AmmoHitEffect ammoHitEffect = PoolManager.Instance.ReuseComponent(GameResources.Instance.ammoHitEffectPrefab, transform.position, Quaternion.identity) as AmmoHitEffect;
+        ammoHitEffect.InitialiseAmmoHitEffect();
+        ammoHitEffect.gameObject.SetActive(true);
     }
+
     private void DisableAmmo()
     {
         gameObject.SetActive(false);

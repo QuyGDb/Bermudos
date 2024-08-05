@@ -51,3 +51,5 @@ MonoBehaviour:
     type: 2}
   damegeFlashMaterial: {fileID: 2100000, guid: 40bb447f32cebaf40ba721f0155b8cfa, type: 2}
   litMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  ammoHitEffectPrefab: {fileID: 822664497835596290, guid: 25888bcbdbd839446a12e13e36e20909,
+    type: 3}

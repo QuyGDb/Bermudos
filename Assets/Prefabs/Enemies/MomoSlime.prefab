@@ -16,7 +16,7 @@ PrefabInstance:
     - target: {fileID: -3579813238644532667, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
       propertyPath: m_BodyType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3579813238644532667, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
@@ -127,8 +127,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9141799335203922902, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
+      propertyPath: duration
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9141799335203922902, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
       propertyPath: damageForce
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

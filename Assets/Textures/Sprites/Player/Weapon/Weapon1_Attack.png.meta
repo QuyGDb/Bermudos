@@ -3,7 +3,7 @@ guid: 0386362e59f99e44ab290e140423be23
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -132,6 +132,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -227,18 +240,16 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 124
-        y: 370
+        y: 366
         width: 13
-        height: 19
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -0.5, y: -9.5}
-        - {x: -0.5, y: -8.5}
+      - - {x: -0.5, y: -10.5}
         - {x: -2.5, y: -8.5}
-        - {x: -2.5, y: -7.5}
         - {x: -3.5, y: -7.5}
         - {x: -3.5, y: -5.5}
         - {x: -4.5, y: -5.5}
@@ -246,53 +257,44 @@ TextureImporter:
         - {x: -5.5, y: -3.5}
         - {x: -5.5, y: -0.5}
         - {x: -6.5, y: -0.5}
-        - {x: -6.5, y: 9.5}
-        - {x: -5.5, y: 9.5}
-        - {x: -5.5, y: 5.5}
-        - {x: -4.5, y: 5.5}
-        - {x: -4.5, y: 1.5}
+        - {x: -6.5, y: 11.5}
+        - {x: -5.5, y: 11.5}
+        - {x: -5.5, y: 7.5}
+        - {x: -4.5, y: 7.5}
+        - {x: -4.5, y: 3.5}
+        - {x: -3.5, y: 3.5}
         - {x: -3.5, y: 1.5}
-        - {x: -3.5, y: -0.5}
+        - {x: -2.5, y: 1.5}
         - {x: -2.5, y: -0.5}
-        - {x: -2.5, y: -2.5}
-        - {x: -1.5, y: -2.5}
-        - {x: -1.5, y: -3.5}
-        - {x: -0.5, y: -3.5}
-        - {x: -0.5, y: -4.5}
-        - {x: 1.5, y: -4.5}
-        - {x: 1.5, y: -5.5}
-        - {x: 4.5, y: -5.5}
-        - {x: 4.5, y: -4.5}
-        - {x: 5.5, y: -4.5}
-        - {x: 5.5, y: -3.5}
-        - {x: 6.5, y: -3.5}
+        - {x: -1.5, y: -0.5}
+        - {x: -1.5, y: -1.5}
+        - {x: -0.5, y: -1.5}
+        - {x: -0.5, y: -2.5}
+        - {x: 1.5, y: -2.5}
+        - {x: 1.5, y: -3.5}
+        - {x: 4.5, y: -3.5}
+        - {x: 4.5, y: -2.5}
+        - {x: 5.5, y: -1.5}
+        - {x: 6.5, y: -1.5}
         - {x: 6.5, y: -7.5}
         - {x: 5.5, y: -7.5}
         - {x: 5.5, y: -8.5}
         - {x: 4.5, y: -8.5}
-        - {x: 4.5, y: -9.5}
-      - - {x: 3.5, y: -4.5}
-        - {x: 3.5, y: -3.5}
-        - {x: 2.5, y: -3.5}
+        - {x: 4.5, y: -10.5}
+      - - {x: 3.5, y: -2.5}
+        - {x: 3.5, y: -1.5}
         - {x: 2.5, y: -1.5}
-        - {x: 1.5, y: -1.5}
-        - {x: 1.5, y: 1.5}
-        - {x: 0.5, y: 1.5}
-        - {x: 0.5, y: 2.5}
-        - {x: 1.5, y: 2.5}
+        - {x: 2.5, y: 0.5}
+        - {x: 1.5, y: 0.5}
         - {x: 1.5, y: 3.5}
-        - {x: 3.5, y: 3.5}
-        - {x: 3.5, y: -0.5}
-        - {x: 4.5, y: -0.5}
-        - {x: 4.5, y: -4.5}
-      - - {x: 1.5, y: 2.5}
-        - {x: 1.5, y: 2.5}
-        - {x: 1.5, y: 2.5}
-        - {x: 1.5, y: 2.5}
-      - - {x: 1.5, y: 2.5}
-        - {x: 1.5, y: 2.5}
-        - {x: 1.5, y: 2.5}
-        - {x: 1.5, y: 2.5}
+        - {x: 0.5, y: 3.5}
+        - {x: 0.5, y: 4.5}
+        - {x: 1.5, y: 4.5}
+        - {x: 1.5, y: 5.5}
+        - {x: 3.5, y: 5.5}
+        - {x: 3.5, y: 1.5}
+        - {x: 4.5, y: 1.5}
+        - {x: 4.5, y: -2.5}
       tessellationDetail: 0
       bones: []
       spriteID: b47caa57a85d1b940a58a33049cdcc47

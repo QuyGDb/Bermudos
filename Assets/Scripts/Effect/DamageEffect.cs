@@ -10,7 +10,10 @@ public class DamageEfect : MonoBehaviour
     private EnemyMovement enemyMovement;
     private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
     private Coroutine damagePushCoroutine;
-    private DamagePushEfectEvent damagePushEfectEvent;
+    private Component ammo;
+    [ColorUsage(true, true)]
+    [SerializeField] private Color flashColor;
+    // private DamagePushEfectEvent damagePushEfectEvent;
     public float damageForce;
     public float duration = 0.25f;
 
@@ -19,77 +22,105 @@ public class DamageEfect : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         enemyMovement = GetComponent<EnemyMovement>();
-        damagePushEfectEvent = GetComponent<DamagePushEfectEvent>();
+        // damagePushEfectEvent = GetComponent<DamagePushEfectEvent>();
     }
 
     private void OnEnable()
     {
-        damagePushEfectEvent.OnDamagePushEfect += DamagePushEfectEvent_OnDamagePushEfect;
+        //damagePushEfectEvent.OnDamagePushEfect += DamagePushEfectEvent_OnDamagePushEfect;
+        StaticEventHandler.OnAmmoChanged += StaticEventHandler_OnAmmoChanged;
     }
 
     private void OnDisable()
     {
-        damagePushEfectEvent.OnDamagePushEfect -= DamagePushEfectEvent_OnDamagePushEfect;
+        //damagePushEfectEvent.OnDamagePushEfect -= DamagePushEfectEvent_OnDamagePushEfect;
+        StaticEventHandler.OnAmmoChanged -= StaticEventHandler_OnAmmoChanged;
     }
 
-    private void DamagePushEfectEvent_OnDamagePushEfect(DamagePushEfectEvent damagePushEfectEvent)
+    //private void DamagePushEfectEvent_OnDamagePushEfect(DamagePushEfectEvent damagePushEfectEvent)
+    //{
+    //    DamagePushEfect();
+    //}
+
+    private void StaticEventHandler_OnAmmoChanged(OnAmmoChangedEventArgs onAmmoChangedEventArgs)
     {
-        DamagePushEfect();
-    }
-    public void CallDamageFlashEffect(Material damageFlash, Material defaultMaterial, SpriteRenderer spriteRenderer)
-    {
-        StartCoroutine(DamageFlasCoroutine(damageFlash, defaultMaterial, spriteRenderer));
+        ammo = onAmmoChangedEventArgs.ammo;
     }
 
-    private IEnumerator DamageFlasCoroutine(Material damageFlash, Material defaultMaterial, SpriteRenderer spriteRenderer)
+    public void CallDamageFlashEffect(Material damageFlash, Material defaultMaterial, SpriteRenderer[] spriteRenderers)
     {
-        spriteRenderer.material = damageFlash;
-        Debug.Log(spriteRenderer.material);
-        float flashAmount = 0f;
+        StartCoroutine(DamageFlashCoroutine(damageFlash, defaultMaterial, spriteRenderers));
+    }
 
-        while (flashAmount < 1)
+    private IEnumerator DamageFlashCoroutine(Material damageFlash, Material defaultMaterial, SpriteRenderer[] spriteRenderers)
+    {
+        foreach (var spriteRenderer in spriteRenderers)
         {
-            flashAmount += Time.deltaTime * 10;
-            float lerp = Mathf.Lerp(0, 1, flashAmount);
-            spriteRenderer.material.SetFloat("_FlashAmount", damageFlashCurve.Evaluate(lerp));
+            spriteRenderer.material = damageFlash;
+            spriteRenderer.material.SetColor("_FlashColor", flashColor);
+            float flashAmount = 0f;
+
+            while (flashAmount < 1)
+            {
+                flashAmount += Time.deltaTime * 10;
+                float lerp = Mathf.Lerp(0, 1, flashAmount);
+                spriteRenderer.material.SetFloat("_FlashAmount", damageFlashCurve.Evaluate(lerp));
+                yield return null;
+            }
+
+            spriteRenderer.material = defaultMaterial;
             yield return null;
         }
 
-        spriteRenderer.material = defaultMaterial;
-        yield return null;
     }
 
     /// <summary>
     /// push enemy that get attack
     /// </summary>
-    public void DamagePushEfect()
+    public void DamagePushEfect(bool isPlayer)
     {
         if (damagePushCoroutine != null)
         {
             StopCoroutine(damagePushCoroutine);
         }
-        damagePushCoroutine = StartCoroutine(DamagePushCoroutine(rb.position + (damageForce * (rb.position - GameManager.Instance.player.GetPlayerPosition()).normalized)));
+        if (isPlayer)
+        {
+            damagePushCoroutine = StartCoroutine(DamagePushCoroutine(rb.position + (damageForce * (rb.position - (Vector2)ammo.transform.position).normalized), isPlayer));
+
+        }
+        else
+        {
+            damagePushCoroutine = StartCoroutine(DamagePushCoroutine(rb.position + (damageForce * (rb.position - GameManager.Instance.player.GetPlayerPosition()).normalized), isPlayer));
+        }
+
     }
-    private IEnumerator DamagePushCoroutine(Vector3 targetPosition)
+    private IEnumerator DamagePushCoroutine(Vector3 targetPosition, bool isPlayer)
     {
-        Debug.Log(enemyMovement);
         Vector3 startPosition = rb.position;
-        if (enemyMovement != null)
+
+        if (!isPlayer)
         {
             enemyMovement.navMeshAgent.isStopped = true;
-            float elapsedTime = 0f;
-            while (elapsedTime < duration)
-            {
-                // var movementStep = Vector3.Lerp(startPosition, targetPosition, (elapsedTime / duration));
-                rb.position = Vector3.Lerp(startPosition, targetPosition, (elapsedTime / duration));
-                //rb.MovePosition(Vector3.Lerp(startPosition, targetPosition, (elapsedTime / duration)));
-                //rb.AddForce(targetPosition, ForceMode2D.Impulse); //rb.AddForce
-                elapsedTime += Time.fixedDeltaTime;
-                yield return waitForFixedUpdate;
-            }
+        }
+
+        float elapsedTime = 0f;
+        while (elapsedTime < duration)
+        {
+
+            // var movementStep = Vector3.Lerp(startPosition, targetPosition, (elapsedTime / duration));
+            rb.position = Vector3.Lerp(startPosition, targetPosition, (elapsedTime / duration));
+            //rb.MovePosition(Vector3.Lerp(startPosition, targetPosition, (elapsedTime / duration)));
+            //rb.AddForce(targetPosition, ForceMode2D.Impulse); //rb.AddForce
+            elapsedTime += Time.fixedDeltaTime;
+            yield return waitForFixedUpdate;
+        }
+        if (!isPlayer)
+        {
             enemyMovement.navMeshAgent.isStopped = false;
         }
 
     }
 
 }
+
+

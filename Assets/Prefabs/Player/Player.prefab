@@ -265,6 +265,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: -2490704293199175983}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 131072
 --- !u!1 &3176905974167237993
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,6 +296,7 @@ GameObject:
   - component: {fileID: 7831158759591701845}
   - component: {fileID: 4155143411416084516}
   - component: {fileID: 2846851676256921954}
+  - component: {fileID: 5259463578457811081}
   m_Layer: 16
   m_Name: Player
   m_TagString: Player
@@ -665,6 +669,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a6f589fc385a40a008833b9aff6f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5259463578457811081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3176905974167237993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e5b1f4686baf241abdfd8e180747e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageFlashCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  flashColor: {r: 1.7735848, g: 0.24041311, b: 0.23759346, a: 0.6392157}
+  damageForce: 0.5
+  duration: 0.25
 --- !u!1 &5446567267218050401
 GameObject:
   m_ObjectHideFlags: 0

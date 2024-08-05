@@ -26,7 +26,7 @@ public class EnemyMovement : MonoBehaviour
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
         navMeshAgent.speed = 3.0f;
-        navMeshAgent.stoppingDistance = 1.5f;
+        navMeshAgent.stoppingDistance = 3f;
         startPosition = transform.position;
 
         // get roaming position
@@ -38,7 +38,6 @@ public class EnemyMovement : MonoBehaviour
     {
         navMeshAgent.SetDestination(roamingPosition);
         float reachedPositionDistance = 2f;
-
         if (Vector2.Distance(transform.position, roamingPosition) < reachedPositionDistance)
         {
             roamingPosition = GetRoamingPosition();

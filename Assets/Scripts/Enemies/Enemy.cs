@@ -58,6 +58,6 @@ public class Enemy : MonoBehaviour
     private void EnemyDestroyed()
     {
         DestroyedEvent destroyedEvent = GetComponent<DestroyedEvent>();
-        destroyedEvent.CallDestroyedEvent(false, 100);
+        destroyedEvent.CallDestroyedEvent(new DestroyedEventArgs { playerDied = false });
     }
 }
