@@ -8,7 +8,14 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private Transform shootPosition;
     [SerializeField] private AmmoDetailsSO ammoDetailsSO;
     [SerializeField] private GameObject ammoPrefab;
-    private float attackDistance = 6f;
+
+    #region Shoot Variables
+    [SerializeField] private AnimationCurve trajectoryAnimationCurve;
+    [SerializeField] private AnimationCurve axisCorrectionAnimationCurve;
+    [SerializeField] private AnimationCurve ammoSpeedAnimationCurve;
+    #endregion
+
+    [SerializeField] private float attackDistance = 6f;
     private void Awake()
     {
         enemy = GetComponent<Enemy>();
@@ -22,7 +29,7 @@ public class EnemyAttack : MonoBehaviour
     {
         // Shoot
         IFireable fireable = (IFireable)PoolManager.Instance.ReuseComponent(ammoPrefab, shootPosition.position, Quaternion.identity);
-        fireable.InitialiseAmmo(ammoDetailsSO, (GameManager.Instance.player.transform.position - transform.position).normalized);
+        fireable.InitialiseAmmo(ammoDetailsSO, GameManager.Instance.player.transform.position, trajectoryAnimationCurve, axisCorrectionAnimationCurve, ammoSpeedAnimationCurve);
         enemy.enemyStateEvent.CallEnemyStateEvent(EnemyState.Chasing);
 
     }
@@ -33,7 +40,6 @@ public class EnemyAttack : MonoBehaviour
         {
             enemy.enemyStateEvent.CallEnemyStateEvent(EnemyState.Attacking);
         }
-
     }
 
     #region Validation

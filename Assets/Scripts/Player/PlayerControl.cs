@@ -10,10 +10,12 @@ public class PlayerControl : MonoBehaviour
 {
     private Player player;
     private MovementByVelocityEvent movementByVelocityEvent;
-    private float moveSpeed = 6.0f;
-    private PlayerInput inputActions;
+    private MovementToPositionEvent movementToPositionEvent;
+    [SerializeField] private float moveSpeed = 6.0f;
+    private InputSystem_Actions inputSystem_Actions;
     private InputAction move;
     private InputAction fire;
+    private InputAction rightClick;
     private Vector2 direction;
     private Vector2 lastMoveDirection;
     private Vector2 previousLastDirection;
@@ -25,17 +27,20 @@ public class PlayerControl : MonoBehaviour
         movementByVelocityEvent = GetComponent<MovementByVelocityEvent>();
 
         // Initialize input actions
-        inputActions = new PlayerInput();
+        inputSystem_Actions = new InputSystem_Actions();
 
     }
 
     private void OnEnable()
     {
-        move = inputActions.Player.Move;
-        fire = inputActions.Player.Fire;
-
+        move = inputSystem_Actions.Player.Move;
+        fire = inputSystem_Actions.Player.Fire;
+        rightClick = inputSystem_Actions.Player.RightClick;
         move.Enable();
         fire.Enable();
+        rightClick.Enable();
+        rightClick.performed += ctx => player.bashEvent.CallOnBashEvent(BashState.ActiveBash);
+        rightClick.canceled += ctx => player.bashEvent.CallOnBashEvent(BashState.ReleaseBash);
 
     }
 
@@ -43,12 +48,20 @@ public class PlayerControl : MonoBehaviour
     {
         move.Disable();
         fire.Disable();
-
+        rightClick.Disable();
+        rightClick.performed -= ctx => player.bashEvent.CallOnBashEvent(BashState.ActiveBash);
+        rightClick.canceled -= ctx => player.bashEvent.CallOnBashEvent(BashState.ReleaseBash);
     }
 
     private void Update()
     {
         MovementInput();
+
+        if (rightClick.ReadValue<float>() > 0)
+        {
+            player.bashEvent.CallOnBashEvent(BashState.DuringBash);
+        }
+
     }
 
     /// <summary>

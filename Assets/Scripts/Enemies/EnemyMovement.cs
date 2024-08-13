@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -26,9 +26,8 @@ public class EnemyMovement : MonoBehaviour
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
         navMeshAgent.speed = 3.0f;
-        navMeshAgent.stoppingDistance = 3f;
         startPosition = transform.position;
-
+        //navMeshAgent.isStopped = true;
         // get roaming position
         roamingPosition = GetRoamingPosition();
 
@@ -37,8 +36,9 @@ public class EnemyMovement : MonoBehaviour
     public void MoveRoamingPosition()
     {
         navMeshAgent.SetDestination(roamingPosition);
-        float reachedPositionDistance = 2f;
-        if (Vector2.Distance(transform.position, roamingPosition) < reachedPositionDistance)
+        navMeshAgent.stoppingDistance = 1f;
+        float reachedPositionDistance = 1f;
+        if (Vector2.Distance(transform.position, roamingPosition) <= reachedPositionDistance)
         {
             roamingPosition = GetRoamingPosition();
         }
@@ -56,9 +56,9 @@ public class EnemyMovement : MonoBehaviour
     {
         if (GameManager.Instance.player != null)
         {
+            navMeshAgent.stoppingDistance = 2f;
             // set the destination of the navmesh agent to the player's position
             navMeshAgent.SetDestination(GameManager.Instance.player.transform.position);
-
         }
     }
 
@@ -75,16 +75,19 @@ public class EnemyMovement : MonoBehaviour
 
     public void GoBackToStartPosition()
     {
-        navMeshAgent.SetDestination(startPosition);
+        // reachedPositionDistance pháº£i nhá» hÆ¡n stoppingDistance báº±ng á»Ÿ dÆ°á»›i if check chuyá»ƒn tráº¡ng thÃ¡i so < reachedPositionDistance
+        navMeshAgent.stoppingDistance = 2f;
         float reachedPositionDistance = 2f;
+        navMeshAgent.SetDestination(startPosition);
+
         float range = 5f;
-        if (Vector2.Distance(GameManager.Instance.player.transform.position, transform.position) <= range && Vector2.Distance(startPosition, transform.position) <= maxDistance - range) // ? ?i?u ki?n 2, C?n tr? cho range vì n?u enemy ?ang ? trong maxdistance - range
-                                                                                                                                                                                         // thì ?i?u ki?n ??u tiên s? ?úng nh?ng sau khi enemy di chuy?n theo player ra kh?i
-                                                                                                                                                                                         // maxDistance thì if s? sai enemy ti?p t?c di chuy?n v? startingposition nh?ng sau
-                                                                                                                                                                                         // khi di chuy?n vào kho?ng nh? ? maxdistance if l?i ?úng và enemy l?i ?u?i theo player
-                                                                                                                                                                                         // d?n ??n enemy b? k?t( di chuy?n v? h??ng player r?i if sai quay l?i di chuy?n v? starting if l?i sai và di chuy?n player)
-                                                                                                                                                                                         // khi chuy?n sang tr?ng thái chasing, n?u player ra kh?i vùng maxdistance thì enemy s? quay l?i starting position
-                                                                                                                                                                                         // nên c?n tr? ?i range ?? tránh tr??ng h?p này
+        if (Vector2.Distance(GameManager.Instance.player.transform.position, transform.position) <= range && Vector2.Distance(startPosition, transform.position) <= maxDistance - range) // ? ?i?u ki?n 2, C?n tr? cho range vÃ¬ n?u enemy ?ang ? trong maxdistance - range
+                                                                                                                                                                                         // thÃ¬ ?i?u ki?n ??u tiÃªn s? ?Ãºng nh?ng sau khi enemy di chuy?n theo player ra kh?i
+                                                                                                                                                                                         // maxDistance thÃ¬ if s? sai enemy ti?p t?c di chuy?n v? startingposition nh?ng sau
+                                                                                                                                                                                         // khi di chuy?n vÃ o kho?ng nh? ? maxdistance if l?i ?Ãºng vÃ  enemy l?i ?u?i theo player
+                                                                                                                                                                                         // d?n ??n enemy b? k?t( di chuy?n v? h??ng player r?i if sai quay l?i di chuy?n v? starting if l?i sai vÃ  di chuy?n player)
+                                                                                                                                                                                         // khi chuy?n sang tr?ng thÃ¡i chasing, n?u player ra kh?i vÃ¹ng maxdistance thÃ¬ enemy s? quay l?i starting position
+                                                                                                                                                                                         // nÃªn c?n tr? ?i range ?? trÃ¡nh tr??ng h?p nÃ y
         {
             enemy.enemyStateEvent.CallEnemyStateEvent(EnemyState.Chasing);
         }

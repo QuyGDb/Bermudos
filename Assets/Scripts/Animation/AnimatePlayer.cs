@@ -31,6 +31,8 @@ public class AnimatePlayer : MonoBehaviour
         player.movementByVelocityEvent.OnMovementByVelocity += MovementByVelocityEvent_OnMovementByVelocity;
 
         player.attackEvent.OnAttack += AttackEvent_OnAttack;
+
+        player.destroyedEvent.OnDestroyed += DestroyedEvent_OnDestroyed;
     }
     private void OnDisable()
     {
@@ -42,6 +44,8 @@ public class AnimatePlayer : MonoBehaviour
         player.movementByVelocityEvent.OnMovementByVelocity -= MovementByVelocityEvent_OnMovementByVelocity;
 
         player.attackEvent.OnAttack -= AttackEvent_OnAttack;
+
+        player.destroyedEvent.OnDestroyed -= DestroyedEvent_OnDestroyed;
     }
 
     private void AnimatePlayer_OnAnimate(AnimateEvent animateEvent, AnimateEventArgs animateEventArgs)
@@ -54,7 +58,6 @@ public class AnimatePlayer : MonoBehaviour
     {
         if (attackAnimationCoroutine == null)
         {
-
             InitializeStateAnimationParameters();
             player.animator.SetBool(Settings.isIdle, true);
         }
@@ -69,6 +72,15 @@ public class AnimatePlayer : MonoBehaviour
         }
     }
 
+    private void DestroyedEvent_OnDestroyed(DestroyedEvent destroyedEvent, DestroyedEventArgs destroyedEventArgs)
+    {
+        player.idleEvent.OnIdle -= IdleEvent_OnIdle;
+        player.movementByVelocityEvent.OnMovementByVelocity -= MovementByVelocityEvent_OnMovementByVelocity;
+        player.attackEvent.OnAttack -= AttackEvent_OnAttack;
+
+        InitializeStateAnimationParameters();
+        player.animator.SetBool(Settings.isFaint, true);
+    }
     private void AttackEvent_OnAttack(AttackEvent attackEvent, AttackEventArgs attackEventArgs)
     {
         InitializeStateAnimationParameters();

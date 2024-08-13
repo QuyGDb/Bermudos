@@ -41,8 +41,11 @@ public class EnemyAI : MonoBehaviour
     private IEnumerator AttackCoroutine()
     {
         isAttack = false;
+        enemyMovement.navMeshAgent.isStopped = true;
         yield return new WaitForSeconds(1f);
         enemyAttack.Shoot();
+        yield return new WaitForSeconds(2f);
+        enemyMovement.navMeshAgent.isStopped = false;
         isAttack = true;
     }
 

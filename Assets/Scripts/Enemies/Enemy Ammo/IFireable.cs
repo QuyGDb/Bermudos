@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IFireable
 {
-    void InitialiseAmmo(AmmoDetailsSO ammoDetailsSO, Vector3 shootDirection);
+    void InitialiseAmmo(AmmoDetailsSO ammoDetailsSO, Vector3 target, AnimationCurve trajectoryAnimationCurve, AnimationCurve axisCorrectionAnimationCurve, AnimationCurve ammoSpeedAnimationCurve);
 }

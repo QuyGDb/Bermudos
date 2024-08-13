@@ -1,6 +1,4 @@
-﻿using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class DamageEfect : MonoBehaviour
@@ -9,13 +7,14 @@ public class DamageEfect : MonoBehaviour
     private Rigidbody2D rb;
     private EnemyMovement enemyMovement;
     private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
-    private Coroutine damagePushCoroutine;
+    private Coroutine pushPlayerByAmmoCoroutine;
+    private Coroutine pushEnemyByAmmoCoroutine;
     private Component ammo;
     [ColorUsage(true, true)]
     [SerializeField] private Color flashColor;
     // private DamagePushEfectEvent damagePushEfectEvent;
-    public float damageForce;
-    public float duration = 0.25f;
+    [SerializeField] private float damageForce;
+    [SerializeField] float duration = 0.25f;
 
 
     private void Awake()
@@ -49,7 +48,8 @@ public class DamageEfect : MonoBehaviour
 
     public void CallDamageFlashEffect(Material damageFlash, Material defaultMaterial, SpriteRenderer[] spriteRenderers)
     {
-        StartCoroutine(DamageFlashCoroutine(damageFlash, defaultMaterial, spriteRenderers));
+        if (gameObject.activeSelf)
+            StartCoroutine(DamageFlashCoroutine(damageFlash, defaultMaterial, spriteRenderers));
     }
 
     private IEnumerator DamageFlashCoroutine(Material damageFlash, Material defaultMaterial, SpriteRenderer[] spriteRenderers)
@@ -79,48 +79,78 @@ public class DamageEfect : MonoBehaviour
     /// </summary>
     public void DamagePushEfect(bool isPlayer)
     {
-        if (damagePushCoroutine != null)
+        if (pushPlayerByAmmoCoroutine != null)
         {
-            StopCoroutine(damagePushCoroutine);
+            StopCoroutine(pushPlayerByAmmoCoroutine);
         }
         if (isPlayer)
         {
-            damagePushCoroutine = StartCoroutine(DamagePushCoroutine(rb.position + (damageForce * (rb.position - (Vector2)ammo.transform.position).normalized), isPlayer));
+            if (gameObject.activeSelf)
+                pushPlayerByAmmoCoroutine = StartCoroutine(PushPlayerByEnemy(rb.position + (damageForce * (rb.position - (Vector2)ammo.transform.position).normalized)));
 
         }
         else
         {
-            damagePushCoroutine = StartCoroutine(DamagePushCoroutine(rb.position + (damageForce * (rb.position - GameManager.Instance.player.GetPlayerPosition()).normalized), isPlayer));
+            if (gameObject.activeSelf)
+                pushEnemyByAmmoCoroutine = StartCoroutine(PushEnemyByAmmo(rb.position + (damageForce * (rb.position - (Vector2)ammo.transform.position).normalized)));
         }
 
     }
-    private IEnumerator DamagePushCoroutine(Vector3 targetPosition, bool isPlayer)
+    private IEnumerator PushPlayerByEnemy(Vector3 targetPosition)
     {
         Vector3 startPosition = rb.position;
-
-        if (!isPlayer)
+        float elapsedTime = 0f;
+        while (elapsedTime < duration)
         {
-            enemyMovement.navMeshAgent.isStopped = true;
+            rb.MovePosition(Vector3.Lerp(startPosition, targetPosition, (elapsedTime / duration)));
+            elapsedTime += Time.fixedDeltaTime;
+            yield return waitForFixedUpdate;
         }
+    }
 
+    private IEnumerator PushEnemyByAmmo(Vector3 targetPosition)
+    {
+        Vector3 startPosition = rb.position;
         float elapsedTime = 0f;
         while (elapsedTime < duration)
         {
 
-            // var movementStep = Vector3.Lerp(startPosition, targetPosition, (elapsedTime / duration));
-            rb.position = Vector3.Lerp(startPosition, targetPosition, (elapsedTime / duration));
-            //rb.MovePosition(Vector3.Lerp(startPosition, targetPosition, (elapsedTime / duration)));
-            //rb.AddForce(targetPosition, ForceMode2D.Impulse); //rb.AddForce
+            Vector2 lerp = Vector2.Lerp(startPosition, targetPosition, (elapsedTime / duration));
+            Vector2 movementSteps = lerp - rb.position;
+            if (lerp - rb.position != Vector2.zero)
+            {
+                enemyMovement.navMeshAgent.Move(movementSteps);
+            }
             elapsedTime += Time.fixedDeltaTime;
             yield return waitForFixedUpdate;
         }
-        if (!isPlayer)
-        {
-            enemyMovement.navMeshAgent.isStopped = false;
-        }
-
+        yield return waitForFixedUpdate;
     }
 
+    public void PushEnemyByWeapon(Vector3 playerPosition)
+    {
+        Vector2 targetPosition = rb.position + (damageForce * (rb.position - ((Vector2)playerPosition)).normalized);
+
+        StartCoroutine(PushEnemyByWeaponCoroutine(targetPosition));
+    }
+    private IEnumerator PushEnemyByWeaponCoroutine(Vector2 targetPosition)
+    {
+        Vector3 startPosition = rb.position;
+        float elapsedTime = 0f;
+        while (elapsedTime < duration)
+        {
+
+            Vector2 lerp = Vector2.Lerp(startPosition, targetPosition, (elapsedTime / duration));
+            Vector2 movementSteps = lerp - rb.position;
+            if (lerp - rb.position != Vector2.zero)
+            {
+                enemyMovement.navMeshAgent.Move(movementSteps);
+            }
+            elapsedTime += Time.fixedDeltaTime;
+            yield return waitForFixedUpdate;
+        }
+        yield return waitForFixedUpdate;
+    }
 }
 
 

@@ -53,3 +53,5 @@ MonoBehaviour:
   litMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   ammoHitEffectPrefab: {fileID: 822664497835596290, guid: 25888bcbdbd839446a12e13e36e20909,
     type: 3}
+  bloodEffectPrefab: {fileID: 7373107180085969410, guid: bd29f19c9bdba7d4db508383b9fa63d3,
+    type: 3}

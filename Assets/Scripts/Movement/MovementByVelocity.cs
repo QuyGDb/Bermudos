@@ -43,5 +43,7 @@ public class MovementByVelocity : MonoBehaviour
         // ensure the rb collision detection is set to continuous
         rigidBody2D.velocity = moveDirection * moveSpeed;
 
+
+        // rigidBody2D.MovePosition(rigidBody2D.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
     }
 }

@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public static class HelperUtilities
 {
+    public static Camera mainCamera;
+
     /// <summary>
     /// Empty string debug check
     /// </summary>
@@ -130,5 +133,24 @@ public static class HelperUtilities
         }
 
         return error;
+    }
+
+    /// <summary>
+    /// Get the mouse world position.
+    /// </summary>
+    public static Vector3 GetMouseWorldPosition()
+    {
+        if (mainCamera == null) mainCamera = Camera.main;
+
+        Vector3 mouseScreenPosition = Mouse.current.position.ReadValue();
+
+        // Clamp mouse position to screen size
+        mouseScreenPosition.x = Mathf.Clamp(mouseScreenPosition.x, 0f, Screen.width);
+        mouseScreenPosition.y = Mathf.Clamp(mouseScreenPosition.y, 0f, Screen.height);
+
+        Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mouseScreenPosition);
+        worldPosition.z = 0f;
+        return worldPosition;
+
     }
 }

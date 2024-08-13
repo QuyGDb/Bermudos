@@ -7,11 +7,12 @@ using UnityEngine;
 public class Destroyed : MonoBehaviour
 {
     private DestroyedEvent destroyedEvent;
-
+    private Player player;
     private void Awake()
     {
         // Load components
         destroyedEvent = GetComponent<DestroyedEvent>();
+        player = GetComponent<Player>();
     }
 
     private void OnEnable()
@@ -31,11 +32,18 @@ public class Destroyed : MonoBehaviour
     {
         if (destroyedEventArgs.playerDied)
         {
-            gameObject.SetActive(false);
+            StartCoroutine(Die());
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+
+    private IEnumerator Die()
+    {
+        yield return new WaitForSeconds(3);
+
+        gameObject.SetActive(false);
     }
 }

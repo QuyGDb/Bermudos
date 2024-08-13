@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02940fc2c995f44ca081338fda9d13b, type: 3}
   m_Name: AmmoDetailsSO_MagickShoot
   m_EditorClassIdentifier: 
-  speed: 10
+  maxSpeed: 11.05
   damage: 10
+  trajectoryMaxHeight: 1

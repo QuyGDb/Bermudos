@@ -392,6 +392,11 @@ PrefabInstance:
       propertyPath: m_UpdateMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8274898365873951458, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: startingHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 9030734883779235822, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_Sprite
@@ -420,7 +425,8 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents:
     - {fileID: 2201491786942868306, guid: 0b592955ea58ad641b5e3c091f45626d, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3213697147411937876, guid: 0b592955ea58ad641b5e3c091f45626d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3176905974167237993, guid: 0b592955ea58ad641b5e3c091f45626d,

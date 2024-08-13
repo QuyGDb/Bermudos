@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public static class StaticEventHandler
 {
@@ -25,6 +22,13 @@ public static class StaticEventHandler
     public static void CallAmmoChangedEvent(Ammo ammo)
     {
         OnAmmoChanged?.Invoke(new OnAmmoChangedEventArgs() { ammo = ammo });
+    }
+
+    public static event Action FreezeMove;
+
+    public static void CallFreezeMoveEvent()
+    {
+        FreezeMove?.Invoke();
     }
 }
 public class MapChangedEventArgs : EventArgs

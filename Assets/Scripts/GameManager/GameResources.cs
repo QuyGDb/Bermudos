@@ -49,6 +49,12 @@ public class GameResources : MonoBehaviour
     [Tooltip("Ammo Hit Effect Prefab")]
     #endregion
     public GameObject ammoHitEffectPrefab;
+
+    #region Tooltip
+    [Tooltip("Blood Effect Prefab")]
+    #endregion
+    public GameObject bloodEffectPrefab;
+
     #region Validation
 #if UNITY_EDITOR
     private void OnValidate()
@@ -58,6 +64,7 @@ public class GameResources : MonoBehaviour
         HelperUtilities.ValidateCheckNullValue(this, nameof(damegeFlashMaterial), damegeFlashMaterial);
         HelperUtilities.ValidateCheckNullValue(this, nameof(litMaterial), litMaterial);
         HelperUtilities.ValidateCheckNullValue(this, nameof(ammoHitEffectPrefab), ammoHitEffectPrefab);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(bloodEffectPrefab), bloodEffectPrefab);
     }
 #endif
     #endregion

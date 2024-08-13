@@ -7,7 +7,8 @@ public enum AimDirection
     Left,
     Down,
     DownRight,
-    DownLeft
+    DownLeft,
+    None
 }
 
 public enum EnemyState
@@ -18,4 +19,18 @@ public enum EnemyState
     Attacking,
     Dead,
     GoBackToStart
+}
+
+public enum BashState
+{
+    ActiveBash,
+    DuringBash,
+    ReleaseBash,
+    None
+}
+
+public enum AmmoState
+{
+    Trajectory,
+    Linear,
 }

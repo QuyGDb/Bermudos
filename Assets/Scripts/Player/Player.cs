@@ -9,6 +9,7 @@ using UnityEngine;
 [RequireComponent(typeof(DealDamageEvent))]
 [RequireComponent(typeof(HealthEvent))]
 [RequireComponent(typeof(DestroyedEvent))]
+[RequireComponent(typeof(BashEvent))]
 [RequireComponent(typeof(Animator))]
 [DisallowMultipleComponent]
 public class Player : MonoBehaviour
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public DealDamageEvent dealDamageEvent;
     [HideInInspector] public HealthEvent healthEvent;
     [HideInInspector] public DestroyedEvent destroyedEvent;
+    [HideInInspector] public BashEvent bashEvent;
     [HideInInspector] public Animator animator;
 
     private void Awake()
@@ -32,6 +34,7 @@ public class Player : MonoBehaviour
         dealDamageEvent = GetComponent<DealDamageEvent>();
         healthEvent = GetComponent<HealthEvent>();
         destroyedEvent = GetComponent<DestroyedEvent>();
+        bashEvent = GetComponent<BashEvent>();
         animator = GetComponent<Animator>();
     }
     private void OnEnable()
