@@ -11,11 +11,11 @@ public class Bash : MonoBehaviour
     private LayerMask layerMask;
     private Player player;
     private Arrow arrow;
-    private float dashForce = 10f;
     private BashState bashState;
     private bool isDuring;
     private bool isRelease;
     private float aimCountdown;
+    private float dashForce = 10f;
     private void Awake()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
@@ -27,7 +27,6 @@ public class Bash : MonoBehaviour
     private void OnEnable()
     {
         player.bashEvent.OnBash += OnBashEvent_OnBash;
-
     }
     private void OnDisable()
     {
@@ -39,6 +38,7 @@ public class Bash : MonoBehaviour
     {
         bashState = bashEventArgs.bashState;
     }
+
     private void Start()
     {
         layerMask = LayerMask.GetMask("EnemyAmmo");
@@ -71,7 +71,7 @@ public class Bash : MonoBehaviour
         {
             Time.timeScale = 0f;
             isDuring = true;
-            aimCountdown = 10f;
+            aimCountdown = 2f;
         }
     }
 
@@ -93,18 +93,22 @@ public class Bash : MonoBehaviour
         Time.timeScale = 1f;
         if (collider2d != null && isRelease)
         {
-            collider2d.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            collider2d.GetComponent<Ammo>().ammoState = AmmoState.Freeze;
             collider2d.gameObject.layer = LayerMask.NameToLayer("BashAmmo");
-            collider2d.GetComponent<Rigidbody2D>().AddForce(((Vector2)collider2d.transform.position - (Vector2)HelperUtilities.GetMouseWorldPosition()).normalized * dashForce, ForceMode2D.Impulse);
+            MoveAmmoByBash();
             bashState = BashState.None;
             arrow.ClearArrow();
+
         }
     }
-
     private void InitializeFlagVarible()
     {
         isDuring = false;
         isRelease = false;
+    }
+    private void MoveAmmoByBash()
+    {
+        collider2d.GetComponent<Rigidbody2D>().AddForce(((Vector2)collider2d.transform.position - (Vector2)HelperUtilities.GetMouseWorldPosition()).normalized * dashForce, ForceMode2D.Impulse);
     }
 }
 

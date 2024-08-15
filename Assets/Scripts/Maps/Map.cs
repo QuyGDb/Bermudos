@@ -20,11 +20,5 @@ public class Map : MonoBehaviour
         StaticEventHandler.CallRoomChangedEvent(this);
     }
 
-    private void OnDisable()
-    {
-        StaticEventHandler.CallRoomChangedEvent(null);
-    }
-
-
 
 }

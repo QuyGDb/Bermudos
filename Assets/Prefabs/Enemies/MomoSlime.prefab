@@ -122,8 +122,13 @@ PrefabInstance:
       objectReference: {fileID: 7146590660409765869}
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
+      propertyPath: attackDistance
+      value: 8.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
       propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
@@ -143,7 +148,7 @@ PrefabInstance:
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
       propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[1].time
-      value: 1
+      value: 0.51417774
       objectReference: {fileID: 0}
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
@@ -158,7 +163,7 @@ PrefabInstance:
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
       propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[1].value
-      value: 1
+      value: 0.97360986
       objectReference: {fileID: 0}
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
@@ -207,28 +212,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
+      propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[0].inSlope
+      value: -0.051324926
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
       propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[1].inSlope
-      value: 0
+      value: 0.043953985
       objectReference: {fileID: 0}
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
       propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[2].inSlope
-      value: 2
+      value: 0.054320555
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[0].outSlope
+      value: -0.051324926
       objectReference: {fileID: 0}
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
       propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[1].inWeight
-      value: 0
+      value: 0.13970597
       objectReference: {fileID: 0}
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
       propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[1].outSlope
-      value: 0
+      value: 0.043953985
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[2].inWeight
+      value: 0.33333334
       objectReference: {fileID: 0}
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
       propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[2].outSlope
-      value: 2
+      value: 0.054320555
       objectReference: {fileID: 0}
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
@@ -243,7 +263,7 @@ PrefabInstance:
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
       propertyPath: trajectoryAnimationCurve.m_Curve.Array.data[2].inSlope
-      value: -5.7357197
+      value: -1.94484
       objectReference: {fileID: 0}
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
@@ -252,8 +272,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
+      propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
       propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[1].outWeight
-      value: 0
+      value: 0.33333334
       objectReference: {fileID: 0}
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
@@ -278,12 +303,12 @@ PrefabInstance:
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
       propertyPath: trajectoryAnimationCurve.m_Curve.Array.data[2].inWeight
-      value: 0.025419934
+      value: 0.33333334
       objectReference: {fileID: 0}
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
       propertyPath: trajectoryAnimationCurve.m_Curve.Array.data[2].outSlope
-      value: -5.7357197
+      value: -1.94484
       objectReference: {fileID: 0}
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
@@ -328,6 +353,11 @@ PrefabInstance:
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
       propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[1].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[2].tangentMode
       value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
@@ -348,6 +378,11 @@ PrefabInstance:
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
       propertyPath: trajectoryAnimationCurve.m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: trajectoryAnimationCurve.m_Curve.Array.data[2].tangentMode
       value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
@@ -428,7 +463,7 @@ PrefabInstance:
     - target: {fileID: 4487484004901044565, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
       propertyPath: startingHealth
-      value: 1010
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 5866340262160875342, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}

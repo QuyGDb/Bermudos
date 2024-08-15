@@ -54,29 +54,29 @@ public class EnemyAI : MonoBehaviour
 
         switch (enemyState)
         {
-            default:
-            case EnemyState.Roaming:
-                enemyMovement.MoveRoamingPosition();
-                enemyMovement.FindPlayer();
-                enemyMovement.GetAimDirection(false);
-                break;
-            case EnemyState.Chasing:
-                enemyMovement.MoveToPlayer();
-                enemyMovement.GetDistanceToStartPosition();
-                enemyMovement.GetAimDirection(true);
-                break;
-            case EnemyState.GoBackToStart:
-                enemyMovement.GoBackToStartPosition();
-                // tuy roamposition khong phai starting position nhung 2 ví trí gần nhau nên direction từ current positon đến starting position cũng có tỉ lệ giống với direction từ current position đến roamposition
-                enemyMovement.GetAimDirection(false);
-                break;
-            case EnemyState.Attacking:
-                if (!isAttack)
-                    return;
-                if (attackCoroutine != null)
-                    StopCoroutine(attackCoroutine);
-                attackCoroutine = StartCoroutine(AttackCoroutine());
-                break;
+            //default:
+            //case EnemyState.Roaming:
+            //    enemyMovement.MoveRoamingPosition();
+            //    enemyMovement.FindPlayer();
+            //    enemyMovement.GetAimDirection(false);
+            //    break;
+            //case EnemyState.Chasing:
+            //    enemyMovement.MoveToPlayer();
+            //    enemyMovement.GetDistanceToStartPosition();
+            //    enemyMovement.GetAimDirection(true);
+            //    break;
+            //case EnemyState.GoBackToStart:
+            //    enemyMovement.GoBackToStartPosition();
+            //    // tuy roamposition khong phai starting position nhung 2 ví trí gần nhau nên direction từ current positon đến starting position cũng có tỉ lệ giống với direction từ current position đến roamposition
+            //    enemyMovement.GetAimDirection(false);
+            //    break;
+            //case EnemyState.Attacking:
+            //    if (!isAttack)
+            //        return;
+            //    if (attackCoroutine != null)
+            //        StopCoroutine(attackCoroutine);
+            //    attackCoroutine = StartCoroutine(AttackCoroutine());
+            //    break;
         }
 
     }

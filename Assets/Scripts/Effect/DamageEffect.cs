@@ -129,20 +129,21 @@ public class DamageEfect : MonoBehaviour
 
     public void PushEnemyByWeapon(Vector3 playerPosition)
     {
-        Vector2 targetPosition = rb.position + (damageForce * (rb.position - ((Vector2)playerPosition)).normalized);
-
+        // Debug.Log("PushEnemyByWeapon");
+        Vector3 targetPosition = transform.position + (damageForce * (transform.position - playerPosition).normalized);
         StartCoroutine(PushEnemyByWeaponCoroutine(targetPosition));
     }
-    private IEnumerator PushEnemyByWeaponCoroutine(Vector2 targetPosition)
+    private IEnumerator PushEnemyByWeaponCoroutine(Vector3 targetPosition)
     {
         Vector3 startPosition = rb.position;
         float elapsedTime = 0f;
         while (elapsedTime < duration)
         {
 
-            Vector2 lerp = Vector2.Lerp(startPosition, targetPosition, (elapsedTime / duration));
-            Vector2 movementSteps = lerp - rb.position;
-            if (lerp - rb.position != Vector2.zero)
+            Vector3 lerp = Vector3.Lerp(startPosition, targetPosition, (elapsedTime / duration));
+            Vector3 movementSteps = lerp - transform.position;
+            //Debug.Log(movementSteps);
+            if (lerp - transform.position != Vector3.zero)
             {
                 enemyMovement.navMeshAgent.Move(movementSteps);
             }

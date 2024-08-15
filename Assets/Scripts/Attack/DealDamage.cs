@@ -33,7 +33,10 @@ public class DealDamage : MonoBehaviour
         }
 
     }
-
+    private void Update()
+    {
+        Debug.Log(transform.position);
+    }
     private void BloodEffect(Collider2D collider2D)
     {
         BloodEffect bloodEffect = (BloodEffect)PoolManager.Instance.ReuseComponent(GameResources.Instance.bloodEffectPrefab, collider2D.transform.position, Quaternion.identity);
@@ -50,7 +53,7 @@ public class DealDamage : MonoBehaviour
                 //TakeDame(); sẽ gọi destroy object lúc health về 0, lúc đó DamageEffect vẫn được gọi vì gameobject vẫn còn tồn tại, dù có check != thì object đó bị hủy trong lúc hàm đó đang chạy nên không giải quyết đươc, vì không thể xác định được 
                 // lúc này object hủy, nên ta sẽ damageEffect trước TakeDamage, để damagepush được thực hiện trước khi object bị hủy, 
                 // 1 bài test gọi thông qua event CallDamagePushEfectEvent(); thì không bị lỗi vì call event có lẽ được gọi chậm hơn gọi trước tiếp, nên object enemy đã bị hủy callevent mới được gọi, mà object đã hủy rồi nên sub không được gọi(ví dụ call pusheffeft đc gọi 5 lần còn callevent đc gọi 4 lần)
-                collision.GetComponent<Enemy>().damageEfect.PushEnemyByWeapon(transform.position);
+                collision.GetComponent<Enemy>().damageEfect.PushEnemyByWeapon(player.transform.position);
                 collision.GetComponent<Enemy>().health.TakeDamage(damage);
                 collision.GetComponent<Enemy>().damageEfect.CallDamageFlashEffect(GameResources.Instance.damegeFlashMaterial, GameResources.Instance.litMaterial, collision.GetComponents<SpriteRenderer>());
                 BloodEffect(collision);

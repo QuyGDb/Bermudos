@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: -4874450315909763135}
   - component: {fileID: -6882285755245588283}
   - component: {fileID: 9009670780176467636}
-  - component: {fileID: -7561579419808735666}
   - component: {fileID: -5604862461778171560}
+  - component: {fileID: 5645737973858218424}
+  - component: {fileID: -7561579419808735666}
   m_Layer: 18
   m_Name: Magick Shoot Ammo
   m_TagString: Untagged
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3c8e3705c738cf949932e59f14cdd3b2, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -144,21 +145,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.38
---- !u!114 &-7561579419808735666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5219608670313725194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 884d4abf206e5674caf8fa186044ff5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 196608
 --- !u!50 &-5604862461778171560
 Rigidbody2D:
   serializedVersion: 4
@@ -186,3 +172,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &5645737973858218424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5219608670313725194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f62b1e3d1f475d943bcf7e403c3b1663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoShadow: {fileID: 0}
+--- !u!114 &-7561579419808735666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5219608670313725194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 884d4abf206e5674caf8fa186044ff5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
