@@ -33,6 +33,11 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.40840983
       objectReference: {fileID: 0}
+    - target: {fileID: -6112802702836229463, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 45105419405761398, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -46,12 +51,12 @@ PrefabInstance:
     - target: {fileID: 756755436442007631, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 756755436442007631, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 756755436442007631, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
@@ -112,7 +117,7 @@ PrefabInstance:
     - target: {fileID: 935175343166164182, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.375
+      value: -0.34375
       objectReference: {fileID: 0}
     - target: {fileID: 1226761243969626362, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
@@ -350,7 +355,7 @@ PrefabInstance:
     - target: {fileID: 6956262689797343194, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_Mass
-      value: 1
+      value: 0.13313755
       objectReference: {fileID: 0}
     - target: {fileID: 6956262689797343194, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
@@ -395,7 +400,7 @@ PrefabInstance:
     - target: {fileID: 8274898365873951458, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: startingHealth
-      value: 100
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 9030734883779235822, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}

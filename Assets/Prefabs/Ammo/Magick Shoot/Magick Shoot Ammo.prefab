@@ -184,7 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62b1e3d1f475d943bcf7e403c3b1663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoShadow: {fileID: 0}
 --- !u!114 &-7561579419808735666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,3 +196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 884d4abf206e5674caf8fa186044ff5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poiseAmount: 1
+  stunDuration: 2
+  ammoState: 0

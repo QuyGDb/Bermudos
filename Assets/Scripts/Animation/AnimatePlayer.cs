@@ -47,7 +47,6 @@ public class AnimatePlayer : MonoBehaviour
 
         player.destroyedEvent.OnDestroyed -= DestroyedEvent_OnDestroyed;
     }
-
     private void AnimatePlayer_OnAnimate(AnimateEvent animateEvent, AnimateEventArgs animateEventArgs)
     {
         InitializeAimAnimationParameters();
@@ -150,13 +149,21 @@ public class AnimatePlayer : MonoBehaviour
 
     private IEnumerator PlayAttackAnimationCoroutine()
     {
-
-        while (player.animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1.0f)
+        float previousNormalizedTime = 0f;
+        yield return null;
+        while (player.animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
         {
-            // Animation has finished
+            float currentNormalizedTime = player.animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+
+            if (currentNormalizedTime < previousNormalizedTime)
+            {
+                StopCoroutine(attackAnimationCoroutine);
+                attackAnimationCoroutine = null;
+            }
+            previousNormalizedTime = currentNormalizedTime;
             yield return null;
         }
-        // Animation has finished
         attackAnimationCoroutine = null;
     }
+
 }

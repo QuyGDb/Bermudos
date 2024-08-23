@@ -9,26 +9,38 @@ public class MovementByVelocity : MonoBehaviour
 {
     private Rigidbody2D rigidBody2D;
     private MovementByVelocityEvent movementByVelocityEvent;
-
+    private DestroyedEvent destroyedEvent;
     private void Awake()
     {
         // Load components
         rigidBody2D = GetComponent<Rigidbody2D>();
         movementByVelocityEvent = GetComponent<MovementByVelocityEvent>();
+        destroyedEvent = GetComponent<DestroyedEvent>();
     }
 
     private void OnEnable()
     {
         // Subscribe to movement event
         movementByVelocityEvent.OnMovementByVelocity += MovementByVelocityEvent_OnMovementByVelocity;
+        destroyedEvent.OnDestroyed += DestroyedEvent_OnDestroyed;
     }
 
     private void OnDisable()
     {
         // Unsubscribe from movement event
         movementByVelocityEvent.OnMovementByVelocity -= MovementByVelocityEvent_OnMovementByVelocity;
+        destroyedEvent.OnDestroyed -= DestroyedEvent_OnDestroyed;
     }
 
+
+
+    private void DestroyedEvent_OnDestroyed(DestroyedEvent destroyedEvent, DestroyedEventArgs destroyedEventArgs)
+    {
+        if (destroyedEventArgs.playerDied)
+        {
+            movementByVelocityEvent.OnMovementByVelocity -= MovementByVelocityEvent_OnMovementByVelocity;
+        }
+    }
     // On movement event
     private void MovementByVelocityEvent_OnMovementByVelocity(MovementByVelocityEvent movementByVelocityEvent, MovementByVelocityArgs movementByVelocityArgs)
     {

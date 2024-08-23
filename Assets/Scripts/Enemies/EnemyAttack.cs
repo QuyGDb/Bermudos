@@ -22,7 +22,7 @@ public class EnemyAttack : MonoBehaviour
     }
     private void Start()
     {
-        InvokeRepeating("CallEnemyAttackState", 1f, Random.Range(3, 5f));
+        InvokeRepeating("CallEnemyAttackState", 3f, Random.Range(2f, 3f));
     }
 
     public void Shoot()
@@ -30,7 +30,6 @@ public class EnemyAttack : MonoBehaviour
         // Shoot
         IFireable fireable = (IFireable)PoolManager.Instance.ReuseComponent(ammoPrefab, shootPosition.position, Quaternion.identity);
         fireable.InitialiseAmmo(ammoDetailsSO, GameManager.Instance.player.transform.position, trajectoryAnimationCurve, axisCorrectionAnimationCurve, ammoSpeedAnimationCurve);
-        enemy.enemyStateEvent.CallEnemyStateEvent(EnemyState.Chasing);
 
     }
 

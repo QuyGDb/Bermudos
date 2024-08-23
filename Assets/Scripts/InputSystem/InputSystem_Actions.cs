@@ -59,7 +59,16 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""name"": ""RightClick"",
                     ""type"": ""Button"",
                     ""id"": ""043335d9-3484-40ab-8643-287930040ba2"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpaceClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""86f52ed0-f037-4901-88cb-81fc7ac19496"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -294,6 +303,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""RightClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9741432e-f5d2-4e51-87a9-5abc2e3d9021"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpaceClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -885,6 +905,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_RightClick = m_Player.FindAction("RightClick", throwIfNotFound: true);
+        m_Player_SpaceClick = m_Player.FindAction("SpaceClick", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -968,6 +989,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_RightClick;
+    private readonly InputAction m_Player_SpaceClick;
     public struct PlayerActions
     {
         private @InputSystem_Actions m_Wrapper;
@@ -976,6 +998,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @RightClick => m_Wrapper.m_Player_RightClick;
+        public InputAction @SpaceClick => m_Wrapper.m_Player_SpaceClick;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -997,6 +1020,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @RightClick.started += instance.OnRightClick;
             @RightClick.performed += instance.OnRightClick;
             @RightClick.canceled += instance.OnRightClick;
+            @SpaceClick.started += instance.OnSpaceClick;
+            @SpaceClick.performed += instance.OnSpaceClick;
+            @SpaceClick.canceled += instance.OnSpaceClick;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1013,6 +1039,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @RightClick.started -= instance.OnRightClick;
             @RightClick.performed -= instance.OnRightClick;
             @RightClick.canceled -= instance.OnRightClick;
+            @SpaceClick.started -= instance.OnSpaceClick;
+            @SpaceClick.performed -= instance.OnSpaceClick;
+            @SpaceClick.canceled -= instance.OnSpaceClick;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1199,6 +1228,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnRightClick(InputAction.CallbackContext context);
+        void OnSpaceClick(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

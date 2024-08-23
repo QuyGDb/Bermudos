@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 326484100089237604}
   - component: {fileID: -7793076503222447044}
   - component: {fileID: 2463751079239385878}
-  - component: {fileID: 6973784931896091028}
   m_Layer: 0
   m_Name: BloodEffect
   m_TagString: Untagged
@@ -42,9 +41,9 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7373107180085969410}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 2
   simulationSpeed: 1
-  stopAction: 1
+  stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -4889,15 +4888,3 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &6973784931896091028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7373107180085969410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2625b17b6fcb6f443bb2b45f5492ba21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

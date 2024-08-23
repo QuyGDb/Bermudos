@@ -36,7 +36,16 @@
                     "name": "RightClick",
                     "type": "Button",
                     "id": "043335d9-3484-40ab-8643-287930040ba2",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SpaceClick",
+                    "type": "Button",
+                    "id": "86f52ed0-f037-4901-88cb-81fc7ac19496",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -271,6 +280,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "RightClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9741432e-f5d2-4e51-87a9-5abc2e3d9021",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpaceClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

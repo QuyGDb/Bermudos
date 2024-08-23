@@ -42,8 +42,8 @@ public class Destroyed : MonoBehaviour
 
     private IEnumerator Die()
     {
-        yield return new WaitForSeconds(3);
 
+        yield return new WaitForSeconds(3);
         gameObject.SetActive(false);
     }
 }

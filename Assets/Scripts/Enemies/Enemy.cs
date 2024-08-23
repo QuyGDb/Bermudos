@@ -6,6 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(HealthEvent))]
 [RequireComponent(typeof(EnemyStateEvent))]
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Health))]
+[RequireComponent(typeof(EnemyEffect))]
+[RequireComponent(typeof(PoiseEvent))]
 [DisallowMultipleComponent]
 public class Enemy : MonoBehaviour
 {
@@ -14,7 +18,8 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public EnemyStateEvent enemyStateEvent;
     [HideInInspector] public Animator animator;
     [HideInInspector] public Health health;
-    [HideInInspector] public DamageEfect damageEfect;
+    [HideInInspector] public EnemyEffect enemyEffect;
+    [HideInInspector] public PoiseEvent poiseEvent;
     [HideInInspector] SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
     private void Awake()
@@ -23,9 +28,10 @@ public class Enemy : MonoBehaviour
         animateEvent = GetComponent<AnimateEvent>();
         healthEvent = GetComponent<HealthEvent>();
         enemyStateEvent = GetComponent<EnemyStateEvent>();
+        poiseEvent = GetComponent<PoiseEvent>();
         animator = GetComponent<Animator>();
         health = GetComponent<Health>();
-        damageEfect = GetComponent<DamageEfect>();
+        enemyEffect = GetComponent<EnemyEffect>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
     }

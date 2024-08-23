@@ -11,36 +11,40 @@ public class PlayerControl : MonoBehaviour
     private Player player;
     private MovementByVelocityEvent movementByVelocityEvent;
     private MovementToPositionEvent movementToPositionEvent;
-    [SerializeField] private float moveSpeed = 6.0f;
     private InputSystem_Actions inputSystem_Actions;
     private InputAction move;
     private InputAction fire;
     private InputAction rightClick;
+    private InputAction spaceClick;
     private Vector2 direction;
     private Vector2 lastMoveDirection;
     private Vector2 previousLastDirection;
-
+    [SerializeField] private SKillCooldownTimer skillCooldownTimer;
+    private float dashCooldownTimer;
+    private float bashCooldownTimer;
     private void Awake()
     {
         // Load components
         player = GetComponent<Player>();
         movementByVelocityEvent = GetComponent<MovementByVelocityEvent>();
-
         // Initialize input actions
         inputSystem_Actions = new InputSystem_Actions();
 
     }
-
     private void OnEnable()
     {
         move = inputSystem_Actions.Player.Move;
         fire = inputSystem_Actions.Player.Fire;
         rightClick = inputSystem_Actions.Player.RightClick;
+        spaceClick = inputSystem_Actions.Player.SpaceClick;
         move.Enable();
         fire.Enable();
         rightClick.Enable();
-        rightClick.performed += ctx => player.bashEvent.CallOnBashEvent(BashState.ActiveBash);
+        spaceClick.Enable();
+        fire.performed += OnFireClick;
+        rightClick.performed += OnRightMouseClick;
         rightClick.canceled += ctx => player.bashEvent.CallOnBashEvent(BashState.ReleaseBash);
+        spaceClick.performed += OnSpaceClick;
 
     }
 
@@ -49,10 +53,39 @@ public class PlayerControl : MonoBehaviour
         move.Disable();
         fire.Disable();
         rightClick.Disable();
-        rightClick.performed -= ctx => player.bashEvent.CallOnBashEvent(BashState.ActiveBash);
+        spaceClick.Disable();
+        fire.performed -= OnFireClick;
+        rightClick.performed -= OnRightMouseClick;
         rightClick.canceled -= ctx => player.bashEvent.CallOnBashEvent(BashState.ReleaseBash);
+        spaceClick.performed -= OnSpaceClick;
     }
 
+    private void OnRightMouseClick(InputAction.CallbackContext ctx)
+    {
+        if (Time.time > bashCooldownTimer)
+        {
+            bashCooldownTimer = Time.time + Settings.bashCooldown;
+            player.bashEvent.CallOnBashEvent(BashState.ActiveBash);
+            skillCooldownTimer.GetBashCooldown(Settings.bashCooldown);
+        }
+    }
+
+    private void OnSpaceClick(InputAction.CallbackContext ctx)
+    {
+        // Play dash animation based on direction
+        if (direction != Vector2.zero && Time.time > dashCooldownTimer)
+        {
+            dashCooldownTimer = Time.time + Settings.dashCooldown;
+            player.dashEvent.CallDashEvent(direction);
+            skillCooldownTimer.GetDashCooldown(Settings.dashCooldown);
+        }
+    }
+
+    private void OnFireClick(InputAction.CallbackContext ctx)
+    {
+        player.idleEvent.CallIdleEvent();
+        player.attackEvent.CallAttackEvent(true);
+    }
     private void Update()
     {
         MovementInput();
@@ -114,51 +147,40 @@ public class PlayerControl : MonoBehaviour
                     player.animateEvent.CallAnimateEvent(AimDirection.UpRight);
                 }
                 // trigger movement event
-                player.movementByVelocityEvent.CallMovementByVelocityEvent(direction, moveSpeed);
+                player.movementByVelocityEvent.CallMovementByVelocityEvent(direction, player.movementDetails.GetMoveSpeed());
             }
-            else
-            {
-                player.movementByVelocityEvent.CallMovementByVelocityEvent(direction, 0);
-                player.attackEvent.CallAttackEvent(true);
-            }
+
         }
 
         // else trigger idle event
         else
         {
-            if (fire.ReadValue<float>() > 0)
-            {
-                player.attackEvent.CallAttackEvent(true);
 
-            }
-            else
+            player.idleEvent.CallIdleEvent();
+            // nếu nhân vật di chuyển đường thằng, lastmovedirection sẽ không được cập nhật, previouslastDir sẽ bằng lastmovedir hiện tại ngăn animateEvent được gọi ngoài mong đợi
+            if (previousLastDirection != lastMoveDirection)
             {
-                player.idleEvent.CallIdleEvent();
-                // nếu nhân vật di chuyển đường thằng, lastmovedirection sẽ không được cập nhật, previouslastDir sẽ bằng lastmovedir hiện tại ngăn animateEvent được gọi ngoài mong đợi
-                if (previousLastDirection != lastMoveDirection)
+                previousLastDirection = lastMoveDirection;
+
+                if (HelperUtilities.ApproximatelyEqual(lastMoveDirection, new Vector2(-0.71f, -0.71f), Settings.epsilon))
                 {
-                    previousLastDirection = lastMoveDirection;
-
-                    if (HelperUtilities.ApproximatelyEqual(lastMoveDirection, new Vector2(-0.71f, -0.71f), Settings.epsilon))
-                    {
-                        player.animateEvent.CallAnimateEvent(AimDirection.DownLeft);
-                    }
-                    else if (HelperUtilities.ApproximatelyEqual(lastMoveDirection, new Vector2(0.71f, -0.71f), Settings.epsilon))
-                    {
-                        player.animateEvent.CallAnimateEvent(AimDirection.DownRight);
-                    }
-                    else if (HelperUtilities.ApproximatelyEqual(lastMoveDirection, new Vector2(-0.71f, 0.71f), Settings.epsilon))
-                    {
-                        player.animateEvent.CallAnimateEvent(AimDirection.UpLeft);
-                    }
-                    else if (HelperUtilities.ApproximatelyEqual(lastMoveDirection, new Vector2(0.71f, 0.71f), Settings.epsilon))
-                    {
-                        player.animateEvent.CallAnimateEvent(AimDirection.UpRight);
-                    }
-
+                    player.animateEvent.CallAnimateEvent(AimDirection.DownLeft);
                 }
-            }
+                else if (HelperUtilities.ApproximatelyEqual(lastMoveDirection, new Vector2(0.71f, -0.71f), Settings.epsilon))
+                {
+                    player.animateEvent.CallAnimateEvent(AimDirection.DownRight);
+                }
+                else if (HelperUtilities.ApproximatelyEqual(lastMoveDirection, new Vector2(-0.71f, 0.71f), Settings.epsilon))
+                {
+                    player.animateEvent.CallAnimateEvent(AimDirection.UpLeft);
+                }
+                else if (HelperUtilities.ApproximatelyEqual(lastMoveDirection, new Vector2(0.71f, 0.71f), Settings.epsilon))
+                {
+                    player.animateEvent.CallAnimateEvent(AimDirection.UpRight);
+                }
 
+            }
         }
+
     }
 }

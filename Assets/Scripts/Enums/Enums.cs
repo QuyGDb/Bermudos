@@ -13,7 +13,6 @@ public enum AimDirection
 
 public enum EnemyState
 {
-    Idle,
     Roaming,
     Chasing,
     Attacking,

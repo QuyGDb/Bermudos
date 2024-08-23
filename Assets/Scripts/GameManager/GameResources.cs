@@ -18,6 +18,8 @@ public class GameResources : MonoBehaviour
             return instance;
         }
     }
+
+
     #region Header SPECIAL TILEMAP TILES
     [Space(10)]
     [Header("SPECIAL TILEMAP TILES")]
@@ -55,6 +57,11 @@ public class GameResources : MonoBehaviour
     #endregion
     public GameObject bloodEffectPrefab;
 
+    #region Tooltip
+    [Tooltip("Player Shadow Prefab")]
+    #endregion
+    public GameObject playerShadowPrefab;
+
     #region Validation
 #if UNITY_EDITOR
     private void OnValidate()
@@ -65,6 +72,7 @@ public class GameResources : MonoBehaviour
         HelperUtilities.ValidateCheckNullValue(this, nameof(litMaterial), litMaterial);
         HelperUtilities.ValidateCheckNullValue(this, nameof(ammoHitEffectPrefab), ammoHitEffectPrefab);
         HelperUtilities.ValidateCheckNullValue(this, nameof(bloodEffectPrefab), bloodEffectPrefab);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(playerShadowPrefab), playerShadowPrefab);
     }
 #endif
     #endregion

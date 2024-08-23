@@ -20,15 +20,28 @@ public class EnemyMovement : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
 
     }
+    private void OnEnable()
+    {
+        enemy.poiseEvent.onPoise += PoiseEvent_OnPoise;
+    }
+    private void OnDisable()
+    {
+        enemy.poiseEvent.onPoise -= PoiseEvent_OnPoise;
+    }
 
+    private void PoiseEvent_OnPoise(PoiseEvent poiseEvent, PoiseEventArgs poiseEventArgs)
+    {
+        if (poiseEventArgs.currentPoise <= 0)
+        {
+            StopEnemy(poiseEventArgs.stunTime);
+        }
+    }
     private void Start()
     {
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
         navMeshAgent.speed = 3.0f;
         startPosition = transform.position;
-        //navMeshAgent.isStopped = true;
-        // get roaming position
         roamingPosition = GetRoamingPosition();
 
     }
@@ -134,5 +147,17 @@ public class EnemyMovement : MonoBehaviour
         {
             enemy.animateEvent.CallAnimateEvent(AimDirection.Right);
         }
+    }
+
+    private void StopEnemy(float stunTime)
+    {
+        StartCoroutine(StopEnemyCoroutine(stunTime));
+    }
+
+    private IEnumerator StopEnemyCoroutine(float stunTime)
+    {
+        navMeshAgent.isStopped = true;
+        yield return new WaitForSeconds(stunTime);
+        navMeshAgent.isStopped = false;
     }
 }
