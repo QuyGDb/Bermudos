@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public static class HelperUtilities
 {
     public static Camera mainCamera;
-
     /// <summary>
     /// Empty string debug check
     /// </summary>

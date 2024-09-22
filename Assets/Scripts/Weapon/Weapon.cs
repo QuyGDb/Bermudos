@@ -19,9 +19,10 @@ public class Weapon : MonoBehaviour
         polygonCollider2D.useDelaunayMesh = true;
         polygonCollider2D.isTrigger = true;
     }
-    private void Update()
+    private void LateUpdate()
     {
         GetWeaponCollider();
+
     }
 
     private void GetWeaponCollider()

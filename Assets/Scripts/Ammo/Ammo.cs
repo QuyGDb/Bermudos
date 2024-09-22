@@ -181,9 +181,11 @@ public class Ammo : MonoBehaviour, IFireable
         SetAmmoPlayer();
         InitializeAnimationCurves(trajectoryAniamtionCurve, axisCorrectionAnimationCurve, ammoSpeedAnimationCurve);
         ammoVisual.SetTarget(target);
-        gameObject.SetActive(true);
-    }
+        ammoState = AmmoState.Trajectory;
+        isColliding = false;
 
+        SetGameObjectActive(true);
+    }
 
     private void SetAmmoPlayer()
     {
@@ -195,6 +197,10 @@ public class Ammo : MonoBehaviour, IFireable
         this.target = target;
     }
 
+    private void SetGameObjectActive(bool isActive)
+    {
+        gameObject.SetActive(isActive);
+    }
     private void InitializeAnimationCurves(AnimationCurve trajectoryAnimationCurve, AnimationCurve axisCorrectionAnimationCurve, AnimationCurve ammoSpeedAnimationCurve)
     {
         this.trajectoryAnimationCurve = trajectoryAnimationCurve;

@@ -9,13 +9,21 @@ public class NavmeshManager : MonoBehaviour
     {
         navMeshSurface = GetComponent<NavMeshSurface>();
     }
-    private void Start()
+    private void OnEnable()
+    {
+        StaticEventHandler.OnMapChanged += StaticEventHandler_OnMapChanged;
+    }
+    private void OnDisable()
+    {
+        StaticEventHandler.OnMapChanged -= StaticEventHandler_OnMapChanged;
+    }
+    private void StaticEventHandler_OnMapChanged(MapChangedEventArgs mapChangedEventArgs)
     {
         StartCoroutine(BuildNavMeshCoroutine());
     }
-
     private IEnumerator BuildNavMeshCoroutine()
     {
+        yield return null;
         yield return null;
         navMeshSurface.BuildNavMesh();
     }

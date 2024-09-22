@@ -129,7 +129,7 @@ public class EnemyEffect : MonoBehaviour
             Vector3 lerp = Vector3.Lerp(startPosition, targetPosition, (elapsedTime / duration));
             Vector3 movementSteps = lerp - transform.position;
             //Debug.Log(movementSteps);
-            if (lerp - transform.position != Vector3.zero)
+            if (lerp - transform.position != Vector3.zero && enemyMovement.navMeshAgent.isOnNavMesh)
             {
                 enemyMovement.navMeshAgent.Move(movementSteps);
             }

@@ -54,7 +54,7 @@ public class DealContactDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(isColliding + " " + stunTime);
+
         // If already colliding with something return
         if (isColliding || stunTime > 0) return;
         int collisionObjectLayerMask = (1 << collision.gameObject.layer);
@@ -93,7 +93,6 @@ public class DealContactDamage : MonoBehaviour
 
             // Reset the contact collision after set time
             Invoke("ResetContactCollision", Settings.contactDamageCollisionResetDelay);
-            Debug.Log("Contact Damage");
             receiveContactDamage.TakeContactDamage(contactDamageAmount);
 
         }

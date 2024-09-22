@@ -12,7 +12,10 @@ public class DealDamageEvent : MonoBehaviour
     {
         OnDealDamage?.Invoke(this, new DealDamageEventAgrs { damage = damage });
     }
-
+    public void Test1()
+    {
+        Debug.Log("Test1");
+    }
 }
 
 public class DealDamageEventAgrs : EventArgs
