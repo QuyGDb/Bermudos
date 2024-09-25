@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimateEnemyMomoSlime : MonoBehaviour
+public class AnimateEnemy : MonoBehaviour
 {
     private Enemy enemy;
     private AimDirection aimDirection;
