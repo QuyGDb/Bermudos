@@ -10,11 +10,8 @@ public class DealDamageEvent : MonoBehaviour
 
     public void CallTakeDamageEvent(int damage)
     {
+
         OnDealDamage?.Invoke(this, new DealDamageEventAgrs { damage = damage });
-    }
-    public void Test1()
-    {
-        Debug.Log("Test1");
     }
 }
 

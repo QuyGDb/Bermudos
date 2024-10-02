@@ -8,35 +8,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -3579813238644532667, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+    - target: {fileID: 1401133919952064042, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
-      propertyPath: m_Mass
-      value: 1.7259356
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+    - target: {fileID: 3674136317262225296, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
-      propertyPath: attackDistance
-      value: 5.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 3784722649481088292, guid: 1735eb1787ad19845a8af5decfbbdd2f,
-        type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3784722649481088292, guid: 1735eb1787ad19845a8af5decfbbdd2f,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4259082488965038625, guid: 1735eb1787ad19845a8af5decfbbdd2f,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4259082488965038625, guid: 1735eb1787ad19845a8af5decfbbdd2f,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
+      propertyPath: animationEnemyType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4259082488965038625, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
@@ -88,125 +68,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4301729907854204998, guid: 1735eb1787ad19845a8af5decfbbdd2f,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4487484004901044565, guid: 1735eb1787ad19845a8af5decfbbdd2f,
-        type: 3}
-      propertyPath: startingHealth
-      value: 300
-      objectReference: {fileID: 0}
     - target: {fileID: 5866340262160875342, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
       propertyPath: m_Name
       value: MomoSlime
       objectReference: {fileID: 0}
-    - target: {fileID: 9141799335203922902, guid: 1735eb1787ad19845a8af5decfbbdd2f,
-        type: 3}
-      propertyPath: duration
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 9141799335203922902, guid: 1735eb1787ad19845a8af5decfbbdd2f,
-        type: 3}
-      propertyPath: bloodEffect
-      value: 
-      objectReference: {fileID: 3349976358453050585}
-    m_RemovedComponents:
-    - {fileID: 2778032038130311515, guid: 1735eb1787ad19845a8af5decfbbdd2f, type: 3}
-    m_RemovedGameObjects:
-    - {fileID: 4687665490005433114, guid: 1735eb1787ad19845a8af5decfbbdd2f, type: 3}
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 4259082488965038625, guid: 1735eb1787ad19845a8af5decfbbdd2f,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4117143303472199809}
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1735eb1787ad19845a8af5decfbbdd2f, type: 3}
---- !u!4 &1079991447972537922 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4259082488965038625, guid: 1735eb1787ad19845a8af5decfbbdd2f,
-    type: 3}
-  m_PrefabInstance: {fileID: 3884260716517385315}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &4441938510466214117
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1079991447972537922}
-    m_Modifications:
-    - target: {fileID: 326484100089237604, guid: bd29f19c9bdba7d4db508383b9fa63d3,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 326484100089237604, guid: bd29f19c9bdba7d4db508383b9fa63d3,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 326484100089237604, guid: bd29f19c9bdba7d4db508383b9fa63d3,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 326484100089237604, guid: bd29f19c9bdba7d4db508383b9fa63d3,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 326484100089237604, guid: bd29f19c9bdba7d4db508383b9fa63d3,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 326484100089237604, guid: bd29f19c9bdba7d4db508383b9fa63d3,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 326484100089237604, guid: bd29f19c9bdba7d4db508383b9fa63d3,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 326484100089237604, guid: bd29f19c9bdba7d4db508383b9fa63d3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 326484100089237604, guid: bd29f19c9bdba7d4db508383b9fa63d3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 326484100089237604, guid: bd29f19c9bdba7d4db508383b9fa63d3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7373107180085969410, guid: bd29f19c9bdba7d4db508383b9fa63d3,
-        type: 3}
-      propertyPath: m_Name
-      value: BloodEffect
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bd29f19c9bdba7d4db508383b9fa63d3, type: 3}
---- !u!198 &3349976358453050585 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: -7793076503222447044, guid: bd29f19c9bdba7d4db508383b9fa63d3,
-    type: 3}
-  m_PrefabInstance: {fileID: 4441938510466214117}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4117143303472199809 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 326484100089237604, guid: bd29f19c9bdba7d4db508383b9fa63d3,
-    type: 3}
-  m_PrefabInstance: {fileID: 4441938510466214117}
-  m_PrefabAsset: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: 1735eb1787ad19845a8af5decfbbdd2f, type: 3}

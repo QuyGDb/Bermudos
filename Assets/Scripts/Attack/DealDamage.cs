@@ -8,7 +8,7 @@ public class DealDamage : MonoBehaviour
     //[SerializeField] private DamagePushEfectEvent damagePushEfectEvent;
     [SerializeField] private LayerMask enemyLayer;
     private ContactFilter2D contactFilter2D;
-    private int damage;
+    private int damage = 10;
     private int attackCost = 10;
     private void Awake()
     {

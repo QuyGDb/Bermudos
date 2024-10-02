@@ -26,7 +26,6 @@ public class Player : MonoBehaviour
     [HideInInspector] public AnimateEvent animateEvent;
     [HideInInspector] public AttackEvent attackEvent;
     [HideInInspector] public DealDamageEvent dealDamageEvent;
-
     [HideInInspector] public HealthEvent healthEvent;
     [HideInInspector] public DestroyedEvent destroyedEvent;
     [HideInInspector] public BashEvent bashEvent;
@@ -35,7 +34,6 @@ public class Player : MonoBehaviour
     [HideInInspector] public Stamina stamina;
     [HideInInspector] public Animator animator;
     [HideInInspector] public PlayerEffect playerEffect;
-
     private void Awake()
     {
         // Load components
@@ -53,9 +51,8 @@ public class Player : MonoBehaviour
         stamina = GetComponent<Stamina>();
         animator = GetComponent<Animator>();
         playerEffect = GetComponent<PlayerEffect>();
-
-
     }
+
     private void OnEnable()
     {
         StaticEventHandler.CallPlayerChangedEvent(this);
@@ -65,7 +62,6 @@ public class Player : MonoBehaviour
 
     private void OnDisable()
     {
-
         // Unsubscribe from player health event
         healthEvent.OnHealthChanged -= HealthEvent_OnHealthChanged;
     }
@@ -86,12 +82,15 @@ public class Player : MonoBehaviour
 
     }
 
+
     #region Validation
 #if UNITY_EDITOR
     private void OnValidate()
     {
         HelperUtilities.ValidateCheckNullValue(this, nameof(movementDetails), movementDetails);
     }
+
+
 #endif
     #endregion Validation
 }

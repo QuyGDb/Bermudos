@@ -28751,10 +28751,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cb94036c6115984784004251bad9750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  templateLowerBounds: {x: -20, y: -17}
-  templateUpperBounds: {x: 24, y: 24}
-  collisionTilemap: {fileID: 0}
-  grid: {fileID: 0}
 --- !u!1 &9057728873864649947
 GameObject:
   m_ObjectHideFlags: 0
@@ -29905,6 +29901,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6616797388641289305}
     m_Modifications:
+    - target: {fileID: 511876578020637683, guid: 46fc9d64e4bf2244b805ab9b6488a296,
+        type: 3}
+      propertyPath: animationEnemyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1079991447972537922, guid: 46fc9d64e4bf2244b805ab9b6488a296,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -29965,6 +29966,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2780543319652674121, guid: 46fc9d64e4bf2244b805ab9b6488a296,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5420531327302535093, guid: 46fc9d64e4bf2244b805ab9b6488a296,
         type: 3}
       propertyPath: duration
@@ -29978,12 +29984,12 @@ PrefabInstance:
     - target: {fileID: 7245948656689240877, guid: 46fc9d64e4bf2244b805ab9b6488a296,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8914409654979657254, guid: 46fc9d64e4bf2244b805ab9b6488a296,
         type: 3}
       propertyPath: m_Mass
-      value: 1.7259356
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

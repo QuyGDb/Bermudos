@@ -80,11 +80,11 @@ public class AnimatePlayer : MonoBehaviour
         InitializeStateAnimationParameters();
         player.animator.SetBool(Settings.isFaint, true);
     }
-    private void AttackEvent_OnAttack(AttackEvent attackEvent, AttackEventArgs attackEventArgs)
+    private void AttackEvent_OnAttack(AttackEvent attackEvent)
     {
         InitializeStateAnimationParameters();
         player.animator.SetBool(Settings.isAttack, true);
-        PlayAttackAnimation(attackEventArgs.isAttacking);
+        PlayAttackAnimation();
 
     }
 
@@ -137,30 +137,20 @@ public class AnimatePlayer : MonoBehaviour
                 break;
         }
     }
-    private void PlayAttackAnimation(bool isAttacking)
+    private void PlayAttackAnimation()
     {
         if (attackAnimationCoroutine != null)
         {
             StopCoroutine(attackAnimationCoroutine);
         }
-
         attackAnimationCoroutine = StartCoroutine(PlayAttackAnimationCoroutine());
     }
 
     private IEnumerator PlayAttackAnimationCoroutine()
     {
-        float previousNormalizedTime = 0f;
         yield return null;
         while (player.animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
         {
-            float currentNormalizedTime = player.animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
-
-            if (currentNormalizedTime < previousNormalizedTime)
-            {
-                StopCoroutine(attackAnimationCoroutine);
-                attackAnimationCoroutine = null;
-            }
-            previousNormalizedTime = currentNormalizedTime;
             yield return null;
         }
         attackAnimationCoroutine = null;

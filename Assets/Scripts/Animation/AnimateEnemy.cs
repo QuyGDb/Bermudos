@@ -6,6 +6,7 @@ public class AnimateEnemy : MonoBehaviour
 {
     private Enemy enemy;
     private AimDirection aimDirection;
+    private Coroutine attackAnimationCoroutine;
     private void Awake()
     {
         enemy = GetComponent<Enemy>();
@@ -13,18 +14,82 @@ public class AnimateEnemy : MonoBehaviour
 
     private void Start()
     {
-        enemy.animateEvent.OnAnimate += Animate;
+        enemy.animateEvent.OnAnimate += AnimateEnemy_OnAnimate;
+        enemy.idleEvent.OnIdle += IdleEvent_OnIdle;
+        enemy.moveByEnemyAIEvent.OnMoveByEnemyAI += MoveByEnemyAIEvent_OnMoveByEnemyAI;
+        enemy.attackEvent.OnAttack += AttackEvent_OnAttack;
     }
 
     private void OnDisable()
     {
-        enemy.animateEvent.OnAnimate -= Animate;
+        enemy.animateEvent.OnAnimate -= AnimateEnemy_OnAnimate;
+        enemy.idleEvent.OnIdle -= IdleEvent_OnIdle;
+        enemy.moveByEnemyAIEvent.OnMoveByEnemyAI -= MoveByEnemyAIEvent_OnMoveByEnemyAI;
+        enemy.attackEvent.OnAttack -= AttackEvent_OnAttack;
     }
 
-    private void Animate(AnimateEvent animateEvent, AnimateEventArgs animateEventArgs)
+    private void MoveByEnemyAIEvent_OnMoveByEnemyAI(MoveByEnemyAIEvent moveByEnemyAIEvent)
+    {
+        if (attackAnimationCoroutine == null)
+        {
+            Debug.Log("MoveByEnemyAIEvent_OnMoveByEnemyAI");
+            if (enemy.animationEnemyType == AnimationEnemyType.IdleAndRun || enemy.animationEnemyType == AnimationEnemyType.IdleRunAndAttack)
+            {
+
+                InitializeStateAnimationParameters();
+                enemy.animator.SetBool(Settings.isMoving, true);
+            }
+        }
+
+    }
+    private void IdleEvent_OnIdle(IdleEvent idleEvent)
+    {
+        if (enemy.animationEnemyType == AnimationEnemyType.IdleAndRun || enemy.animationEnemyType == AnimationEnemyType.IdleRunAndAttack)
+        {
+            Debug.Log("IdleEvent_OnIdle");
+            InitializeStateAnimationParameters();
+            enemy.animator.SetBool(Settings.isIdle, true);
+        }
+    }
+
+    private void AttackEvent_OnAttack(AttackEvent attackEvent)
+    {
+        if (enemy.animationEnemyType == AnimationEnemyType.IdleRunAndAttack)
+        {
+            PlayAttackAnimation();
+            InitializeStateAnimationParameters();
+            enemy.animator.SetBool(Settings.isAttack, true);
+
+        }
+    }
+    private void PlayAttackAnimation()
+    {
+        if (attackAnimationCoroutine != null)
+        {
+            StopCoroutine(attackAnimationCoroutine);
+        }
+        attackAnimationCoroutine = StartCoroutine(PlayAttackAnimationCoroutine());
+    }
+    private IEnumerator PlayAttackAnimationCoroutine()
+    {
+        yield return null;
+        while (enemy.animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
+        {
+            yield return null;
+        }
+        attackAnimationCoroutine = null;
+    }
+    private void InitializeStateAnimationParameters()
+    {
+        enemy.animator.SetBool(Settings.isIdle, false);
+        enemy.animator.SetBool(Settings.isMoving, false);
+        enemy.animator.SetBool(Settings.isAttack, false);
+    }
+
+    private void AnimateEnemy_OnAnimate(AnimateEvent animateEvent, AnimateEventArgs animateEventArgs)
     {
         InitializeAnimationParameters();
-        PlayAnimation(animateEventArgs.aimDirection);
+        SetAimAnimationParameters(animateEventArgs.aimDirection);
     }
 
     private void InitializeAnimationParameters()
@@ -35,7 +100,7 @@ public class AnimateEnemy : MonoBehaviour
         enemy.animator.SetBool(Settings.aimLeft, false);
     }
 
-    private void PlayAnimation(AimDirection aimDirection)
+    private void SetAimAnimationParameters(AimDirection aimDirection)
     {
         switch (aimDirection)
         {

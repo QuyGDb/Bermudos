@@ -6,8 +6,9 @@ using UnityEngine.Tilemaps;
 public class Map : MonoBehaviour
 {
 
-    private void OnEnable()
+    private void Start()
     {
         StaticEventHandler.CallRoomChangedEvent(this);
     }
+
 }

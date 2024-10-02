@@ -28,6 +28,7 @@ public class EnemyAttack : MonoBehaviour
     public void Shoot()
     {
         // Shoot
+
         IFireable fireable = (IFireable)PoolManager.Instance.ReuseComponent(ammoPrefab, shootPosition.position, Quaternion.identity);
         fireable.InitialiseAmmo(ammoDetailsSO, GameManager.Instance.player.transform.position, trajectoryAnimationCurve, axisCorrectionAnimationCurve, ammoSpeedAnimationCurve);
 

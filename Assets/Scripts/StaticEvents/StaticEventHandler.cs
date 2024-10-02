@@ -24,12 +24,6 @@ public static class StaticEventHandler
         OnAmmoChanged?.Invoke(new OnAmmoChangedEventArgs() { ammo = ammo });
     }
 
-    public static event Action FreezeMove;
-
-    public static void CallFreezeMoveEvent()
-    {
-        FreezeMove?.Invoke();
-    }
 }
 public class MapChangedEventArgs : EventArgs
 {

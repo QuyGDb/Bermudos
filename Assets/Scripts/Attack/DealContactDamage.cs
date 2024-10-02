@@ -83,8 +83,6 @@ public class DealContactDamage : MonoBehaviour
     private void ContactDamage(Collider2D collision)
     {
         // if the collision object isn't in the specified layer then return (use bitwise comparison)
-
-
         // Check to see if the colliding object should take contact damage
         ReceiveContactDamage receiveContactDamage = collision.gameObject.GetComponent<ReceiveContactDamage>();
         if (receiveContactDamage != null)

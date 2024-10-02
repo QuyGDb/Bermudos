@@ -27,6 +27,7 @@ public class Bash : MonoBehaviour
 
     private void OnEnable()
     {
+
         player.bashEvent.OnBash += OnBashEvent_OnBash;
     }
     private void OnDisable()

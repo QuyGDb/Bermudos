@@ -12,7 +12,7 @@ public class EnemyAI : MonoBehaviour
     private EnemyAttack enemyAttack;
     private EnemyStateEvent enemyStateEvent;
     private Enemy enemy;
-    private EnemyState enemyState;
+    [HideInInspector] public EnemyState enemyState;
     private Coroutine attackCoroutine;
     private bool isAttack = true;
 
@@ -42,29 +42,31 @@ public class EnemyAI : MonoBehaviour
             StopAttack(poiseEventArgs.stunTime);
         }
     }
-
     private void OnEnemyState(EnemyStateEvent enemyStateEvent, EnemyStateEventArgs enemyStateEventArgs)
     {
         enemyState = enemyStateEventArgs.enemyState;
     }
 
-
     private void Update()
     {
+
         switch (enemyState)
         {
             default:
             case EnemyState.Roaming:
+                enemy.moveByEnemyAIEvent.CallMoveByEnemyAIEvent();
                 enemyMovement.MoveRoamingPosition();
                 enemyMovement.FindPlayer();
                 enemyMovement.GetAimDirection(false);
                 break;
             case EnemyState.Chasing:
+                enemy.moveByEnemyAIEvent.CallMoveByEnemyAIEvent();
                 enemyMovement.MoveToPlayer();
                 enemyMovement.GetDistanceToStartPosition();
                 enemyMovement.GetAimDirection(true);
                 break;
             case EnemyState.GoBackToStart:
+                enemy.moveByEnemyAIEvent.CallMoveByEnemyAIEvent();
                 enemyMovement.GoBackToStartPosition();
                 // tuy roamposition khong phai starting position nhung 2 ví trí gần nhau nên direction từ current positon đến starting position cũng có tỉ lệ giống với direction từ current position đến roamposition
                 enemyMovement.GetAimDirection(false);
@@ -72,11 +74,14 @@ public class EnemyAI : MonoBehaviour
             case EnemyState.Attacking:
                 if (!isAttack)
                     return;
+                enemy.attackEvent.CallAttackEvent();
+                Debug.Log("Attack");
                 enemyAttack.Shoot();
                 enemyStateEvent.CallEnemyStateEvent(EnemyState.Chasing);
                 break;
+            case EnemyState.None:
+                break;
         }
-
     }
     private void StopAttack(float stunTime)
     {

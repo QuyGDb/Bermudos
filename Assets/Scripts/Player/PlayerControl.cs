@@ -83,9 +83,9 @@ public class PlayerControl : MonoBehaviour
 
     private void OnFireClick(InputAction.CallbackContext ctx)
     {
-        player.idleEvent.CallIdleEvent();
-        player.attackEvent.CallAttackEvent(true);
+        player.attackEvent.CallAttackEvent();
     }
+
     private void Update()
     {
         MovementInput();

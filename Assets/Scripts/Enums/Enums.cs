@@ -17,7 +17,8 @@ public enum EnemyState
     Chasing,
     Attacking,
     Dead,
-    GoBackToStart
+    GoBackToStart,
+    None
 }
 
 public enum BashState
@@ -27,10 +28,16 @@ public enum BashState
     ReleaseBash,
     None
 }
-
 public enum AmmoState
 {
     Trajectory,
     Linear,
     Freeze
+}
+public enum AnimationEnemyType
+{
+
+    Run,
+    IdleAndRun,
+    IdleRunAndAttack,
 }
