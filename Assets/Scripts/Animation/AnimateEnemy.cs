@@ -32,7 +32,6 @@ public class AnimateEnemy : MonoBehaviour
     {
         if (attackAnimationCoroutine == null)
         {
-            Debug.Log("MoveByEnemyAIEvent_OnMoveByEnemyAI");
             if (enemy.animationEnemyType == AnimationEnemyType.IdleAndRun || enemy.animationEnemyType == AnimationEnemyType.IdleRunAndAttack)
             {
 
@@ -46,7 +45,6 @@ public class AnimateEnemy : MonoBehaviour
     {
         if (enemy.animationEnemyType == AnimationEnemyType.IdleAndRun || enemy.animationEnemyType == AnimationEnemyType.IdleRunAndAttack)
         {
-            Debug.Log("IdleEvent_OnIdle");
             InitializeStateAnimationParameters();
             enemy.animator.SetBool(Settings.isIdle, true);
         }
@@ -58,8 +56,7 @@ public class AnimateEnemy : MonoBehaviour
         {
             PlayAttackAnimation();
             InitializeStateAnimationParameters();
-            enemy.animator.SetBool(Settings.isAttack, true);
-
+            enemy.animator.SetTrigger(Settings.isAttack);
         }
     }
     private void PlayAttackAnimation()
@@ -81,15 +78,24 @@ public class AnimateEnemy : MonoBehaviour
     }
     private void InitializeStateAnimationParameters()
     {
-        enemy.animator.SetBool(Settings.isIdle, false);
-        enemy.animator.SetBool(Settings.isMoving, false);
-        enemy.animator.SetBool(Settings.isAttack, false);
+        if (enemy.animationEnemyType == AnimationEnemyType.IdleRunAndAttack)
+        {
+            enemy.animator.SetBool(Settings.isIdle, false);
+            enemy.animator.SetBool(Settings.isMoving, false);
+            enemy.animator.SetBool(Settings.isAttack, false);
+        }
+        else
+        {
+            enemy.animator.SetBool(Settings.isIdle, false);
+            enemy.animator.SetBool(Settings.isMoving, false);
+        }
     }
 
     private void AnimateEnemy_OnAnimate(AnimateEvent animateEvent, AnimateEventArgs animateEventArgs)
     {
         InitializeAnimationParameters();
         SetAimAnimationParameters(animateEventArgs.aimDirection);
+        aimDirection = animateEventArgs.aimDirection;
     }
 
     private void InitializeAnimationParameters()

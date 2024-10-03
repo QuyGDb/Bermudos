@@ -13,10 +13,30 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 1.6934239
       objectReference: {fileID: 0}
+    - target: {fileID: 888145117105166357, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.09375
+      objectReference: {fileID: 0}
+    - target: {fileID: 888145117105166357, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.46875
+      objectReference: {fileID: 0}
     - target: {fileID: 1401133919952064042, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104619109771907984, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104619109771907984, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.28125
       objectReference: {fileID: 0}
     - target: {fileID: 3674136317262225296, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
@@ -124,6 +144,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1150359530, guid: 169018d64cd905f478564c348962a5f6,
         type: 3}
+    - target: {fileID: 8879523396542165329, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879523396542165329, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879523396542165329, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.71875
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4301729907854204998, guid: 1735eb1787ad19845a8af5decfbbdd2f, type: 3}
     m_RemovedGameObjects: []

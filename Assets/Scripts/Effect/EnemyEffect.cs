@@ -107,7 +107,10 @@ public class EnemyEffect : MonoBehaviour
 
             Vector2 lerp = Vector2.Lerp(startPosition, targetPosition, (elapsedTime / duration));
             Vector2 movementSteps = lerp - rb.position;
-            enemyMovement.navMeshAgent.Move(movementSteps);
+            if (enemyMovement.navMeshAgent.isOnNavMesh)
+            {
+                enemyMovement.navMeshAgent.Move(movementSteps);
+            }
             elapsedTime += Time.fixedDeltaTime;
             yield return waitForFixedUpdate;
         }

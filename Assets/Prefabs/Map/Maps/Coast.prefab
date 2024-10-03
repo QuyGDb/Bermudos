@@ -28734,10 +28734,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -19.028948, y: 25.019217}
-      - {x: -19.156239, y: -16.023773}
-      - {x: 24.089886, y: -16.095676}
-      - {x: 24.018858, y: 24.986572}
+    - - {x: -19, y: 25}
+      - {x: -19, y: -16}
+      - {x: 24, y: -16}
+      - {x: 24, y: 25}
   m_UseDelaunayMesh: 0
 --- !u!114 &-9103686300101680544
 MonoBehaviour:
@@ -29969,7 +29969,7 @@ PrefabInstance:
     - target: {fileID: 2780543319652674121, guid: 46fc9d64e4bf2244b805ab9b6488a296,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5420531327302535093, guid: 46fc9d64e4bf2244b805ab9b6488a296,
         type: 3}
@@ -29984,12 +29984,12 @@ PrefabInstance:
     - target: {fileID: 7245948656689240877, guid: 46fc9d64e4bf2244b805ab9b6488a296,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8914409654979657254, guid: 46fc9d64e4bf2244b805ab9b6488a296,
         type: 3}
       propertyPath: m_Mass
-      value: 1
+      value: 1.7259356
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
