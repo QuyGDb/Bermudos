@@ -148,9 +148,18 @@ public class AnimatePlayer : MonoBehaviour
 
     private IEnumerator PlayAttackAnimationCoroutine()
     {
+        float previousNormalizedTime = 0f;
         yield return null;
         while (player.animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
         {
+            float currentNormalizedTime = player.animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+
+            if (currentNormalizedTime < previousNormalizedTime)
+            {
+                StopCoroutine(attackAnimationCoroutine);
+                attackAnimationCoroutine = null;
+            }
+            previousNormalizedTime = currentNormalizedTime;
             yield return null;
         }
         attackAnimationCoroutine = null;

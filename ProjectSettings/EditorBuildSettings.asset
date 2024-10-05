@@ -14,6 +14,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Maps/Near The Forest.unity
     guid: 1148c22543b3ec14ba3bcb3fc244d342
+  - enabled: 1
+    path: Assets/Scenes/Maps/The Forest.unity
+    guid: f1b0c6e2920b86a4182ba92d1c2ec48d
+  - enabled: 1
+    path: Assets/Scenes/Maps/North Of The Forest.unity
+    guid: 9e1861cbc00fae646ad1e542c726d25a
+  - enabled: 1
+    path: Assets/Scenes/Maps/East Of The Forest.unity
+    guid: 90a35621551d48b45b778303891e72e0
+  - enabled: 1
+    path: Assets/Scenes/Maps/West Of The Forest.unity
+    guid: a2a190cee45c68d4c8191156ce21b72f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 6e9b8eed3e6ceb8429d2584c633cf70d,
       type: 2}
