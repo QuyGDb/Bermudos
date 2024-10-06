@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class AmmoHitEffect : MonoBehaviour
 {
-    public void InitialiseAmmoHitEffect()
+    private ParticleSystem particleSystemHitEffect;
+    private void Awake()
     {
+        particleSystemHitEffect = GetComponent<ParticleSystem>();
+    }
+
+    public void InitialiseAmmoHitEffect(Color ammoHitEffectType)
+    {
+        ParticleSystem.MainModule main = particleSystemHitEffect.main;
+        main.startColor = ammoHitEffectType;
         gameObject.SetActive(true);
     }
 }

@@ -75,7 +75,6 @@ public class EnemyAI : MonoBehaviour
                 if (!isAttack)
                     return;
                 enemy.attackEvent.CallAttackEvent();
-                Debug.Log("Attack");
                 enemyAttack.Shoot();
                 enemyStateEvent.CallEnemyStateEvent(EnemyState.Chasing);
                 break;

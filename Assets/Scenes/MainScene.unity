@@ -621,7 +621,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 20.5, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -740,12 +740,12 @@ PrefabInstance:
     - target: {fileID: 5178334074821809799, guid: 4da382adfd65e324db7ee50f29d89047,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5178334074821809799, guid: 4da382adfd65e324db7ee50f29d89047,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5178334074821809799, guid: 4da382adfd65e324db7ee50f29d89047,
         type: 3}
@@ -1578,7 +1578,7 @@ MonoBehaviour:
     prefab: {fileID: 5219608670313725194, guid: c97af52e83399aa45b8f5b4bf6627c4d,
       type: 3}
     componentType: IFireable
-  - poolSize: 30
+  - poolSize: 10
     prefab: {fileID: 822664497835596290, guid: 25888bcbdbd839446a12e13e36e20909, type: 3}
     componentType: AmmoHitEffect
   - poolSize: 15
@@ -1661,7 +1661,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.2
+  m_VoxelSize: 0.11666667
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
   m_NavMeshData: {fileID: 23800000, guid: 131a46862cd11cf4e93c9a6c033f1735, type: 2}
@@ -2165,7 +2165,7 @@ Transform:
   m_GameObject: {fileID: 1713906971}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 20.5, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

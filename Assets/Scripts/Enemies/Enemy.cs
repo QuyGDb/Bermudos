@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public AttackEvent attackEvent;
     [HideInInspector] public EnemyAI enemyAI;
     public AnimationEnemyType animationEnemyType;
+
     private void Awake()
     {
         // Load Components

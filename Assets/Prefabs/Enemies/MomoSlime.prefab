@@ -13,10 +13,101 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: ammoPrefab
+      value: 
+      objectReference: {fileID: 5219608670313725194, guid: c97af52e83399aa45b8f5b4bf6627c4d,
+        type: 3}
+    - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[0].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[2].inSlope
+      value: 0.018417675
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[2].outSlope
+      value: 0.018417675
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[1].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674136317262225296, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: enemyAmmoType
+      value: 
+      objectReference: {fileID: 7400000, guid: ca10bdc83ad2b8b4aa17765c85e0c936, type: 2}
     - target: {fileID: 3674136317262225296, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
       propertyPath: animationEnemyType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674136317262225296, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: enemyAmmoHitEffectType.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674136317262225296, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: enemyAmmoHitEffectType.b
+      value: 0.09433961
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674136317262225296, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: enemyAmmoHitEffectType.g
+      value: 0.09433961
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674136317262225296, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: enemyAmmoHitEffectType.r
+      value: 0.09433961
       objectReference: {fileID: 0}
     - target: {fileID: 4259082488965038625, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}

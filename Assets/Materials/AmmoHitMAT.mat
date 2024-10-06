@@ -43,9 +43,8 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _AmmoColor: {r: 0.22877175, g: 0.5573363, b: 0.9547169, a: 1}
+    - _AmmoColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!114 &2737300330732930177
 MonoBehaviour:
   m_ObjectHideFlags: 11

@@ -22,7 +22,6 @@ public class Health : MonoBehaviour
     }
     public void TakeDamage(int damageAmount)
     {
-        Debug.Log("Take Damage" + currentHealth);
         currentHealth -= damageAmount;
         healthEvent.CallHealthChangedEvent(((float)currentHealth / (float)startingHealth), currentHealth, damageAmount);
     }

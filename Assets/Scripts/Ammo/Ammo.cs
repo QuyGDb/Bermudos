@@ -27,11 +27,13 @@ public class Ammo : MonoBehaviour, IFireable
     private float trajectoryMaxRelativeHeight;
     private float nextPositionYCorrectionAbsolute;
     private float nextPositionXCorrectionAbsolute;
-
+    [HideInInspector] public AnimationClip enemyAmmoType;
+    [HideInInspector] public Color ammoEffectType;
     [SerializeField] private int poiseAmount;
     [SerializeField] private float stunDuration;
     public AmmoState ammoState;
     private bool isColliding = false;
+
     private void Awake()
     {
         enemyEffect = GetComponent<EnemyEffect>();
@@ -170,7 +172,8 @@ public class Ammo : MonoBehaviour, IFireable
         float nextSpeedNormalized = ammoSpeedAnimationCurve.Evaluate(nextPositionXNormalized);
         speed = maxSpeed * nextSpeedNormalized;
     }
-    public void InitialiseAmmo(AmmoDetailsSO ammoDetailsSO, Vector3 target, AnimationCurve trajectoryAniamtionCurve, AnimationCurve axisCorrectionAnimationCurve, AnimationCurve ammoSpeedAnimationCurve)
+
+    public void InitialiseAmmo(AmmoDetailsSO ammoDetailsSO, Vector3 target)
     {
         this.maxSpeed = ammoDetailsSO.maxSpeed;
         this.damage = ammoDetailsSO.damage;
@@ -179,11 +182,12 @@ public class Ammo : MonoBehaviour, IFireable
         this.trajectoryMaxRelativeHeight = Mathf.Abs(magnitude) * ammoDetailsSO.trajectoryMaxHeight;
         SetTargetPosition(target);
         SetAmmoPlayer();
-        InitializeAnimationCurves(trajectoryAniamtionCurve, axisCorrectionAnimationCurve, ammoSpeedAnimationCurve);
+        InitializeAnimationCurves(ammoDetailsSO.trajectoryAnimationCurve, ammoDetailsSO.axisCorrectionAnimationCurve, ammoDetailsSO.ammoSpeedAnimationCurve);
         ammoVisual.SetTarget(target);
         ammoState = AmmoState.Trajectory;
+        this.enemyAmmoType = ammoDetailsSO.enemyAmmoType;
+        this.ammoEffectType = ammoDetailsSO.ammoEffectType;
         isColliding = false;
-
         SetGameObjectActive(true);
     }
 
@@ -241,7 +245,7 @@ public class Ammo : MonoBehaviour, IFireable
     private void AmmoHitEffect()
     {
         AmmoHitEffect ammoHitEffect = PoolManager.Instance.ReuseComponent(GameResources.Instance.ammoHitEffectPrefab, transform.position, Quaternion.identity) as AmmoHitEffect;
-        ammoHitEffect.InitialiseAmmoHitEffect();
+        ammoHitEffect.InitialiseAmmoHitEffect(ammoEffectType);
     }
     private void GetLayerMark()
     {

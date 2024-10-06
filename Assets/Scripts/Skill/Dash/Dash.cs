@@ -33,7 +33,7 @@ public class Dash : MonoBehaviour
 
     public void PlayDash(Vector2 direction)
     {
-        StopPlayerRollRoutine();
+        StopPlayerDashRoutine();
         dashCoroutine = StartCoroutine(DashCoroutine(direction));
         player.playerEffect.isDashing = true;
     }
@@ -57,17 +57,23 @@ public class Dash : MonoBehaviour
     {
         player.playerEffect.isDashing = false;
         // if collided with something stop player roll coroutine
-        StopPlayerRollRoutine();
+        StopPlayerDashRoutine();
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
         player.playerEffect.isDashing = false;
         // if in collision with something stop player roll coroutine
-        StopPlayerRollRoutine();
+        StopPlayerDashRoutine();
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        player.playerEffect.isDashing = false;
+        // if collided with something stop player roll coroutine
+        StopPlayerDashRoutine();
     }
 
-    private void StopPlayerRollRoutine()
+    private void StopPlayerDashRoutine()
     {
         if (dashCoroutine != null)
         {

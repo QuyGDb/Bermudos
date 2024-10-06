@@ -7,15 +7,8 @@ public class EnemyAttack : MonoBehaviour
     private Enemy enemy;
     [SerializeField] private Transform shootPosition;
     [SerializeField] private AmmoDetailsSO ammoDetailsSO;
-    [SerializeField] private GameObject ammoPrefab;
+    [SerializeField] private float attackDistance = 8f;
 
-    #region Shoot Variables
-    [SerializeField] private AnimationCurve trajectoryAnimationCurve;
-    [SerializeField] private AnimationCurve axisCorrectionAnimationCurve;
-    [SerializeField] private AnimationCurve ammoSpeedAnimationCurve;
-    #endregion
-
-    [SerializeField] private float attackDistance = 6f;
     private void Awake()
     {
         enemy = GetComponent<Enemy>();
@@ -29,8 +22,11 @@ public class EnemyAttack : MonoBehaviour
     {
         // Shoot
 
-        IFireable fireable = (IFireable)PoolManager.Instance.ReuseComponent(ammoPrefab, shootPosition.position, Quaternion.identity);
-        fireable.InitialiseAmmo(ammoDetailsSO, GameManager.Instance.player.transform.position, trajectoryAnimationCurve, axisCorrectionAnimationCurve, ammoSpeedAnimationCurve);
+        IFireable fireable = (IFireable)PoolManager.Instance.ReuseComponent(ammoDetailsSO.ammoPrefab, shootPosition.position, Quaternion.identity);
+        if (fireable != null)
+        {
+            fireable.InitialiseAmmo(ammoDetailsSO, GameManager.Instance.player.transform.position);
+        }
 
     }
 
@@ -48,7 +44,7 @@ public class EnemyAttack : MonoBehaviour
     {
         HelperUtilities.ValidateCheckNullValue(this, nameof(shootPosition), shootPosition);
         HelperUtilities.ValidateCheckNullValue(this, nameof(ammoDetailsSO), ammoDetailsSO);
-        HelperUtilities.ValidateCheckNullValue(this, nameof(ammoPrefab), ammoPrefab);
+
     }
 #endif
     #endregion

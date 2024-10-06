@@ -105,7 +105,7 @@ public class PlayerEffect : MonoBehaviour
             PlayerShadow playerShadow = (PlayerShadow)PoolManager.Instance.ReuseComponent(GameResources.Instance.playerShadowPrefab, player.transform.position, Quaternion.identity);
             playerShadow.InitialisePlayerShadow(spriteRenderers);
 
-            dashEffectDuration = 0.05f;
+            dashEffectDuration = 0.035f;
         }
 
     }
