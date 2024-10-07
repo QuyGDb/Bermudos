@@ -255,6 +255,8 @@ MonoBehaviour:
   poiseEvent: {fileID: 0}
   idleEvent: {fileID: 0}
   moveByEnemyAIEvent: {fileID: 0}
+  attackEvent: {fileID: 0}
+  enemyAI: {fileID: 0}
   animationEnemyType: 0
 --- !u!114 &4487484004901044565
 MonoBehaviour:
@@ -358,6 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff3f0a0978d6e846bfe70d3a327be49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyState: 0
 --- !u!114 &2121514587546482330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,90 +375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPosition: {fileID: 6253917538550074254}
   ammoDetailsSO: {fileID: 11400000, guid: 0babaa8712b724041bf40646174e772d, type: 2}
-  ammoPrefab: {fileID: 5219608670313725194, guid: c97af52e83399aa45b8f5b4bf6627c4d,
-    type: 3}
-  trajectoryAnimationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  axisCorrectionAnimationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  ammoSpeedAnimationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: -0.051324926
-      outSlope: -0.051324926
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.51417774
-      value: 0.97360986
-      inSlope: 0.043953985
-      outSlope: 0.043953985
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.13970597
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0.054320555
-      outSlope: 0.054320555
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  attackDistance: 5.9
+  attackDistance: 8
 --- !u!114 &7541618781949100988
 MonoBehaviour:
   m_ObjectHideFlags: 0

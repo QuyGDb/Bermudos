@@ -65,10 +65,8 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private void HealthEvent_OnHealthLost(HealthEvent healthEvent, HealthEventArgs healthEventArgs)
     {
-        Debug.Log(healthEventArgs.healthAmount);
         if (healthEventArgs.healthAmount <= 0)
         {
-
             EnemyDestroyed();
         }
     }

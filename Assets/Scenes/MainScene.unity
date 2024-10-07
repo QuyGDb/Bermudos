@@ -1574,11 +1574,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolArray:
-  - poolSize: 10
+  - poolSize: 5
     prefab: {fileID: 5219608670313725194, guid: c97af52e83399aa45b8f5b4bf6627c4d,
       type: 3}
     componentType: IFireable
-  - poolSize: 10
+  - poolSize: 5
     prefab: {fileID: 822664497835596290, guid: 25888bcbdbd839446a12e13e36e20909, type: 3}
     componentType: AmmoHitEffect
   - poolSize: 15
@@ -1661,7 +1661,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.11666667
+  m_VoxelSize: 0.11000001
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
   m_NavMeshData: {fileID: 23800000, guid: 131a46862cd11cf4e93c9a6c033f1735, type: 2}

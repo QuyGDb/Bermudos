@@ -28,6 +28,12 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2121514587546482330, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: ammoDetailsSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 41636122c35ada7478b7113753870a97,
+        type: 2}
     - target: {fileID: 3104619109771907984, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
       propertyPath: m_SizeDelta.x

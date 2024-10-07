@@ -23,10 +23,7 @@ public class EnemyAttack : MonoBehaviour
         // Shoot
 
         IFireable fireable = (IFireable)PoolManager.Instance.ReuseComponent(ammoDetailsSO.ammoPrefab, shootPosition.position, Quaternion.identity);
-        if (fireable != null)
-        {
-            fireable.InitialiseAmmo(ammoDetailsSO, GameManager.Instance.player.transform.position);
-        }
+        fireable?.InitialiseAmmo(ammoDetailsSO, GameManager.Instance.player.transform.position);
 
     }
 

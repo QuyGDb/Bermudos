@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 public static class StaticEventHandler
 {
@@ -24,6 +25,13 @@ public static class StaticEventHandler
         OnAmmoChanged?.Invoke(new OnAmmoChangedEventArgs() { ammo = ammo });
     }
 
+    public static event Action OnBuildNavMesh;
+
+    public static void CallBuildNavMeshEvent()
+    {
+        OnBuildNavMesh?.Invoke();
+
+    }
 }
 public class MapChangedEventArgs : EventArgs
 {

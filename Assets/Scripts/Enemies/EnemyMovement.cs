@@ -51,11 +51,17 @@ public class EnemyMovement : MonoBehaviour
     {
         yield return null;
         isNavMeshLoaded = true;
+
     }
     public void MoveRoamingPosition()
     {
+
         if (!navMeshAgent.isOnNavMesh || !isNavMeshLoaded)
+        {
+
             return;
+        }
+
 
         if (!hasInitializedRoamingPosition)
         {

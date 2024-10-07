@@ -4,20 +4,15 @@ using UnityEngine;
 
 public class Ammo : MonoBehaviour, IFireable
 {
-
+    [HideInInspector] public AmmoDetailsSO ammoDetailsSO;
     private EnemyEffect enemyEffect;
     private PlayerEffect playerEffect;
     private DestroyedEvent destroyedEvent;
     private AmmoVisual ammoVisual;
+    private AmmoAnimation ammoAnimation;
     private float speed;
-    private float maxSpeed;
-    private int damage;
     private LayerMask enemyLayerMask;
-    private LayerMask playeLayerMask;
-
-    private AnimationCurve trajectoryAnimationCurve;
-    private AnimationCurve axisCorrectionAnimationCurve;
-    private AnimationCurve ammoSpeedAnimationCurve;
+    private LayerMask playerLayerMask;
     private Vector2 trajectoryStartPoint;
     private Vector2 target;
     private Vector2 trajectoryRange;
@@ -27,8 +22,6 @@ public class Ammo : MonoBehaviour, IFireable
     private float trajectoryMaxRelativeHeight;
     private float nextPositionYCorrectionAbsolute;
     private float nextPositionXCorrectionAbsolute;
-    [HideInInspector] public AnimationClip enemyAmmoType;
-    [HideInInspector] public Color ammoEffectType;
     [SerializeField] private int poiseAmount;
     [SerializeField] private float stunDuration;
     public AmmoState ammoState;
@@ -40,6 +33,7 @@ public class Ammo : MonoBehaviour, IFireable
         playerEffect = GetComponent<PlayerEffect>();
         destroyedEvent = GetComponent<DestroyedEvent>();
         ammoVisual = GetComponent<AmmoVisual>();
+        ammoAnimation = GetComponent<AmmoAnimation>();
     }
     private void OnEnable()
     {
@@ -48,7 +42,6 @@ public class Ammo : MonoBehaviour, IFireable
     private void Start()
     {
         GetLayerMark();
-
     }
     private void Update()
     {
@@ -94,8 +87,8 @@ public class Ammo : MonoBehaviour, IFireable
         float nextPositionX = transform.position.x + speed * Time.deltaTime;
         float nextPositionXNormalized = (nextPositionX - trajectoryStartPoint.x) / trajectoryRange.x;
 
-        float nextPositionYNormalized = trajectoryAnimationCurve.Evaluate(nextPositionXNormalized);
-        float nextPositionYCorrectionNormalized = axisCorrectionAnimationCurve.Evaluate(nextPositionXNormalized);
+        float nextPositionYNormalized = ammoDetailsSO.trajectoryAnimationCurve.Evaluate(nextPositionXNormalized);
+        float nextPositionYCorrectionNormalized = ammoDetailsSO.axisCorrectionAnimationCurve.Evaluate(nextPositionXNormalized);
         nextPositionYCorrectionAbsolute = nextPositionYCorrectionNormalized * trajectoryRange.y;
         nextYTrajectoryPosition = trajectoryMaxRelativeHeight * nextPositionYNormalized;
         if (trajectoryRange.x > 0 && trajectoryRange.y < 0)
@@ -122,8 +115,8 @@ public class Ammo : MonoBehaviour, IFireable
         float nextPositionY = transform.position.y + speed * Time.deltaTime;
         float nextPositionYNormalized = (nextPositionY - trajectoryStartPoint.y) / trajectoryRange.y;
 
-        float nextPositionXNormalized = trajectoryAnimationCurve.Evaluate(nextPositionYNormalized);
-        float nextPositionXCorrectionNormalized = axisCorrectionAnimationCurve.Evaluate(nextPositionYNormalized);
+        float nextPositionXNormalized = ammoDetailsSO.trajectoryAnimationCurve.Evaluate(nextPositionYNormalized);
+        float nextPositionXCorrectionNormalized = ammoDetailsSO.axisCorrectionAnimationCurve.Evaluate(nextPositionYNormalized);
 
         nextPositionXCorrectionAbsolute = nextPositionXCorrectionNormalized * trajectoryRange.x;
 
@@ -164,30 +157,26 @@ public class Ammo : MonoBehaviour, IFireable
     }
     private void MoveAmmoByDirection()
     {
-        transform.position += (Vector3)ammoMoveDirection.normalized * maxSpeed * Time.deltaTime;
+        transform.position += (Vector3)ammoMoveDirection.normalized * ammoDetailsSO.maxSpeed * Time.deltaTime;
     }
 
     private void CalculateNextAmmoMoveSpeed(float nextPositionXNormalized)
     {
-        float nextSpeedNormalized = ammoSpeedAnimationCurve.Evaluate(nextPositionXNormalized);
-        speed = maxSpeed * nextSpeedNormalized;
+        float nextSpeedNormalized = ammoDetailsSO.ammoSpeedAnimationCurve.Evaluate(nextPositionXNormalized);
+        speed = ammoDetailsSO.maxSpeed * nextSpeedNormalized;
     }
 
     public void InitialiseAmmo(AmmoDetailsSO ammoDetailsSO, Vector3 target)
     {
-        this.maxSpeed = ammoDetailsSO.maxSpeed;
-        this.damage = ammoDetailsSO.damage;
+        this.ammoDetailsSO = ammoDetailsSO;
         float magnitude = (target - transform.position).magnitude;
         float xDistanceToTarget = target.x - transform.position.x;
         this.trajectoryMaxRelativeHeight = Mathf.Abs(magnitude) * ammoDetailsSO.trajectoryMaxHeight;
         SetTargetPosition(target);
         SetAmmoPlayer();
-        InitializeAnimationCurves(ammoDetailsSO.trajectoryAnimationCurve, ammoDetailsSO.axisCorrectionAnimationCurve, ammoDetailsSO.ammoSpeedAnimationCurve);
-        ammoVisual.SetTarget(target);
         ammoState = AmmoState.Trajectory;
-        this.enemyAmmoType = ammoDetailsSO.enemyAmmoType;
-        this.ammoEffectType = ammoDetailsSO.ammoEffectType;
         isColliding = false;
+        ammoAnimation.InitializeAmmoAnimation();
         SetGameObjectActive(true);
     }
 
@@ -205,19 +194,14 @@ public class Ammo : MonoBehaviour, IFireable
     {
         gameObject.SetActive(isActive);
     }
-    private void InitializeAnimationCurves(AnimationCurve trajectoryAnimationCurve, AnimationCurve axisCorrectionAnimationCurve, AnimationCurve ammoSpeedAnimationCurve)
-    {
-        this.trajectoryAnimationCurve = trajectoryAnimationCurve;
-        this.axisCorrectionAnimationCurve = axisCorrectionAnimationCurve;
-        this.ammoSpeedAnimationCurve = ammoSpeedAnimationCurve;
-    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isColliding)
             return;
         DealDamage(collision);
-        if ((playeLayerMask.value & 1 << collision.gameObject.layer) > 0)
+        if ((playerLayerMask.value & 1 << collision.gameObject.layer) > 0)
         {
             StaticEventHandler.CallAmmoChangedEvent(this);
             collision.GetComponent<PlayerEffect>().DamagePushEfect();
@@ -234,24 +218,29 @@ public class Ammo : MonoBehaviour, IFireable
         AmmoHitEffect();
         DisableAmmo();
     }
+
     private void DealDamage(Collider2D collision)
     {
         Health health = collision.gameObject.GetComponent<Health>();
         // Set isColliding to prevent ammo dealing damage multiple times
         isColliding = true;
         if (health != null)
-            health.TakeDamage(damage);
+            health.TakeDamage(ammoDetailsSO.damage);
     }
+
     private void AmmoHitEffect()
     {
         AmmoHitEffect ammoHitEffect = PoolManager.Instance.ReuseComponent(GameResources.Instance.ammoHitEffectPrefab, transform.position, Quaternion.identity) as AmmoHitEffect;
-        ammoHitEffect.InitialiseAmmoHitEffect(ammoEffectType);
+        ammoHitEffect.InitialiseAmmoHitEffect(ammoDetailsSO.ammoEffectType);
     }
+
     private void GetLayerMark()
     {
         enemyLayerMask = LayerMask.GetMask("Enemy");
-        playeLayerMask = LayerMask.GetMask("Player");
+        playerLayerMask = LayerMask.GetMask("Player");
     }
+
+
     private void DisableAmmo()
     {
         gameObject.SetActive(false);

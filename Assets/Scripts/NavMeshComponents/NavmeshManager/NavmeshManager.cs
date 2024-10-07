@@ -20,13 +20,12 @@ public class NavmeshManager : MonoBehaviour
     }
     private void StaticEventHandler_OnMapChanged(MapChangedEventArgs mapChangedEventArgs)
     {
-
         StartCoroutine(BuildNavMeshCoroutine());
     }
     private IEnumerator BuildNavMeshCoroutine()
     {
         yield return null;
-        navMeshSurface.BuildNavMeshAsync();
-
+        navMeshSurface.BuildNavMesh();
+        StaticEventHandler.CallBuildNavMeshEvent();
     }
 }

@@ -24,6 +24,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1028610286, guid: 152a8caaa2cfaa24e9f415d21c4e0468,
         type: 3}
+    - target: {fileID: 4767906223528378565, guid: a418c061c95f5b246b790299d5f0f7d4,
+        type: 3}
+      propertyPath: ammoDetailsSO
+      value: 
+      objectReference: {fileID: 11400000, guid: c06eb21791a4ad2478e1bbebcf2ec922,
+        type: 2}
     - target: {fileID: 7224178153350362238, guid: a418c061c95f5b246b790299d5f0f7d4,
         type: 3}
       propertyPath: m_LocalPosition.x

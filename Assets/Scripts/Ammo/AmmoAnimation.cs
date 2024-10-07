@@ -6,19 +6,18 @@ public class AmmoAnimation : MonoBehaviour
 {
     private Animator animator;
     private Ammo ammo;
-    [SerializeField] private AnimationClip animationClip;
+
     private void Awake()
     {
         ammo = GetComponent<Ammo>();
         animator = GetComponent<Animator>();
     }
-    private void Start()
+    public void InitializeAmmoAnimation()
     {
         AnimatorOverrideController overrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
-
-        overrideController["MagickShoot"] = ammo.enemyAmmoType;
-
+        overrideController["MagickShoot"] = ammo.ammoDetailsSO.enemyAmmoType;
         // Gán override controller mới vào animator
         animator.runtimeAnimatorController = overrideController;
     }
+
 }

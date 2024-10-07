@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d02940fc2c995f44ca081338fda9d13b, type: 3}
-  m_Name: AmmoDetailsSO_MagickShoot
+  m_Name: AmmoDetailsSO_MagickShoot 3
   m_EditorClassIdentifier: 
   maxSpeed: 11
   damage: 10
   trajectoryMaxHeight: 0.68
-  enemyAmmoType: {fileID: 7400000, guid: 8f8448dac4164a44bac63ba0e4e34dd1, type: 2}
-  ammoEffectType: {r: 0.28655744, g: 0.6213535, b: 0.90943396, a: 1}
+  enemyAmmoType: {fileID: 7400000, guid: 23e2ce650e3c2b440947912b9a3b5bf3, type: 2}
+  ammoEffectType: {r: 0.81886786, g: 0.20857947, b: 0.49815008, a: 1}
   ammoPrefab: {fileID: 5219608670313725194, guid: c97af52e83399aa45b8f5b4bf6627c4d,
     type: 3}
   trajectoryAnimationCurve:

@@ -38,6 +38,11 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6112802702836229463, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 45105419405761398, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -136,6 +141,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2505363953237135756, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
+      propertyPath: m_UsedByComposite
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2505363953237135756, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
       value: 18
       objectReference: {fileID: 0}
@@ -222,22 +232,22 @@ PrefabInstance:
     - target: {fileID: 2505363953237135756, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[14].x
-      value: -0.21921828
+      value: -0.21871373
       objectReference: {fileID: 0}
     - target: {fileID: 2505363953237135756, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[14].y
-      value: -0.40600103
+      value: -0.5639838
       objectReference: {fileID: 0}
     - target: {fileID: 2505363953237135756, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[15].x
-      value: 0.18867818
+      value: 0.21954636
       objectReference: {fileID: 0}
     - target: {fileID: 2505363953237135756, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[15].y
-      value: -0.40690088
+      value: -0.56303
       objectReference: {fileID: 0}
     - target: {fileID: 2505363953237135756, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
@@ -355,7 +365,7 @@ PrefabInstance:
     - target: {fileID: 6956262689797343194, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_Mass
-      value: 0.13313755
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6956262689797343194, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
