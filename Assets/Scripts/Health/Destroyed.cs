@@ -1,3 +1,4 @@
+using Esper.ESave;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,6 +37,7 @@ public class Destroyed : MonoBehaviour
         }
         else
         {
+            MarkEnemyAsDead();
             Destroy(gameObject);
         }
     }
@@ -45,5 +47,24 @@ public class Destroyed : MonoBehaviour
 
         yield return new WaitForSeconds(3);
         gameObject.SetActive(false);
+    }
+    private void MarkEnemyAsDead()
+    {
+        Enemy enemy = GetComponent<Enemy>();
+        foreach (var enemyManagerDetails in GameManager.Instance.enemyManagerDetailsSO)
+        {
+            if (enemy.mapKey == enemyManagerDetails.enemyManagerDataKey)
+            {
+                if (GameManager.Instance.saveFileSetup.GetSaveFile().HasData(enemyManagerDetails.enemyManagerDataKey))
+                {
+                    Debug.Log(enemyManagerDetails.enemyManagerDataKey);
+                    EnemyManagerData enemyManagerData = GameManager.Instance.saveFileSetup.GetSaveFile().GetData<EnemyManagerData>(enemyManagerDetails.enemyManagerDataKey);
+                    enemyManagerData.enemieStateList[enemy.enemyID] = false;
+                    GameManager.Instance.saveFileSetup.GetSaveFile().AddOrUpdateData(enemyManagerDetails.enemyManagerDataKey, enemyManagerData);
+                    GameManager.Instance.saveFileSetup.GetSaveFile().Save();
+                }
+
+            }
+        }
     }
 }

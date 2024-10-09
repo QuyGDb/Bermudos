@@ -28655,7 +28655,7 @@ Transform:
   m_Children:
   - {fileID: 2931650603918612748}
   - {fileID: 2080719606663548031}
-  - {fileID: 4640555538459597404}
+  - {fileID: 6035061348556466953}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &5656758621666252551
@@ -29861,7 +29861,7 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!1001 &1056539411390111139
+--- !u!1001 &2094134251206569206
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -29873,21 +29873,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemies
-      objectReference: {fileID: 0}
-    - target: {fileID: 3322373916456466110, guid: 44a092b624528744cb591a513aac74b5,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4337038831783932038, guid: 44a092b624528744cb591a513aac74b5,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4934181509207687818, guid: 44a092b624528744cb591a513aac74b5,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5678762413378275327, guid: 44a092b624528744cb591a513aac74b5,
         type: 3}
@@ -29947,9 +29932,25 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7766194391293385366, guid: 44a092b624528744cb591a513aac74b5,
         type: 3}
-      propertyPath: enemies.Array.size
+      propertyPath: enemyName
+      value: Momo Slime
+      objectReference: {fileID: 0}
+    - target: {fileID: 7766194391293385366, guid: 44a092b624528744cb591a513aac74b5,
+        type: 3}
+      propertyPath: enemyCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7766194391293385366, guid: 44a092b624528744cb591a513aac74b5,
+        type: 3}
+      propertyPath: enemyManagerDataKey
+      value: EnemyCoast
+      objectReference: {fileID: 0}
+    - target: {fileID: 7766194391293385366, guid: 44a092b624528744cb591a513aac74b5,
+        type: 3}
+      propertyPath: enemyManagerDetailsSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 35ce39a143111c446abff84c0b2bf326,
+        type: 2}
     - target: {fileID: 7766194391293385366, guid: 44a092b624528744cb591a513aac74b5,
         type: 3}
       propertyPath: enemyPostionList.Array.size
@@ -29958,23 +29959,23 @@ PrefabInstance:
     - target: {fileID: 7766194391293385366, guid: 44a092b624528744cb591a513aac74b5,
         type: 3}
       propertyPath: enemyPostionList.Array.data[0].x
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7766194391293385366, guid: 44a092b624528744cb591a513aac74b5,
         type: 3}
       propertyPath: enemyPostionList.Array.data[0].y
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a092b624528744cb591a513aac74b5, type: 3}
---- !u!4 &4640555538459597404 stripped
+--- !u!4 &6035061348556466953 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5678762413378275327, guid: 44a092b624528744cb591a513aac74b5,
     type: 3}
-  m_PrefabInstance: {fileID: 1056539411390111139}
+  m_PrefabInstance: {fileID: 2094134251206569206}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8150648444711656083
 PrefabInstance:

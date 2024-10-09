@@ -1,11 +1,15 @@
+using Esper.ESave;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : SingletonMonobehaviour<GameManager>
 {
     [HideInInspector] public Player player;
+    public EnemyManagerDetailsSO[] enemyManagerDetailsSO;
+    [HideInInspector] public SaveFileSetup saveFileSetup;
 
     private void OnEnable()
     {
@@ -24,6 +28,16 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     {
         base.Awake();
         SceneManager.LoadScene("Coast", LoadSceneMode.Additive);
-    }
+        saveFileSetup = GetComponent<SaveFileSetup>();
 
+    }
+    private void Start()
+    {
+        foreach (var enemyManagerDetails in enemyManagerDetailsSO)
+        {
+            EnemyManagerData enemyManagerData = new EnemyManagerData(enemyManagerDetails.enemyName, enemyManagerDetails.enemyPostionList.Count, -1);
+            saveFileSetup.GetSaveFile().AddOrUpdateData(enemyManagerDetails.enemyManagerDataKey, enemyManagerData);
+            saveFileSetup.GetSaveFile().Save();
+        }
+    }
 }

@@ -1,11 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
+using Esper.ESave;
 using UnityEngine;
+
 
 public class EnemyManager : MonoBehaviour
 {
     [SerializeField] private GameObject enemy;
-    [SerializeField] private List<Vector2> enemyPostionList;
+    private SaveFileSetup saveFileSetup;
+    [SerializeField] private EnemyManagerDetailsSO enemyManagerDetailsSO;
+    private EnemyManagerData enemyManagerData;
+    private void Awake()
+    {
+        saveFileSetup = GetComponent<SaveFileSetup>();
+    }
+
+    private void Start()
+    {
+        Debug.Log(enemyManagerDetailsSO.enemyManagerDataKey);
+        if (saveFileSetup.GetSaveFile().HasData(enemyManagerDetailsSO.enemyManagerDataKey))
+        {
+            enemyManagerData = saveFileSetup.GetSaveFile().GetData<EnemyManagerData>(enemyManagerDetailsSO.enemyManagerDataKey);
+        }
+    }
 
     private void OnEnable()
     {
@@ -18,9 +33,17 @@ public class EnemyManager : MonoBehaviour
 
     private void StaticEventHandler_OnBuildNavMesh()
     {
-        foreach (var position in enemyPostionList)
+        int count = 0;
+        foreach (var enemyState in enemyManagerData.enemieStateList)
         {
-            Instantiate(enemy, position, Quaternion.identity, this.transform);
+            if (enemyState)
+            {
+
+                GameObject newEnemy = Instantiate(enemy, enemyManagerDetailsSO.enemyPostionList[count], Quaternion.identity, this.transform);
+                newEnemy.GetComponent<Enemy>().InitializeEnemy(enemyManagerDetailsSO.enemyManagerDataKey, count);
+                newEnemy.name = enemyManagerDetailsSO.enemyName + " " + count;
+            }
+            count++;
         }
     }
 }

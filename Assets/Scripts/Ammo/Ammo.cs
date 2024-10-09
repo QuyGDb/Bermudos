@@ -10,7 +10,6 @@ public class Ammo : MonoBehaviour, IFireable
     private DestroyedEvent destroyedEvent;
     private AmmoVisual ammoVisual;
     private AmmoAnimation ammoAnimation;
-    private float speed;
     private LayerMask enemyLayerMask;
     private LayerMask playerLayerMask;
     private Vector2 trajectoryStartPoint;
@@ -22,6 +21,7 @@ public class Ammo : MonoBehaviour, IFireable
     private float trajectoryMaxRelativeHeight;
     private float nextPositionYCorrectionAbsolute;
     private float nextPositionXCorrectionAbsolute;
+    private float speed;
     [SerializeField] private int poiseAmount;
     [SerializeField] private float stunDuration;
     public AmmoState ammoState;
@@ -52,6 +52,7 @@ public class Ammo : MonoBehaviour, IFireable
                 UpdateAmmoPosition();
                 break;
             case AmmoState.Linear:
+                // last key of trajectory animation should be has a tilt
                 MoveAmmoByDirection();
                 break;
             case AmmoState.Freeze:
@@ -67,21 +68,49 @@ public class Ammo : MonoBehaviour, IFireable
             {
                 speed = -speed;
             }
-            //ammo will be curve on Y axis
+            //ammo will be curve on X axis
             UpdateAmmoXPosition();
         }
         else
         {
-            //ammo will be curve on X axis
+            //ammo will be curve on Y axis
             if (trajectoryRange.x < 0)
             {
                 speed = -speed;
             }
             UpdateAmmoYPosition();
         }
-
-
     }
+
+    private void UpdateAmmoXPosition()
+    {
+        float nextPositionY = transform.position.y + speed * Time.deltaTime;
+        float nextPositionYNormalized = (nextPositionY - trajectoryStartPoint.y) / trajectoryRange.y;
+        float nextPositionXNormalized = ammoDetailsSO.trajectoryAnimationCurve.Evaluate(nextPositionYNormalized);
+        float nextPositionXCorrectionNormalized = ammoDetailsSO.axisCorrectionAnimationCurve.Evaluate(nextPositionYNormalized);
+        nextPositionXCorrectionAbsolute = nextPositionXCorrectionNormalized * trajectoryRange.x;
+        nextXTrajectoryPosition = trajectoryMaxRelativeHeight * nextPositionXNormalized;
+        if (trajectoryRange.x > 0 && trajectoryRange.y > 0)
+        {
+            nextXTrajectoryPosition = -nextXTrajectoryPosition;
+        }
+        if (trajectoryRange.x < 0 && trajectoryRange.y < 0)
+        {
+            nextXTrajectoryPosition = -nextXTrajectoryPosition;
+        }
+        float nextPositionX = trajectoryStartPoint.x + nextXTrajectoryPosition + nextPositionXCorrectionAbsolute;
+
+        Vector2 nextPosition = new Vector2(nextPositionX, nextPositionY);
+        ammoMoveDirection = nextPosition - (Vector2)transform.position;
+        CalculateNextAmmoMoveSpeed(nextPositionXNormalized);
+        transform.position = nextPosition;
+
+        if (nextPositionYNormalized > 0.996)
+        {
+            ammoState = AmmoState.Linear;
+        }
+    }
+
     private void UpdateAmmoYPosition()
     {
         float nextPositionX = transform.position.x + speed * Time.deltaTime;
@@ -105,42 +134,12 @@ public class Ammo : MonoBehaviour, IFireable
         CalculateNextAmmoMoveSpeed(nextPositionXNormalized);
         transform.position = nextPosition;
 
-        if (nextPositionXNormalized > 0.99)
+        if (nextPositionXNormalized > 0.996)
         {
             ammoState = AmmoState.Linear;
         }
     }
-    private void UpdateAmmoXPosition()
-    {
-        float nextPositionY = transform.position.y + speed * Time.deltaTime;
-        float nextPositionYNormalized = (nextPositionY - trajectoryStartPoint.y) / trajectoryRange.y;
 
-        float nextPositionXNormalized = ammoDetailsSO.trajectoryAnimationCurve.Evaluate(nextPositionYNormalized);
-        float nextPositionXCorrectionNormalized = ammoDetailsSO.axisCorrectionAnimationCurve.Evaluate(nextPositionYNormalized);
-
-        nextPositionXCorrectionAbsolute = nextPositionXCorrectionNormalized * trajectoryRange.x;
-
-        nextXTrajectoryPosition = trajectoryMaxRelativeHeight * nextPositionXNormalized;
-        if (trajectoryRange.x > 0 && trajectoryRange.y > 0)
-        {
-            nextXTrajectoryPosition = -nextXTrajectoryPosition;
-        }
-        if (trajectoryRange.x < 0 && trajectoryRange.y < 0)
-        {
-            nextXTrajectoryPosition = -nextXTrajectoryPosition;
-        }
-        float nextPositionX = trajectoryStartPoint.x + nextXTrajectoryPosition + nextPositionXCorrectionAbsolute;
-
-        Vector2 nextPosition = new Vector2(nextPositionX, nextPositionY);
-        ammoMoveDirection = nextPosition - (Vector2)transform.position;
-        CalculateNextAmmoMoveSpeed(nextPositionXNormalized);
-        transform.position = nextPosition;
-
-        if (nextPositionYNormalized > 0.996)
-        {
-            ammoState = AmmoState.Linear;
-        }
-    }
 
     public Vector2 GetAmmoMoveDirection()
     {

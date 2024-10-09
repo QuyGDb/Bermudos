@@ -30,6 +30,8 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public AttackEvent attackEvent;
     [HideInInspector] public EnemyAI enemyAI;
     public AnimationEnemyType animationEnemyType;
+    [HideInInspector] public string mapKey;
+    [HideInInspector] public int enemyID;
 
     private void Awake()
     {
@@ -60,6 +62,11 @@ public class Enemy : MonoBehaviour
         healthEvent.OnHealthChanged -= HealthEvent_OnHealthLost;
     }
 
+    public void InitializeEnemy(string mapName, int enemyID)
+    {
+        this.mapKey = mapName;
+        this.enemyID = enemyID;
+    }
     /// <summary>
     /// Handle health lost event
     /// </summary>
@@ -70,7 +77,6 @@ public class Enemy : MonoBehaviour
             EnemyDestroyed();
         }
     }
-
     /// <summary>
     /// Enemy destroyed
     /// </summary>

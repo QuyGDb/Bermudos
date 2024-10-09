@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02940fc2c995f44ca081338fda9d13b, type: 3}
   m_Name: AmmoDetailsSO_MagickShoot 3
   m_EditorClassIdentifier: 
-  maxSpeed: 11
+  maxSpeed: 20
   damage: 10
-  trajectoryMaxHeight: 0.68
+  trajectoryMaxHeight: 0.5
   enemyAmmoType: {fileID: 7400000, guid: 23e2ce650e3c2b440947912b9a3b5bf3, type: 2}
   ammoEffectType: {r: 0.81886786, g: 0.20857947, b: 0.49815008, a: 1}
   ammoPrefab: {fileID: 5219608670313725194, guid: c97af52e83399aa45b8f5b4bf6627c4d,
@@ -25,20 +25,29 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
+      inSlope: 0.29402485
+      outSlope: 0.29402485
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0.39046162
     - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
+      time: 0.5106022
+      value: -0.04517688
+      inSlope: -5.6516347
+      outSlope: -5.6516347
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
+      outWeight: 0.051001143
+    - serializedVersion: 3
+      time: 0.9975586
+      value: -0.001373291
+      inSlope: -7.7500625
+      outSlope: -7.7500625
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.018491529
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -72,21 +81,21 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 0.5
+      inSlope: 0.5
+      outSlope: 0.5
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 0.5
+      outSlope: 0.5
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

@@ -14,7 +14,7 @@ public class EnemyMovement : MonoBehaviour
     bool hasInitializedRoamingPosition = false;
     private Enemy enemy;
     float maxDistance = 15f;
-    bool isNavMeshLoaded = false;
+
     private void Awake()
     {
         // Load the components
@@ -45,22 +45,10 @@ public class EnemyMovement : MonoBehaviour
         navMeshAgent.updateUpAxis = false;
         navMeshAgent.speed = 3.0f;
         startPosition = transform.position;
-        StartCoroutine(WaitForNavmeshLoadCoroutine());
     }
-    private IEnumerator WaitForNavmeshLoadCoroutine()
-    {
-        yield return null;
-        isNavMeshLoaded = true;
 
-    }
     public void MoveRoamingPosition()
     {
-
-        if (!navMeshAgent.isOnNavMesh || !isNavMeshLoaded)
-        {
-
-            return;
-        }
 
 
         if (!hasInitializedRoamingPosition)
@@ -137,6 +125,7 @@ public class EnemyMovement : MonoBehaviour
             roamingPosition = (Vector2)startPosition + HelperUtilities.GetRandomDirection() * UnityEngine.Random.Range(1f, 5f);
             NavMeshHit hit;
             NavMesh.SamplePosition(roamingPosition, out hit, 10, 1);
+
             return hit.position;
         }
         else

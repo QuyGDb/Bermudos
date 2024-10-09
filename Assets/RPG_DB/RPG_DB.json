@@ -1,0 +1,51 @@
+{
+  "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Esper.ESave.SavableObjects.SavableObject, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+  "EnemyManagerData": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[Esper.ESave.SaveFileSetupData, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "Esper.ESave.SaveFileSetupData, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "fileName": "EnemyManagerData",
+      "saveLocation": 1,
+      "filePath": "RPGSaveLoad",
+      "fileType": 0,
+      "encryptionMethod": 0,
+      "aesKey": "",
+      "aesIV": "",
+      "addToStorage": true,
+      "backgroundTask": false
+    },
+    "id": "EnemyManagerData"
+  },
+  "Test": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[Esper.ESave.SaveFileSetupData, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "Esper.ESave.SaveFileSetupData, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "fileName": "Test",
+      "saveLocation": 1,
+      "filePath": "Example/Path",
+      "fileType": 0,
+      "encryptionMethod": 0,
+      "aesKey": "",
+      "aesIV": "",
+      "addToStorage": true,
+      "backgroundTask": false
+    },
+    "id": "Test"
+  },
+  "SaveFileName": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[Esper.ESave.SaveFileSetupData, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "Esper.ESave.SaveFileSetupData, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "fileName": "SaveFileName",
+      "saveLocation": 0,
+      "filePath": "Example/Path",
+      "fileType": 0,
+      "encryptionMethod": 0,
+      "aesKey": "",
+      "aesIV": "",
+      "addToStorage": true,
+      "backgroundTask": false
+    },
+    "id": "SaveFileName"
+  }
+}
