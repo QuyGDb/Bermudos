@@ -26,7 +26,6 @@ public class Destroyed : MonoBehaviour
     {
         //Unsubscribe to destroyed event
         destroyedEvent.OnDestroyed -= DestroyedEvent_OnDestroyed;
-
     }
 
     private void DestroyedEvent_OnDestroyed(DestroyedEvent destroyedEvent, DestroyedEventArgs destroyedEventArgs)
@@ -47,6 +46,7 @@ public class Destroyed : MonoBehaviour
 
         yield return new WaitForSeconds(3);
         gameObject.SetActive(false);
+        GameManager.Instance.InitializeEnemyManagerData();
     }
     private void MarkEnemyAsDead()
     {

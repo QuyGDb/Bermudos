@@ -33,6 +33,11 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     }
     private void Start()
     {
+        InitializeEnemyManagerData();
+    }
+
+    public void InitializeEnemyManagerData()
+    {
         foreach (var enemyManagerDetails in enemyManagerDetailsSO)
         {
             EnemyManagerData enemyManagerData = new EnemyManagerData(enemyManagerDetails.enemyName, enemyManagerDetails.enemyPostionList.Count, -1);

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5678762413378275327}
   - component: {fileID: 7766194391293385366}
-  - component: {fileID: 3768832577544684190}
   m_Layer: 0
   m_Name: Enemies
   m_TagString: Untagged
@@ -47,25 +46,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
   enemyManagerDetailsSO: {fileID: 0}
---- !u!114 &3768832577544684190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1225643235839324543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99b4b220e9db2634389147b7a07bb0ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  saveFileData:
-    fileName: EnemyManagerData
-    saveLocation: 1
-    filePath: RPGSaveLoad
-    fileType: 0
-    encryptionMethod: 0
-    aesKey: 
-    aesIV: 
-    addToStorage: 1
-    backgroundTask: 0

@@ -5,23 +5,34 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     [SerializeField] private GameObject enemy;
-    private SaveFileSetup saveFileSetup;
+    // private SaveFileSetup saveFileSetup;
     [SerializeField] private EnemyManagerDetailsSO enemyManagerDetailsSO;
     private EnemyManagerData enemyManagerData;
-    private void Awake()
-    {
-        saveFileSetup = GetComponent<SaveFileSetup>();
-    }
+    //private void Awake()
+    //{
+    //    saveFileSetup = GetComponent<SaveFileSetup>();
+    //}
 
     private void Start()
     {
-        Debug.Log(enemyManagerDetailsSO.enemyManagerDataKey);
-        if (saveFileSetup.GetSaveFile().HasData(enemyManagerDetailsSO.enemyManagerDataKey))
+
+        if (GameManager.Instance.saveFileSetup.GetSaveFile().HasData(enemyManagerDetailsSO.enemyManagerDataKey))
         {
-            enemyManagerData = saveFileSetup.GetSaveFile().GetData<EnemyManagerData>(enemyManagerDetailsSO.enemyManagerDataKey);
+            enemyManagerData = GameManager.Instance.saveFileSetup.GetSaveFile().GetData<EnemyManagerData>(enemyManagerDetailsSO.enemyManagerDataKey);
         }
     }
-
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        if (saveFileSetup.GetSaveFile().HasData(enemyManagerDetailsSO.enemyManagerDataKey))
+    //        {
+    //            enemyManagerData = saveFileSetup.GetSaveFile().GetData<EnemyManagerData>(enemyManagerDetailsSO.enemyManagerDataKey);
+    //            Debug.Log(enemyManagerDetailsSO.enemyManagerDataKey);
+    //            Debug.Log(enemyManagerData.enemieStateList[0]);
+    //        }
+    //    }
+    //}
     private void OnEnable()
     {
         StaticEventHandler.OnBuildNavMesh += StaticEventHandler_OnBuildNavMesh;
