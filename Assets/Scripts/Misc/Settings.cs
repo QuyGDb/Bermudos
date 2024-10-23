@@ -7,7 +7,16 @@ public static class Settings
 {
     #region ANIMATOR PARAMETERS
     // Animator parameters - Player
+
+    public static int isIdle = Animator.StringToHash("isIdle");
+    public static int isMoving = Animator.StringToHash("isMove");
+    public static int isAttack = Animator.StringToHash("isAttack");
+    public static int isFaint = Animator.StringToHash("isFaint");
+
+
+    // Animator parameters - Aim
     public static int aimUp = Animator.StringToHash("aimUp");
+    public static int aimUp1 = Animator.StringToHash("aimUp1");
     public static int aimDown = Animator.StringToHash("aimDown");
     public static int aimUpRight = Animator.StringToHash("aimUpRight");
     public static int aimUpLeft = Animator.StringToHash("aimUpLeft");
@@ -15,12 +24,24 @@ public static class Settings
     public static int aimLeft = Animator.StringToHash("aimLeft");
     public static int aimDownRight = Animator.StringToHash("aimDownRight");
     public static int aimDownLeft = Animator.StringToHash("aimDownLeft");
-    public static int isIdle = Animator.StringToHash("isIdle");
-    public static int isMoving = Animator.StringToHash("isMove");
-    public static int isAttack = Animator.StringToHash("isAttack");
-    public static int isFaint = Animator.StringToHash("isFaint");
-    #endregion
 
+    // Animator parameters - Boss
+    public static int isPhase2 = Animator.StringToHash("isPhase2");
+    public static int Idle = Animator.StringToHash("Idle");
+    public static int ouch = Animator.StringToHash("ouch");
+    public static int regularMouth = Animator.StringToHash("regularMouth");
+    public static int OpenMouth = Animator.StringToHash("OpenMouth");
+    public static int eyeAttack = Animator.StringToHash("eyeAttack");
+    public static int eyeLoop = Animator.StringToHash("eyeLoop");
+    public static int Hop = Animator.StringToHash("Hop");
+    public static int EyeLoopDeath = Animator.StringToHash("EyeLoopDeath");
+    public static int Base = Animator.StringToHash("Base");
+    public static int Walk = Animator.StringToHash("Walk");
+    public static int swipe = Animator.StringToHash("swipe");
+    public static int openMouthLoop = Animator.StringToHash("openMouthLoop");
+    public static int spearAtk = Animator.StringToHash("spearAtk");
+    public static int spinny = Animator.StringToHash("spinny");
+    #endregion
 
     #region Epsilon
     public const float epsilon = 0.01f;

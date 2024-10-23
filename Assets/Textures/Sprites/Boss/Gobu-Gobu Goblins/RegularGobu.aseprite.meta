@@ -143,7 +143,7 @@ ScriptedImporter:
     uvTransform: {x: 169, y: 280}
   - name: RegularGobu_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: -1.117647}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -183,7 +183,7 @@ ScriptedImporter:
     uvTransform: {x: 198, y: 280}
   - name: RegularGobu_Frame_3
     originalName: 
-    pivot: {x: 0.5, y: -1.117647}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -203,7 +203,7 @@ ScriptedImporter:
     uvTransform: {x: 61, y: 333}
   - name: RegularGobu_Frame_4
     originalName: 
-    pivot: {x: 0.4074074, y: -0.8636364}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -223,7 +223,7 @@ ScriptedImporter:
     uvTransform: {x: 267, y: 51}
   - name: RegularGobu_Frame_5
     originalName: 
-    pivot: {x: 0.4074074, y: -0.9047619}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -243,7 +243,7 @@ ScriptedImporter:
     uvTransform: {x: 210, y: 99}
   - name: RegularGobu_Frame_6
     originalName: 
-    pivot: {x: 0.39285716, y: -0.9047619}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -323,7 +323,7 @@ ScriptedImporter:
     uvTransform: {x: 442, y: 219}
   - name: RegularGobu_Frame_10
     originalName: 
-    pivot: {x: 0.6296296, y: -0.8636364}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -343,7 +343,7 @@ ScriptedImporter:
     uvTransform: {x: 302, y: 51}
   - name: RegularGobu_Frame_11
     originalName: 
-    pivot: {x: 0.6296296, y: -0.9047619}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -363,7 +363,7 @@ ScriptedImporter:
     uvTransform: {x: 245, y: 99}
   - name: RegularGobu_Frame_12
     originalName: 
-    pivot: {x: 0.6428572, y: -0.9047619}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -383,7 +383,7 @@ ScriptedImporter:
     uvTransform: {x: 106, y: 99}
   - name: RegularGobu_Frame_13
     originalName: 
-    pivot: {x: 0.34615386, y: -0.9047619}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -403,7 +403,7 @@ ScriptedImporter:
     uvTransform: {x: 68, y: 129}
   - name: RegularGobu_Frame_14
     originalName: 
-    pivot: {x: 0.34615386, y: -0.85714287}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -423,7 +423,7 @@ ScriptedImporter:
     uvTransform: {x: 102, y: 129}
   - name: RegularGobu_Frame_15
     originalName: 
-    pivot: {x: 0.33333334, y: -0.85714287}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -443,7 +443,7 @@ ScriptedImporter:
     uvTransform: {x: 280, y: 99}
   - name: RegularGobu_Frame_17
     originalName: 
-    pivot: {x: 0.4074074, y: -0.8636364}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -463,7 +463,7 @@ ScriptedImporter:
     uvTransform: {x: 337, y: 51}
   - name: RegularGobu_Frame_18
     originalName: 
-    pivot: {x: 0.4074074, y: -0.826087}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -483,7 +483,7 @@ ScriptedImporter:
     uvTransform: {x: 127, y: 51}
   - name: RegularGobu_Frame_19
     originalName: 
-    pivot: {x: 0.4074074, y: -0.9047619}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -503,7 +503,7 @@ ScriptedImporter:
     uvTransform: {x: 315, y: 99}
   - name: RegularGobu_Frame_20
     originalName: 
-    pivot: {x: 0.4074074, y: -0.8636364}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -523,7 +523,7 @@ ScriptedImporter:
     uvTransform: {x: 372, y: 51}
   - name: RegularGobu_Frame_21
     originalName: 
-    pivot: {x: 0.4074074, y: -0.826087}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -543,7 +543,7 @@ ScriptedImporter:
     uvTransform: {x: 162, y: 51}
   - name: RegularGobu_Frame_22
     originalName: 
-    pivot: {x: 0.4074074, y: -0.9047619}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -583,7 +583,7 @@ ScriptedImporter:
     uvTransform: {x: 468, y: 219}
   - name: RegularGobu_Frame_24
     originalName: 
-    pivot: {x: 0.5, y: -0.8636364}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -603,7 +603,7 @@ ScriptedImporter:
     uvTransform: {x: 488, y: 99}
   - name: RegularGobu_Frame_25
     originalName: 
-    pivot: {x: 0.5, y: -0.85714287}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -623,7 +623,7 @@ ScriptedImporter:
     uvTransform: {x: 35, y: 251}
   - name: RegularGobu_Frame_26
     originalName: 
-    pivot: {x: 0.5, y: -0.9047619}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -663,7 +663,7 @@ ScriptedImporter:
     uvTransform: {x: 252, y: 219}
   - name: RegularGobu_Frame_28
     originalName: 
-    pivot: {x: 0.5, y: -0.85714287}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -683,7 +683,7 @@ ScriptedImporter:
     uvTransform: {x: 87, y: 251}
   - name: RegularGobu_Frame_29
     originalName: 
-    pivot: {x: 0.5925926, y: -0.8636364}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -703,7 +703,7 @@ ScriptedImporter:
     uvTransform: {x: 407, y: 51}
   - name: RegularGobu_Frame_30
     originalName: 
-    pivot: {x: 0.5925926, y: -0.826087}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -723,7 +723,7 @@ ScriptedImporter:
     uvTransform: {x: 197, y: 51}
   - name: RegularGobu_Frame_31
     originalName: 
-    pivot: {x: 0.5925926, y: -0.9047619}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -743,7 +743,7 @@ ScriptedImporter:
     uvTransform: {x: 385, y: 99}
   - name: RegularGobu_Frame_32
     originalName: 
-    pivot: {x: 0.5925926, y: -0.8636364}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -763,7 +763,7 @@ ScriptedImporter:
     uvTransform: {x: 442, y: 51}
   - name: RegularGobu_Frame_33
     originalName: 
-    pivot: {x: 0.5925926, y: -0.826087}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -783,7 +783,7 @@ ScriptedImporter:
     uvTransform: {x: 232, y: 51}
   - name: RegularGobu_Frame_34
     originalName: 
-    pivot: {x: 0.5925926, y: -0.9047619}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -803,7 +803,7 @@ ScriptedImporter:
     uvTransform: {x: 420, y: 99}
   - name: RegularGobu_Frame_35
     originalName: 
-    pivot: {x: 0.35999998, y: -0.9047619}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -823,7 +823,7 @@ ScriptedImporter:
     uvTransform: {x: 136, y: 129}
   - name: RegularGobu_Frame_36
     originalName: 
-    pivot: {x: 0.35999998, y: -0.8636364}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -843,7 +843,7 @@ ScriptedImporter:
     uvTransform: {x: 455, y: 99}
   - name: RegularGobu_Frame_37
     originalName: 
-    pivot: {x: 0.35999998, y: -0.85714287}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -863,7 +863,7 @@ ScriptedImporter:
     uvTransform: {x: 169, y: 129}
   - name: RegularGobu_Frame_38
     originalName: 
-    pivot: {x: 0.35999998, y: -0.9047619}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -883,7 +883,7 @@ ScriptedImporter:
     uvTransform: {x: 202, y: 129}
   - name: RegularGobu_Frame_39
     originalName: 
-    pivot: {x: 0.35999998, y: -0.8636364}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -903,7 +903,7 @@ ScriptedImporter:
     uvTransform: {x: 35, y: 129}
   - name: RegularGobu_Frame_40
     originalName: 
-    pivot: {x: 0.35999998, y: -0.85714287}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -923,7 +923,7 @@ ScriptedImporter:
     uvTransform: {x: 235, y: 129}
   - name: RegularGobu_Frame_63
     originalName: 
-    pivot: {x: 0.4074074, y: -1.117647}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -943,7 +943,7 @@ ScriptedImporter:
     uvTransform: {x: 354, y: 159}
   - name: RegularGobu_Frame_64
     originalName: 
-    pivot: {x: 0.4074074, y: -1.0555556}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -963,7 +963,7 @@ ScriptedImporter:
     uvTransform: {x: 407, y: 129}
   - name: RegularGobu_Frame_65
     originalName: 
-    pivot: {x: 0.5277778, y: -0.05882353}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1023,7 +1023,7 @@ ScriptedImporter:
     uvTransform: {x: 356, y: 219}
   - name: RegularGobu_Frame_68
     originalName: 
-    pivot: {x: 0.30434784, y: -1.0588236}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1043,7 +1043,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 491}
   - name: RegularGobu_Frame_69
     originalName: 
-    pivot: {x: 0.2916667, y: -1}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1063,7 +1063,7 @@ ScriptedImporter:
     uvTransform: {x: 151, y: 190}
   - name: RegularGobu_Frame_70
     originalName: 
-    pivot: {x: 0.65957445, y: -0.5357143}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1083,7 +1083,7 @@ ScriptedImporter:
     uvTransform: {x: 345, y: 4}
   - name: RegularGobu_Frame_71
     originalName: 
-    pivot: {x: 0.6428572, y: -1}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1103,7 +1103,7 @@ ScriptedImporter:
     uvTransform: {x: 371, y: 129}
   - name: RegularGobu_Frame_72
     originalName: 
-    pivot: {x: 0.6296296, y: -0.94736844}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1123,7 +1123,7 @@ ScriptedImporter:
     uvTransform: {x: 301, y: 129}
   - name: RegularGobu_Frame_73
     originalName: 
-    pivot: {x: 0.6296296, y: -1.117647}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1143,7 +1143,7 @@ ScriptedImporter:
     uvTransform: {x: 389, y: 159}
   - name: RegularGobu_Frame_74
     originalName: 
-    pivot: {x: 0.6296296, y: -1}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1163,7 +1163,7 @@ ScriptedImporter:
     uvTransform: {x: 336, y: 129}
   - name: RegularGobu_Frame_75
     originalName: 
-    pivot: {x: 0.5555556, y: -0.475}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1183,7 +1183,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 51}
   - name: RegularGobu_Frame_76
     originalName: 
-    pivot: {x: 0.4074074, y: -1.1875}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1203,7 +1203,7 @@ ScriptedImporter:
     uvTransform: {x: 183, y: 190}
   - name: RegularGobu_Frame_77
     originalName: 
-    pivot: {x: 0.4074074, y: -1.117647}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1223,7 +1223,7 @@ ScriptedImporter:
     uvTransform: {x: 424, y: 159}
   - name: RegularGobu_Frame_78
     originalName: 
-    pivot: {x: 0.44, y: -1.0588236}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1243,7 +1243,7 @@ ScriptedImporter:
     uvTransform: {x: 218, y: 190}
   - name: RegularGobu_Frame_79
     originalName: 
-    pivot: {x: 0.42307693, y: -1}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1263,7 +1263,7 @@ ScriptedImporter:
     uvTransform: {x: 442, y: 129}
   - name: RegularGobu_Frame_80
     originalName: 
-    pivot: {x: 0.36734694, y: -0.5357143}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1283,7 +1283,7 @@ ScriptedImporter:
     uvTransform: {x: 288, y: 4}
   - name: RegularGobu_Frame_81
     originalName: 
-    pivot: {x: 0.6923077, y: -1.0588236}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1303,7 +1303,7 @@ ScriptedImporter:
     uvTransform: {x: 459, y: 159}
   - name: RegularGobu_Frame_82
     originalName: 
-    pivot: {x: 0.6923077, y: -1}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1323,7 +1323,7 @@ ScriptedImporter:
     uvTransform: {x: 476, y: 129}
   - name: RegularGobu_Frame_84
     originalName: 
-    pivot: {x: 0.52380955, y: -0.90909094}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1343,7 +1343,7 @@ ScriptedImporter:
     uvTransform: {x: 93, y: 159}
   - name: RegularGobu_Frame_85
     originalName: 
-    pivot: {x: 0.52380955, y: -0.8333334}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1363,7 +1363,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 427}
   - name: RegularGobu_Frame_86
     originalName: 
-    pivot: {x: 0.52380955, y: -1.1904762}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1383,7 +1383,7 @@ ScriptedImporter:
     uvTransform: {x: 35, y: 190}
   - name: RegularGobu_Frame_87
     originalName: 
-    pivot: {x: 0.52380955, y: -0.95238096}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1403,7 +1403,7 @@ ScriptedImporter:
     uvTransform: {x: 64, y: 190}
   - name: RegularGobu_Frame_88
     originalName: 
-    pivot: {x: 0.52380955, y: -0.90909094}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1423,7 +1423,7 @@ ScriptedImporter:
     uvTransform: {x: 122, y: 159}
   - name: RegularGobu_Frame_89
     originalName: 
-    pivot: {x: 0.52380955, y: -0.8333334}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1443,7 +1443,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 459}
   - name: RegularGobu_Frame_90
     originalName: 
-    pivot: {x: 0.52380955, y: -1.1904762}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1463,7 +1463,7 @@ ScriptedImporter:
     uvTransform: {x: 93, y: 190}
   - name: RegularGobu_Frame_91
     originalName: 
-    pivot: {x: 0.52380955, y: -0.95238096}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1503,7 +1503,7 @@ ScriptedImporter:
     uvTransform: {x: 148, y: 251}
   - name: RegularGobu_Frame_93
     originalName: 
-    pivot: {x: 0.3888889, y: -0.8333334}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1583,7 +1583,7 @@ ScriptedImporter:
     uvTransform: {x: 278, y: 219}
   - name: RegularGobu_Frame_97
     originalName: 
-    pivot: {x: 0.3888889, y: -0.8333334}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1643,7 +1643,7 @@ ScriptedImporter:
     uvTransform: {x: 252, y: 251}
   - name: RegularGobu_Frame_100
     originalName: 
-    pivot: {x: 0.52380955, y: -0.8636364}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1663,7 +1663,7 @@ ScriptedImporter:
     uvTransform: {x: 151, y: 159}
   - name: RegularGobu_Frame_101
     originalName: 
-    pivot: {x: 0.52380955, y: -0.7307693}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1683,7 +1683,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 292}
   - name: RegularGobu_Frame_102
     originalName: 
-    pivot: {x: 0.52380955, y: -1}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1703,7 +1703,7 @@ ScriptedImporter:
     uvTransform: {x: 35, y: 159}
   - name: RegularGobu_Frame_103
     originalName: 
-    pivot: {x: 0.52380955, y: -1.0454546}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1723,7 +1723,7 @@ ScriptedImporter:
     uvTransform: {x: 180, y: 159}
   - name: RegularGobu_Frame_104
     originalName: 
-    pivot: {x: 0.52380955, y: -0.8636364}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1743,7 +1743,7 @@ ScriptedImporter:
     uvTransform: {x: 209, y: 159}
   - name: RegularGobu_Frame_105
     originalName: 
-    pivot: {x: 0.52380955, y: -0.7307693}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1763,7 +1763,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 326}
   - name: RegularGobu_Frame_106
     originalName: 
-    pivot: {x: 0.52380955, y: -1}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1783,7 +1783,7 @@ ScriptedImporter:
     uvTransform: {x: 64, y: 159}
   - name: RegularGobu_Frame_107
     originalName: 
-    pivot: {x: 0.52380955, y: -1}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1823,7 +1823,7 @@ ScriptedImporter:
     uvTransform: {x: 278, y: 251}
   - name: RegularGobu_Frame_109
     originalName: 
-    pivot: {x: 0.6111111, y: -0.8333334}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1903,7 +1903,7 @@ ScriptedImporter:
     uvTransform: {x: 304, y: 219}
   - name: RegularGobu_Frame_113
     originalName: 
-    pivot: {x: 0.6111111, y: -0.8333334}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1963,7 +1963,7 @@ ScriptedImporter:
     uvTransform: {x: 382, y: 251}
   - name: RegularGobu_Frame_117
     originalName: 
-    pivot: {x: 0.42307693, y: -1.0454546}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1983,7 +1983,7 @@ ScriptedImporter:
     uvTransform: {x: 142, y: 99}
   - name: RegularGobu_Frame_118
     originalName: 
-    pivot: {x: 0.44, y: -0.7307693}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2043,7 +2043,7 @@ ScriptedImporter:
     uvTransform: {x: 408, y: 251}
   - name: RegularGobu_Frame_121
     originalName: 
-    pivot: {x: 0.6296296, y: -0.9545455}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2063,7 +2063,7 @@ ScriptedImporter:
     uvTransform: {x: 477, y: 51}
   - name: RegularGobu_Frame_122
     originalName: 
-    pivot: {x: 0.6296296, y: -0.8636364}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2083,7 +2083,7 @@ ScriptedImporter:
     uvTransform: {x: 35, y: 99}
   - name: RegularGobu_Frame_123
     originalName: 
-    pivot: {x: 0.34615386, y: -0.9545455}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2103,7 +2103,7 @@ ScriptedImporter:
     uvTransform: {x: 176, y: 99}
   - name: RegularGobu_Frame_124
     originalName: 
-    pivot: {x: 0.35999998, y: -0.9047619}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2123,7 +2123,7 @@ ScriptedImporter:
     uvTransform: {x: 268, y: 129}
   - name: RegularGobu_Frame_126
     originalName: 
-    pivot: {x: 0.50793654, y: -0.17948718}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2143,7 +2143,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: RegularGobu_Frame_127
     originalName: 
-    pivot: {x: 0.49206352, y: -0.46153846}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2163,7 +2163,7 @@ ScriptedImporter:
     uvTransform: {x: 75, y: 4}
   - name: RegularGobu_Frame_128
     originalName: 
-    pivot: {x: 0.49206352, y: -0.17948718}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2183,7 +2183,7 @@ ScriptedImporter:
     uvTransform: {x: 146, y: 4}
   - name: RegularGobu_Frame_129
     originalName: 
-    pivot: {x: 0.50793654, y: -0.46153846}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2243,7 +2243,7 @@ ScriptedImporter:
     uvTransform: {x: 447, y: 280}
   - name: RegularGobu_Frame_132
     originalName: 
-    pivot: {x: 0.52380955, y: -1.2666668}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2263,7 +2263,7 @@ ScriptedImporter:
     uvTransform: {x: 64, y: 309}
   - name: RegularGobu_Frame_133
     originalName: 
-    pivot: {x: 0.52380955, y: -1.2666668}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2303,7 +2303,7 @@ ScriptedImporter:
     uvTransform: {x: 122, y: 309}
   - name: RegularGobu_Frame_135
     originalName: 
-    pivot: {x: 0.52380955, y: -0.95}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2323,7 +2323,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 190}
   - name: RegularGobu_Frame_136
     originalName: 
-    pivot: {x: 0.52380955, y: -0.95}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2343,7 +2343,7 @@ ScriptedImporter:
     uvTransform: {x: 280, y: 190}
   - name: RegularGobu_Frame_137
     originalName: 
-    pivot: {x: 0.52380955, y: -0.95}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2423,7 +2423,7 @@ ScriptedImporter:
     uvTransform: {x: 476, y: 280}
   - name: RegularGobu_Frame_141
     originalName: 
-    pivot: {x: 0.52380955, y: -1.3571429}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2443,7 +2443,7 @@ ScriptedImporter:
     uvTransform: {x: 243, y: 333}
   - name: RegularGobu_Frame_142
     originalName: 
-    pivot: {x: 0.5, y: -1.117647}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2463,7 +2463,7 @@ ScriptedImporter:
     uvTransform: {x: 87, y: 333}
   - name: RegularGobu_Frame_143
     originalName: 
-    pivot: {x: 0.5, y: -1.117647}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2483,7 +2483,7 @@ ScriptedImporter:
     uvTransform: {x: 113, y: 333}
   - name: RegularGobu_Frame_144
     originalName: 
-    pivot: {x: 0.44444445, y: -1.2666668}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2503,7 +2503,7 @@ ScriptedImporter:
     uvTransform: {x: 330, y: 333}
   - name: RegularGobu_Frame_145
     originalName: 
-    pivot: {x: 0.44444445, y: -1.3571429}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2523,7 +2523,7 @@ ScriptedImporter:
     uvTransform: {x: 382, y: 333}
   - name: RegularGobu_Frame_146
     originalName: 
-    pivot: {x: 0.44444445, y: -1.3571429}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2563,7 +2563,7 @@ ScriptedImporter:
     uvTransform: {x: 343, y: 280}
   - name: RegularGobu_Frame_148
     originalName: 
-    pivot: {x: 0.42105263, y: -1}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2583,7 +2583,7 @@ ScriptedImporter:
     uvTransform: {x: 61, y: 280}
   - name: RegularGobu_Frame_149
     originalName: 
-    pivot: {x: 0.42105263, y: -1}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2623,7 +2623,7 @@ ScriptedImporter:
     uvTransform: {x: 369, y: 280}
   - name: RegularGobu_Frame_151
     originalName: 
-    pivot: {x: 0.44444445, y: -1.3571429}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2643,7 +2643,7 @@ ScriptedImporter:
     uvTransform: {x: 434, y: 333}
   - name: RegularGobu_Frame_152
     originalName: 
-    pivot: {x: 0.5, y: -1.117647}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2723,7 +2723,7 @@ ScriptedImporter:
     uvTransform: {x: 285, y: 280}
   - name: RegularGobu_Frame_156
     originalName: 
-    pivot: {x: 0.52380955, y: -1.1875}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2863,7 +2863,7 @@ ScriptedImporter:
     uvTransform: {x: 194, y: 219}
   - name: RegularGobu_Frame_163
     originalName: 
-    pivot: {x: 0.52380955, y: -1.3571429}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2903,7 +2903,7 @@ ScriptedImporter:
     uvTransform: {x: 314, y: 280}
   - name: RegularGobu_Frame_165
     originalName: 
-    pivot: {x: 0.52380955, y: -1.3571429}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2923,7 +2923,7 @@ ScriptedImporter:
     uvTransform: {x: 301, y: 333}
   - name: RegularGobu_Frame_166
     originalName: 
-    pivot: {x: 0.5, y: -1.117647}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2943,7 +2943,7 @@ ScriptedImporter:
     uvTransform: {x: 165, y: 333}
   - name: RegularGobu_Frame_167
     originalName: 
-    pivot: {x: 0.5, y: -1.117647}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2963,7 +2963,7 @@ ScriptedImporter:
     uvTransform: {x: 191, y: 333}
   - name: RegularGobu_Frame_168
     originalName: 
-    pivot: {x: 0.5555556, y: -1.2666668}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2983,7 +2983,7 @@ ScriptedImporter:
     uvTransform: {x: 356, y: 333}
   - name: RegularGobu_Frame_169
     originalName: 
-    pivot: {x: 0.5555556, y: -1.3571429}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -3003,7 +3003,7 @@ ScriptedImporter:
     uvTransform: {x: 460, y: 333}
   - name: RegularGobu_Frame_170
     originalName: 
-    pivot: {x: 0.5555556, y: -1.3571429}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -3123,7 +3123,7 @@ ScriptedImporter:
     uvTransform: {x: 238, y: 309}
   - name: RegularGobu_Frame_176
     originalName: 
-    pivot: {x: 0.5, y: -1.117647}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -3163,7 +3163,7 @@ ScriptedImporter:
     uvTransform: {x: 290, y: 309}
   - name: RegularGobu_Frame_42
     originalName: 
-    pivot: {x: 0.52380955, y: -0.8636364}
+    pivot: {x: 0.5238096, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -3183,7 +3183,7 @@ ScriptedImporter:
     uvTransform: {x: 267, y: 159}
   - name: RegularGobu_Frame_43
     originalName: 
-    pivot: {x: 0.52380955, y: -0.88}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -3203,7 +3203,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 394}
   - name: RegularGobu_Frame_44
     originalName: 
-    pivot: {x: 0.47826087, y: -0.058823533}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -3223,7 +3223,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 99}
   - name: RegularGobu_Frame_45
     originalName: 
-    pivot: {x: 0.52380955, y: -0.16666667}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -3243,7 +3243,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 216}
   - name: RegularGobu_Frame_46
     originalName: 
-    pivot: {x: 0.52380955, y: -0.20000002}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -3303,7 +3303,7 @@ ScriptedImporter:
     uvTransform: {x: 113, y: 219}
   - name: RegularGobu_Frame_49
     originalName: 
-    pivot: {x: 0.7894737, y: -0.8333334}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -3363,7 +3363,7 @@ ScriptedImporter:
     uvTransform: {x: 460, y: 251}
   - name: RegularGobu_Frame_52
     originalName: 
-    pivot: {x: 0.52380955, y: -0.8636364}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -3383,7 +3383,7 @@ ScriptedImporter:
     uvTransform: {x: 296, y: 159}
   - name: RegularGobu_Frame_53
     originalName: 
-    pivot: {x: 0.52380955, y: -0.7307693}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -3403,7 +3403,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 360}
   - name: RegularGobu_Frame_54
     originalName: 
-    pivot: {x: 0.54545456, y: -0.24}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -3423,7 +3423,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 158}
   - name: RegularGobu_Frame_55
     originalName: 
-    pivot: {x: 0.52380955, y: -0.8636364}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -3503,7 +3503,7 @@ ScriptedImporter:
     uvTransform: {x: 139, y: 219}
   - name: RegularGobu_Frame_59
     originalName: 
-    pivot: {x: 0.21052632, y: -0.8333334}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -3543,7 +3543,7 @@ ScriptedImporter:
     uvTransform: {x: 460, y: 190}
   - name: RegularGobu_Frame_61
     originalName: 
-    pivot: {x: 0.5, y: -0.9047619}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:

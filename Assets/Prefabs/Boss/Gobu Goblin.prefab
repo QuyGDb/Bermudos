@@ -16,6 +16,10 @@ GameObject:
   - component: {fileID: -7913438416611868909}
   - component: {fileID: 7087450997442639448}
   - component: {fileID: 4051546591070816807}
+  - component: {fileID: 7430653458981399621}
+  - component: {fileID: 8315288752746060219}
+  - component: {fileID: 2967745875669652187}
+  - component: {fileID: 8685557502419262011}
   m_Layer: 0
   m_Name: Gobu Goblin
   m_TagString: Untagged
@@ -33,7 +37,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -250,3 +254,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 0
+--- !u!114 &7430653458981399621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4630120901667707226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b545603be7ab46f45bbf12efc160967b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8315288752746060219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4630120901667707226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c682095654ed6b9409387f733f15c098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxPoise: 0
+  stunTime: 0
+--- !u!114 &2967745875669652187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4630120901667707226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91c3e5e738d30794082a139701d7c190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8685557502419262011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4630120901667707226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e382fec3784ce7e41a727d86faa67570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
