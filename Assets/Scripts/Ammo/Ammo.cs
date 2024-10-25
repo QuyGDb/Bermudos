@@ -199,7 +199,7 @@ public class Ammo : MonoBehaviour, IFireable
     {
         if (isColliding)
             return;
-        DealDamage(collision);
+            collision.GetComponent<ReceiveDamage>()?.TakeDamage(ammoDetailsSO.damage);
         if ((playerLayerMask.value & 1 << collision.gameObject.layer) > 0)
         {
             StaticEventHandler.CallAmmoChangedEvent(this);
@@ -216,16 +216,9 @@ public class Ammo : MonoBehaviour, IFireable
         }
         AmmoHitEffect();
         DisableAmmo();
+        isColliding = true;
     }
 
-    private void DealDamage(Collider2D collision)
-    {
-        Health health = collision.gameObject.GetComponent<Health>();
-        // Set isColliding to prevent ammo dealing damage multiple times
-        isColliding = true;
-        if (health != null)
-            health.TakeDamage(ammoDetailsSO.damage);
-    }
 
     private void AmmoHitEffect()
     {

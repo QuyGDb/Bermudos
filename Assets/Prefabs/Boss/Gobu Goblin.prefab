@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 8315288752746060219}
   - component: {fileID: 2967745875669652187}
   - component: {fileID: 8685557502419262011}
+  - component: {fileID: 1814159649565908397}
   m_Layer: 0
   m_Name: Gobu Goblin
   m_TagString: Untagged
@@ -39,7 +40,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 505066742154324670}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5612029542855403110
@@ -148,10 +150,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03125006, y: 1.8125}
+  m_Offset: {x: -0.03125006, y: 0.015453428}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.52380955, y: -0.95}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.3125, y: 1.25}
     newSize: {x: 1.3125, y: 1.25}
     adaptiveTilingThreshold: 0.5
@@ -159,7 +161,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3125, y: 1.25}
+  m_Size: {x: 1.3125, y: 1.2855847}
   m_EdgeRadius: 0
 --- !u!114 &7449245624677983243
 MonoBehaviour:
@@ -168,7 +170,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4630120901667707226}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d7b55c7ecdb49a4a89fa5e6f9022861, type: 3}
   m_Name: 
@@ -228,7 +230,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &7087450997442639448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,3 +306,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e382fec3784ce7e41a727d86faa67570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1814159649565908397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4630120901667707226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a699417b49d6b4aa7bfa95cc706854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootPosition: {fileID: 505066742154324670}
+  baseAmmo: {fileID: 11400000, guid: 0babaa8712b724041bf40646174e772d, type: 2}
+  shootPositions:
+  - {x: 0, y: 0.667, z: 0}
+  - {x: 0.593, y: 0.534, z: 0}
+  - {x: 0.593, y: 0.534, z: 0}
+  - {x: 0.593, y: 0.304, z: 0}
+  - {x: 0.593, y: 0.007, z: 0}
+  - {x: 0.593, y: -0.327, z: 0}
+  - {x: 0.593, y: -0.505, z: 0}
+  - {x: 0.593, y: -0.676, z: 0}
+  - {x: 0.029, y: -0.736, z: 0}
+  - {x: -0.594, y: -0.499, z: 0}
+  - {x: -0.594, y: -0.736, z: 0}
+  - {x: -0.809, y: -0.121, z: 0}
+  - {x: -0.809, y: 0.361, z: 0}
+  - {x: -0.809, y: 0.361, z: 0}
+  - {x: -0.683, y: 0.546, z: 0}
+  Beam: {fileID: 193611353471803994, guid: 976c8fd12257bec45b66dde105d9ffff, type: 3}
+--- !u!1 &9153728665272151147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 505066742154324670}
+  m_Layer: 0
+  m_Name: ShootPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &505066742154324670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9153728665272151147}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5155416903780776868}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

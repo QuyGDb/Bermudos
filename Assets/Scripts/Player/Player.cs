@@ -82,7 +82,6 @@ public class Player : MonoBehaviour
 
     }
 
-
     #region Validation
 #if UNITY_EDITOR
     private void OnValidate()

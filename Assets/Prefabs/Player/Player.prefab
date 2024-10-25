@@ -308,6 +308,7 @@ GameObject:
   - component: {fileID: 9102831143894782357}
   - component: {fileID: -5962838325214408697}
   - component: {fileID: 1103130779690340963}
+  - component: {fileID: 5215639941842201343}
   m_Layer: 16
   m_Name: Player
   m_TagString: Player
@@ -955,6 +956,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contactDamageAmount: 0
+--- !u!114 &5215639941842201343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3176905974167237993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a800f21b1064e654380bcf996cec9f6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 0
 --- !u!1 &5446567267218050401
 GameObject:
   m_ObjectHideFlags: 0
