@@ -21,9 +21,13 @@ GameObject:
   - component: {fileID: 2967745875669652187}
   - component: {fileID: 8685557502419262011}
   - component: {fileID: 1814159649565908397}
-  m_Layer: 0
+  - component: {fileID: 2924360397197612924}
+  - component: {fileID: 1623503311325851936}
+  - component: {fileID: 8105223878216378280}
+  - component: {fileID: 3353873664972265684}
+  m_Layer: 17
   m_Name: Gobu Goblin
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,9 +220,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 900284
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -227,9 +231,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &7087450997442639448
 MonoBehaviour:
@@ -280,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c682095654ed6b9409387f733f15c098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPoise: 0
+  maxPoise: 30
   stunTime: 0
 --- !u!114 &2967745875669652187
 MonoBehaviour:
@@ -319,24 +323,64 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootPosition: {fileID: 505066742154324670}
-  baseAmmo: {fileID: 11400000, guid: 0babaa8712b724041bf40646174e772d, type: 2}
-  shootPositions:
-  - {x: 0, y: 0.667, z: 0}
-  - {x: 0.593, y: 0.534, z: 0}
-  - {x: 0.593, y: 0.534, z: 0}
-  - {x: 0.593, y: 0.304, z: 0}
-  - {x: 0.593, y: 0.007, z: 0}
-  - {x: 0.593, y: -0.327, z: 0}
-  - {x: 0.593, y: -0.505, z: 0}
-  - {x: 0.593, y: -0.676, z: 0}
-  - {x: 0.029, y: -0.736, z: 0}
-  - {x: -0.594, y: -0.499, z: 0}
-  - {x: -0.594, y: -0.736, z: 0}
-  - {x: -0.809, y: -0.121, z: 0}
-  - {x: -0.809, y: 0.361, z: 0}
-  - {x: -0.809, y: 0.361, z: 0}
-  - {x: -0.683, y: 0.546, z: 0}
+  ammo: {fileID: 11400000, guid: 0babaa8712b724041bf40646174e772d, type: 2}
   Beam: {fileID: 193611353471803994, guid: 976c8fd12257bec45b66dde105d9ffff, type: 3}
+  offsetArr:
+  - 2
+  - 0
+  - -2
+--- !u!114 &2924360397197612924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4630120901667707226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8c72b2aa2298841a1a1316f027924f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 65536
+  speed: 10.86
+--- !u!114 &1623503311325851936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4630120901667707226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fa2f6b32269dbe4c94d55a559a4e2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8105223878216378280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4630120901667707226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09c92585f9f2cd14688d7cbd714e0721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3353873664972265684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4630120901667707226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86952cd70ff851741bdd5814f9dea8da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9153728665272151147
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,7 +390,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 505066742154324670}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: ShootPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}

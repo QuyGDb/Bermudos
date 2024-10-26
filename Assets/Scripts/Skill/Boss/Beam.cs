@@ -11,7 +11,7 @@ public class Beam : MonoBehaviour
         if (isColliding)
             return;
         collision.GetComponent<ReceiveDamage>()?.TakeDamage(damageBeam);
-        collision.GetComponent<PlayerEffect>()?.DamagePushEfect();
+        collision.GetComponent<PlayerEffect>()?.DamagePushEfect(transform.position);
         collision.GetComponent<PlayerEffect>()?.CallDamageFlashEffect(GameResources.Instance.damegeFlashMaterial, GameResources.Instance.litMaterial, collision.GetComponentsInChildren<SpriteRenderer>());
         isColliding = true;
     }

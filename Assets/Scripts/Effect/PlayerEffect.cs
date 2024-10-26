@@ -9,22 +9,13 @@ public class PlayerEffect : MonoBehaviour
     private Rigidbody2D rb;
     private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
     private Coroutine PushPlayerByEnemyCoroutine;
-    private Component ammo;
+
     [ColorUsage(true, true)]
     [SerializeField] private Color flashColor;
     [SerializeField] private float duration = 0.25f;
     [SerializeField] private float damageForce;
     public bool isDashing = false;
     private float dashEffectDuration = 0.05f;
-    private void OnEnable()
-    {
-        StaticEventHandler.OnAmmoChanged += StaticEventHandler_OnAmmoChanged;
-
-    }
-    private void OnDisable()
-    {
-        StaticEventHandler.OnAmmoChanged -= StaticEventHandler_OnAmmoChanged;
-    }
 
 
     private void Awake()
@@ -37,10 +28,6 @@ public class PlayerEffect : MonoBehaviour
     {
         if (isDashing)
             DashShadowPlayerEffect();
-    }
-    private void StaticEventHandler_OnAmmoChanged(OnAmmoChangedEventArgs onAmmoChangedEventArgs)
-    {
-        this.ammo = onAmmoChangedEventArgs.ammo;
     }
 
     public void CallDamageFlashEffect(Material damageFlash, Material defaultMaterial, SpriteRenderer[] spriteRenderers)
@@ -70,15 +57,17 @@ public class PlayerEffect : MonoBehaviour
         }
 
     }
-    public void DamagePushEfect()
+    public void DamagePushEfect(Vector2 damageSource)
     {
         if (PushPlayerByEnemyCoroutine != null)
         {
             StopCoroutine(PushPlayerByEnemyCoroutine);
         }
         if (gameObject.activeSelf)
-            PushPlayerByEnemyCoroutine = StartCoroutine(PushPlayerByEnemy(rb.position + (damageForce * (rb.position - (Vector2)ammo.transform.position).normalized)));
+        {
 
+            PushPlayerByEnemyCoroutine = StartCoroutine(PushPlayerByEnemy(rb.position + (damageForce * (rb.position - damageSource).normalized)));
+        }
     }
     private IEnumerator PushPlayerByEnemy(Vector3 targetPosition)
     {

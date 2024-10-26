@@ -199,11 +199,11 @@ public class Ammo : MonoBehaviour, IFireable
     {
         if (isColliding)
             return;
-            collision.GetComponent<ReceiveDamage>()?.TakeDamage(ammoDetailsSO.damage);
+        collision.GetComponent<ReceiveDamage>()?.TakeDamage(ammoDetailsSO.damage);
         if ((playerLayerMask.value & 1 << collision.gameObject.layer) > 0)
         {
             StaticEventHandler.CallAmmoChangedEvent(this);
-            collision.GetComponent<PlayerEffect>().DamagePushEfect();
+            collision.GetComponent<PlayerEffect>().DamagePushEfect(transform.position);
             collision.GetComponent<PlayerEffect>().CallDamageFlashEffect(GameResources.Instance.damegeFlashMaterial, GameResources.Instance.litMaterial, collision.GetComponentsInChildren<SpriteRenderer>());
         }
 

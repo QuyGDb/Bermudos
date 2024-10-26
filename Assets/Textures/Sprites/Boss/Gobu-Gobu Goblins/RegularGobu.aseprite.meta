@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638648831653484477
+  platformSettingsDirtyTick: 638655381602788053
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -976,10 +976,24 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: 18, y: 17}
+      - {x: 11, y: 15}
+      - {x: 6, y: -3}
+      - {x: -3, y: -3}
+      - {x: -13, y: 16}
+      - {x: -17, y: 16}
+      - {x: -18, y: 15}
+      - {x: -18, y: -4}
+      - {x: -17, y: -8}
+      - {x: -9, y: -17}
+      - {x: 9, y: -17}
+      - {x: 17, y: -8}
+      - {x: 18, y: -4}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 1
     uvTransform: {x: 400, y: 4}
   - name: RegularGobu_Frame_66
     originalName: 
@@ -1076,10 +1090,22 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: -4.5, y: 2}
+      - {x: -4.5, y: 14}
+      - {x: -19.5, y: 14}
+      - {x: -23.5, y: 9}
+      - {x: -23.5, y: -5}
+      - {x: -18.5, y: -11}
+      - {x: -14.5, y: -14}
+      - {x: 22.5, y: -14}
+      - {x: 23.5, y: -10}
+      - {x: 23.5, y: 8}
+      - {x: 8.5, y: -6}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 0.38
     uvTransform: {x: 345, y: 4}
   - name: RegularGobu_Frame_71
     originalName: 
@@ -1176,10 +1202,19 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: -9, y: 20}
+      - {x: -18, y: 13}
+      - {x: -17, y: -14}
+      - {x: 1, y: 10}
+      - {x: 11, y: -13}
+      - {x: 18, y: -7}
+      - {x: 18, y: 10}
+      - {x: 11, y: 20}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 0.3
     uvTransform: {x: 4, y: 51}
   - name: RegularGobu_Frame_76
     originalName: 
@@ -1276,10 +1311,20 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: -8.5, y: -5}
+      - {x: -24.5, y: 9}
+      - {x: -24.5, y: -4}
+      - {x: -23.5, y: -9}
+      - {x: -17.5, y: -14}
+      - {x: 20.5, y: -14}
+      - {x: 24.5, y: -9}
+      - {x: 24.5, y: 8}
+      - {x: 10.5, y: 14}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 0.26
     uvTransform: {x: 288, y: 4}
   - name: RegularGobu_Frame_81
     originalName: 
@@ -2136,10 +2181,23 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: 15.5, y: -7.5}
+      - {x: -0.5, y: -8.5}
+      - {x: -15.5, y: 8.5}
+      - {x: -7.5, y: 19.5}
+      - {x: -21.5, y: 19.5}
+      - {x: -31.5, y: 11.5}
+      - {x: -31.5, y: -11.5}
+      - {x: -18.5, y: -19.5}
+      - {x: 18.5, y: -19.5}
+      - {x: 25.5, y: -15.5}
+      - {x: 31.5, y: -7.5}
+      - {x: 31.5, y: 5.5}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 0.3
     uvTransform: {x: 4, y: 4}
   - name: RegularGobu_Frame_127
     originalName: 
@@ -2156,10 +2214,22 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: 14.5, y: 19.5}
+      - {x: -16.5, y: 18.5}
+      - {x: -31.5, y: 7.5}
+      - {x: -31.5, y: -5.5}
+      - {x: -21.5, y: 2.5}
+      - {x: -3.5, y: 6.5}
+      - {x: 6.5, y: 3.5}
+      - {x: 14.5, y: -5.5}
+      - {x: 11.5, y: -19.5}
+      - {x: 31.5, y: -10.5}
+      - {x: 29.5, y: 9.5}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 0.3
     uvTransform: {x: 75, y: 4}
   - name: RegularGobu_Frame_128
     originalName: 
@@ -2176,10 +2246,22 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: 16.5, y: 19.5}
+      - {x: 7.5, y: 19.5}
+      - {x: 14.5, y: 1.5}
+      - {x: -14.5, y: -7.5}
+      - {x: -31.5, y: 6.5}
+      - {x: -30.5, y: -10.5}
+      - {x: -20.5, y: -19.5}
+      - {x: 19.5, y: -19.5}
+      - {x: 31.5, y: -10.5}
+      - {x: 31.5, y: 8.5}
+      - {x: 25.5, y: 15.5}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 0.3
     uvTransform: {x: 146, y: 4}
   - name: RegularGobu_Frame_129
     originalName: 
@@ -2196,10 +2278,22 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: -7.5, y: 4.5}
+      - {x: 12.5, y: 6.5}
+      - {x: 31.5, y: -3.5}
+      - {x: 29.5, y: 8.5}
+      - {x: 21.5, y: 15.5}
+      - {x: 1.5, y: 19.5}
+      - {x: -17.5, y: 17.5}
+      - {x: -30.5, y: 5.5}
+      - {x: -31.5, y: -9.5}
+      - {x: -25.5, y: -15.5}
+      - {x: -10.5, y: -18.5}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 0.3
     uvTransform: {x: 217, y: 4}
   - name: RegularGobu_Frame_130
     originalName: 
@@ -3196,7 +3290,16 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: 0.5, y: 12.5}
+      - {x: -10.5, y: 2.5}
+      - {x: -10.5, y: -5.5}
+      - {x: -5.5, y: -12.5}
+      - {x: 6.5, y: -12.5}
+      - {x: 10.5, y: -8.5}
+      - {x: 10.5, y: 8.5}
+      - {x: 9.5, y: 12.5}
     indices: 
     edges: []
     tessellationDetail: 0
@@ -3216,10 +3319,19 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: -5.5, y: 25.5}
+      - {x: 3.5, y: 9.5}
+      - {x: 0.5, y: -10.5}
+      - {x: 1.5, y: -25.5}
+      - {x: 3.5, y: -25.5}
+      - {x: 11.5, y: -10.5}
+      - {x: 10.5, y: 10.5}
+      - {x: 4.5, y: 20.5}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 0.3
     uvTransform: {x: 4, y: 99}
   - name: RegularGobu_Frame_45
     originalName: 
@@ -3316,10 +3428,18 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: -10, y: -10}
+      - {x: -6, y: 4}
+      - {x: 8, y: 11}
+      - {x: 15, y: 12}
+      - {x: -13, y: 12}
+      - {x: -19, y: 10}
+      - {x: -19, y: -12}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 0.3
     uvTransform: {x: 444, y: 4}
   - name: RegularGobu_Frame_50
     originalName: 
@@ -3416,10 +3536,18 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: -2, y: 25}
+      - {x: -9, y: 18}
+      - {x: -11, y: -6}
+      - {x: -3, y: -22}
+      - {x: 8, y: -25}
+      - {x: 1, y: -18}
+      - {x: -1, y: 15}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 0.3
     uvTransform: {x: 4, y: 158}
   - name: RegularGobu_Frame_55
     originalName: 
@@ -3516,10 +3644,19 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: -14, y: 12}
+      - {x: -9, y: 10}
+      - {x: 1, y: 7}
+      - {x: 12, y: -12}
+      - {x: 19, y: -10}
+      - {x: 19, y: -2}
+      - {x: 19, y: 5}
+      - {x: 8, y: 12}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 0.3
     uvTransform: {x: 48, y: 51}
   - name: RegularGobu_Frame_60
     originalName: 
@@ -5145,7 +5282,7 @@ ScriptedImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
-  generatePhysicsShape: 0
+  generatePhysicsShape: 1
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 64, y: 64}

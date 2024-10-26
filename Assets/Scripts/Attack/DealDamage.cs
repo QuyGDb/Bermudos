@@ -8,11 +8,13 @@ public class DealDamage : MonoBehaviour
     //[SerializeField] private DamagePushEfectEvent damagePushEfectEvent;
     [SerializeField] private LayerMask enemyLayer;
     private ContactFilter2D contactFilter2D;
+    private Weapon weapon;
     private int damage = 10;
     private int attackCost = 10;
     private void Awake()
     {
         contactFilter2D.SetLayerMask(enemyLayer);
+        weapon = GetComponent<Weapon>();
         contactFilter2D.useLayerMask = true;
         contactFilter2D.useTriggers = false;
     }
@@ -25,7 +27,10 @@ public class DealDamage : MonoBehaviour
     {
         player.dealDamageEvent.OnDealDamage -= DealDamageEvent_OnDealDamage;
     }
-
+    private void LateUpdate()
+    {
+        // weapon.GetWeaponCollider();
+    }
     private void DealDamageEvent_OnDealDamage(DealDamageEvent dealDamageEvent, DealDamageEventAgrs dealDamageEventAgrs)
     {
         player.stamina.UseStamina(attackCost);

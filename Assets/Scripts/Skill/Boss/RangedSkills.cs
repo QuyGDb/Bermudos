@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillBoss : MonoBehaviour
+public class RangedSkills : MonoBehaviour
 {
     private Animator animator;
     public Transform shootPosition;
-    public AmmoDetailsSO phase1Ammo;
+    public AmmoDetailsSO ammo;
     float offset = 90;
     private void Awake()
     {
@@ -22,16 +22,24 @@ public class SkillBoss : MonoBehaviour
     }
 
     #region Base 
-    [Header("BASE")]
-
-    public Vector3[] shootPositions;
+    private Vector2[] Get15ShootDirections()
+    {
+        Vector2[] shootDirection = new Vector2[15];
+        Vector2 startDirection = Vector2.right * 30;
+        shootDirection[0] = startDirection;
+        for (int i = 1; i < 15; i++)
+        {
+            shootDirection[i] = Quaternion.Euler(0, 0, 24 * i) * startDirection;
+        }
+        return shootDirection;
+    }
     public void BaseShoot()
     {
-        for (int i = 0; i < shootPositions.Length; i++)
+        var directions = Get15ShootDirections();
+        for (int i = 0; i < directions.Length; i++)
         {
-
-            Vector3 target = transform.position + shootPositions[i];
-            Shoot(phase1Ammo, transform.position, target);
+            Vector3 target = transform.position + (Vector3)directions[i];
+            Shoot(ammo, transform.position, target);
         }
     }
     #endregion
@@ -61,7 +69,7 @@ public class SkillBoss : MonoBehaviour
 
     #region eyeLoop
     [Header("EYE LOOP")]
-    private float eyeLoopRate = 0.5f;
+    private float eyeLoopRate = 0.2f;
     private float eyeLoopDuration = 5f;
     public void StartEyeLoop()
     {
@@ -69,7 +77,7 @@ public class SkillBoss : MonoBehaviour
     }
     public IEnumerator EyeLoop()
     {
-        while (eyeLoopDuration < 0f)
+        while (eyeLoopDuration > 0f)
         {
             EyeAttack();
             eyeLoopDuration -= eyeLoopRate;
@@ -86,8 +94,7 @@ public class SkillBoss : MonoBehaviour
 
         foreach (var targetPosition in targetPositionList)
         {
-            Debug.Log(targetPosition);
-            Shoot(phase1Ammo, shootPosition.position, targetPosition);
+            Shoot(ammo, shootPosition.position, targetPosition);
         }
     }
 
@@ -113,4 +120,33 @@ public class SkillBoss : MonoBehaviour
         return targetPositionList;
     }
     #endregion
+
+    #region mouthOpenLoop
+    private float mouthOpenLoopRate = 0.1f;
+    private float mouthOpenLoopDuration = 5f;
+    public void StartMouthOpenLoopMouth()
+    {
+
+        StartCoroutine(MouthOpenLoop());
+    }
+    public IEnumerator MouthOpenLoop()
+    {
+        while (mouthOpenLoopDuration > 0f)
+        {
+            Shoot(ammo, shootPosition.position, GameManager.Instance.player.GetPlayerPosition());
+            mouthOpenLoopDuration -= mouthOpenLoopRate;
+            yield return new WaitForSeconds(mouthOpenLoopRate);
+        }
+        mouthOpenLoopDuration = 5f;
+    }
+    #endregion
+
+    private void Test1()
+    {
+        Debug.Log("Test1" + Time.frameCount);
+    }
+    //private void Test2()
+    //{
+    //    Debug.Log("Test2");
+    //}
 }

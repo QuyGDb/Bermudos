@@ -19,16 +19,11 @@ public class Weapon : MonoBehaviour
         polygonCollider2D.useDelaunayMesh = true;
         polygonCollider2D.isTrigger = true;
     }
-    private void LateUpdate()
+
+    public void GetWeaponCollider()
     {
-        GetWeaponCollider();
-
-    }
-
-    private void GetWeaponCollider()
-    {
-        spriteRenderer.sprite.GetPhysicsShape(0, spritePhysicsShapePointsList);
-
-        polygonCollider2D.points = spritePhysicsShapePointsList.ToArray();
+        int shapeCount = spriteRenderer.sprite.GetPhysicsShape(0, spritePhysicsShapePointsList);
+        if (shapeCount > 0)
+            polygonCollider2D.points = spritePhysicsShapePointsList.ToArray();
     }
 }
