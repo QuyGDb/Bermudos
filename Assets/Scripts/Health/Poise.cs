@@ -5,7 +5,6 @@ using UnityEngine;
 public class Poise : MonoBehaviour
 {
     private PoiseEvent poiseEvent;
-    private Enemy enemy;
     public int maxPoise;
     private int currentPoise;
     public int stunTime;

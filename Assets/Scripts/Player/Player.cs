@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
         // Unsubscribe from player health event
         healthEvent.OnHealthChanged -= HealthEvent_OnHealthChanged;
     }
+
     public Vector2 GetPlayerPosition()
     {
         return transform.position;

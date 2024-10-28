@@ -1,22 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class EnemyEffect : MonoBehaviour
+public class EnemyEffect : Effect
 {
     private PoiseEvent poiseEvent;
-    public AnimationCurve damageFlashCurve;
-    private Rigidbody2D rb;
     private EnemyMovement enemyMovement;
-    private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
-    [SerializeField] private ParticleSystem bloodEffect;
-    [SerializeField] private ParticleSystem stunEffect;
     private Coroutine pushEnemyByAmmoCoroutine;
-    private Component ammo;
-    [ColorUsage(true, true)]
-    [SerializeField] private Color flashColor;
     // private DamagePushEfectEvent damagePushEfectEvent;
-    [SerializeField] private float damageForce;
-    [SerializeField] float duration = 0.25f;
 
 
     private void Awake()
@@ -29,14 +19,12 @@ public class EnemyEffect : MonoBehaviour
     private void OnEnable()
     {
         //damagePushEfectEvent.OnDamagePushEfect += DamagePushEfectEvent_OnDamagePushEfect;
-        StaticEventHandler.OnAmmoChanged += StaticEventHandler_OnAmmoChanged;
         poiseEvent.onPoise += PoiseEvent_onPoiseEvent;
     }
 
     private void OnDisable()
     {
         //damagePushEfectEvent.OnDamagePushEfect -= DamagePushEfectEvent_OnDamagePushEfect;
-        StaticEventHandler.OnAmmoChanged -= StaticEventHandler_OnAmmoChanged;
         poiseEvent.onPoise -= PoiseEvent_onPoiseEvent;
     }
     private void PoiseEvent_onPoiseEvent(PoiseEvent poiseEvent, PoiseEventArgs poiseEventArgs)
@@ -55,10 +43,7 @@ public class EnemyEffect : MonoBehaviour
         bloodEffect.Stop();
         stunEffect.Stop();
     }
-    private void StaticEventHandler_OnAmmoChanged(OnAmmoChangedEventArgs onAmmoChangedEventArgs)
-    {
-        ammo = onAmmoChangedEventArgs.ammo;
-    }
+
 
     public void CallDamageFlashEffect(Material damageFlash, Material defaultMaterial, SpriteRenderer[] spriteRenderers)
     {
@@ -91,10 +76,10 @@ public class EnemyEffect : MonoBehaviour
     /// <summary>
     /// push enemy that get attack
     /// </summary>
-    public void DamagePushEfect()
+    public void DamagePushEfect(Vector3 ammo)
     {
         if (gameObject.activeSelf)
-            pushEnemyByAmmoCoroutine = StartCoroutine(PushEnemyByAmmo(rb.position + (damageForce * (rb.position - (Vector2)ammo.transform.position).normalized)));
+            pushEnemyByAmmoCoroutine = StartCoroutine(PushEnemyByAmmo(rb.position + (damageForce * (rb.position - (Vector2)ammo).normalized)));
     }
 
 
@@ -145,22 +130,7 @@ public class EnemyEffect : MonoBehaviour
     {
         bloodEffect.Play();
     }
-    public void StunEffect(float stunTime)
-    {
-        ParticleSystem.MainModule mainModule = stunEffect.main;
-        mainModule.startLifetimeMultiplier = stunTime;
-        stunEffect.Play();
 
-    }
-    #region Validation
-#if UNITY_EDITOR
-    private void OnValidate()
-    {
-        HelperUtilities.ValidateCheckNullValue(this, nameof(bloodEffect), bloodEffect);
-        HelperUtilities.ValidateCheckNullValue(this, nameof(stunEffect), stunEffect);
-    }
-#endif
-    #endregion
 }
 
 

@@ -6,6 +6,12 @@ public class Beam : MonoBehaviour
 {
     private bool isColliding = false;
     private int damageBeam = 20;
+
+    public void EyeAttackEnd()
+    {
+
+        Destroy(this.gameObject);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isColliding)

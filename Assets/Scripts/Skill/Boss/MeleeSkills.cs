@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MeleeSkills : MonoBehaviour
 {
-    private Animator animator;
+    private Boss boss;
     private Weapon weapon;
     [SerializeField] private LayerMask playerLayer;
     private MovementToPositionEvent movementToPositionEvent;
@@ -15,7 +15,7 @@ public class MeleeSkills : MonoBehaviour
     public float speed;
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        boss = GetComponent<Boss>();
         weapon = GetComponent<Weapon>();
         movementToPositionEvent = GetComponent<MovementToPositionEvent>();
     }
@@ -26,13 +26,7 @@ public class MeleeSkills : MonoBehaviour
         contactFilter2D.useLayerMask = true;
         contactFilter2D.useTriggers = false;
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) == true)
-        {
-            PlayActiveSkill(Settings.spearAtk);
-        }
-    }
+
     public void DealDamage(int damage)
     {
         weapon.GetWeaponCollider();
@@ -66,8 +60,8 @@ public class MeleeSkills : MonoBehaviour
             yield return waitForFixedUpdate;
         }
         transform.position = targetPosition;
-        animator.SetTrigger(Settings.isPhase2);
-        animator.SetTrigger(skill);
+        boss.animator.SetTrigger(Settings.isPhase2);
+        boss.animator.SetTrigger(skill);
     }
     private void StopActiveSkillRoutine()
     {
@@ -76,25 +70,17 @@ public class MeleeSkills : MonoBehaviour
             StopCoroutine(activeSkillCoroutine);
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.gameObject.layer == LayerMask.NameToLayer("Player"))
+            return;
+        StopActiveSkillRoutine();
+    }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log("OnCollisionEnter");
-        StopActiveSkillRoutine();
-    }
-    private void OnCollisionStay(Collision collision)
-    {
-        Debug.Log("OnCollisionStay");
-        StopActiveSkillRoutine();
-    }
-    private void OnTriggerEnter(Collider collision)
-    {
-        Debug.Log("OnTriggerEnter");
-        StopActiveSkillRoutine();
-    }
-    private void OnTriggerStay(Collider collision)
-    {
-        Debug.Log("OnTriggerStay");
+        if (collision.gameObject.gameObject.layer == LayerMask.NameToLayer("Player"))
+            return;
         StopActiveSkillRoutine();
     }
 

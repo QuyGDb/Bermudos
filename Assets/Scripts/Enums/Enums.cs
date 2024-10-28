@@ -41,3 +41,20 @@ public enum AnimationEnemyType
     IdleAndRun,
     IdleRunAndAttack,
 }
+public enum BossAnimationState
+{
+    isPhase2,
+    Idle,
+    ouch,
+    OpenMouth,
+    eyeAttack,
+    eyeLoop,
+    Hop,
+    EyeLoopDeath,
+    Base,
+    Walk,
+    swipe,
+    mouthOpenLoop,
+    spearAtk,
+    spinny
+}

@@ -4,33 +4,32 @@ using UnityEngine;
 
 public class AnimateBoss : MonoBehaviour
 {
-    Animator animator;
+    private Boss boss;
     // Start is called before the first frame update
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        boss = GetComponent<Boss>();
     }
     public void SetAimDirection(Vector3 direction)
     {
-
         float angle = HelperUtilities.GetAngleFromVector(direction);
         if (angle > 45f && angle <= 135f)
         {
-            animator.SetBool(Settings.aimUp, true);
+            boss.animator.SetTrigger(Settings.aimUp);
         }
         else if (angle > 135f && angle <= 180f || angle > -180f && angle <= -155f)
         {
-            animator.SetBool(Settings.aimLeft, true);
+            boss.animator.SetTrigger(Settings.aimLeft);
         }
 
         else if (angle > -155f && angle <= -45f)
         {
-            animator.SetBool(Settings.aimDown, true);
+            boss.animator.SetTrigger(Settings.aimDown);
         }
         else if (angle > -45f && angle <= 45f)
         {
-            animator.SetBool(Settings.aimRight, true);
+            boss.animator.SetTrigger(Settings.aimRight);
         }
     }
 

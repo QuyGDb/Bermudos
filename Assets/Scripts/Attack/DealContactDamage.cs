@@ -5,7 +5,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class DealContactDamage : MonoBehaviour
 {
-    private Enemy enemy;
+    private PoiseEvent poiseEvent;
     #region Header DEAL DAMAGE
     [Space(10)]
     [Header("DEAL DAMAGE")]
@@ -22,15 +22,15 @@ public class DealContactDamage : MonoBehaviour
     private float stunTime;
     private void Awake()
     {
-        enemy = GetComponent<Enemy>();
+        poiseEvent = GetComponent<PoiseEvent>();
     }
     private void OnEnable()
     {
-        enemy.poiseEvent.onPoise += PoiseEvent_OnPoise;
+        poiseEvent.onPoise += PoiseEvent_OnPoise;
     }
     private void OnDisable()
     {
-        enemy.poiseEvent.onPoise -= PoiseEvent_OnPoise;
+        poiseEvent.onPoise -= PoiseEvent_OnPoise;
     }
     private void PoiseEvent_OnPoise(PoiseEvent poiseEvent, PoiseEventArgs poiseEventArgs)
     {

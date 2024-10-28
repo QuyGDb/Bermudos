@@ -1,26 +1,25 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Enemy))]
 [DisallowMultipleComponent]
 public class StunBar : MonoBehaviour
 {
-    private Enemy enemy;
+    private PoiseEvent poiseEvent;
     private Slider stunBar;
     private float stunTime;
 
     private void Awake()
     {
-        enemy = GetComponent<Enemy>();
+        poiseEvent = GetComponent<PoiseEvent>();
         stunBar = GetComponentInChildren<Slider>();
     }
     private void OnEnable()
     {
-        enemy.poiseEvent.onPoise += PoiseEvent_OnPoise;
+        poiseEvent.onPoise += PoiseEvent_OnPoise;
     }
     private void OnDisable()
     {
-        enemy.poiseEvent.onPoise -= PoiseEvent_OnPoise;
+        poiseEvent.onPoise -= PoiseEvent_OnPoise;
     }
 
     private void PoiseEvent_OnPoise(PoiseEvent poiseEvent, PoiseEventArgs poiseEventArgs)

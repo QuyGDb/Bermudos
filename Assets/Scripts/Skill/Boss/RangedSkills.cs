@@ -13,6 +13,7 @@ public class RangedSkills : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+
     public void Shoot(AmmoDetailsSO ammoDetailsSO, Vector3 shootPosition, Vector3 target)
     {
         // Shoot
@@ -49,12 +50,7 @@ public class RangedSkills : MonoBehaviour
     [Header("EYE ATTACK")]
     public GameObject Beam;
 
-    public void EyeAttackEnd()
-    {
 
-        if (transform.childCount > 1)
-            Destroy(transform.GetChild(1).gameObject);
-    }
 
     public void EyeAttack()
     {
@@ -69,7 +65,7 @@ public class RangedSkills : MonoBehaviour
 
     #region eyeLoop
     [Header("EYE LOOP")]
-    private float eyeLoopRate = 0.2f;
+    private float eyeLoopRate = 0.5f;
     private float eyeLoopDuration = 5f;
     public void StartEyeLoop()
     {
@@ -83,6 +79,8 @@ public class RangedSkills : MonoBehaviour
             eyeLoopDuration -= eyeLoopRate;
             yield return new WaitForSeconds(eyeLoopRate);
         }
+        eyeLoopDuration = 5f;
+
     }
     #endregion
 

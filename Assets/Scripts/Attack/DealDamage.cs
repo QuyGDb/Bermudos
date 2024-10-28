@@ -27,10 +27,7 @@ public class DealDamage : MonoBehaviour
     {
         player.dealDamageEvent.OnDealDamage -= DealDamageEvent_OnDealDamage;
     }
-    private void LateUpdate()
-    {
-        // weapon.GetWeaponCollider();
-    }
+
     private void DealDamageEvent_OnDealDamage(DealDamageEvent dealDamageEvent, DealDamageEventAgrs dealDamageEventAgrs)
     {
         player.stamina.UseStamina(attackCost);
@@ -43,7 +40,6 @@ public class DealDamage : MonoBehaviour
             {
                 DealDamageHandle(collider);
             }
-
         }
     }
     private void DealDamageHandle(Collider2D collision)
@@ -52,10 +48,19 @@ public class DealDamage : MonoBehaviour
         //TakeDame(); sẽ gọi destroy object lúc health về 0, lúc đó DamageEffect vẫn được gọi vì gameobject vẫn còn tồn tại, dù có check != thì object đó bị hủy trong lúc hàm đó đang chạy nên không giải quyết đươc, vì không thể xác định được 
         // lúc này object hủy, nên ta sẽ damageEffect trước TakeDamage, để damagepush được thực hiện trước khi object bị hủy, 
         // 1 bài test gọi thông qua event CallDamagePushEfectEvent(); thì không bị lỗi vì call event có lẽ được gọi chậm hơn gọi trước tiếp, nên object enemy đã bị hủy callevent mới được gọi, mà object đã hủy rồi nên sub không được gọi(ví dụ call pusheffeft đc gọi 5 lần còn callevent đc gọi 4 lần)
-        collision.GetComponent<Enemy>().enemyEffect.PushEnemyByWeapon(player.transform.position);
-        collision.GetComponent<Enemy>().health.TakeDamage(damage);
-        collision.GetComponent<Enemy>().enemyEffect.CallDamageFlashEffect(GameResources.Instance.damegeFlashMaterial, GameResources.Instance.litMaterial, collision.GetComponents<SpriteRenderer>());
-        collision.GetComponent<Enemy>().enemyEffect.BloodEffect();
+        if (collision.GetComponent<Enemy>() != null)
+        {
+            collision.GetComponent<Enemy>()?.enemyEffect.PushEnemyByWeapon(player.transform.position);
+            collision.GetComponent<ReceiveDamage>().TakeDamage(damage);
+            collision.GetComponent<Enemy>().enemyEffect.CallDamageFlashEffect(GameResources.Instance.damegeFlashMaterial, GameResources.Instance.litMaterial, collision.GetComponents<SpriteRenderer>());
+            collision.GetComponent<Enemy>().enemyEffect.BloodEffect();
+        }
+        else if (collision.GetComponent<Boss>() != null)
+        {
+            collision.GetComponent<BossEffect>().PushBossByWeapon(player.transform.position);
+            collision.GetComponent<ReceiveDamage>().TakeDamage(damage);
+            collision.GetComponent<BossEffect>().ouchEffect();
+        }
 
     }
 

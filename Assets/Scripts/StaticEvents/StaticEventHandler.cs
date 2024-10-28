@@ -18,12 +18,6 @@ public static class StaticEventHandler
         OnPlayerChanged?.Invoke(new OnPlayerChangedEventArgs() { player = player });
     }
 
-    public static event Action<OnAmmoChangedEventArgs> OnAmmoChanged;
-
-    public static void CallAmmoChangedEvent(Ammo ammo)
-    {
-        OnAmmoChanged?.Invoke(new OnAmmoChangedEventArgs() { ammo = ammo });
-    }
 
     public static event Action OnBuildNavMesh;
 

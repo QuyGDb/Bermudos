@@ -12,6 +12,7 @@ public class Ammo : MonoBehaviour, IFireable
     private AmmoAnimation ammoAnimation;
     private LayerMask enemyLayerMask;
     private LayerMask playerLayerMask;
+    private LayerMask bossLayerMask;
     private Vector2 trajectoryStartPoint;
     private Vector2 target;
     private Vector2 trajectoryRange;
@@ -202,17 +203,22 @@ public class Ammo : MonoBehaviour, IFireable
         collision.GetComponent<ReceiveDamage>()?.TakeDamage(ammoDetailsSO.damage);
         if ((playerLayerMask.value & 1 << collision.gameObject.layer) > 0)
         {
-            StaticEventHandler.CallAmmoChangedEvent(this);
             collision.GetComponent<PlayerEffect>().DamagePushEfect(transform.position);
             collision.GetComponent<PlayerEffect>().CallDamageFlashEffect(GameResources.Instance.damegeFlashMaterial, GameResources.Instance.litMaterial, collision.GetComponentsInChildren<SpriteRenderer>());
         }
 
         if ((enemyLayerMask.value & 1 << collision.gameObject.layer) > 0)
         {
-            StaticEventHandler.CallAmmoChangedEvent(this);
-            collision.GetComponent<EnemyEffect>().DamagePushEfect();
-            collision.GetComponent<EnemyEffect>().CallDamageFlashEffect(GameResources.Instance.damegeFlashMaterial, GameResources.Instance.litMaterial, collision.GetComponentsInChildren<SpriteRenderer>());
+            collision.GetComponent<EnemyEffect>()?.DamagePushEfect(transform.position);
+            collision.GetComponent<EnemyEffect>()?.CallDamageFlashEffect(GameResources.Instance.damegeFlashMaterial, GameResources.Instance.litMaterial, collision.GetComponentsInChildren<SpriteRenderer>());
             collision.GetComponent<Poise>().TakePoise(poiseAmount);
+        }
+        if ((bossLayerMask.value & 1 << collision.gameObject.layer) > 0)
+        {
+            collision.GetComponent<Poise>().TakePoise(poiseAmount);
+            collision.GetComponent<BossEffect>()?.PushBossByWeapon(transform.position);
+            collision.GetComponent<ReceiveDamage>()?.TakeDamage(ammoDetailsSO.damage);
+            collision.GetComponent<BossEffect>()?.ouchEffect();
         }
         AmmoHitEffect();
         DisableAmmo();
@@ -230,6 +236,7 @@ public class Ammo : MonoBehaviour, IFireable
     {
         enemyLayerMask = LayerMask.GetMask("Enemy");
         playerLayerMask = LayerMask.GetMask("Player");
+        bossLayerMask = LayerMask.GetMask("Boss");
     }
 
 

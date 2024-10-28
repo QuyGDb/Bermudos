@@ -2,18 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerEffect : MonoBehaviour
+public class PlayerEffect : Effect
 {
     private Player player;
-    public AnimationCurve damageFlashCurve;
-    private Rigidbody2D rb;
-    private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
     private Coroutine PushPlayerByEnemyCoroutine;
-
-    [ColorUsage(true, true)]
-    [SerializeField] private Color flashColor;
-    [SerializeField] private float duration = 0.25f;
-    [SerializeField] private float damageForce;
     public bool isDashing = false;
     private float dashEffectDuration = 0.05f;
 

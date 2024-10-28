@@ -27,20 +27,7 @@ public static class Settings
 
     // Animator parameters - Boss
     public static int isPhase2 = Animator.StringToHash("isPhase2");
-    public static int Idle = Animator.StringToHash("Idle");
-    public static int ouch = Animator.StringToHash("ouch");
-    public static int regularMouth = Animator.StringToHash("regularMouth");
-    public static int OpenMouth = Animator.StringToHash("OpenMouth");
-    public static int eyeAttack = Animator.StringToHash("eyeAttack");
-    public static int eyeLoop = Animator.StringToHash("eyeLoop");
-    public static int Hop = Animator.StringToHash("Hop");
-    public static int EyeLoopDeath = Animator.StringToHash("EyeLoopDeath");
-    public static int Base = Animator.StringToHash("Base");
-    public static int Walk = Animator.StringToHash("Walk");
-    public static int swipe = Animator.StringToHash("swipe");
-    public static int openMouthLoop = Animator.StringToHash("openMouthLoop");
-    public static int spearAtk = Animator.StringToHash("spearAtk");
-    public static int spinny = Animator.StringToHash("spinny");
+
     #endregion
 
     #region Epsilon
