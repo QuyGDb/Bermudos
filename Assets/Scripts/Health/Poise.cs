@@ -6,7 +6,7 @@ public class Poise : MonoBehaviour
 {
     private PoiseEvent poiseEvent;
     public int maxPoise;
-    private int currentPoise;
+    public int currentPoise;
     public int stunTime;
     private void Awake()
     {
@@ -20,6 +20,9 @@ public class Poise : MonoBehaviour
     public void TakePoise(int poisonAmount)
     {
         currentPoise -= poisonAmount;
-        poiseEvent.CallPoiseEvent(poisonAmount, currentPoise, maxPoise, stunTime);
+        if (currentPoise <= 0)
+        {
+            poiseEvent.CallPoiseEvent(poisonAmount, currentPoise, maxPoise, stunTime);
+        }
     }
 }

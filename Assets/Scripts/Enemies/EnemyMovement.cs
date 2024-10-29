@@ -24,11 +24,11 @@ public class EnemyMovement : MonoBehaviour
     }
     private void OnEnable()
     {
-        enemy.poiseEvent.onPoise += PoiseEvent_OnPoise;
+        enemy.poiseEvent.OnPoise += PoiseEvent_OnPoise;
     }
     private void OnDisable()
     {
-        enemy.poiseEvent.onPoise -= PoiseEvent_OnPoise;
+        enemy.poiseEvent.OnPoise -= PoiseEvent_OnPoise;
     }
 
 

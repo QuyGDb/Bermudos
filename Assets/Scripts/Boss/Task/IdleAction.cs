@@ -1,18 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
+using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine;
+using UnityEngine.Rendering;
 
-public class IdleAction : MonoBehaviour
+public class IdleAction : Action
 {
-    // Start is called before the first frame update
-    void Start()
+    private Animator animator;
+
+    public override void OnAwake()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override TaskStatus OnUpdate()
     {
-        
+        animator.SetBool(Settings.Idle, true);
+        return TaskStatus.Success;
     }
+
 }

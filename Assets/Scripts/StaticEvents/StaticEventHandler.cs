@@ -18,7 +18,12 @@ public static class StaticEventHandler
         OnPlayerChanged?.Invoke(new OnPlayerChangedEventArgs() { player = player });
     }
 
+    public static event Action<OnBossChangedEventArgs> OnBossChanged;
 
+    public static void CallBossChangedEvent(Boss boss)
+    {
+        OnBossChanged?.Invoke(new OnBossChangedEventArgs() { boss = boss });
+    }
     public static event Action OnBuildNavMesh;
 
     public static void CallBuildNavMeshEvent()
@@ -35,6 +40,10 @@ public class MapChangedEventArgs : EventArgs
 public class OnPlayerChangedEventArgs : EventArgs
 {
     public Player player;
+}
+public class OnBossChangedEventArgs : EventArgs
+{
+    public Boss boss;
 }
 public class OnAmmoChangedEventArgs : EventArgs
 {

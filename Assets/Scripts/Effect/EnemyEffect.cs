@@ -19,13 +19,13 @@ public class EnemyEffect : Effect
     private void OnEnable()
     {
         //damagePushEfectEvent.OnDamagePushEfect += DamagePushEfectEvent_OnDamagePushEfect;
-        poiseEvent.onPoise += PoiseEvent_onPoiseEvent;
+        poiseEvent.OnPoise += PoiseEvent_onPoiseEvent;
     }
 
     private void OnDisable()
     {
         //damagePushEfectEvent.OnDamagePushEfect -= DamagePushEfectEvent_OnDamagePushEfect;
-        poiseEvent.onPoise -= PoiseEvent_onPoiseEvent;
+        poiseEvent.OnPoise -= PoiseEvent_onPoiseEvent;
     }
     private void PoiseEvent_onPoiseEvent(PoiseEvent poiseEvent, PoiseEventArgs poiseEventArgs)
     {

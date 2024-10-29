@@ -15,11 +15,11 @@ public class StunBar : MonoBehaviour
     }
     private void OnEnable()
     {
-        poiseEvent.onPoise += PoiseEvent_OnPoise;
+        poiseEvent.OnPoise += PoiseEvent_OnPoise;
     }
     private void OnDisable()
     {
-        poiseEvent.onPoise -= PoiseEvent_OnPoise;
+        poiseEvent.OnPoise -= PoiseEvent_OnPoise;
     }
 
     private void PoiseEvent_OnPoise(PoiseEvent poiseEvent, PoiseEventArgs poiseEventArgs)

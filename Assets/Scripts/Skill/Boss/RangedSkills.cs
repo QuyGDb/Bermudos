@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -64,14 +65,12 @@ public class RangedSkills : MonoBehaviour
     #endregion
 
     #region eyeLoop
-    [Header("EYE LOOP")]
-    private float eyeLoopRate = 0.5f;
-    private float eyeLoopDuration = 5f;
-    public void StartEyeLoop()
+
+    public void StartEyeLoop(float eyeLoopDuration, float eyeLoopRate)
     {
-        StartCoroutine(EyeLoop());
+        StartCoroutine(EyeLoop(eyeLoopDuration, eyeLoopRate));
     }
-    public IEnumerator EyeLoop()
+    public IEnumerator EyeLoop(float eyeLoopDuration, float eyeLoopRate)
     {
         while (eyeLoopDuration > 0f)
         {
@@ -120,18 +119,17 @@ public class RangedSkills : MonoBehaviour
     #endregion
 
     #region mouthOpenLoop
-    private float mouthOpenLoopRate = 0.1f;
-    private float mouthOpenLoopDuration = 5f;
-    public void StartMouthOpenLoopMouth()
+
+    public void StartMouthOpenLoopMouth(float mouthOpenLoopRate, float mouthOpenLoopDuration)
     {
 
-        StartCoroutine(MouthOpenLoop());
+        StartCoroutine(MouthOpenLoop(mouthOpenLoopRate, mouthOpenLoopDuration));
     }
-    public IEnumerator MouthOpenLoop()
+    public IEnumerator MouthOpenLoop(float mouthOpenLoopRate, float mouthOpenLoopDuration)
     {
         while (mouthOpenLoopDuration > 0f)
         {
-            Shoot(ammo, shootPosition.position, GameManager.Instance.player.GetPlayerPosition());
+            Shoot(ammo, shootPosition.position, GameManager.Instance.player.transform.position);
             mouthOpenLoopDuration -= mouthOpenLoopRate;
             yield return new WaitForSeconds(mouthOpenLoopRate);
         }
@@ -139,12 +137,5 @@ public class RangedSkills : MonoBehaviour
     }
     #endregion
 
-    private void Test1()
-    {
-        Debug.Log("Test1" + Time.frameCount);
-    }
-    //private void Test2()
-    //{
-    //    Debug.Log("Test2");
-    //}
+
 }

@@ -34,6 +34,10 @@ public class Destroyed : MonoBehaviour
         {
             StartCoroutine(Die());
         }
+        else if (destroyedEventArgs.bossDied)
+        {
+            StartCoroutine(Die());
+        }
         else
         {
             MarkEnemyAsDead();

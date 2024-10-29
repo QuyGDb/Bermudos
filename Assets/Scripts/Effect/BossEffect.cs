@@ -34,6 +34,6 @@ public class BossEffect : Effect
 
     public void ouchEffect()
     {
-        animator.SetTrigger("ouch");
+        animator.SetTrigger(Settings.ouch);
     }
 }

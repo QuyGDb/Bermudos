@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class PoiseEvent : MonoBehaviour
 {
-    public event Action<PoiseEvent, PoiseEventArgs> onPoise;
+    public event Action<PoiseEvent, PoiseEventArgs> OnPoise;
 
     public void CallPoiseEvent(int poiseAmount, int currentPoise, int maxPoise, int stunTime)
     {
-        onPoise?.Invoke(this, new PoiseEventArgs() { poiseAmount = poiseAmount, currentPoise = currentPoise, maxPoise = maxPoise, stunTime = stunTime });
+        OnPoise?.Invoke(this, new PoiseEventArgs() { poiseAmount = poiseAmount, currentPoise = currentPoise, maxPoise = maxPoise, stunTime = stunTime });
     }
 }
 public class PoiseEventArgs

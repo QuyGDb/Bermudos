@@ -3,17 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SingleHitSkillsAction : Action
+public class SkillsAction : Action
 {
     [HideInInspector] public Animator animator;
 
     public BossAnimationState bossAnimationState;
-    public int normalizedTime;
+    public float normalizedTime;
     private bool isFirstUpdate;
     // Animator parameters - Boss
-    private int isPhase2 = Animator.StringToHash("isPhase2");
     private int Idle = Animator.StringToHash("Idle");
-    private int ouch = Animator.StringToHash("ouch");
     private int OpenMouth = Animator.StringToHash("OpenMouth");
     private int eyeAttack = Animator.StringToHash("eyeAttack");
     private int eyeLoop = Animator.StringToHash("eyeLoop");
@@ -30,9 +28,7 @@ public class SingleHitSkillsAction : Action
 
     public override void OnAwake()
     {
-        bossAnimationStateDic.Add(BossAnimationState.isPhase2, isPhase2);
         bossAnimationStateDic.Add(BossAnimationState.Idle, Idle);
-        bossAnimationStateDic.Add(BossAnimationState.ouch, ouch);
         bossAnimationStateDic.Add(BossAnimationState.OpenMouth, OpenMouth);
         bossAnimationStateDic.Add(BossAnimationState.eyeAttack, eyeAttack);
         bossAnimationStateDic.Add(BossAnimationState.eyeLoop, eyeLoop);
@@ -53,8 +49,11 @@ public class SingleHitSkillsAction : Action
         animator.SetTrigger(bossAnimationStateDic[bossAnimationState]);
         isFirstUpdate = true;
     }
-
-    public virtual TaskStatus HandleTimeOfHits(int time)
+    public override TaskStatus OnUpdate()
+    {
+        return HandleTimeOfHits(normalizedTime);
+    }
+    public virtual TaskStatus HandleTimeOfHits(float time)
     {
         if (isFirstUpdate)
         {

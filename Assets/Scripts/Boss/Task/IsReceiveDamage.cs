@@ -1,3 +1,4 @@
+using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,18 +7,25 @@ using UnityEngine;
 public class IsReceiveDamage : Conditional
 {
     private HealthEvent healthEvent;
+    private PoiseEvent poiseEvent;
     private bool isReceiveDamage = false;
+    public SharedFloat stunTime;
     public override void OnAwake()
     {
         healthEvent = GetComponent<HealthEvent>();
-    }
-    public override void OnStart()
-    {
+        poiseEvent = GetComponent<PoiseEvent>();
         healthEvent.OnHealthChanged += OnHealthChanged;
+        poiseEvent.OnPoise += OnPoiseChanged;
     }
+
     private void OnHealthChanged(HealthEvent healthEvent, HealthEventArgs healthEventArgs)
     {
+        Debug.Log("Receive Damage");
         isReceiveDamage = true;
+    }
+    private void OnPoiseChanged(PoiseEvent poiseEvent, PoiseEventArgs poiseEventArgs)
+    {
+        stunTime.Value = poiseEventArgs.stunTime;
     }
     public override TaskStatus OnUpdate()
     {
@@ -25,7 +33,6 @@ public class IsReceiveDamage : Conditional
     }
     public override void OnEnd()
     {
-        healthEvent.OnHealthChanged -= OnHealthChanged;
         isReceiveDamage = false;
     }
 }

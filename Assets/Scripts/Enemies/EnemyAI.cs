@@ -27,13 +27,13 @@ public class EnemyAI : MonoBehaviour
     private void OnEnable()
     {
         enemyStateEvent.onEnemyState += OnEnemyState;
-        enemy.poiseEvent.onPoise += PoiseEvent_OnPoise;
+        enemy.poiseEvent.OnPoise += PoiseEvent_OnPoise;
 
     }
     private void OnDisable()
     {
         enemyStateEvent.onEnemyState -= OnEnemyState;
-        enemy.poiseEvent.onPoise += PoiseEvent_OnPoise;
+        enemy.poiseEvent.OnPoise += PoiseEvent_OnPoise;
     }
     private void PoiseEvent_OnPoise(PoiseEvent poiseEvent, PoiseEventArgs poiseEventArgs)
     {

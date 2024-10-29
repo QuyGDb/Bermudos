@@ -217,7 +217,6 @@ public class Ammo : MonoBehaviour, IFireable
         {
             collision.GetComponent<Poise>().TakePoise(poiseAmount);
             collision.GetComponent<BossEffect>()?.PushBossByWeapon(transform.position);
-            collision.GetComponent<ReceiveDamage>()?.TakeDamage(ammoDetailsSO.damage);
             collision.GetComponent<BossEffect>()?.ouchEffect();
         }
         AmmoHitEffect();

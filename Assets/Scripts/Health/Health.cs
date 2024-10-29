@@ -6,8 +6,8 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class Health : MonoBehaviour
 {
-    private int currentHealth;
-    [SerializeField] private int startingHealth;
+    [HideInInspector] public int currentHealth;
+    public int startingHealth;
     private HealthEvent healthEvent;
 
     private void Awake()
@@ -23,6 +23,7 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
+        Debug.Log("Health: " + currentHealth);
         healthEvent.CallHealthChangedEvent(((float)currentHealth / (float)startingHealth), currentHealth, damageAmount);
     }
 }

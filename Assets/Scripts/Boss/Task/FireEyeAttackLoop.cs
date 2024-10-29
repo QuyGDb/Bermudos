@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class FireEyeAttackLoop : Action
 {
-    public RangedSkills rangedSkills;
-
+    private RangedSkills rangedSkills;
+    [Header("EYE LOOP")]
+    public float eyeLoopRate = 0.5f;
+    public float eyeLoopDuration = 5f;
     public override void OnAwake()
     {
         rangedSkills = GetComponent<RangedSkills>();
@@ -14,7 +16,7 @@ public class FireEyeAttackLoop : Action
 
     public override TaskStatus OnUpdate()
     {
-        rangedSkills.StartEyeLoop();
+        rangedSkills.StartEyeLoop(eyeLoopDuration, eyeLoopRate);
         return TaskStatus.Success;
     }
 
