@@ -20,7 +20,6 @@ public class IsReceiveDamage : Conditional
 
     private void OnHealthChanged(HealthEvent healthEvent, HealthEventArgs healthEventArgs)
     {
-        Debug.Log("Receive Damage");
         isReceiveDamage = true;
     }
     private void OnPoiseChanged(PoiseEvent poiseEvent, PoiseEventArgs poiseEventArgs)

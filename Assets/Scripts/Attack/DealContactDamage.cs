@@ -20,6 +20,7 @@ public class DealContactDamage : MonoBehaviour
     private LayerMask playerlayerMask;
     private bool isColliding = false;
     private float stunTime;
+    public bool isRemoved = false;
     private void Awake()
     {
         poiseEvent = GetComponent<PoiseEvent>();
@@ -54,7 +55,7 @@ public class DealContactDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
+        if (isRemoved) return;
         // If already colliding with something return
         if (isColliding || stunTime > 0) return;
         int collisionObjectLayerMask = (1 << collision.gameObject.layer);
@@ -69,7 +70,7 @@ public class DealContactDamage : MonoBehaviour
     // Trigger contact damage when staying withing a collider
     private void OnTriggerStay2D(Collider2D collision)
     {
-
+        if (isRemoved) return;
         // If already colliding with something return
         if (isColliding || stunTime > 0) return;
         int collisionObjectLayerMask = (1 << collision.gameObject.layer);

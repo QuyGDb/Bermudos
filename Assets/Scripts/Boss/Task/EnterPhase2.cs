@@ -6,37 +6,33 @@ using UnityEngine;
 public class EnterPhase2 : Action
 {
     private Animator animator;
-    public Material material;
+    private DealContactDamage dealContactDamage;
     private bool isFirstFrame = true;
-    private float transitionTime = 3.0f;
-    private float fadeAmount = 0.0f;
+    public float fadeInTime = 6f;
     public override void OnAwake()
     {
         animator = GetComponent<Animator>();
+        dealContactDamage = GetComponent<DealContactDamage>();
     }
     public override void OnStart()
     {
         isFirstFrame = true;
-        animator.SetTrigger(Settings.EyeLoopDeath);
+        dealContactDamage.isRemoved = true;
+        animator.SetTrigger(Settings.isPhase2);
+        animator.SetTrigger(Settings.Idle);
     }
     public override TaskStatus OnUpdate()
     {
-        if (isFirstFrame)
-        {
-            isFirstFrame = false;
-            return TaskStatus.Running;
-        }
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1)
-            return TaskStatus.Running;
-        fadeAmount = Mathf.Lerp(fadeAmount, 3, Time.deltaTime) / transitionTime;
-        if (transitionTime > 0)
-        {
-            transitionTime -= Time.deltaTime;
-            material.SetFloat("_FadeAmount", fadeAmount);
-            return TaskStatus.Running;
-        }
-        animator.SetBool(Settings.isPhase2, true);
+
         return TaskStatus.Success;
     }
+    public override void OnEnd()
+    {
+        isFirstFrame = true;
+    }
 
+    public IEnumerator Phase2()
+    {
+        yield return new WaitForSeconds(fadeInTime);
+    }
 }

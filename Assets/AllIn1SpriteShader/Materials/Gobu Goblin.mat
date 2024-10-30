@@ -46,7 +46,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _FadeTex:
         m_Texture: {fileID: 2800000, guid: 7aad8c583ef292e48b06af0d1f2fab97, type: 3}
-        m_Scale: {x: 0.21, y: 1.12}
+        m_Scale: {x: 2.37, y: 2.89}
         m_Offset: {x: 0, y: 0}
     - _GlowTex:
         m_Texture: {fileID: 0}
@@ -108,10 +108,10 @@ Material:
     - _DistortTexXSpeed: 5
     - _DistortTexYSpeed: 5
     - _EditorDrawers: 6
-    - _FadeAmount: 7.467172e+30
+    - _FadeAmount: 0.21922708
     - _FadeBurnGlow: 23
     - _FadeBurnTransition: 0.01
-    - _FadeBurnWidth: 0.174
+    - _FadeBurnWidth: 0.093
     - _FishEyeUvAmount: 0.35
     - _FlickerAlpha: 0
     - _FlickerFreq: 0.2
@@ -229,7 +229,7 @@ Material:
     - _ColorSwapBlue: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapGreen: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapRed: {r: 1, g: 1, b: 1, a: 1}
-    - _FadeBurnColor: {r: 1, g: 1, b: 0, a: 1}
+    - _FadeBurnColor: {r: 0.8037735, g: 0.8037735, b: 0.12587391, a: 1}
     - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
     - _GradBotLeftCol: {r: 0, g: 0, b: 1, a: 1}
     - _GradBotRightCol: {r: 0, g: 1, b: 0, a: 1}

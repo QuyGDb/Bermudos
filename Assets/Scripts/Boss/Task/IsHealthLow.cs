@@ -13,6 +13,18 @@ public class IsHealthLow : Conditional
     }
     public override TaskStatus OnUpdate()
     {
-        return health.currentHealth <= health.startingHealth * healthThreshold ? TaskStatus.Success : TaskStatus.Failure;
+        Debug.Log("Tick 0: " + Time.frameCount);
+        if (health.currentHealth <= health.startingHealth * healthThreshold)
+        {
+            healthThreshold = 0f;
+            Debug.Log("Tick 1: " + Time.frameCount);
+            return TaskStatus.Success;
+        }
+        else
+        {
+            Debug.Log("Tick 2: " + Time.frameCount);
+            return TaskStatus.Failure;
+
+        }
     }
 }

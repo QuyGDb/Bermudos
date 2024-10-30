@@ -9,7 +9,7 @@ public class ReceiveDamage : MonoBehaviour
     #endregion
     [SerializeField] private int damageAmount;
     private Health health;
-
+    public bool isNotReceivingDamage = false;
 
     private void Awake()
     {
@@ -19,6 +19,7 @@ public class ReceiveDamage : MonoBehaviour
 
     public void TakeDamage(int damageAmount = 0)
     {
+        if (isNotReceivingDamage) return;
         if (this.damageAmount > 0)
             damageAmount = this.damageAmount;
         health.TakeDamage(damageAmount);
