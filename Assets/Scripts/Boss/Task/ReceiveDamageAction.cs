@@ -7,15 +7,18 @@ public class ReceiveDamageAction : Action
 {
     private Animator animator;
     private RangedSkills rangedSkills;
+    private MeleeSkills meleeSkills;
     private bool isFirstUpdate;
     public override void OnAwake()
     {
         animator = GetComponent<Animator>();
         rangedSkills = GetComponent<RangedSkills>();
+        meleeSkills = GetComponent<MeleeSkills>();
     }
     public override void OnStart()
     {
         rangedSkills.StopAllCoroutines();
+        meleeSkills.StopAllCoroutines();
         isFirstUpdate = true;
     }
     public override TaskStatus OnUpdate()

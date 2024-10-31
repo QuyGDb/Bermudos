@@ -1,6 +1,8 @@
 using UnityEngine;
 using NavMeshPlus.Components;
 using System.Collections;
+
+[DisallowMultipleComponent]
 public class NavmeshManager : MonoBehaviour
 {
     private NavMeshSurface navMeshSurface;

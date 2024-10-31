@@ -26,7 +26,6 @@ public static class Settings
     public static int aimDownLeft = Animator.StringToHash("aimDownLeft");
 
     // Animator parameters - Boss
-    public static int isPhase2 = Animator.StringToHash("isPhase2");
     public static int Idle = Animator.StringToHash("Idle");
     public static int ouch = Animator.StringToHash("ouch");
     public static int OpenMouth = Animator.StringToHash("OpenMouth");
@@ -40,6 +39,19 @@ public static class Settings
     public static int mouthOpenLoop = Animator.StringToHash("mouthOpenLoop");
     public static int spearAtk = Animator.StringToHash("spearAtk");
     public static int spinny = Animator.StringToHash("spinny");
+    public static int Idle2 = Animator.StringToHash("Idle2");
+    public static int ouch2 = Animator.StringToHash("ouch2");
+    public static int OpenMouth2 = Animator.StringToHash("OpenMouth2");
+    public static int eyeAttack2 = Animator.StringToHash("eyeAttack2");
+    public static int eyeLoop2 = Animator.StringToHash("eyeLoop2");
+    public static int Hop2 = Animator.StringToHash("Hop2");
+    public static int EyeLoopDeath2 = Animator.StringToHash("EyeLoopDeath2");
+    public static int Base2 = Animator.StringToHash("Base2");
+    public static int Walk2 = Animator.StringToHash("Walk2");
+    public static int swipe2 = Animator.StringToHash("swipe2");
+    public static int mouthOpenLoop2 = Animator.StringToHash("mouthOpenLoop2");
+    public static int spearAtk2 = Animator.StringToHash("spearAtk2");
+    public static int spinny2 = Animator.StringToHash("spinny2");
     #endregion
 
     #region Epsilon

@@ -8,7 +8,7 @@ public class EndPhase1 : Action
     private Animator animator;
     public Material material;
     private bool isFirstFrame = true;
-    private float transitionTime = 6.0f;
+    private float transitionTime = 3.0f;
     private float fadeAmount = 0.0f;
     private float transitionTime2;
     public override void OnAwake()
@@ -17,15 +17,13 @@ public class EndPhase1 : Action
     }
     public override void OnStart()
     {
-        Debug.Log("First Frame" + Time.frameCount);
         isFirstFrame = true;
         transitionTime2 = transitionTime;
         animator.SetTrigger(Settings.EyeLoopDeath);
+        gameObject.layer = LayerMask.NameToLayer("Default");
     }
     public override TaskStatus OnUpdate()
     {
-        Debug.Log("First Frame" + Time.frameCount);
-
         if (isFirstFrame)
         {
             isFirstFrame = false;
@@ -33,16 +31,14 @@ public class EndPhase1 : Action
         }
         if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1)
             return TaskStatus.Running;
-        fadeAmount = fadeAmount + (Time.deltaTime / transitionTime2);
+
         if (transitionTime > 0)
         {
+            fadeAmount = fadeAmount + (Time.deltaTime / transitionTime2);
             transitionTime -= Time.deltaTime;
-            Debug.Log(transitionTime + " t");
-            Debug.Log(fadeAmount);
             material.SetFloat("_FadeAmount", fadeAmount);
             return TaskStatus.Running;
         }
-        material.SetFloat("_FadeAmount", 0);
         return TaskStatus.Success;
     }
 

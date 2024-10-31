@@ -24,8 +24,8 @@ public class BossEffect : Effect
         while (elapsedTime < duration)
         {
             Vector3 lerp = Vector3.Lerp(startPosition, targetPosition, (elapsedTime / duration));
-            rb.MovePosition(lerp)
-                ;
+            rb.MovePosition(lerp);
+
             elapsedTime += Time.fixedDeltaTime;
             yield return waitForFixedUpdate;
         }

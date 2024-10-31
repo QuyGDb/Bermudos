@@ -2,18 +2,17 @@ using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class IdleAction : Action
+public class IdleAction : SkillsAction
 {
-    private Animator animator;
 
     public override void OnAwake()
     {
-        animator = GetComponent<Animator>();
+        base.OnAwake();
     }
 
     public override TaskStatus OnUpdate()
     {
-        animator.SetBool(Settings.Idle, true);
+        animator.SetTrigger(bossAnimationStateDic[bossAnimationState]);
         return TaskStatus.Success;
     }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class Ammo : MonoBehaviour, IFireable
 {
     [HideInInspector] public AmmoDetailsSO ammoDetailsSO;

@@ -43,7 +43,6 @@ public enum AnimationEnemyType
 }
 public enum BossAnimationState
 {
-    isPhase2,
     Idle,
     ouch,
     OpenMouth,
@@ -56,5 +55,18 @@ public enum BossAnimationState
     swipe,
     mouthOpenLoop,
     spearAtk,
-    spinny
+    spinny,
+    Idle2,
+    ouch2,
+    OpenMouth2,
+    eyeAttack2,
+    eyeLoop2,
+    Hop2,
+    EyeLoopDeath2,
+    Base2,
+    Walk2,
+    swipe2,
+    mouthOpenLoop2,
+    spearAtk2,
+    spinny2
 }

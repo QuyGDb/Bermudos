@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class EnemyAttack : MonoBehaviour
 {
     private Enemy enemy;

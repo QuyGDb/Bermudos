@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+[DisallowMultipleComponent]
 public class Weapon : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
-    private PolygonCollider2D polygonCollider2D;
+    [HideInInspector] public PolygonCollider2D polygonCollider2D;
     private List<Vector2> spritePhysicsShapePointsList = new List<Vector2>();
     private void Awake()
     {

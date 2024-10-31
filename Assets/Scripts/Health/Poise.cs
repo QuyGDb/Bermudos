@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class Poise : MonoBehaviour
 {
     private PoiseEvent poiseEvent;
-    public int maxPoise;
-    public int currentPoise;
-    public int stunTime;
+    public float maxPoise;
+    public float currentPoise;
+    public float stunTime;
     private void Awake()
     {
         poiseEvent = GetComponent<PoiseEvent>();
@@ -17,12 +18,13 @@ public class Poise : MonoBehaviour
         currentPoise = maxPoise;
     }
 
-    public void TakePoise(int poisonAmount)
+    public void TakePoise(int poiseAmount)
     {
-        currentPoise -= poisonAmount;
+        currentPoise -= poiseAmount;
+
         if (currentPoise <= 0)
         {
-            poiseEvent.CallPoiseEvent(poisonAmount, currentPoise, maxPoise, stunTime);
+            poiseEvent.CallPoiseEvent(poiseAmount, currentPoise, maxPoise, stunTime);
         }
     }
 }

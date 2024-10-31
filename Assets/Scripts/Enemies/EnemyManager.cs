@@ -1,7 +1,7 @@
 using Esper.ESave;
 using UnityEngine;
 
-
+[DisallowMultipleComponent]
 public class EnemyManager : MonoBehaviour
 {
     [SerializeField] private GameObject enemy;

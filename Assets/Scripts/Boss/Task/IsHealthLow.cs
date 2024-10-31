@@ -7,24 +7,29 @@ public class IsHealthLow : Conditional
 {
     public float healthThreshold = 0.5f;
     private Health health;
+    private bool isFirstEnd = true;
     public override void OnAwake()
     {
         health = GetComponent<Health>();
     }
+
     public override TaskStatus OnUpdate()
     {
-        Debug.Log("Tick 0: " + Time.frameCount);
         if (health.currentHealth <= health.startingHealth * healthThreshold)
         {
-            healthThreshold = 0f;
-            Debug.Log("Tick 1: " + Time.frameCount);
             return TaskStatus.Success;
         }
         else
         {
-            Debug.Log("Tick 2: " + Time.frameCount);
             return TaskStatus.Failure;
-
         }
+    }
+
+    public override void OnEnd()
+    {
+        Debug.Log(healthThreshold);
+        if (!isFirstEnd)
+            healthThreshold = 0f;
+        isFirstEnd = false;
     }
 }

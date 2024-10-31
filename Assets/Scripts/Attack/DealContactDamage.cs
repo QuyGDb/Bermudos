@@ -13,7 +13,7 @@ public class DealContactDamage : MonoBehaviour
     #region Tooltip
     [Tooltip("The contact damage to deal (is overridden by the receiver)")]
     #endregion
-    [SerializeField] private int contactDamageAmount;
+    public int contactDamageAmount;
     #region Tooltip
     [Tooltip("Specify what layers objects should be on to receive contact damage")]
     #endregion
