@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossEffect : Effect
 {
-
+    public bool isPhase2 = false;
     private Animator animator;
     private void Awake()
     {
@@ -32,8 +32,11 @@ public class BossEffect : Effect
         yield return waitForFixedUpdate;
     }
 
-    //public void ouchEffect()
-    //{
-    //    animator.SetTrigger(Settings.ouch);
-    //}
+    public void ouchEffect()
+    {
+        if (isPhase2)
+            animator.SetTrigger(Settings.ouch2);
+        else
+            animator.SetTrigger(Settings.ouch);
+    }
 }

@@ -13,12 +13,14 @@ public class EnterPhase2 : Action
     private float fadeInAmount = 1.0f;
     private Rigidbody2D rb;
     private RangedSkills rangedSkills;
+    private BossEffect bossEffect;
     public override void OnAwake()
     {
         animator = GetComponent<Animator>();
         dealContactDamage = GetComponent<DealContactDamage>();
         rb = GetComponent<Rigidbody2D>();
         rangedSkills = GetComponent<RangedSkills>();
+        bossEffect = GetComponent<BossEffect>();
     }
     public override void OnStart()
     {
@@ -27,6 +29,7 @@ public class EnterPhase2 : Action
         fadeInTime2 = fadeInTime;
         dealContactDamage.isRemoved = true;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        bossEffect.isPhase2 = true;
     }
     public override TaskStatus OnUpdate()
     {

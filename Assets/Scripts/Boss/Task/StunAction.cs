@@ -2,23 +2,23 @@ using UnityEngine;
 
 namespace BehaviorDesigner.Runtime.Tasks
 {
-    public class StunAction : Action
+    public class StunAction : SkillsAction
     {
 
-        private Animator animator;
         private Poise poise;
-
+        public float stunTime;
         public override void OnAwake()
         {
-            animator = GetComponent<Animator>();
+            stunTime = poise.stunTime;
+            base.OnAwake();
             poise = GetComponent<Poise>();
         }
 
-
         public override TaskStatus OnUpdate()
         {
-            if (poise.currentPoise <= 0)
+            if (poise.currentPoise <= 0 && poise.stunTime > 0)
             {
+                animator.SetTrigger(bossAnimationStateDic[bossAnimationState]);
                 poise.stunTime -= Time.deltaTime;
                 return TaskStatus.Running;
             }
@@ -32,6 +32,8 @@ namespace BehaviorDesigner.Runtime.Tasks
         {
             if (poise.currentPoise <= 0)
                 poise.currentPoise = poise.maxPoise;
+            if (stunTime <= 0)
+                stunTime = poise.stunTime;
         }
     }
 }

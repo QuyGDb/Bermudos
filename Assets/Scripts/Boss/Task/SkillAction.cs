@@ -12,6 +12,7 @@ public class SkillsAction : Action
     public bool isFirstUpdate;
     // Animator parameters - Boss
     private int Idle = Animator.StringToHash("Idle");
+    private int ouch = Animator.StringToHash("ouch");
     private int OpenMouth = Animator.StringToHash("OpenMouth");
     private int eyeAttack = Animator.StringToHash("eyeAttack");
     private int eyeLoop = Animator.StringToHash("eyeLoop");
@@ -42,6 +43,7 @@ public class SkillsAction : Action
     {
         bossAnimationStateDic.Add(BossAnimationState.spearAtk, spearAtk);
         bossAnimationStateDic.Add(BossAnimationState.Idle, Idle);
+        bossAnimationStateDic.Add(BossAnimationState.ouch, ouch);
         bossAnimationStateDic.Add(BossAnimationState.OpenMouth, OpenMouth);
         bossAnimationStateDic.Add(BossAnimationState.eyeAttack, eyeAttack);
         bossAnimationStateDic.Add(BossAnimationState.eyeLoop, eyeLoop);

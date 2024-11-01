@@ -44,7 +44,6 @@ public class Spinny : Action
     {
         if (isColliding)
             return TaskStatus.Success;
-        Debug.Log("Spinny");
         return TaskStatus.Running;
 
     }
