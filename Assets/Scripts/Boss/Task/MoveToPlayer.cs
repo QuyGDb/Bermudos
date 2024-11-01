@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class MoveToPlayer : Action
 {
-    private float timeToMove = 3f;
+    public float timeToMove = 3f;
     private Vector2 direction;
     private Rigidbody2D rb;
-    public float speed = 5f;
+    public float speed = 10f;
     private Animator animator;
     public override void OnAwake()
     {

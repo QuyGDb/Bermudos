@@ -8,6 +8,7 @@ public class MeleeSkills : MonoBehaviour
 {
     private Boss boss;
     private Weapon weapon;
+    public float minDistance = 2f;
     [SerializeField] private LayerMask playerLayer;
     private MovementToPositionEvent movementToPositionEvent;
     private ContactFilter2D contactFilter2D;
@@ -15,6 +16,9 @@ public class MeleeSkills : MonoBehaviour
     private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
     public bool isAttacking;
     public float speed;
+    public float cooldown;
+    private float previousDistance;
+    int count = 0;
     private void Awake()
     {
         boss = GetComponent<Boss>();
@@ -31,14 +35,7 @@ public class MeleeSkills : MonoBehaviour
     }
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    PlayActiveSkill(Settings.spearAtk2);
-        //}
-        //if (Input.GetKeyDown(KeyCode.E))
-        //{
-        //    boss.animator.Play("spearAtkD");
-        //}
+
     }
     public void DealDamage(int damage)
     {
@@ -65,15 +62,23 @@ public class MeleeSkills : MonoBehaviour
     }
     private IEnumerator ActiveSkill(int skill)
     {
-        float minDistance = 0.15f;
         var targetPosition = GameManager.Instance.player.transform.position;
         var direction = Vector3.Normalize(targetPosition - transform.position);
         boss.animator.SetTrigger(Settings.Walk2);
-        while (Vector2.Distance(targetPosition, transform.position) > minDistance)
+
+        while (Vector2.Distance(targetPosition, transform.position) > minDistance && count <= 2)
         {
+            if (Vector2.Distance(targetPosition, transform.position) == previousDistance)
+            {
+                count++;
+                Debug.Log(count);
+            }
+            previousDistance = Vector2.Distance(targetPosition, transform.position);
+            Debug.Log(Vector2.Distance(targetPosition, transform.position));
             movementToPositionEvent.CallMovementToPositionEvent(targetPosition, transform.position, speed, direction, true);
             yield return waitForFixedUpdate;
         }
+        count = 0;
         boss.animator.SetTrigger(skill);
         isAttacking = true;
 
@@ -94,12 +99,6 @@ public class MeleeSkills : MonoBehaviour
         isAttacking = true;
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.gameObject.layer == LayerMask.NameToLayer("Player"))
-            return;
-        StopActiveSkillRoutine();
-        isAttacking = true;
-    }
+
 
 }

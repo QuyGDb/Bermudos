@@ -23,7 +23,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -0.03125006
+        value: -0.0989449
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -71,7 +71,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.015453428
+        value: -0.11671275
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -119,7 +119,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1.3125
+        value: 0.91922534
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -167,7 +167,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1.2855847
+        value: 1.0212523
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -321,7 +321,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -0.03125006
+        value: -0.0989449
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -369,7 +369,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.015453428
+        value: -0.11671275
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -417,7 +417,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1.3125
+        value: 0.91922534
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -465,7 +465,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1.2855847
+        value: 1.0212523
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -510,4 +510,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.26
+    functionName: DealDamage
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 10
+    messageOptions: 0

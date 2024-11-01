@@ -8,18 +8,21 @@ public class EnterPhase2 : Action
     private Animator animator;
     private DealContactDamage dealContactDamage;
     public Material material;
-    public float fadeInTime = 3f;
+    public float fadeInTime = 1f;
     private float fadeInTime2;
     private float fadeInAmount = 1.0f;
     private Rigidbody2D rb;
+    private RangedSkills rangedSkills;
     public override void OnAwake()
     {
         animator = GetComponent<Animator>();
         dealContactDamage = GetComponent<DealContactDamage>();
         rb = GetComponent<Rigidbody2D>();
+        rangedSkills = GetComponent<RangedSkills>();
     }
     public override void OnStart()
     {
+        rangedSkills.ammo = rangedSkills.ammoPhase2;
         animator.SetTrigger(Settings.Idle2);
         fadeInTime2 = fadeInTime;
         dealContactDamage.isRemoved = true;

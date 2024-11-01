@@ -89,11 +89,9 @@ public class DealContactDamage : MonoBehaviour
         if (receiveContactDamage != null)
         {
             isColliding = true;
-
             // Reset the contact collision after set time
             Invoke("ResetContactCollision", Settings.contactDamageCollisionResetDelay);
             receiveContactDamage.TakeContactDamage(contactDamageAmount);
-
         }
 
     }

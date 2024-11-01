@@ -32,8 +32,8 @@ public class BossEffect : Effect
         yield return waitForFixedUpdate;
     }
 
-    public void ouchEffect()
-    {
-        animator.SetTrigger(Settings.ouch);
-    }
+    //public void ouchEffect()
+    //{
+    //    animator.SetTrigger(Settings.ouch);
+    //}
 }

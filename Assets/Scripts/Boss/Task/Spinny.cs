@@ -14,6 +14,7 @@ public class Spinny : Action
     public int damage = 10;
     private bool isColliding = false;
     MeleeSkills meleeSkills;
+    BoxCollider2D boxCollider2D;
     public override void OnAwake()
     {
         animator = GetComponent<Animator>();
@@ -21,10 +22,13 @@ public class Spinny : Action
         meleeSkills = GetComponent<MeleeSkills>();
         weapon = GetComponent<Weapon>();
         dealContactDamage = GetComponent<DealContactDamage>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
     }
 
     public override void OnStart()
     {
+        rb.drag = 0;
+        Physics2D.IgnoreCollision(boxCollider2D, GameManager.Instance.player.GetComponent<BoxCollider2D>());
         gameObject.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         dealContactDamage.isRemoved = false;
         isColliding = false;
@@ -40,8 +44,7 @@ public class Spinny : Action
     {
         if (isColliding)
             return TaskStatus.Success;
-
-
+        Debug.Log("Spinny");
         return TaskStatus.Running;
 
     }
@@ -51,7 +54,7 @@ public class Spinny : Action
     }
     public override void OnCollisionEnter2D(Collision2D collision)
     {
-
+        Debug.Log(collision.gameObject.name);
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
             return;
         isColliding = true;
@@ -59,6 +62,8 @@ public class Spinny : Action
 
     public override void OnEnd()
     {
+        rb.drag = 100000;
+        Physics2D.IgnoreCollision(boxCollider2D, GameManager.Instance.player.GetComponent<BoxCollider2D>(), false);
         rb.velocity = Vector2.zero;
         dealContactDamage.isRemoved = true;
         gameObject.transform.localScale = new Vector3(3f, 3f, 3f);

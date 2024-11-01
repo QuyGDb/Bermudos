@@ -9,12 +9,12 @@ public class RangedSkills : MonoBehaviour
     private Animator animator;
     public Transform shootPosition;
     public AmmoDetailsSO ammo;
+    public AmmoDetailsSO ammoPhase2;
     float offset = 90;
     private void Awake()
     {
         animator = GetComponent<Animator>();
     }
-
 
     public void Shoot(AmmoDetailsSO ammoDetailsSO, Vector3 shootPosition, Vector3 target)
     {
