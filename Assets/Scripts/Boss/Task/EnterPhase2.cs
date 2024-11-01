@@ -14,6 +14,7 @@ public class EnterPhase2 : Action
     private Rigidbody2D rb;
     private RangedSkills rangedSkills;
     private BossEffect bossEffect;
+    public Poise poise;
     public override void OnAwake()
     {
         animator = GetComponent<Animator>();
@@ -21,9 +22,11 @@ public class EnterPhase2 : Action
         rb = GetComponent<Rigidbody2D>();
         rangedSkills = GetComponent<RangedSkills>();
         bossEffect = GetComponent<BossEffect>();
+        poise = GetComponent<Poise>();
     }
     public override void OnStart()
     {
+        poise.currentPoise = poise.maxPoise;
         rangedSkills.ammo = rangedSkills.ammoPhase2;
         animator.SetTrigger(Settings.Idle2);
         fadeInTime2 = fadeInTime;

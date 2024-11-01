@@ -71,7 +71,8 @@ public class Bash : MonoBehaviour
     {
         player.stamina.UseStamina(bashCost);
         collider2d = Physics2D.OverlapCircle(transform.position, 2f, layerMask.value);
-        if (collider2d != null && player.stamina.currentStamina > bashCost)
+        if (collider2d?.GetComponent<Ammo>() == null) return;
+        if (player.stamina.currentStamina > bashCost)
         {
             Time.timeScale = 0f;
             isDuring = true;

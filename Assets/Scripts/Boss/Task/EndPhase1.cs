@@ -7,7 +7,7 @@ public class EndPhase1 : Action
 {
     private Animator animator;
     public Material material;
-    private float transitionTime = 1.0f;
+    public float transitionTime = 1.0f;
     private float fadeAmount = 0.0f;
     private float transitionTime2;
     private RangedSkills rangedSkills;
@@ -38,7 +38,6 @@ public class EndPhase1 : Action
 
         if (transitionTime > 0)
         {
-            Debug.LogWarning("test");
             fadeAmount = fadeAmount + (Time.deltaTime / transitionTime2);
             transitionTime -= Time.deltaTime;
             material.SetFloat("_FadeAmount", fadeAmount);

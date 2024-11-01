@@ -9,17 +9,21 @@ namespace BehaviorDesigner.Runtime.Tasks
         public float stunTime;
         public override void OnAwake()
         {
-            stunTime = poise.stunTime;
+
             base.OnAwake();
             poise = GetComponent<Poise>();
         }
-
+        public override void OnStart()
+        {
+            stunTime = poise.stunTime;
+        }
         public override TaskStatus OnUpdate()
         {
-            if (poise.currentPoise <= 0 && poise.stunTime > 0)
+            Debug.Log("Stun" + Time.frameCount);
+            if (poise.currentPoise <= 0 && stunTime > 0)
             {
                 animator.SetTrigger(bossAnimationStateDic[bossAnimationState]);
-                poise.stunTime -= Time.deltaTime;
+                stunTime -= Time.deltaTime;
                 return TaskStatus.Running;
             }
             else
@@ -34,6 +38,7 @@ namespace BehaviorDesigner.Runtime.Tasks
                 poise.currentPoise = poise.maxPoise;
             if (stunTime <= 0)
                 stunTime = poise.stunTime;
+            poise.currentPoise = poise.maxPoise;
         }
     }
 }
