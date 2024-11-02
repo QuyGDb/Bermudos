@@ -45,7 +45,6 @@ public class MeleeSkills : MonoBehaviour
         for (int i = 0; i < numColliders; i++)
         {
             Collider2D collider = hitColliders[i];
-            Debug.Log(collider.gameObject.name + Time.frameCount);
             if (collider != null)
             {
                 collider.GetComponent<ReceiveDamage>()?.TakeDamage(damage);
@@ -71,10 +70,8 @@ public class MeleeSkills : MonoBehaviour
             if (Vector2.Distance(targetPosition, transform.position) == previousDistance)
             {
                 count++;
-                Debug.Log(count);
             }
             previousDistance = Vector2.Distance(targetPosition, transform.position);
-            Debug.Log(Vector2.Distance(targetPosition, transform.position));
             movementToPositionEvent.CallMovementToPositionEvent(targetPosition, transform.position, speed, direction, true);
             yield return waitForFixedUpdate;
         }

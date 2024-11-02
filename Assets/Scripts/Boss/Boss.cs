@@ -10,6 +10,7 @@ public class Boss : MonoBehaviour
 
     [HideInInspector] public BossEffect bossEffect;
     [HideInInspector] public Animator animator;
+    [HideInInspector] public bool isPhaseTwo;
     private void Awake()
     {
         // Load Components
@@ -35,10 +36,14 @@ public class Boss : MonoBehaviour
         StaticEventHandler.CallBossChangedEvent(this);
 
     }
-    private void Update()
+
+
+    public IEnumerator BossAttack()
     {
 
-
+        animator.SetTrigger(Settings.Hop);
+        yield return null;
+        animator.SetTrigger(Settings.EyeLoopDeath);
     }
     private void HealthEvent_OnHealthLost(HealthEvent healthEvent, HealthEventArgs healthEventArgs)
     {

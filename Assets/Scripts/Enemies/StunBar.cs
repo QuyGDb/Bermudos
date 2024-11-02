@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,13 +30,14 @@ public class StunBar : MonoBehaviour
             stunTime = poiseEventArgs.stunTime;
             stunBar.maxValue = stunTime;
             stunBar.value = stunTime;
-
         }
     }
 
     private void Update()
     {
         if (stunBar.value > 0)
+        {
             stunBar.value -= Time.deltaTime;
+        }
     }
 }

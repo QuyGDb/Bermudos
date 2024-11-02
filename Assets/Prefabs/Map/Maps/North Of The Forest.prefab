@@ -14755,6 +14755,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gobu Goblin
       objectReference: {fileID: 0}
+    - target: {fileID: 4630120901667707226, guid: b73350252361e3643b93a212138d73b7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5155416903780776868, guid: b73350252361e3643b93a212138d73b7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14808,7 +14813,7 @@ PrefabInstance:
     - target: {fileID: 9147629838552289047, guid: b73350252361e3643b93a212138d73b7,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

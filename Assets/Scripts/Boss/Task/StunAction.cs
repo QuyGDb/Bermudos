@@ -1,33 +1,42 @@
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 namespace BehaviorDesigner.Runtime.Tasks
 {
     public class StunAction : SkillsAction
     {
-
+        private Boss boss;
         private Poise poise;
-        public float stunTime;
+        public SharedFloat stunTime;
         public override void OnAwake()
         {
 
             base.OnAwake();
             poise = GetComponent<Poise>();
+            boss = GetComponent<Boss>();
         }
         public override void OnStart()
         {
-            stunTime = poise.stunTime;
+            //stunTime = poise.stunTime;
         }
         public override TaskStatus OnUpdate()
         {
-            Debug.Log("Stun" + Time.frameCount);
-            if (poise.currentPoise <= 0 && stunTime > 0)
+            if (poise.currentPoise <= 0 && stunTime.Value > 0)
             {
                 animator.SetTrigger(bossAnimationStateDic[bossAnimationState]);
-                stunTime -= Time.deltaTime;
+                stunTime.Value -= Time.deltaTime;
                 return TaskStatus.Running;
             }
             else
             {
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime % 1 <= 0.0001f)
+                {
+                    if (boss.isPhaseTwo)
+                        animator.SetTrigger(Settings.Idle2);
+                    else
+                        animator.SetTrigger(Settings.Idle);
+                    return TaskStatus.Running;
+                }
                 return TaskStatus.Success;
             }
         }
@@ -36,9 +45,8 @@ namespace BehaviorDesigner.Runtime.Tasks
         {
             if (poise.currentPoise <= 0)
                 poise.currentPoise = poise.maxPoise;
-            if (stunTime <= 0)
+            if (stunTime.Value <= 0)
                 stunTime = poise.stunTime;
-            poise.currentPoise = poise.maxPoise;
         }
     }
 }

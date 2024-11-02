@@ -24,15 +24,13 @@ public class EndPhase1 : Action
         meleeSkills.StopAllCoroutines();
         transitionTime2 = transitionTime;
         animator.SetTrigger(Settings.EyeLoopDeath);
+        Debug.Log("End Phase 1" + Time.frameCount);
         gameObject.layer = LayerMask.NameToLayer("Default");
     }
     public override TaskStatus OnUpdate()
     {
-        //if (isFirstFrame)
-        //{
-        //    isFirstFrame = false;
-        //    return TaskStatus.Running;
-        //}
+
+        //animator.SetTrigger(Settings.EyeLoopDeath);
         if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1)
             return TaskStatus.Running;
 

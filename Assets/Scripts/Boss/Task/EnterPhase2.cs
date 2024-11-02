@@ -15,6 +15,7 @@ public class EnterPhase2 : Action
     private RangedSkills rangedSkills;
     private BossEffect bossEffect;
     public Poise poise;
+    private Boss boss;
     public override void OnAwake()
     {
         animator = GetComponent<Animator>();
@@ -23,9 +24,11 @@ public class EnterPhase2 : Action
         rangedSkills = GetComponent<RangedSkills>();
         bossEffect = GetComponent<BossEffect>();
         poise = GetComponent<Poise>();
+        boss = GetComponent<Boss>();
     }
     public override void OnStart()
     {
+        gameObject.layer = LayerMask.NameToLayer("Boss");
         poise.currentPoise = poise.maxPoise;
         rangedSkills.ammo = rangedSkills.ammoPhase2;
         animator.SetTrigger(Settings.Idle2);
@@ -33,6 +36,7 @@ public class EnterPhase2 : Action
         dealContactDamage.isRemoved = true;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         bossEffect.isPhase2 = true;
+        boss.isPhaseTwo = true;
     }
     public override TaskStatus OnUpdate()
     {
