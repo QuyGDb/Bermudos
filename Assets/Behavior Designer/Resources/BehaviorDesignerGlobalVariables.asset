@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mVariableData:
     variableStartIndex: 
-    JSONSerialization: '{"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"stunTime","IsShared":true,"IsGlobal":true,"SinglemValue":0}]}'
+    JSONSerialization: '{"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"stunTime","IsShared":true,"IsGlobal":true,"SinglemValue":0},{"Type":"BehaviorDesigner.Runtime.SharedMaterial","Name":"bossMaterial","IsShared":true,"IsGlobal":true,"MaterialmValue":0}]}'
     fieldSerializationData:
       typeName: []
       fieldNameHash: 
       startIndex: 
       dataPosition: 
-      unityObjects: []
+      unityObjects:
+      - {fileID: 2100000, guid: 4528f279141bdfa42a862672447e22f8, type: 2}
       byteData: 
       byteDataArray: 
   mVersion: 1.7.7

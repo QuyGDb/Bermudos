@@ -104,6 +104,12 @@ PrefabInstance:
       propertyPath: ammoSpeedAnimationCurve.m_Curve.Array.data[1].tangentMode
       value: 34
       objectReference: {fileID: 0}
+    - target: {fileID: 2875884459108569505, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 833924689d1a5d24f8028971c6662396,
+        type: 2}
     - target: {fileID: 3674136317262225296, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
       propertyPath: enemyAmmoType

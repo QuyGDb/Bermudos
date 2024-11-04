@@ -5,11 +5,11 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class DealDamage : MonoBehaviour
 {
-    [SerializeField] private Player player;
-    //[SerializeField] private DamagePushEfectEvent damagePushEfectEvent;
+
     [SerializeField] private LayerMask enemyLayer;
     private ContactFilter2D contactFilter2D;
     private Weapon weapon;
+
     private int damage = 10;
     private int attackCost = 10;
     private void Awake()
@@ -22,16 +22,16 @@ public class DealDamage : MonoBehaviour
 
     private void OnEnable()
     {
-        player.dealDamageEvent.OnDealDamage += DealDamageEvent_OnDealDamage;
+        GameManager.Instance.player.dealDamageEvent.OnDealDamage += DealDamageEvent_OnDealDamage;
     }
     private void OnDisable()
     {
-        player.dealDamageEvent.OnDealDamage -= DealDamageEvent_OnDealDamage;
+        GameManager.Instance.player.dealDamageEvent.OnDealDamage -= DealDamageEvent_OnDealDamage;
     }
 
     private void DealDamageEvent_OnDealDamage(DealDamageEvent dealDamageEvent, DealDamageEventAgrs dealDamageEventAgrs)
     {
-        player.stamina.UseStamina(attackCost);
+        GameManager.Instance.player.stamina.UseStamina(attackCost);
         Collider2D[] hitColliders = new Collider2D[1];
         int numColliders = Physics2D.OverlapCollider(GetComponent<Collider2D>(), contactFilter2D, hitColliders);
         for (int i = 0; i < numColliders; i++)
@@ -39,7 +39,9 @@ public class DealDamage : MonoBehaviour
             Collider2D collider = hitColliders[i];
             if (collider != null)
             {
+                GameManager.Instance.player.rage.IncreaseRage(Settings.rageAmount);
                 DealDamageHandle(collider);
+
             }
         }
     }
@@ -51,26 +53,19 @@ public class DealDamage : MonoBehaviour
         // 1 bài test gọi thông qua event CallDamagePushEfectEvent(); thì không bị lỗi vì call event có lẽ được gọi chậm hơn gọi trước tiếp, nên object enemy đã bị hủy callevent mới được gọi, mà object đã hủy rồi nên sub không được gọi(ví dụ call pusheffeft đc gọi 5 lần còn callevent đc gọi 4 lần)
         if (collision.GetComponent<Enemy>() != null)
         {
-            collision.GetComponent<Enemy>()?.enemyEffect.PushEnemyByWeapon(player.transform.position);
+            collision.GetComponent<Enemy>()?.enemyEffect.PushEnemyByWeapon(GameManager.Instance.player.transform.position);
             collision.GetComponent<ReceiveDamage>().TakeDamage(damage);
             collision.GetComponent<Enemy>().enemyEffect.CallDamageFlashEffect(GameResources.Instance.damegeFlashMaterial, GameResources.Instance.litMaterial, collision.GetComponents<SpriteRenderer>());
             collision.GetComponent<Enemy>().enemyEffect.BloodEffect();
         }
         else if (collision.GetComponent<Boss>() != null)
         {
-            collision.GetComponent<BossEffect>().PushBossByWeapon(player.transform.position);
+            collision.GetComponent<BossEffect>().PushBossByWeapon(GameManager.Instance.player.transform.position);
             collision.GetComponent<ReceiveDamage>().TakeDamage(damage);
             collision.GetComponent<BossEffect>().ouchEffect();
         }
 
     }
 
-    #region Validation
-#if UNITY_EDITOR
-    private void OnValidate()
-    {
-        HelperUtilities.ValidateCheckNullValue(this, nameof(player), player);
-    }
-#endif
-    #endregion
+
 }

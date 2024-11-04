@@ -16,16 +16,19 @@ public class PlayerControl : MonoBehaviour
     private InputAction fire;
     private InputAction rightClick;
     private InputAction spaceClick;
+    private InputAction beam;
+    private BeamByPlayer beamByPlayer;
     private Vector2 direction;
     private Vector2 lastMoveDirection;
     private Vector2 previousLastDirection;
-    [SerializeField] private SKillCooldownTimer skillCooldownTimer;
     private float dashCooldownTimer;
     private float bashCooldownTimer;
+
     private void Awake()
     {
         // Load components
         player = GetComponent<Player>();
+        beamByPlayer = GetComponent<BeamByPlayer>();
         movementByVelocityEvent = GetComponent<MovementByVelocityEvent>();
         // Initialize input actions
         inputSystem_Actions = new InputSystem_Actions();
@@ -35,13 +38,16 @@ public class PlayerControl : MonoBehaviour
     {
         move = inputSystem_Actions.Player.Move;
         fire = inputSystem_Actions.Player.Fire;
+        beam = inputSystem_Actions.Player.Beam;
         rightClick = inputSystem_Actions.Player.RightClick;
         spaceClick = inputSystem_Actions.Player.SpaceClick;
         move.Enable();
         fire.Enable();
+        beam.Enable();
         rightClick.Enable();
         spaceClick.Enable();
         fire.performed += OnFireClick;
+        beam.performed += ctx => beamByPlayer.Beam();
         rightClick.performed += OnRightMouseClick;
         rightClick.canceled += ctx => player.bashEvent.CallOnBashEvent(BashState.ReleaseBash);
         spaceClick.performed += OnSpaceClick;
@@ -52,9 +58,11 @@ public class PlayerControl : MonoBehaviour
     {
         move.Disable();
         fire.Disable();
+        beam.Disable();
         rightClick.Disable();
         spaceClick.Disable();
         fire.performed -= OnFireClick;
+        beam.performed -= ctx => beamByPlayer.Beam();
         rightClick.performed -= OnRightMouseClick;
         rightClick.canceled -= ctx => player.bashEvent.CallOnBashEvent(BashState.ReleaseBash);
         spaceClick.performed -= OnSpaceClick;
@@ -66,7 +74,7 @@ public class PlayerControl : MonoBehaviour
         {
             bashCooldownTimer = Time.time + Settings.bashCooldown;
             player.bashEvent.CallOnBashEvent(BashState.ActiveBash);
-            skillCooldownTimer.GetBashCooldown(Settings.bashCooldown);
+            StaticEventHandler.CallTriggerBashEvent();
         }
     }
 
@@ -77,7 +85,7 @@ public class PlayerControl : MonoBehaviour
         {
             dashCooldownTimer = Time.time + Settings.dashCooldown;
             player.dashEvent.CallDashEvent(direction);
-            skillCooldownTimer.GetDashCooldown(Settings.dashCooldown);
+            StaticEventHandler.CallTriggerDashEvent();
         }
     }
 

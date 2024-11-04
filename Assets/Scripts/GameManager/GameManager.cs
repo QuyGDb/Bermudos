@@ -27,7 +27,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     override protected void Awake()
     {
         base.Awake();
-        SceneManager.LoadScene("North Of The Forest", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Coast", LoadSceneMode.Additive);
         saveFileSetup = GetComponent<SaveFileSetup>();
 
     }

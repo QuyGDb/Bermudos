@@ -34,6 +34,7 @@ GameObject:
   - component: {fileID: 4471076829253481477}
   - component: {fileID: 4724540000906455758}
   - component: {fileID: 2268987115737488022}
+  - component: {fileID: 2875884459108569505}
   m_Layer: 17
   m_Name: Enemy
   m_TagString: Enemy
@@ -265,6 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef64a0279a0da4f4b913d78df7ee703f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 0
   startingHealth: 30
 --- !u!114 &-7832196485763117311
 MonoBehaviour:
@@ -314,6 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e5b1f4686baf241abdfd8e180747e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flashColor: {r: 4, g: 4, b: 4, a: 1}
   damageFlashCurve:
     serializedVersion: 2
     m_Curve:
@@ -338,11 +341,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  bloodEffect: {fileID: 1949454997529254989}
-  stunEffect: {fileID: 5363551277175108222}
-  flashColor: {r: 4, g: 4, b: 4, a: 1}
   damageForce: 1
   duration: 0.15
+  stunEffect: {fileID: 5363551277175108222}
+  bloodEffect: {fileID: 1949454997529254989}
 --- !u!114 &4480718574846664060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,6 +423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPoise: 1
+  currentPoise: 0
   stunTime: 5
 --- !u!114 &1795487349944282842
 MonoBehaviour:
@@ -447,6 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contactDamageAmount: 5
+  isRemoved: 0
 --- !u!114 &481104526647790183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,6 +524,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 0
+  isNotReceivingDamage: 0
+--- !u!114 &2875884459108569505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5866340262160875342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c92cebf94afa39347bdca2c28984a267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 0}
 --- !u!1 &7967977163424062739
 GameObject:
   m_ObjectHideFlags: 0

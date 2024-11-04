@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public Stamina stamina;
     [HideInInspector] public Animator animator;
     [HideInInspector] public PlayerEffect playerEffect;
+    [HideInInspector] public Rage rage;
     private void Awake()
     {
         // Load components
@@ -51,6 +52,7 @@ public class Player : MonoBehaviour
         stamina = GetComponent<Stamina>();
         animator = GetComponent<Animator>();
         playerEffect = GetComponent<PlayerEffect>();
+        rage = GetComponent<Rage>();
     }
 
     private void OnEnable()
@@ -81,6 +83,28 @@ public class Player : MonoBehaviour
             destroyedEvent.CallDestroyedEvent(new DestroyedEventArgs { playerDied = true });
         }
 
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
+        {
+            Boss boss = collision.gameObject.GetComponent<Boss>();
+            if (boss.isPhaseTwo)
+            {
+                boss.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            }
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
+        {
+            Boss boss = collision.gameObject.GetComponent<Boss>();
+            if (boss.isPhaseTwo)
+            {
+                boss.rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            }
+        }
     }
 
     #region Validation

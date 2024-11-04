@@ -18,7 +18,7 @@ public abstract class Effect : MonoBehaviour
         ParticleSystem.MainModule mainModule = stunEffect.main;
         mainModule.startLifetimeMultiplier = stunTime;
         stunEffect.Play();
-
+        Debug.Log("StunEffect");
     }
 
 }

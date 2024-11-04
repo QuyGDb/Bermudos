@@ -7,7 +7,7 @@ public class Boss : MonoBehaviour
     [HideInInspector] public HealthEvent healthEvent;
     [HideInInspector] public DestroyedEvent destroyedEvent;
     [HideInInspector] public PoiseEvent poiseEvent;
-
+    [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public BossEffect bossEffect;
     [HideInInspector] public Animator animator;
     [HideInInspector] public bool isPhaseTwo;
@@ -19,6 +19,7 @@ public class Boss : MonoBehaviour
         poiseEvent = GetComponent<PoiseEvent>();
         bossEffect = GetComponent<BossEffect>();
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
     private void OnEnable()
     {

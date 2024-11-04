@@ -6,10 +6,27 @@ public class BossEffect : Effect
 {
     public bool isPhase2 = false;
     private Animator animator;
+    private PoiseEvent poiseEvent;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        poiseEvent = GetComponent<PoiseEvent>();
+    }
+    private void OnEnable()
+    {
+        poiseEvent.OnPoise += PoiseEvent_onPoiseEvent;
+    }
+    private void OnDisable()
+    {
+        poiseEvent.OnPoise -= PoiseEvent_onPoiseEvent;
+    }
+    private void PoiseEvent_onPoiseEvent(PoiseEvent poiseEvent, PoiseEventArgs poiseEventArgs)
+    {
+        if (poiseEventArgs.currentPoise <= 0)
+        {
+            StunEffect(poiseEventArgs.stunTime);
+        }
     }
     public void PushBossByWeapon(Vector3 playerPosition)
     {

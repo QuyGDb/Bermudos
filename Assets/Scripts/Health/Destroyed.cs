@@ -36,7 +36,7 @@ public class Destroyed : MonoBehaviour
         }
         else if (destroyedEventArgs.bossDied)
         {
-            StartCoroutine(Die());
+            //StartCoroutine(Die());
         }
         else
         {

@@ -11,7 +11,7 @@ public class BossHealthBar : MonoBehaviour
     [SerializeField] private Slider easeHealthBar;
     float lerpSpeed = 0.05f;
     private HealthEvent healthEvent;
-    private void Start()
+    private void OnEnable()
     {
         StaticEventHandler.OnBossChanged += StaticEventHandler_OnBossChanged;
     }
@@ -25,11 +25,9 @@ public class BossHealthBar : MonoBehaviour
     {
         healthEvent = onBossChangedEventArgs.boss.healthEvent;
         healthEvent.OnHealthChanged += HealthEvent_OnHealthChanged;
-        Debug.Log("BossHealthBar: " + healthEvent);
     }
     private void HealthEvent_OnHealthChanged(HealthEvent healthEvent, HealthEventArgs healthEventArgs)
     {
-        Debug.Log("BossHealthBar: " + healthEventArgs.healthPercent);
         healthBar.value = healthEventArgs.healthPercent;
     }
 

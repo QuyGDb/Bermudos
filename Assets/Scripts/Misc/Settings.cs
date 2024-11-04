@@ -63,6 +63,8 @@ public static class Settings
     #endregion
 
     public const float dashCooldown = 1f;
+    public const float rageAmount = 1f;
+    public const float bashCooldown = 0.5f;
 
-    public const float bashCooldown = 1f;
+    public const float beamRotationOffset = 90f;
 }

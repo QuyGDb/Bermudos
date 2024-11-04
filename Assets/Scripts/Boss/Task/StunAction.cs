@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Assertions.Must;
+using UnityEngine.Rendering.UI;
 
 namespace BehaviorDesigner.Runtime.Tasks
 {
@@ -23,20 +24,20 @@ namespace BehaviorDesigner.Runtime.Tasks
         {
             if (poise.currentPoise <= 0 && stunTime.Value > 0)
             {
-                animator.SetTrigger(bossAnimationStateDic[bossAnimationState]);
+                if (stunTime.Value < 0.5 && stunTime.Value > 0)
+                {
+                    stunTime.Value -= Time.deltaTime;
+                    return TaskStatus.Running;
+                }
+                else
+                {
+                    animator.SetTrigger(bossAnimationStateDic[bossAnimationState]);
+                }
                 stunTime.Value -= Time.deltaTime;
                 return TaskStatus.Running;
             }
             else
             {
-                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime % 1 <= 0.0001f)
-                {
-                    if (boss.isPhaseTwo)
-                        animator.SetTrigger(Settings.Idle2);
-                    else
-                        animator.SetTrigger(Settings.Idle);
-                    return TaskStatus.Running;
-                }
                 return TaskStatus.Success;
             }
         }

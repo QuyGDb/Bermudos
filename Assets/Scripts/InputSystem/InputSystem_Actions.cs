@@ -72,6 +72,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Beam"",
+                    ""type"": ""Button"",
+                    ""id"": ""912610e2-a414-4b70-98b9-05377868cf8a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -314,6 +323,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SpaceClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6634e183-22e1-4976-b22f-cebf3a2c5d78"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Beam"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -906,6 +926,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_RightClick = m_Player.FindAction("RightClick", throwIfNotFound: true);
         m_Player_SpaceClick = m_Player.FindAction("SpaceClick", throwIfNotFound: true);
+        m_Player_Beam = m_Player.FindAction("Beam", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -990,6 +1011,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_RightClick;
     private readonly InputAction m_Player_SpaceClick;
+    private readonly InputAction m_Player_Beam;
     public struct PlayerActions
     {
         private @InputSystem_Actions m_Wrapper;
@@ -999,6 +1021,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @RightClick => m_Wrapper.m_Player_RightClick;
         public InputAction @SpaceClick => m_Wrapper.m_Player_SpaceClick;
+        public InputAction @Beam => m_Wrapper.m_Player_Beam;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1023,6 +1046,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @SpaceClick.started += instance.OnSpaceClick;
             @SpaceClick.performed += instance.OnSpaceClick;
             @SpaceClick.canceled += instance.OnSpaceClick;
+            @Beam.started += instance.OnBeam;
+            @Beam.performed += instance.OnBeam;
+            @Beam.canceled += instance.OnBeam;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1042,6 +1068,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @SpaceClick.started -= instance.OnSpaceClick;
             @SpaceClick.performed -= instance.OnSpaceClick;
             @SpaceClick.canceled -= instance.OnSpaceClick;
+            @Beam.started -= instance.OnBeam;
+            @Beam.performed -= instance.OnBeam;
+            @Beam.canceled -= instance.OnBeam;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1229,6 +1258,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         void OnFire(InputAction.CallbackContext context);
         void OnRightClick(InputAction.CallbackContext context);
         void OnSpaceClick(InputAction.CallbackContext context);
+        void OnBeam(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

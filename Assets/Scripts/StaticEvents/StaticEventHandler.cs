@@ -29,8 +29,22 @@ public static class StaticEventHandler
     public static void CallBuildNavMeshEvent()
     {
         OnBuildNavMesh?.Invoke();
-
     }
+    public static event Action OnTriggerBash;
+    public static void CallTriggerBashEvent()
+    {
+        OnTriggerBash?.Invoke();
+    }
+
+    public static event Action OnTriggerDash;
+
+    public static void CallTriggerDashEvent()
+    {
+        OnTriggerDash?.Invoke();
+    }
+
+
+
 }
 public class MapChangedEventArgs : EventArgs
 {

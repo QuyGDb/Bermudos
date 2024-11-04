@@ -10,7 +10,6 @@ public class RangedSkills : MonoBehaviour
     public Transform shootPosition;
     public AmmoDetailsSO ammo;
     public AmmoDetailsSO ammoPhase2;
-    float offset = 90;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -58,8 +57,9 @@ public class RangedSkills : MonoBehaviour
     {
         var direction = GameManager.Instance.player.transform.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.Euler(0, 0, angle + offset);
+        Quaternion rotation = Quaternion.Euler(0, 0, angle + Settings.beamRotationOffset);
         GameObject beam = Instantiate(Beam, shootPosition.position, rotation);
+        beam.GetComponent<Beam>().amountScaleY = 3.5f;
         beam.transform.parent = this.transform;
     }
 

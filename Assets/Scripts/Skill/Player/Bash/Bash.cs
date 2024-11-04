@@ -15,7 +15,7 @@ public class Bash : MonoBehaviour
     private bool isDuring;
     private bool isRelease;
     private float aimCountdown;
-    private float dashForce = 10f;
+    private float bashForce = 10f;
     private int bashCost = 10;
     private void Awake()
     {
@@ -118,7 +118,7 @@ public class Bash : MonoBehaviour
     }
     private void MoveAmmoByBash()
     {
-        collider2d.GetComponent<Rigidbody2D>().AddForce(((Vector2)collider2d.transform.position - (Vector2)HelperUtilities.GetMouseWorldPosition()).normalized * dashForce, ForceMode2D.Impulse);
+        collider2d.GetComponent<Rigidbody2D>().AddForce(((Vector2)collider2d.transform.position - (Vector2)HelperUtilities.GetMouseWorldPosition()).normalized * bashForce, ForceMode2D.Impulse);
     }
 }
 

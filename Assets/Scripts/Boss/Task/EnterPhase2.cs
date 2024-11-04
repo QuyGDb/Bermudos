@@ -1,3 +1,4 @@
+using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ public class EnterPhase2 : Action
 {
     private Animator animator;
     private DealContactDamage dealContactDamage;
-    public Material material;
+    public SharedMaterial material;
     public float fadeInTime = 1f;
     private float fadeInTime2;
     private float fadeInAmount = 1.0f;
@@ -44,7 +45,7 @@ public class EnterPhase2 : Action
         {
             fadeInAmount = fadeInAmount - (Time.deltaTime / fadeInTime2);
 
-            material.SetFloat("_FadeAmount", fadeInAmount);
+            material.Value.SetFloat("_FadeAmount", fadeInAmount);
             fadeInTime -= Time.deltaTime;
             return TaskStatus.Running;
         }

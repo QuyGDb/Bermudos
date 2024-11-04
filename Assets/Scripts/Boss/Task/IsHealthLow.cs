@@ -27,9 +27,8 @@ public class IsHealthLow : Conditional
 
     public override void OnEnd()
     {
-        Debug.Log(healthThreshold);
         if (!isFirstEnd)
-            healthThreshold = 0f;
+            healthThreshold = -1f;
         isFirstEnd = false;
     }
 }
