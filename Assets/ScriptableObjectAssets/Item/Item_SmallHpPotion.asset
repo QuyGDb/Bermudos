@@ -15,4 +15,7 @@ MonoBehaviour:
   itemName: Small Hp Potion
   itemPrefabs: {fileID: 4878355956838083031, guid: ed6f700237182ed419aee7246817f290,
     type: 3}
+  itemIcon: {fileID: -1484858270, guid: bbeb38f957d393a4d904c2020e6239ee, type: 3}
+  itemDescription: 
   dropRate: 20
+  itemType: 0

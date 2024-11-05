@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Item_AttackPotion
   m_EditorClassIdentifier: 
   itemName: Attack Potion
-  itemPrefabs: {fileID: 3543300445596640353, guid: beff76436a049204d8c9503f6650021d,
+  itemPrefabs: {fileID: 4210077326631932612, guid: 9d3dfbbec426f73479d9b10ea79f7f66,
     type: 3}
+  itemIcon: {fileID: -657848857, guid: 230fb4c2c39695b4a809583b77cb20cb, type: 3}
+  itemDescription: 
   dropRate: 20
+  itemType: 0

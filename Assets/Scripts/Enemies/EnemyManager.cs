@@ -5,13 +5,9 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     [SerializeField] private GameObject enemy;
-    // private SaveFileSetup saveFileSetup;
     [SerializeField] private EnemyManagerDetailsSO enemyManagerDetailsSO;
     private EnemyManagerData enemyManagerData;
-    //private void Awake()
-    //{
-    //    saveFileSetup = GetComponent<SaveFileSetup>();
-    //}
+
 
     private void Start()
     {
@@ -21,18 +17,7 @@ public class EnemyManager : MonoBehaviour
             enemyManagerData = GameManager.Instance.saveFileSetup.GetSaveFile().GetData<EnemyManagerData>(enemyManagerDetailsSO.enemyManagerDataKey);
         }
     }
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Space))
-    //    {
-    //        if (saveFileSetup.GetSaveFile().HasData(enemyManagerDetailsSO.enemyManagerDataKey))
-    //        {
-    //            enemyManagerData = saveFileSetup.GetSaveFile().GetData<EnemyManagerData>(enemyManagerDetailsSO.enemyManagerDataKey);
-    //            Debug.Log(enemyManagerDetailsSO.enemyManagerDataKey);
-    //            Debug.Log(enemyManagerData.enemieStateList[0]);
-    //        }
-    //    }
-    //}
+
     private void OnEnable()
     {
         StaticEventHandler.OnBuildNavMesh += StaticEventHandler_OnBuildNavMesh;

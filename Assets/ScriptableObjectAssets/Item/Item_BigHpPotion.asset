@@ -15,4 +15,7 @@ MonoBehaviour:
   itemName: Big Hp Potion
   itemPrefabs: {fileID: 7358938360367674313, guid: 350656a759fedd445bf750b33b23b760,
     type: 3}
+  itemIcon: {fileID: 512217170, guid: 9a01dbb85a4962946a0a38f20a9ab523, type: 3}
+  itemDescription: 
   dropRate: 20
+  itemType: 0

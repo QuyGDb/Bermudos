@@ -70,3 +70,8 @@ public enum BossAnimationState
     spearAtk2,
     spinny2
 }
+public enum ItemType
+{
+    Potion,
+
+}

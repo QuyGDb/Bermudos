@@ -15,4 +15,7 @@ MonoBehaviour:
   itemName: Rage Potion
   itemPrefabs: {fileID: 3543300445596640353, guid: beff76436a049204d8c9503f6650021d,
     type: 3}
+  itemIcon: {fileID: -1434977922, guid: f83ea01b1040450488916f8dbf9ef15d, type: 3}
+  itemDescription: 
   dropRate: 20
+  itemType: 0
