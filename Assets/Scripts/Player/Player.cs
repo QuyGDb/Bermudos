@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public Animator animator;
     [HideInInspector] public PlayerEffect playerEffect;
     [HideInInspector] public Rage rage;
+    private InventoryManager inventoryManager;
     private void Awake()
     {
         // Load components
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         playerEffect = GetComponent<PlayerEffect>();
         rage = GetComponent<Rage>();
+        inventoryManager = GetComponent<InventoryManager>();
     }
 
     private void OnEnable()
@@ -105,6 +107,15 @@ public class Player : MonoBehaviour
                 boss.rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             }
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Item"))
+        {
+
+        }
+
     }
 
     #region Validation

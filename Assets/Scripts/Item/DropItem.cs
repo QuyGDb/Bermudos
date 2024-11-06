@@ -32,7 +32,8 @@ public class DropItem : MonoBehaviour
     {
         if (Random.Range(0, 100) < item.dropRate)
         {
-            Instantiate(item.itemPrefabs, transform.position, Quaternion.identity);
+            GameObject itemGO = Instantiate(item.itemPrefabs, transform.position, Quaternion.identity);
+            itemGO.GetComponent<Item>().item = item;
         }
     }
 }

@@ -75,3 +75,8 @@ public enum ItemType
     Potion,
 
 }
+public enum ItemUIType
+{
+    Inventory,
+    HotBar
+}

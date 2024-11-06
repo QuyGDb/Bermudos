@@ -306,7 +306,7 @@
                 {
                     "name": "",
                     "id": "6634e183-22e1-4976-b22f-cebf3a2c5d78",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -406,6 +406,15 @@
                     "type": "PassThrough",
                     "id": "998e7eda-5502-4241-95d6-d2ccc373da13",
                     "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OpenInventory",
+                    "type": "Button",
+                    "id": "e15232ba-7eba-4196-8c23-cb7e4a305bc1",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -827,6 +836,17 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bfd91131-b298-4cb4-a81b-4578f3fe9b3f",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenInventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

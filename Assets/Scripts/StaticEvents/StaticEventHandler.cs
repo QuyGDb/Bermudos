@@ -43,8 +43,26 @@ public static class StaticEventHandler
         OnTriggerDash?.Invoke();
     }
 
+    #region UI Events
 
+    public static event Action<OnInventoryChangedEventArgs> OnInventoryChanged;
 
+    public static void CallInventoryChangedEvent(Inventory inventory)
+    {
+        OnInventoryChanged?.Invoke(new OnInventoryChangedEventArgs() { inventory = inventory });
+    }
+    public static event Action<OnItemUIChangedEventArgs> OnItemUIEndDragChanged;
+
+    public static void CallItemUIChangedEvent(ItemUI itemUI)
+    {
+        OnItemUIEndDragChanged?.Invoke(new OnItemUIChangedEventArgs() { itemUI = itemUI });
+    }
+    public static event Action<OnItemUIChangedEventArgs> OnItemUIHoverChanged;
+    public static void CallItemUIHoverChangedEvent(ItemUI itemUI)
+    {
+        OnItemUIHoverChanged?.Invoke(new OnItemUIChangedEventArgs() { itemUI = itemUI });
+    }
+    #endregion
 }
 public class MapChangedEventArgs : EventArgs
 {
@@ -63,3 +81,12 @@ public class OnAmmoChangedEventArgs : EventArgs
 {
     public Ammo ammo;
 }
+public class OnInventoryChangedEventArgs : EventArgs
+{
+    public Inventory inventory;
+}
+public class OnItemUIChangedEventArgs : EventArgs
+{
+    public ItemUI itemUI;
+}
+

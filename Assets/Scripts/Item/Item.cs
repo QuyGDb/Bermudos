@@ -6,10 +6,10 @@ public class Item : MonoBehaviour
 {
     private float timeToDestroy = 10f;
     private LayerMask playerLayerMark;
-
+    public ItemSO item;
     private void Start()
     {
-        playerLayerMark = LayerMask.GetMask("Player");
+        playerLayerMark.value = LayerMask.GetMask("Player");
     }
     private void Update()
     {
@@ -27,8 +27,8 @@ public class Item : MonoBehaviour
     {
         if ((playerLayerMark.value & 1 << collision.gameObject.layer) > 0)
         {
-
-            Destroy(gameObject);
+            collision.GetComponent<InventoryManager>()?.CollectIntentoryItem(this.item);
+            Destroy(this.gameObject);
         }
     }
 }

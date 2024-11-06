@@ -17,7 +17,9 @@ public class PlayerControl : MonoBehaviour
     private InputAction rightClick;
     private InputAction spaceClick;
     private InputAction beam;
+    private InputAction openInventory;
     private BeamByPlayer beamByPlayer;
+    private InventoryManager inventoryManager;
     private Vector2 direction;
     private Vector2 lastMoveDirection;
     private Vector2 previousLastDirection;
@@ -30,6 +32,7 @@ public class PlayerControl : MonoBehaviour
         player = GetComponent<Player>();
         beamByPlayer = GetComponent<BeamByPlayer>();
         movementByVelocityEvent = GetComponent<MovementByVelocityEvent>();
+        inventoryManager = GetComponent<InventoryManager>();
         // Initialize input actions
         inputSystem_Actions = new InputSystem_Actions();
 
@@ -41,17 +44,19 @@ public class PlayerControl : MonoBehaviour
         beam = inputSystem_Actions.Player.Beam;
         rightClick = inputSystem_Actions.Player.RightClick;
         spaceClick = inputSystem_Actions.Player.SpaceClick;
+        openInventory = inputSystem_Actions.UI.OpenInventory;
         move.Enable();
         fire.Enable();
         beam.Enable();
         rightClick.Enable();
         spaceClick.Enable();
+        openInventory.Enable();
         fire.performed += OnFireClick;
         beam.performed += ctx => beamByPlayer.Beam();
         rightClick.performed += OnRightMouseClick;
         rightClick.canceled += ctx => player.bashEvent.CallOnBashEvent(BashState.ReleaseBash);
         spaceClick.performed += OnSpaceClick;
-
+        openInventory.performed += ctx => inventoryManager.ToggleInventory();
     }
 
     private void OnDisable()
@@ -61,11 +66,13 @@ public class PlayerControl : MonoBehaviour
         beam.Disable();
         rightClick.Disable();
         spaceClick.Disable();
+        openInventory.Disable();
         fire.performed -= OnFireClick;
         beam.performed -= ctx => beamByPlayer.Beam();
         rightClick.performed -= OnRightMouseClick;
         rightClick.canceled -= ctx => player.bashEvent.CallOnBashEvent(BashState.ReleaseBash);
         spaceClick.performed -= OnSpaceClick;
+        openInventory.performed -= ctx => inventoryManager.ToggleInventory();
     }
 
     private void OnRightMouseClick(InputAction.CallbackContext ctx)

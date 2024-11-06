@@ -67,4 +67,9 @@ public static class Settings
     public const float bashCooldown = 0.5f;
 
     public const float beamRotationOffset = 90f;
+
+    #region INVENTORY
+    public const int inventorySlotQuantity = 70;
+    public const int hotBarSlotQuantity = 10;
+    #endregion
 }

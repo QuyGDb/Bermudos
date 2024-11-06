@@ -31,5 +31,37 @@
       "backgroundTask": false
     },
     "id": "SaveFileName"
+  },
+  "Intentory": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[Esper.ESave.SaveFileSetupData, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "Esper.ESave.SaveFileSetupData, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "fileName": "Intentory",
+      "saveLocation": 0,
+      "filePath": "RPGSaveLoad",
+      "fileType": 0,
+      "encryptionMethod": 0,
+      "aesKey": "",
+      "aesIV": "",
+      "addToStorage": true,
+      "backgroundTask": false
+    },
+    "id": "Intentory"
+  },
+  "Inventorry": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[Esper.ESave.SaveFileSetupData, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "Esper.ESave.SaveFileSetupData, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "fileName": "Inventorry",
+      "saveLocation": 1,
+      "filePath": "RPGSaveLoad",
+      "fileType": 0,
+      "encryptionMethod": 0,
+      "aesKey": "",
+      "aesIV": "",
+      "addToStorage": true,
+      "backgroundTask": false
+    },
+    "id": "Inventorry"
   }
 }

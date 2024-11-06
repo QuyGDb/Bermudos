@@ -171,4 +171,27 @@ public static class HelperUtilities
 
         return error;
     }
+
+    // / <summary>
+    // / Get the mouse position in UI space.
+    // / </summary>
+    public static Vector3 GetMousePositionInUI(RectTransform rectTransform, Camera uiCamera = null)
+    {
+
+        Vector3 mouseScreenPosition = Mouse.current.position.ReadValue();
+
+        // Clamp mouse position to screen size
+        mouseScreenPosition.x = Mathf.Clamp(mouseScreenPosition.x, 0f, Screen.width);
+        mouseScreenPosition.y = Mathf.Clamp(mouseScreenPosition.y, 0f, Screen.height);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                rectTransform,
+                mouseScreenPosition,
+                uiCamera,
+                out Vector2 localPoint
+            );
+        Vector3 mousePosition = rectTransform.TransformPoint(localPoint);
+
+        return mousePosition;
+    }
+
 }
