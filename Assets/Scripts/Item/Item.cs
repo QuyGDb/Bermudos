@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class Item : MonoBehaviour
 {
     private float timeToDestroy = 10f;
     private LayerMask playerLayerMark;
-    public ItemSO item;
+    public ItemSO itemSO;
     private void Start()
     {
         playerLayerMark.value = LayerMask.GetMask("Player");
@@ -27,7 +28,7 @@ public class Item : MonoBehaviour
     {
         if ((playerLayerMark.value & 1 << collision.gameObject.layer) > 0)
         {
-            collision.GetComponent<InventoryManager>()?.CollectIntentoryItem(this.item);
+            collision.GetComponent<InventoryManager>()?.CollectIntentoryItem(this.itemSO);
             Destroy(this.gameObject);
         }
     }

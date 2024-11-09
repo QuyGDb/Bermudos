@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public Animator animator;
     [HideInInspector] public PlayerEffect playerEffect;
     [HideInInspector] public Rage rage;
-    private InventoryManager inventoryManager;
+    [HideInInspector] public InventoryManager inventoryManager;
     private void Awake()
     {
         // Load components

@@ -16,6 +16,8 @@ MonoBehaviour:
   itemPrefabs: {fileID: 4210077326631932612, guid: 9d3dfbbec426f73479d9b10ea79f7f66,
     type: 3}
   itemIcon: {fileID: -657848857, guid: 230fb4c2c39695b4a809583b77cb20cb, type: 3}
-  itemDescription: 
+  itemDescription: 'Increases attack power by 20%
+
+'
   dropRate: 100
   itemType: 0

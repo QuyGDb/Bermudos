@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class Inventory : MonoBehaviour
 {
     [HideInInspector] public List<ItemUI> inventorySlotList = new();
@@ -9,8 +10,11 @@ public class Inventory : MonoBehaviour
     public GameObject itemUIPrefab;
     public GameObject content;
     public GameObject hotBar;
-    public ItemUI draggedItemUI;
-    public ItemUI hoverItemUI;
+    private ItemUI draggedItemUI;
+    private ItemUI hoverItemUI;
+    private ItemUI pressedItemUI;
+    private ItemUI previousPressedItemUI;
+
     private void Awake()
     {
         StaticEventHandler.CallInventoryChangedEvent(this);
@@ -19,11 +23,48 @@ public class Inventory : MonoBehaviour
     {
         StaticEventHandler.OnItemUIEndDragChanged += StaticEventHandler_OnItemUIChanged;
         StaticEventHandler.OnItemUIHoverChanged += StaticEventHandler_OnItemUIHoverChanged;
+        StaticEventHandler.OnItemUIClickChanged += StaticEventHandler_OnItemUIClickChanged;
     }
     private void OnDisable()
     {
         StaticEventHandler.OnItemUIEndDragChanged -= StaticEventHandler_OnItemUIChanged;
         StaticEventHandler.OnItemUIHoverChanged -= StaticEventHandler_OnItemUIHoverChanged;
+        StaticEventHandler.OnItemUIClickChanged -= StaticEventHandler_OnItemUIClickChanged;
+    }
+    public void ResetInventory(List<InventoryItem> skipList)
+    {
+        foreach (var itemUI in inventorySlotList)
+        {
+            if (itemUI.inventoryItem != default && skipList.Contains(itemUI.inventoryItem))
+            {
+                continue;
+            }
+            itemUI.ResetItemUI();
+        }
+        foreach (var itemUI in hotBarSlotList)
+        {
+            if (itemUI.inventoryItem != default && skipList.Contains(itemUI.inventoryItem))
+            {
+                continue;
+            }
+            itemUI.ResetItemUI();
+        }
+    }
+
+    private void StaticEventHandler_OnItemUIClickChanged(OnItemUIChangedEventArgs onItemUIChangedEventArgs)
+    {
+        previousPressedItemUI = pressedItemUI;
+        pressedItemUI = onItemUIChangedEventArgs.itemUI;
+        if (previousPressedItemUI == null)
+        {
+            pressedItemUI.SelectorImg.gameObject.SetActive(true);
+        }
+        else
+        if (previousPressedItemUI != pressedItemUI)
+        {
+            pressedItemUI.SelectorImg.gameObject.SetActive(true);
+            previousPressedItemUI.SelectorImg.gameObject.SetActive(false);
+        }
     }
     private void StaticEventHandler_OnItemUIChanged(OnItemUIChangedEventArgs onItemUIChangedEventArgs)
     {
@@ -34,43 +75,103 @@ public class Inventory : MonoBehaviour
         if (draggedItemUI != null)
         {
             hoverItemUI = onItemUIChangedEventArgs.itemUI;
-            SwapItemUI();
-            // draggedItemUI = null;
+            MoveAndSwapItemUI();
+            draggedItemUI = null;
         }
 
     }
-    public void SwapItemUI()
+    public void MoveAndSwapItemUI()
     {
-        if (draggedItemUI != hoverItemUI)
+        if (draggedItemUI == hoverItemUI)
+            return;
+
+
+        if (draggedItemUI.ItemUIType == ItemUIType.Inventory && hoverItemUI.ItemUIType == ItemUIType.HotBar)
+        {
+            MoveItemToHotBar();
+        }
+
+        else if (draggedItemUI.ItemUIType == ItemUIType.HotBar && hoverItemUI.ItemUIType == ItemUIType.Inventory)
+        {
+            return;
+        }
+        else if (draggedItemUI.ItemUIType == ItemUIType.Inventory && hoverItemUI.ItemUIType == ItemUIType.Inventory)
         {
             if (hoverItemUI.isHasItem)
             {
 
-                var temp = draggedItemUI;
-                draggedItemUI = hoverItemUI;
-                draggedItemUI.ItemImg = hoverItemUI.ItemImg;
-                draggedItemUI.inventoryItem = hoverItemUI.inventoryItem;
-                draggedItemUI.quantityText.text = hoverItemUI.quantityText.text;
-                hoverItemUI = temp;
-                hoverItemUI.ItemImg = temp.ItemImg;
-                hoverItemUI.inventoryItem = temp.inventoryItem;
-                hoverItemUI.quantityText.text = temp.quantityText.text;
-
+                SwapTwoItemUI(ItemUIType.Inventory);
             }
-            if (!hoverItemUI.isHasItem)
+            else
             {
-                Debug.Log("Swap1");
-                hoverItemUI.ItemImg = draggedItemUI.ItemImg;
-                hoverItemUI.inventoryItem = draggedItemUI.inventoryItem;
-                hoverItemUI.quantityText.text = draggedItemUI.quantityText.text;
-                hoverItemUI.isHasItem = true;
-                draggedItemUI.ItemImg = null;
-                draggedItemUI.inventoryItem = null;
-                draggedItemUI.quantityText.text = "";
+                SwapItemUIWithEmptySlot(ItemUIType.Inventory);
+                draggedItemUI.ItemImg.gameObject.SetActive(false);
+                draggedItemUI.quantityText.gameObject.SetActive(false);
                 draggedItemUI.isHasItem = false;
+            }
+        }
+        else
+        {
+            if (hoverItemUI.isHasItem)
+            {
+
+                SwapTwoItemUI(ItemUIType.HotBar);
+            }
+            else
+            {
+                SwapItemUIWithEmptySlot(ItemUIType.HotBar);
 
             }
         }
+
+    }
+    public void SwapTwoItemUI(ItemUIType itemUIType)
+    {
+        var tempItemImg = draggedItemUI.ItemImg.sprite;
+        var tempQuantityText = draggedItemUI.quantityText.text;
+        var tempInventoryItem = draggedItemUI.inventoryItem;
+        draggedItemUI.ItemImg.sprite = hoverItemUI.ItemImg.sprite;
+        draggedItemUI.quantityText.text = hoverItemUI.quantityText.text;
+        draggedItemUI.inventoryItem = hoverItemUI.inventoryItem;
+        Debug.Log(draggedItemUI.inventoryItem.inventorySlot + draggedItemUI.inventoryItem.itemSO.itemName);
+        if (itemUIType == ItemUIType.Inventory)
+            draggedItemUI.inventoryItem.inventorySlot = draggedItemUI.itemId;
+        else
+            draggedItemUI.inventoryItem.hotbarSlot = draggedItemUI.itemId;
+        hoverItemUI.ItemImg.sprite = tempItemImg;
+        hoverItemUI.quantityText.text = tempQuantityText;
+        hoverItemUI.inventoryItem = tempInventoryItem;
+        if (itemUIType == ItemUIType.Inventory)
+            hoverItemUI.inventoryItem.inventorySlot = hoverItemUI.itemId;
+        else
+            hoverItemUI.inventoryItem.hotbarSlot = hoverItemUI.itemId;
+
+    }
+    public void SwapItemUIWithEmptySlot(ItemUIType itemUITypee)
+    {
+        hoverItemUI.ItemImg.gameObject.SetActive(true);
+        hoverItemUI.quantityText.gameObject.SetActive(true);
+        hoverItemUI.ItemImg.sprite = draggedItemUI.ItemImg.sprite;
+        hoverItemUI.quantityText.text = draggedItemUI.quantityText.text;
+        hoverItemUI.inventoryItem = draggedItemUI.inventoryItem;
+        if (itemUITypee == ItemUIType.Inventory)
+            hoverItemUI.inventoryItem.inventorySlot = hoverItemUI.itemId;
+        else
+            hoverItemUI.inventoryItem.hotbarSlot = hoverItemUI.itemId;
+        hoverItemUI.isHasItem = true;
+        draggedItemUI.ItemImg.gameObject.SetActive(false);
+        draggedItemUI.quantityText.gameObject.SetActive(false);
+        draggedItemUI.isHasItem = false;
+        draggedItemUI.inventoryItem = default;
+    }
+    public void MoveItemToHotBar()
+    {
+        hoverItemUI.ItemImg.gameObject.SetActive(true);
+        hoverItemUI.quantityText.gameObject.SetActive(true);
+        hoverItemUI.ItemImg.sprite = draggedItemUI.ItemImg.sprite;
+        hoverItemUI.quantityText.text = draggedItemUI.quantityText.text;
+        hoverItemUI.inventoryItem = draggedItemUI.inventoryItem;
+        hoverItemUI.inventoryItem.hotbarSlot = hoverItemUI.itemId;
     }
     public void InitializeInventorySlotList(int quantity)
     {
@@ -82,6 +183,8 @@ public class Inventory : MonoBehaviour
             ItemUI newItemUI = slot.GetComponent<ItemUI>();
             newItemUI.itemId = i;
             newItemUI.ItemUIType = ItemUIType.Inventory;
+            newItemUI.inventoryItem = default;
+            newItemUI.isHasItem = false;
             inventorySlotList.Add(newItemUI);
         }
     }
@@ -95,6 +198,8 @@ public class Inventory : MonoBehaviour
             ItemUI newItemUI = slot.GetComponent<ItemUI>();
             newItemUI.itemId = i;
             newItemUI.ItemUIType = ItemUIType.HotBar;
+            newItemUI.inventoryItem = default;
+            newItemUI.isHasItem = false;
             hotBarSlotList.Add(newItemUI);
         }
     }

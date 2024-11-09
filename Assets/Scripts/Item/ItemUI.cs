@@ -5,19 +5,19 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+[DisallowMultipleComponent]
 public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerUpHandler
 {
     [HideInInspector] public int itemId;
     public Image SelectorImg;
     public Image ItemImg;
     public TextMeshProUGUI quantityText;
-    [HideInInspector] public InventoryItem inventoryItem;
+    public InventoryItem inventoryItem;
     [HideInInspector] public ItemUIType ItemUIType;
     public Inventory inventory;
     GameObject itemUICopy;
     [HideInInspector] public bool isHasItem;
     private RectTransform rectTransform;
-
 
     private void Awake()
     {
@@ -25,14 +25,26 @@ public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler,
     }
     private void OnEnable()
     {
+
         inventory = transform.parent?.transform.parent?.transform.parent?.transform.parent?.transform.parent?.GetComponent<Inventory>();
     }
 
-
+    public void ResetItemUI()
+    {
+        SelectorImg.gameObject.SetActive(false);
+        ItemImg.gameObject.SetActive(false);
+        quantityText.gameObject.SetActive(false);
+        quantityText.text = "";
+        ItemImg.sprite = null;
+        quantityText.text = "";
+        inventoryItem = default;
+        isHasItem = false;
+    }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (inventoryItem.item != null)
+        if (inventoryItem != default || inventoryItem != null)
         {
+            SelectorImg.gameObject.SetActive(false);
             itemUICopy = Instantiate(this.gameObject);
             RectTransform rectTransformCopy = itemUICopy.GetComponent<RectTransform>();
             rectTransformCopy.sizeDelta = rectTransform.sizeDelta;
@@ -40,8 +52,10 @@ public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler,
             rectTransformCopy.anchorMin = rectTransform.anchorMin;
             rectTransformCopy.anchorMax = rectTransform.anchorMax;
             rectTransformCopy.anchoredPosition = rectTransform.anchoredPosition;
-
-            itemUICopy.transform.SetParent(inventory.transform, false);
+            if (ItemUIType == ItemUIType.Inventory)
+                itemUICopy.transform.SetParent(inventory.transform, false);
+            else
+                itemUICopy.transform.SetParent(transform.parent.parent, false);
             itemUICopy.transform.position = HelperUtilities.GetMousePositionInUI(rectTransform);
 
         }
@@ -57,18 +71,25 @@ public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler,
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        StaticEventHandler.CallItemUIChangedEvent(this);
-        Destroy(itemUICopy);
-        Debug.Log("end drag" + this.gameObject.name);
+        if (inventoryItem != default)
+        {
+            StaticEventHandler.CallItemUIEndDragChangedEvent(this);
+            Destroy(itemUICopy);
+        }
+
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        // Debug.Log(this.gameObject.name);
+        if (inventoryItem != default)
+        {
+            StaticEventHandler.CallItemUIClickChangedEvent(this);
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        //  Debug.Log("pointer enter" + this.gameObject.name);
         StaticEventHandler.CallItemUIHoverChangedEvent(this);
     }
 

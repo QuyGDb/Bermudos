@@ -80,3 +80,4 @@ public enum ItemUIType
     Inventory,
     HotBar
 }
+

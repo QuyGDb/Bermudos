@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DropItem : MonoBehaviour
+[DisallowMultipleComponent]
+public class ItemDropper : MonoBehaviour
 {
     [SerializeField] private ItemSO item;
     private DestroyedEvent destroyedEvent;
@@ -33,7 +34,7 @@ public class DropItem : MonoBehaviour
         if (Random.Range(0, 100) < item.dropRate)
         {
             GameObject itemGO = Instantiate(item.itemPrefabs, transform.position, Quaternion.identity);
-            itemGO.GetComponent<Item>().item = item;
+            itemGO.GetComponent<Item>().itemSO = item;
         }
     }
 }

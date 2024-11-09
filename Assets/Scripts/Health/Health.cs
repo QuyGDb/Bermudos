@@ -25,4 +25,12 @@ public class Health : MonoBehaviour
         currentHealth -= damageAmount;
         healthEvent.CallHealthChangedEvent(((float)currentHealth / (float)startingHealth), currentHealth, damageAmount);
     }
+    public void IncreaseHealth(int healthAmount)
+    {
+        if (currentHealth + healthAmount > startingHealth)
+            currentHealth = startingHealth;
+        else
+            currentHealth += healthAmount;
+        healthEvent.CallHealthChangedEvent(((float)currentHealth / (float)startingHealth), currentHealth, 0);
+    }
 }

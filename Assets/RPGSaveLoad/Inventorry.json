@@ -1,33 +1,13 @@
 {
   "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Esper.ESave.SavableObjects.SavableObject, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-  "Small Hp Potion": {
-    "$type": "Esper.ESave.SavableObjects.SavableData`1[[ItemJson, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-    "value": {
-      "$type": "ItemJson, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "quantity": 1,
-      "inventorySlot": 0,
-      "hotbarSlot": -1
-    },
-    "id": "Small Hp Potion"
-  },
   "Big Hp Potion": {
     "$type": "Esper.ESave.SavableObjects.SavableData`1[[ItemJson, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
     "value": {
       "$type": "ItemJson, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "quantity": 2,
+      "quantity": 3,
       "inventorySlot": 1,
-      "hotbarSlot": -1
+      "hotbarSlot": 1
     },
     "id": "Big Hp Potion"
-  },
-  "Rage Potion": {
-    "$type": "Esper.ESave.SavableObjects.SavableData`1[[ItemJson, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-    "value": {
-      "$type": "ItemJson, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "quantity": 1,
-      "inventorySlot": 2,
-      "hotbarSlot": -1
-    },
-    "id": "Rage Potion"
   }
 }

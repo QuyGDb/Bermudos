@@ -1,18 +1,29 @@
 ﻿using Esper.ESave;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class InventoryManager : MonoBehaviour
 {
 
-    [SerializeField] private List<InventoryItem> inventoryList = new List<InventoryItem>();
+    public List<InventoryItem> inventoryItemList = new List<InventoryItem>();
+    public List<InventoryItem> HotBarItem
+    {
+        get
+        {
+            return inventoryItemList.Where(x => x.hotbarSlot > -1)
+                                .OrderBy(x => x.hotbarSlot)
+                                .ToList();
+        }
+    }
     private List<ItemJson> itemJsonList = new List<ItemJson>();
     public List<ItemSO> itemSOList = new List<ItemSO>();
     private Inventory inventory;
     private SaveFileSetup saveFileSetup;
     private SaveFile saveFile;
-    private bool isFirstTimeOpenInventory = true;
+
     private void Awake()
     {
         saveFileSetup = GetComponent<SaveFileSetup>();
@@ -35,6 +46,8 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         LoadItemFromJson();
+        inventory.InitializeInventorySlotList(Settings.inventorySlotQuantity);
+        inventory.InitializeHotBarSlotList(Settings.hotBarSlotQuantity);
     }
     public void ToggleInventory()
     {
@@ -44,22 +57,16 @@ public class InventoryManager : MonoBehaviour
         }
         else
         {
-            if (isFirstTimeOpenInventory)
-            {
-                inventory.InitializeInventorySlotList(Settings.inventorySlotQuantity);
-                inventory.InitializeHotBarSlotList(Settings.hotBarSlotQuantity);
-                isFirstTimeOpenInventory = false;
-            }
+            inventory.ResetInventory(inventoryItemList);
             LoadItemsToInventory();
             inventory.gameObject.SetActive(true);
         }
     }
     private void LoadItemsToInventory()
     {
-        for (int i = 0; i < inventoryList.Count; i++)
+        for (int i = 0; i < inventoryItemList.Count; i++)
         {
-            Debug.Log(inventoryList[i].item.itemName);
-            var inventoryItem = inventoryList[i];
+            var inventoryItem = inventoryItemList[i];
             if (inventoryItem.inventorySlot >= 0)
             {
                 SetInventorySlot(inventory.inventorySlotList[inventoryItem.inventorySlot], inventoryItem);
@@ -76,6 +83,11 @@ public class InventoryManager : MonoBehaviour
                     }
                 }
             }
+            if (inventoryItem.hotbarSlot >= 0)
+            {
+                SetInventorySlot(inventory.hotBarSlotList[inventoryItem.hotbarSlot], inventoryItem);
+            }
+
         }
     }
 
@@ -83,30 +95,34 @@ public class InventoryManager : MonoBehaviour
     {
         slot.ItemImg.gameObject.SetActive(true);
         slot.quantityText.gameObject.SetActive(true);
-        slot.ItemImg.sprite = item.item.itemIcon;
+        slot.ItemImg.sprite = item.itemSO.itemIcon;
         slot.quantityText.text = item.quantity.ToString();
         slot.inventoryItem = item;
         slot.isHasItem = true;
     }
-    public void CollectIntentoryItem(ItemSO item)
+
+    public void CollectIntentoryItem(ItemSO itemSO)
     {
-        for (int i = 0; i < inventoryList.Count; i++)
+        for (int i = 0; i < inventoryItemList.Count; i++)
         {
-            InventoryItem inventoryItem = inventoryList[i];
-            if (inventoryItem.item == item)
+            InventoryItem inventoryItem = inventoryItemList[i];
+            if (inventoryItem.itemSO == itemSO)
             {
+                if (inventoryItem.quantity > Settings.maxStack)
+                    return;
                 inventoryItem.quantity++;
+                StaticEventHandler.CallItemChangedEvent(inventoryItem);
                 return;
             }
         }
-
         InventoryItem newInventoryItem = new InventoryItem();
-        newInventoryItem.item = item;
+        newInventoryItem.itemSO = itemSO;
         newInventoryItem.quantity = 1;
         newInventoryItem.inventorySlot = -1;
         newInventoryItem.hotbarSlot = -1;
-        inventoryList.Add(newInventoryItem);
+        inventoryItemList.Add(newInventoryItem);
     }
+
     public void LoadItemFromJson()
     {
         foreach (var itemSO in itemSOList)
@@ -115,27 +131,23 @@ public class InventoryManager : MonoBehaviour
             {
                 ItemJson itemJson = saveFile.GetData<ItemJson>(itemSO.itemName);
                 InventoryItem inventoryItem = new InventoryItem();
-                inventoryItem.item = itemSO;
+                inventoryItem.itemSO = itemSO;
                 inventoryItem.quantity = itemJson.quantity;
                 inventoryItem.inventorySlot = itemJson.inventorySlot;
                 inventoryItem.hotbarSlot = itemJson.hotbarSlot;
-                inventoryList.Add(inventoryItem);
+                inventoryItemList.Add(inventoryItem);
             }
 
         }
     }
     private void SaveItemToJson()
     {
-        if (inventoryList.Count == 0)
+        saveFile.DeleteFile();
+        for (int i = 0; i < inventoryItemList.Count; i++)
         {
-            saveFile.DeleteFile();
-            return;
-        }
-        for (int i = 0; i < inventoryList.Count; i++)
-        {
-            InventoryItem inventoryItem = inventoryList[i];
+            InventoryItem inventoryItem = inventoryItemList[i];
             ItemJson itemJson = new ItemJson(inventoryItem.quantity, inventoryItem.inventorySlot, inventoryItem.hotbarSlot);
-            saveFile.AddOrUpdateData(inventoryItem.item.itemName, itemJson);
+            saveFile.AddOrUpdateData(inventoryItem.itemSO.itemName, itemJson);
         }
         saveFile.Save();
     }

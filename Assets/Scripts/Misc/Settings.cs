@@ -72,4 +72,6 @@ public static class Settings
     public const int inventorySlotQuantity = 70;
     public const int hotBarSlotQuantity = 10;
     #endregion
+
+    public const int maxStack = 10;
 }

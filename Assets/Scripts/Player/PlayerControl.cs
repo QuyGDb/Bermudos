@@ -10,7 +10,6 @@ public class PlayerControl : MonoBehaviour
 {
     private Player player;
     private MovementByVelocityEvent movementByVelocityEvent;
-    private MovementToPositionEvent movementToPositionEvent;
     private InputSystem_Actions inputSystem_Actions;
     private InputAction move;
     private InputAction fire;
@@ -18,8 +17,10 @@ public class PlayerControl : MonoBehaviour
     private InputAction spaceClick;
     private InputAction beam;
     private InputAction openInventory;
+    private InputAction useItemAction;
     private BeamByPlayer beamByPlayer;
     private InventoryManager inventoryManager;
+    private ItemConsumer useItem;
     private Vector2 direction;
     private Vector2 lastMoveDirection;
     private Vector2 previousLastDirection;
@@ -32,7 +33,9 @@ public class PlayerControl : MonoBehaviour
         player = GetComponent<Player>();
         beamByPlayer = GetComponent<BeamByPlayer>();
         movementByVelocityEvent = GetComponent<MovementByVelocityEvent>();
+
         inventoryManager = GetComponent<InventoryManager>();
+        useItem = GetComponent<ItemConsumer>();
         // Initialize input actions
         inputSystem_Actions = new InputSystem_Actions();
 
@@ -45,18 +48,21 @@ public class PlayerControl : MonoBehaviour
         rightClick = inputSystem_Actions.Player.RightClick;
         spaceClick = inputSystem_Actions.Player.SpaceClick;
         openInventory = inputSystem_Actions.UI.OpenInventory;
+        useItemAction = inputSystem_Actions.UI.UseItem;
         move.Enable();
         fire.Enable();
         beam.Enable();
         rightClick.Enable();
         spaceClick.Enable();
         openInventory.Enable();
+        useItemAction.Enable();
         fire.performed += OnFireClick;
         beam.performed += ctx => beamByPlayer.Beam();
         rightClick.performed += OnRightMouseClick;
         rightClick.canceled += ctx => player.bashEvent.CallOnBashEvent(BashState.ReleaseBash);
         spaceClick.performed += OnSpaceClick;
         openInventory.performed += ctx => inventoryManager.ToggleInventory();
+        useItemAction.performed += ctx => useItem.UseItemFromHotBar();
     }
 
     private void OnDisable()
@@ -67,12 +73,14 @@ public class PlayerControl : MonoBehaviour
         rightClick.Disable();
         spaceClick.Disable();
         openInventory.Disable();
+        useItemAction.Disable();
         fire.performed -= OnFireClick;
         beam.performed -= ctx => beamByPlayer.Beam();
         rightClick.performed -= OnRightMouseClick;
         rightClick.canceled -= ctx => player.bashEvent.CallOnBashEvent(BashState.ReleaseBash);
         spaceClick.performed -= OnSpaceClick;
         openInventory.performed -= ctx => inventoryManager.ToggleInventory();
+        useItemAction.performed -= ctx => useItem.UseItemFromHotBar();
     }
 
     private void OnRightMouseClick(InputAction.CallbackContext ctx)

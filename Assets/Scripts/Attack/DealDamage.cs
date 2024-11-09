@@ -10,7 +10,7 @@ public class DealDamage : MonoBehaviour
     private ContactFilter2D contactFilter2D;
     private Weapon weapon;
 
-    private int damage = 10;
+    [SerializeField] public int damage = 10;
     private int attackCost = 10;
     private void Awake()
     {

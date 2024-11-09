@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 public static class StaticEventHandler
@@ -42,7 +43,12 @@ public static class StaticEventHandler
     {
         OnTriggerDash?.Invoke();
     }
+    public static event Action<OnInventoryItemChangedEventArgs> OnItemChanged;
 
+    public static void CallItemChangedEvent(InventoryItem inventoryItem)
+    {
+        OnItemChanged?.Invoke(new OnInventoryItemChangedEventArgs() { inventoryItem = inventoryItem });
+    }
     #region UI Events
 
     public static event Action<OnInventoryChangedEventArgs> OnInventoryChanged;
@@ -53,7 +59,7 @@ public static class StaticEventHandler
     }
     public static event Action<OnItemUIChangedEventArgs> OnItemUIEndDragChanged;
 
-    public static void CallItemUIChangedEvent(ItemUI itemUI)
+    public static void CallItemUIEndDragChangedEvent(ItemUI itemUI)
     {
         OnItemUIEndDragChanged?.Invoke(new OnItemUIChangedEventArgs() { itemUI = itemUI });
     }
@@ -61,6 +67,16 @@ public static class StaticEventHandler
     public static void CallItemUIHoverChangedEvent(ItemUI itemUI)
     {
         OnItemUIHoverChanged?.Invoke(new OnItemUIChangedEventArgs() { itemUI = itemUI });
+    }
+    public static event Action<OnItemUIChangedEventArgs> OnItemUIClickChanged;
+    public static void CallItemUIClickChangedEvent(ItemUI itemUI)
+    {
+        OnItemUIClickChanged?.Invoke(new OnItemUIChangedEventArgs() { itemUI = itemUI });
+    }
+    public static event Action<OnInventoryItemChangedEventArgs> OnHotBarScrollChanged;
+    public static void CallHotBarScrollChangedEvent(InventoryItem inventoryItem)
+    {
+        OnHotBarScrollChanged?.Invoke(new OnInventoryItemChangedEventArgs() { inventoryItem = inventoryItem });
     }
     #endregion
 }
@@ -89,4 +105,9 @@ public class OnItemUIChangedEventArgs : EventArgs
 {
     public ItemUI itemUI;
 }
+public class OnInventoryItemChangedEventArgs : EventArgs
+{
+    public InventoryItem inventoryItem;
+}
+
 
