@@ -193,4 +193,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48018728aec29041b216b7eacafe247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
+  itemSO: {fileID: 0}
+  jumDuration: 0.5
+  numJumps: 2
+  jumpPower: 1
+  shakeDuration: 0.46
+  shakeStrength: 0.5
+  shakeVibrato: 3

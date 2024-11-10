@@ -110,6 +110,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 833924689d1a5d24f8028971c6662396,
         type: 2}
+    - target: {fileID: 2875884459108569505, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: itemSOList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2875884459108569505, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: itemSOList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 833924689d1a5d24f8028971c6662396,
+        type: 2}
     - target: {fileID: 3674136317262225296, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
       propertyPath: enemyAmmoType

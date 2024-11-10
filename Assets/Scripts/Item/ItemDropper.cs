@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,9 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class ItemDropper : MonoBehaviour
 {
-    [SerializeField] private ItemSO item;
+    [SerializeField] private List<ItemSO> itemSOList;
     private DestroyedEvent destroyedEvent;
+
     private void Awake()
     {
         // Load components
@@ -31,10 +33,13 @@ public class ItemDropper : MonoBehaviour
     }
     private void DropItemOnDeath()
     {
-        if (Random.Range(0, 100) < item.dropRate)
+        int randomIndex = Random.Range(0, itemSOList.Count);
+        ItemSO selectedItem = itemSOList[randomIndex];
+        if (Random.Range(0, 100) < selectedItem.dropRate)
         {
-            GameObject itemGO = Instantiate(item.itemPrefabs, transform.position, Quaternion.identity);
-            itemGO.GetComponent<Item>().itemSO = item;
+            GameObject itemGO = Instantiate(selectedItem.itemPrefabs, transform.position, Quaternion.identity);
+            itemGO.GetComponent<Item>().itemSO = selectedItem;
         }
     }
+
 }

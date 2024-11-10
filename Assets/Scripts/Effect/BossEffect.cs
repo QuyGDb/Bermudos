@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class BossEffect : Effect
 {
-    public bool isPhase2 = false;
+    [HideInInspector] public bool isPhase2 = false;
     private Animator animator;
     private PoiseEvent poiseEvent;
     private void Awake()
@@ -49,7 +50,7 @@ public class BossEffect : Effect
         yield return waitForFixedUpdate;
     }
 
-    public void ouchEffect()
+    public void OuchEffect()
     {
         if (isPhase2)
             animator.SetTrigger(Settings.ouch2);

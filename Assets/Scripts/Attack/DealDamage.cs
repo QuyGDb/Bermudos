@@ -62,7 +62,7 @@ public class DealDamage : MonoBehaviour
         {
             collision.GetComponent<BossEffect>().PushBossByWeapon(GameManager.Instance.player.transform.position);
             collision.GetComponent<ReceiveDamage>().TakeDamage(damage);
-            collision.GetComponent<BossEffect>().ouchEffect();
+            collision.GetComponent<BossEffect>().OuchEffect();
         }
 
     }

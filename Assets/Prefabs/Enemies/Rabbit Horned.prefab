@@ -80,6 +80,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 39045841eae8b474095972fd217d2007,
         type: 2}
+    - target: {fileID: 4021325254028590817, guid: 235f1d17e61c9274f9cf5132ec8f9b69,
+        type: 3}
+      propertyPath: itemSOList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c6de008a9c9c870438f5689d1be598dc,
+        type: 2}
     - target: {fileID: 4122932376304399523, guid: 235f1d17e61c9274f9cf5132ec8f9b69,
         type: 3}
       propertyPath: m_Size.x

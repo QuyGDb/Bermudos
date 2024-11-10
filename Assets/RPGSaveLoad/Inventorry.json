@@ -4,10 +4,20 @@
     "$type": "Esper.ESave.SavableObjects.SavableData`1[[ItemJson, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
     "value": {
       "$type": "ItemJson, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "quantity": 3,
-      "inventorySlot": 1,
-      "hotbarSlot": 1
+      "quantity": 2,
+      "inventorySlot": -1,
+      "hotbarSlot": -1
     },
     "id": "Big Hp Potion"
+  },
+  "Small Hp Potion": {
+    "$type": "Esper.ESave.SavableObjects.SavableData`1[[ItemJson, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "value": {
+      "$type": "ItemJson, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "quantity": 10,
+      "inventorySlot": 0,
+      "hotbarSlot": 0
+    },
+    "id": "Small Hp Potion"
   }
 }

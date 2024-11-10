@@ -108,7 +108,7 @@ public class InventoryManager : MonoBehaviour
             InventoryItem inventoryItem = inventoryItemList[i];
             if (inventoryItem.itemSO == itemSO)
             {
-                if (inventoryItem.quantity > Settings.maxStack)
+                if (inventoryItem.quantity >= Settings.maxStack)
                     return;
                 inventoryItem.quantity++;
                 StaticEventHandler.CallItemChangedEvent(inventoryItem);

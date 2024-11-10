@@ -1,15 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
+[DisallowMultipleComponent]
 public class PlayerEffect : Effect
 {
     private Player player;
-    private Coroutine PushPlayerByEnemyCoroutine;
-    public bool isDashing = false;
+    private Coroutine pushPlayerByEnemyCoroutine;
+    [HideInInspector] public bool isDashing = false;
     private float dashEffectDuration = 0.05f;
 
-
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (pushPlayerByEnemyCoroutine != null)
+            StopCoroutine(pushPlayerByEnemyCoroutine);
+    }
     private void Awake()
     {
         player = GetComponent<Player>();
@@ -51,14 +65,13 @@ public class PlayerEffect : Effect
     }
     public void DamagePushEfect(Vector2 damageSource)
     {
-        if (PushPlayerByEnemyCoroutine != null)
+        if (pushPlayerByEnemyCoroutine != null)
         {
-            StopCoroutine(PushPlayerByEnemyCoroutine);
+            StopCoroutine(pushPlayerByEnemyCoroutine);
         }
         if (gameObject.activeSelf)
         {
-
-            PushPlayerByEnemyCoroutine = StartCoroutine(PushPlayerByEnemy(rb.position + (damageForce * (rb.position - damageSource).normalized)));
+            pushPlayerByEnemyCoroutine = StartCoroutine(PushPlayerByEnemy(rb.position + (damageForce * (rb.position - damageSource).normalized)));
         }
     }
     private IEnumerator PushPlayerByEnemy(Vector3 targetPosition)
@@ -85,7 +98,6 @@ public class PlayerEffect : Effect
         {
             PlayerShadow playerShadow = (PlayerShadow)PoolManager.Instance.ReuseComponent(GameResources.Instance.playerShadowPrefab, player.transform.position, Quaternion.identity);
             playerShadow.InitialisePlayerShadow(spriteRenderers);
-
             dashEffectDuration = 0.035f;
         }
 

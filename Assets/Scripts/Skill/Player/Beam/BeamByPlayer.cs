@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class BeamByPlayer : MonoBehaviour
 {
     public GameObject beamPrefab;
@@ -72,4 +73,15 @@ public class BeamByPlayer : MonoBehaviour
         rage.currentRage = 0;
         RageEvent.CallRageChangedEvent(0, 0, rage.maxRage);
     }
+
+    #region Validation
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        HelperUtilities.ValidateCheckNullValue(this, nameof(beamPrefab), this);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(beamMaterial), this);
+    }
+#endif
+    #endregion
+
 }

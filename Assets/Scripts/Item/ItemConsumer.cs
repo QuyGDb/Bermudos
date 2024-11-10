@@ -54,7 +54,6 @@ public class ItemConsumer : MonoBehaviour
             if (inventoryItem.itemSO == currentInventoryItem.itemSO)
             {
                 inventoryItem.quantity--;
-                Debug.Log(inventoryItem.quantity);
                 UsePotion(inventoryItem.itemSO.itemName);
                 StaticEventHandler.CallItemChangedEvent(inventoryItem);
                 if (inventoryItem.quantity == 0)

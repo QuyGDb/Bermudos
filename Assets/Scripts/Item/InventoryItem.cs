@@ -7,4 +7,5 @@ public class InventoryItem
     public int quantity;
     public int inventorySlot;
     public int hotbarSlot;
+    public bool isOnHotBar;
 }

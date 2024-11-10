@@ -78,6 +78,11 @@ public static class StaticEventHandler
     {
         OnHotBarScrollChanged?.Invoke(new OnInventoryItemChangedEventArgs() { inventoryItem = inventoryItem });
     }
+    public static event Action<OnInventoryItemChangedEventArgs> OnMoveItemToHotBar;
+    public static void CallMoveItemToHotBarEvent(InventoryItem inventoryItem)
+    {
+        OnMoveItemToHotBar?.Invoke(new OnInventoryItemChangedEventArgs() { inventoryItem = inventoryItem });
+    }
     #endregion
 }
 public class MapChangedEventArgs : EventArgs

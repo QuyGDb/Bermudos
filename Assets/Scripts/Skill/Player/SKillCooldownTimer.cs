@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,17 +40,21 @@ public class SkillCooldownTimer : MonoBehaviour
     }
     public void IncreaseBeamCooldown(RageEventArgs rageEventArgs)
     {
-        beamCooldownImage.fillAmount = rageEventArgs.ragePercent;
-        if (beamCooldownImage.fillAmount == 1)
+        beamCooldownImage.DOFillAmount(rageEventArgs.ragePercent, 0.3f).OnComplete(() =>
         {
-            beamCooldownImage.gameObject.SetActive(false);
-            beamIcon.gameObject.SetActive(true);
-        }
-        else
-        {
-            beamCooldownImage.gameObject.SetActive(true);
-            beamIcon.gameObject.SetActive(false);
-        }
+            if (beamCooldownImage.fillAmount == 1)
+            {
+                beamCooldownImage.gameObject.SetActive(false);
+                beamIcon.gameObject.SetActive(true);
+            }
+            else
+            {
+                beamCooldownImage.gameObject.SetActive(true);
+                beamIcon.gameObject.SetActive(false);
+            }
+        });
+
+
     }
     private void Start()
     {

@@ -1071,6 +1071,69 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5953620679884217616, guid: 4da382adfd65e324db7ee50f29d89047,
+        type: 3}
+      propertyPath: inventoryItemList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5953620679884217616, guid: 4da382adfd65e324db7ee50f29d89047,
+        type: 3}
+      propertyPath: inventoryItemList.Array.data[0].itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 39045841eae8b474095972fd217d2007,
+        type: 2}
+    - target: {fileID: 5953620679884217616, guid: 4da382adfd65e324db7ee50f29d89047,
+        type: 3}
+      propertyPath: inventoryItemList.Array.data[1].itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 45e2eb9af36ef0646982704815f12b85,
+        type: 2}
+    - target: {fileID: 5953620679884217616, guid: 4da382adfd65e324db7ee50f29d89047,
+        type: 3}
+      propertyPath: inventoryItemList.Array.data[2].itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: c6de008a9c9c870438f5689d1be598dc,
+        type: 2}
+    - target: {fileID: 5953620679884217616, guid: 4da382adfd65e324db7ee50f29d89047,
+        type: 3}
+      propertyPath: inventoryItemList.Array.data[0].quantity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5953620679884217616, guid: 4da382adfd65e324db7ee50f29d89047,
+        type: 3}
+      propertyPath: inventoryItemList.Array.data[1].quantity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5953620679884217616, guid: 4da382adfd65e324db7ee50f29d89047,
+        type: 3}
+      propertyPath: inventoryItemList.Array.data[2].quantity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5953620679884217616, guid: 4da382adfd65e324db7ee50f29d89047,
+        type: 3}
+      propertyPath: inventoryItemList.Array.data[1].hotbarSlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5953620679884217616, guid: 4da382adfd65e324db7ee50f29d89047,
+        type: 3}
+      propertyPath: inventoryItemList.Array.data[2].hotbarSlot
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5953620679884217616, guid: 4da382adfd65e324db7ee50f29d89047,
+        type: 3}
+      propertyPath: inventoryItemList.Array.data[0].inventorySlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5953620679884217616, guid: 4da382adfd65e324db7ee50f29d89047,
+        type: 3}
+      propertyPath: inventoryItemList.Array.data[1].inventorySlot
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5953620679884217616, guid: 4da382adfd65e324db7ee50f29d89047,
+        type: 3}
+      propertyPath: inventoryItemList.Array.data[2].inventorySlot
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7010707476148083617, guid: 4da382adfd65e324db7ee50f29d89047,
         type: 3}
       propertyPath: m_Name

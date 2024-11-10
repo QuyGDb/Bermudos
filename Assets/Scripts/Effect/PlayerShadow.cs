@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class PlayerShadow : MonoBehaviour
 {
     public void InitialisePlayerShadow(SpriteRenderer[] playerSpriteRenderers)

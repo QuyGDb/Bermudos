@@ -85,10 +85,12 @@ public class Inventory : MonoBehaviour
         if (draggedItemUI == hoverItemUI)
             return;
 
-
         if (draggedItemUI.ItemUIType == ItemUIType.Inventory && hoverItemUI.ItemUIType == ItemUIType.HotBar)
         {
+            if (draggedItemUI.inventoryItem.isOnHotBar)
+                return;
             MoveItemToHotBar();
+            StaticEventHandler.CallMoveItemToHotBarEvent(hoverItemUI.inventoryItem);
         }
 
         else if (draggedItemUI.ItemUIType == ItemUIType.HotBar && hoverItemUI.ItemUIType == ItemUIType.Inventory)
@@ -120,7 +122,6 @@ public class Inventory : MonoBehaviour
             else
             {
                 SwapItemUIWithEmptySlot(ItemUIType.HotBar);
-
             }
         }
 
@@ -172,6 +173,7 @@ public class Inventory : MonoBehaviour
         hoverItemUI.quantityText.text = draggedItemUI.quantityText.text;
         hoverItemUI.inventoryItem = draggedItemUI.inventoryItem;
         hoverItemUI.inventoryItem.hotbarSlot = hoverItemUI.itemId;
+        hoverItemUI.inventoryItem.isOnHotBar = true;
     }
     public void InitializeInventorySlotList(int quantity)
     {

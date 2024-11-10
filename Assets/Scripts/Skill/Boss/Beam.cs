@@ -48,7 +48,7 @@ public class Beam : MonoBehaviour
         if ((bossLayerMask.value & 1 << collision.gameObject.layer) > 0)
         {
             collision.GetComponent<BossEffect>()?.PushBossByWeapon(transform.position);
-            collision.GetComponent<BossEffect>()?.ouchEffect();
+            collision.GetComponent<BossEffect>()?.OuchEffect();
         }
         isColliding = true;
     }

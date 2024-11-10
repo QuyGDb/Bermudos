@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class EnemyEffect : Effect
 {
     private PoiseEvent poiseEvent;

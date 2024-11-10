@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering.UI;
 
 [RequireComponent(typeof(Player))]
+[DisallowMultipleComponent]
 public class Bash : MonoBehaviour
 {
     private Rigidbody2D rigidbody2d;
@@ -49,7 +50,6 @@ public class Bash : MonoBehaviour
     {
         switch (bashState)
         {
-
             case BashState.ActiveBash:
                 Prepare();
                 break;
@@ -72,6 +72,7 @@ public class Bash : MonoBehaviour
         player.stamina.UseStamina(bashCost);
         collider2d = Physics2D.OverlapCircle(transform.position, 2f, layerMask.value);
         if (collider2d?.GetComponent<Ammo>() == null) return;
+        Debug.Log("Prepare" + collider2d);
         if (player.stamina.currentStamina > bashCost)
         {
             Time.timeScale = 0f;

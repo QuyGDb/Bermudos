@@ -22,15 +22,20 @@ public class HotBarScroll : MonoBehaviour
     private void OnEnable()
     {
         StaticEventHandler.OnItemChanged += StaticEventHandler_OnItemChanged;
+        StaticEventHandler.OnMoveItemToHotBar += StaticEventHandler_OnMoveItemToHotBar;
     }
     private void OnDisable()
     {
         StaticEventHandler.OnItemChanged -= StaticEventHandler_OnItemChanged;
+        StaticEventHandler.OnMoveItemToHotBar -= StaticEventHandler_OnMoveItemToHotBar;
     }
     private void StaticEventHandler_OnItemChanged(OnInventoryItemChangedEventArgs onInventoryItemChangedEventArgs)
     {
-        Debug.Log(GameManager.Instance.player.inventoryManager.HotBarItem.Count);
         if (GameManager.Instance.player.inventoryManager.HotBarItem.Count == 0)
+        {
+            return;
+        }
+        if (GameManager.Instance.player.inventoryManager.HotBarItem[currentIndex] == null)
             return;
         if (onInventoryItemChangedEventArgs.inventoryItem.hotbarSlot != GameManager.Instance.player.inventoryManager.HotBarItem[currentIndex].hotbarSlot)
             return;
@@ -43,12 +48,22 @@ public class HotBarScroll : MonoBehaviour
 
         }
     }
+    private void StaticEventHandler_OnMoveItemToHotBar(OnInventoryItemChangedEventArgs onInventoryItemChangedEventArgs)
+    {
+        if (GameManager.Instance.player.inventoryManager.HotBarItem.Count == 1)
+        {
+            itemIcom.sprite = onInventoryItemChangedEventArgs.inventoryItem.itemSO.itemIcon;
+            itemQuantity.text = onInventoryItemChangedEventArgs.inventoryItem.quantity.ToString();
+        }
 
+    }
     private void Start()
     {
         emptyItemSprite = itemIcom.sprite;
         if (GameManager.Instance.player.inventoryManager.HotBarItem.Count == 0)
+        {
             return;
+        }
         currentIndex = 0;
         itemIcom.sprite = GameManager.Instance.player.inventoryManager.HotBarItem[currentIndex].itemSO.itemIcon;
         itemQuantity.text = GameManager.Instance.player.inventoryManager.HotBarItem[currentIndex].quantity.ToString();
