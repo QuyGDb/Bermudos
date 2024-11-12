@@ -14,6 +14,18 @@ public class Health : MonoBehaviour
     {
         healthEvent = GetComponent<HealthEvent>();
     }
+    private void OnEnable()
+    {
+        StaticEventHandler.OnRestInBonfire += StaticEventHandler_OnRestInBonfire;
+    }
+    private void OnDisable()
+    {
+        StaticEventHandler.OnRestInBonfire -= StaticEventHandler_OnRestInBonfire;
+    }
+    private void StaticEventHandler_OnRestInBonfire()
+    {
+        currentHealth = startingHealth;
+    }
     private void Start()
     {
         currentHealth = startingHealth;

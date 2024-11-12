@@ -7,7 +7,7 @@ public static class StaticEventHandler
     // Room changed event
     public static event Action<MapChangedEventArgs> OnMapChanged;
 
-    public static void CallRoomChangedEvent(Map map)
+    public static void CallMapChangedEvent(Map map = default)
     {
         OnMapChanged?.Invoke(new MapChangedEventArgs() { map = map });
     }
@@ -49,6 +49,21 @@ public static class StaticEventHandler
     {
         OnItemChanged?.Invoke(new OnInventoryItemChangedEventArgs() { inventoryItem = inventoryItem });
     }
+
+    #region Rest Event
+    public static event Action OnPressRestEvent;
+    public static void CallPressRestEvent()
+    {
+        OnPressRestEvent?.Invoke();
+    }
+
+    public static event Action OnRestInBonfire;
+    public static void CallRestInBonfireEvent()
+    {
+        OnRestInBonfire?.Invoke();
+    }
+    #endregion
+
     #region UI Events
 
     public static event Action<OnInventoryChangedEventArgs> OnInventoryChanged;
@@ -84,6 +99,7 @@ public static class StaticEventHandler
         OnMoveItemToHotBar?.Invoke(new OnInventoryItemChangedEventArgs() { inventoryItem = inventoryItem });
     }
     #endregion
+
 }
 public class MapChangedEventArgs : EventArgs
 {

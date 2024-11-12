@@ -8,7 +8,7 @@ public class Map : MonoBehaviour
 
     private void Start()
     {
-        StaticEventHandler.CallRoomChangedEvent(this);
+        StaticEventHandler.CallMapChangedEvent(this);
     }
 
 }

@@ -35,6 +35,8 @@ public class CinemachineManager : MonoBehaviour
     }
     private void Confine(Map map)
     {
+        if (map == null)
+            return;
         mapCollider = map.GetComponent<Collider2D>();
 
         if (mapCollider != null)

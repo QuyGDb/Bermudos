@@ -1,4 +1,5 @@
-using Esper.ESave;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -7,7 +8,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private GameObject enemy;
     [SerializeField] private EnemyManagerDetailsSO enemyManagerDetailsSO;
     private EnemyManagerData enemyManagerData;
-
+    public List<GameObject> enemyList = new List<GameObject>();
 
     private void Start()
     {
@@ -21,6 +22,7 @@ public class EnemyManager : MonoBehaviour
     private void OnEnable()
     {
         StaticEventHandler.OnBuildNavMesh += StaticEventHandler_OnBuildNavMesh;
+
     }
     private void OnDisable()
     {
@@ -32,14 +34,16 @@ public class EnemyManager : MonoBehaviour
         int count = 0;
         foreach (var enemyState in enemyManagerData.enemieStateList)
         {
-            if (enemyState)
-            {
 
-                GameObject newEnemy = Instantiate(enemy, enemyManagerDetailsSO.enemyPostionList[count], Quaternion.identity, this.transform);
-                newEnemy.GetComponent<Enemy>().InitializeEnemy(enemyManagerDetailsSO.enemyManagerDataKey, count);
-                newEnemy.name = enemyManagerDetailsSO.enemyName + " " + count;
-            }
-            count++;
+
+            GameObject newEnemy = Instantiate(enemy, enemyManagerDetailsSO.enemyPostionList[count], Quaternion.Euler(0, 0, 0), this.transform);
+            newEnemy.GetComponent<Enemy>().InitializeEnemy(enemyManagerDetailsSO.enemyManagerDataKey, count);
+            newEnemy.name = enemyManagerDetailsSO.enemyName + " " + count;
+            enemyList.Add(newEnemy);
+
+
         }
+        count++;
+
     }
 }

@@ -18,6 +18,7 @@ public class PlayerControl : MonoBehaviour
     private InputAction beam;
     private InputAction openInventory;
     private InputAction useItemAction;
+    private InputAction restAction;
     private BeamByPlayer beamByPlayer;
     private InventoryManager inventoryManager;
     private ItemConsumer useItem;
@@ -49,6 +50,7 @@ public class PlayerControl : MonoBehaviour
         spaceClick = inputSystem_Actions.Player.SpaceClick;
         openInventory = inputSystem_Actions.UI.OpenInventory;
         useItemAction = inputSystem_Actions.UI.UseItem;
+        restAction = inputSystem_Actions.Player.Rest;
         move.Enable();
         fire.Enable();
         beam.Enable();
@@ -56,6 +58,7 @@ public class PlayerControl : MonoBehaviour
         spaceClick.Enable();
         openInventory.Enable();
         useItemAction.Enable();
+        restAction.Enable();
         fire.performed += OnFireClick;
         beam.performed += ctx => beamByPlayer.Beam();
         rightClick.performed += OnRightMouseClick;
@@ -63,6 +66,8 @@ public class PlayerControl : MonoBehaviour
         spaceClick.performed += OnSpaceClick;
         openInventory.performed += ctx => inventoryManager.ToggleInventory();
         useItemAction.performed += ctx => useItem.UseItemFromHotBar();
+        restAction.performed += ctx => StaticEventHandler.CallPressRestEvent();
+
     }
 
     private void OnDisable()
@@ -74,6 +79,7 @@ public class PlayerControl : MonoBehaviour
         spaceClick.Disable();
         openInventory.Disable();
         useItemAction.Disable();
+        restAction.Disable();
         fire.performed -= OnFireClick;
         beam.performed -= ctx => beamByPlayer.Beam();
         rightClick.performed -= OnRightMouseClick;
@@ -81,7 +87,9 @@ public class PlayerControl : MonoBehaviour
         spaceClick.performed -= OnSpaceClick;
         openInventory.performed -= ctx => inventoryManager.ToggleInventory();
         useItemAction.performed -= ctx => useItem.UseItemFromHotBar();
+        restAction.performed -= ctx => StaticEventHandler.CallPressRestEvent();
     }
+
 
     private void OnRightMouseClick(InputAction.CallbackContext ctx)
     {

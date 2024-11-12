@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a23c4cd34f6bbd94fb9375144b04af20, type: 3}
   m_Name: MovementDetails_Player
   m_EditorClassIdentifier: 
-  minMoveSpeed: 8
-  maxMoveSpeed: 8
+  minMoveSpeed: 10
+  maxMoveSpeed: 10
   dashSpeed: 20
   dashDistance: 6
   dashCooldownTime: 1

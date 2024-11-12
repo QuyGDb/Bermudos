@@ -18,6 +18,6 @@ MonoBehaviour:
   enemyPostionList:
   - {x: -26, y: -8}
   - {x: 32, y: -5}
-  - {x: 0, y: -35}
+  - {x: 0, y: -25}
   - {x: 9, y: 8}
   enemyManagerDataKey: NearTheForestKey

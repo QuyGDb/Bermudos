@@ -14,15 +14,22 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     private void OnEnable()
     {
         StaticEventHandler.OnPlayerChanged += StaticEventHandler_OnPlayerChanged;
+        StaticEventHandler.OnRestInBonfire += StaticEventHandler_OnRestInBonfire;
     }
     private void OnDisable()
     {
         StaticEventHandler.OnPlayerChanged -= StaticEventHandler_OnPlayerChanged;
+        StaticEventHandler.OnRestInBonfire -= StaticEventHandler_OnRestInBonfire;
     }
 
     private void StaticEventHandler_OnPlayerChanged(OnPlayerChangedEventArgs onPlayerChangedEventArgs)
     {
         this.player = onPlayerChangedEventArgs.player;
+    }
+
+    private void StaticEventHandler_OnRestInBonfire()
+    {
+        InitializeEnemyManagerData();
     }
     override protected void Awake()
     {

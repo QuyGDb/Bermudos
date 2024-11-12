@@ -4,7 +4,7 @@
     "$type": "Esper.ESave.SavableObjects.SavableData`1[[ItemJson, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
     "value": {
       "$type": "ItemJson, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "quantity": 2,
+      "quantity": 10,
       "inventorySlot": -1,
       "hotbarSlot": -1
     },
@@ -14,9 +14,9 @@
     "$type": "Esper.ESave.SavableObjects.SavableData`1[[ItemJson, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
     "value": {
       "$type": "ItemJson, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "quantity": 10,
+      "quantity": 7,
       "inventorySlot": 0,
-      "hotbarSlot": 0
+      "hotbarSlot": -1
     },
     "id": "Small Hp Potion"
   }
