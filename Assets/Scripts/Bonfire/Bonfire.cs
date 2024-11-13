@@ -34,14 +34,10 @@ public class Bonfire : MonoBehaviour
         if (icon.gameObject.activeSelf)
         {
             StaticEventHandler.CallRestInBonfireEvent();
-            ResetEnemy();
 
         }
     }
-    public void ResetEnemy()
-    {
-        StaticEventHandler.CallMapChangedEvent();
-    }
+
     #region Validation
 #if UNITY_EDITOR
     private void OnValidate()

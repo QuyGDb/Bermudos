@@ -11,7 +11,16 @@ public static class StaticEventHandler
     {
         OnMapChanged?.Invoke(new MapChangedEventArgs() { map = map });
     }
-
+    public static event Action OnMapTransition;
+    public static void CallMapTransitionEvent()
+    {
+        OnMapTransition?.Invoke();
+    }
+    public static event Action OnNoteOpened;
+    public static void CallNoteOpenedEvent()
+    {
+        OnNoteOpened?.Invoke();
+    }
     public static event Action<OnPlayerChangedEventArgs> OnPlayerChanged;
 
     public static void CallPlayerChangedEvent(Player player)
@@ -25,11 +34,11 @@ public static class StaticEventHandler
     {
         OnBossChanged?.Invoke(new OnBossChangedEventArgs() { boss = boss });
     }
-    public static event Action OnBuildNavMesh;
+    public static event Action<OnBuildNavMeshEventArgs> OnBuildNavMesh;
 
-    public static void CallBuildNavMeshEvent()
+    public static void CallBuildNavMeshEvent(bool isBuildWhenMapChanged)
     {
-        OnBuildNavMesh?.Invoke();
+        OnBuildNavMesh?.Invoke(new OnBuildNavMeshEventArgs() { isBuildWhenMapChanged = isBuildWhenMapChanged });
     }
     public static event Action OnTriggerBash;
     public static void CallTriggerBashEvent()
@@ -130,5 +139,8 @@ public class OnInventoryItemChangedEventArgs : EventArgs
 {
     public InventoryItem inventoryItem;
 }
-
+public class OnBuildNavMeshEventArgs : EventArgs
+{
+    public bool isBuildWhenMapChanged;
+}
 

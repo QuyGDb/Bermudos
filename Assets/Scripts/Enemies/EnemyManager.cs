@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 
 [DisallowMultipleComponent]
 public class EnemyManager : MonoBehaviour
@@ -29,21 +30,37 @@ public class EnemyManager : MonoBehaviour
         StaticEventHandler.OnBuildNavMesh -= StaticEventHandler_OnBuildNavMesh;
     }
 
-    private void StaticEventHandler_OnBuildNavMesh()
+    private void StaticEventHandler_OnBuildNavMesh(OnBuildNavMeshEventArgs onBuildNavMeshEventArgs)
     {
-        int count = 0;
-        foreach (var enemyState in enemyManagerData.enemieStateList)
+        if (onBuildNavMeshEventArgs.isBuildWhenMapChanged)
         {
-
-
-            GameObject newEnemy = Instantiate(enemy, enemyManagerDetailsSO.enemyPostionList[count], Quaternion.Euler(0, 0, 0), this.transform);
-            newEnemy.GetComponent<Enemy>().InitializeEnemy(enemyManagerDetailsSO.enemyManagerDataKey, count);
-            newEnemy.name = enemyManagerDetailsSO.enemyName + " " + count;
-            enemyList.Add(newEnemy);
-
+            int count = 0;
+            foreach (var enemyState in enemyManagerData.enemieStateList)
+            {
+                if (enemyState)
+                {
+                    GameObject newEnemy = Instantiate(enemy, enemyManagerDetailsSO.enemyPostionList[count], Quaternion.Euler(0, 0, 0), this.transform);
+                    newEnemy.GetComponent<Enemy>().InitializeEnemy(enemyManagerDetailsSO.enemyManagerDataKey, count);
+                    newEnemy.name = enemyManagerDetailsSO.enemyName + " " + count;
+                    enemyList.Add(newEnemy);
+                    count++;
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < enemyList.Count; i++)
+            {
+                if (enemyList[i] == null)
+                {
+                    GameObject newEnemy = Instantiate(enemy, enemyManagerDetailsSO.enemyPostionList[i], Quaternion.Euler(0, 0, 0), this.transform);
+                    newEnemy.GetComponent<Enemy>().InitializeEnemy(enemyManagerDetailsSO.enemyManagerDataKey, i);
+                    newEnemy.name = enemyManagerDetailsSO.enemyName + " " + i;
+                    enemyList[i] = newEnemy;
+                }
+            }
 
         }
-        count++;
 
     }
 }
