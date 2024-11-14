@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ebad7639fbeaa14793b927a123306cf, type: 3}
+  m_Name: IntroSO_Scene3
+  m_EditorClassIdentifier: 
+  introSprite: {fileID: 21300000, guid: b795132acd216074dae09f2c61acd42b, type: 3}
+  introText: 'At 18, Ryu awakened Bash, the ability to control the direction of magical
+    attacks. Because this land is a land of swordsmanship, it was really useless,
+    but if Ryu went to Bermudos, he might be able to develop his ability. So Ryu
+    joined the journey. '

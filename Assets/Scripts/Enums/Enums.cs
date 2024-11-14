@@ -1,3 +1,12 @@
+public enum GameState
+{
+    Begin,
+    Instruct,
+    Play,
+    EngagedBoss,
+    Win,
+}
+
 public enum AimDirection
 {
     Up,

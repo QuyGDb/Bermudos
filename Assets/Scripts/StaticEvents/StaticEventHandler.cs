@@ -16,10 +16,10 @@ public static class StaticEventHandler
     {
         OnMapTransition?.Invoke();
     }
-    public static event Action OnNoteOpened;
-    public static void CallNoteOpenedEvent()
+    public static event Action<OnNoteOpenedEventArgs> OnNoteOpened;
+    public static void CallNoteOpenedEvent(bool isOpening, string note)
     {
-        OnNoteOpened?.Invoke();
+        OnNoteOpened?.Invoke(new OnNoteOpenedEventArgs() { isOpening = isOpening, note = note });
     }
     public static event Action<OnPlayerChangedEventArgs> OnPlayerChanged;
 
@@ -107,6 +107,11 @@ public static class StaticEventHandler
     {
         OnMoveItemToHotBar?.Invoke(new OnInventoryItemChangedEventArgs() { inventoryItem = inventoryItem });
     }
+    public static event Action<string> OnInstructionChanged;
+    public static void CallInstructionChangedEvent(string instructionText)
+    {
+        OnInstructionChanged?.Invoke(instructionText);
+    }
     #endregion
 
 }
@@ -142,5 +147,10 @@ public class OnInventoryItemChangedEventArgs : EventArgs
 public class OnBuildNavMeshEventArgs : EventArgs
 {
     public bool isBuildWhenMapChanged;
+}
+public class OnNoteOpenedEventArgs : EventArgs
+{
+    public bool isOpening;
+    public string note;
 }
 

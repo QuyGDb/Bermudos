@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.Rendering.UI;
 
 [RequireComponent(typeof(Player))]
@@ -18,6 +19,10 @@ public class Bash : MonoBehaviour
     private float aimCountdown;
     private float bashForce = 10f;
     private int bashCost = 10;
+    private float bashRadius = 2.5f;
+    private GameState gameState;
+    [TextArea]
+    [SerializeField] private string instructionBash;
     private void Awake()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
@@ -28,15 +33,44 @@ public class Bash : MonoBehaviour
 
     private void OnEnable()
     {
-
+        GameManager.Instance.OnGameStateChange += GameStateChanged_OnBash;
         player.bashEvent.OnBash += OnBashEvent_OnBash;
     }
     private void OnDisable()
     {
-
+        GameManager.Instance.OnGameStateChange -= GameStateChanged_OnBash;
         player.bashEvent.OnBash -= OnBashEvent_OnBash;
     }
-
+    private void GameStateChanged_OnBash(GameState gameState)
+    {
+        this.gameState = gameState;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if ((layerMask.value & 1 << collision.gameObject.layer) > 0)
+        {
+            StopAllCoroutines();
+            StartCoroutine(InstructBash());
+        }
+    }
+    private void FixedUpdate()
+    {
+        if (gameState == GameState.Instruct)
+        {
+            collider2d = Physics2D.OverlapCircle(transform.position, bashRadius, layerMask.value);
+            if (collider2d == null || collider2d.GetComponent<Ammo>() == null) return;
+            Time.timeScale = 0f;
+            isDuring = true;
+            aimCountdown = 10000f;
+            StaticEventHandler.CallInstructionChangedEvent(instructionBash);
+        }
+    }
+    private IEnumerator InstructBash()
+    {
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(2f);
+        Time.timeScale = 1f;
+    }
     private void OnBashEvent_OnBash(BashEvent bashEvent, BashEventArgs bashEventArgs)
     {
         bashState = bashEventArgs.bashState;
@@ -70,9 +104,8 @@ public class Bash : MonoBehaviour
     private void Prepare()
     {
         player.stamina.UseStamina(bashCost);
-        collider2d = Physics2D.OverlapCircle(transform.position, 2f, layerMask.value);
-        if (collider2d?.GetComponent<Ammo>() == null) return;
-        Debug.Log("Prepare" + collider2d);
+        collider2d = Physics2D.OverlapCircle(transform.position, bashRadius, layerMask.value);
+        if (collider2d == null || collider2d.GetComponent<Ammo>() == null) return;
         if (player.stamina.currentStamina > bashCost)
         {
             Time.timeScale = 0f;
@@ -107,10 +140,11 @@ public class Bash : MonoBehaviour
             collider2d.GetComponent<Ammo>().ammoState = AmmoState.Freeze;
             collider2d.gameObject.layer = LayerMask.NameToLayer("BashAmmo");
             MoveAmmoByBash();
-            bashState = BashState.None;
+
             arrow.ClearArrow();
 
         }
+        bashState = BashState.None;
     }
     private void InitializeFlagVarible()
     {
