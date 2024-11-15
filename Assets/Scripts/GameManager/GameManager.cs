@@ -13,7 +13,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     [HideInInspector] public Player player;
     public EnemyManagerDetailsSO[] enemyManagerDetailsSO;
     [HideInInspector] public SaveFileSetup saveFileSetup;
-    [HideInInspector] public GameState gameState;
+    public GameState gameState;
     [HideInInspector] public Action<GameState> OnGameStateChange;
     [SerializeField] Image beginSreen;
     private void OnEnable()
@@ -45,6 +45,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     }
     public void HandleGameState(GameState gameState)
     {
+        this.gameState = gameState;
         switch (gameState)
         {
 
@@ -59,7 +60,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             case GameState.EngagedBoss:
                 EngagedBoss();
                 break;
-            case GameState.Win:
+            case GameState.Won:
                 break;
             default:
                 break;
@@ -76,8 +77,8 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             beginSreen.DOFillAmount(0, 1.5f).OnComplete(() =>
             {
                 beginSreen.gameObject.SetActive(false);
-                gameState = GameState.Instruct;
-                HandleGameState(gameState);
+
+                HandleGameState(GameState.Instruct);
             });
         });
     }
@@ -96,8 +97,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     {
         InitializeEnemyManagerData();
         SceneManager.LoadScene("Coast", LoadSceneMode.Additive);
-        gameState = GameState.Instruct;
-        HandleGameState(gameState);
+        HandleGameState(GameState.Instruct);
     }
 
     public void InitializeEnemyManagerData()

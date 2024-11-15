@@ -31,13 +31,28 @@ public class InventoryManager : MonoBehaviour
     }
     private void OnEnable()
     {
+        GameManager.Instance.OnGameStateChange += Instance_OnGameStateChange;
         StaticEventHandler.OnInventoryChanged += StaticEventHandler_OnInventoryChanged;
     }
     private void OnDisable()
     {
+        GameManager.Instance.OnGameStateChange -= Instance_OnGameStateChange;
         StaticEventHandler.OnInventoryChanged -= StaticEventHandler_OnInventoryChanged;
     }
 
+    private void Instance_OnGameStateChange(GameState gameState)
+    {
+        if (gameState == GameState.Instruct)
+        {
+            GameManager.Instance.OnGameStateChange -= Instance_OnGameStateChange;
+        }
+
+        if (gameState == GameState.Play)
+        {
+            LoadItemFromJson();
+        }
+
+    }
     private void StaticEventHandler_OnInventoryChanged(OnInventoryChangedEventArgs onInventoryChangedEventArgs)
     {
         inventory = onInventoryChangedEventArgs.inventory;
@@ -45,9 +60,9 @@ public class InventoryManager : MonoBehaviour
     }
     private void Start()
     {
-        LoadItemFromJson();
         inventory.InitializeInventorySlotList(Settings.inventorySlotQuantity);
         inventory.InitializeHotBarSlotList(Settings.hotBarSlotQuantity);
+
     }
     public void ToggleInventory()
     {

@@ -30,6 +30,7 @@ public class DeadAction : Action
             fadeTime -= Time.deltaTime;
             return TaskStatus.Running;
         }
+        GameManager.Instance.HandleGameState(GameState.Won);
         return TaskStatus.Failure;
     }
     public override void OnEnd()

@@ -107,10 +107,10 @@ public static class StaticEventHandler
     {
         OnMoveItemToHotBar?.Invoke(new OnInventoryItemChangedEventArgs() { inventoryItem = inventoryItem });
     }
-    public static event Action<string> OnInstructionChanged;
-    public static void CallInstructionChangedEvent(string instructionText)
+    public static event Action<string, int> OnInstructionChanged;
+    public static void CallInstructionChangedEvent(string instructionText, int displayCount)
     {
-        OnInstructionChanged?.Invoke(instructionText);
+        OnInstructionChanged?.Invoke(instructionText, displayCount);
     }
     #endregion
 

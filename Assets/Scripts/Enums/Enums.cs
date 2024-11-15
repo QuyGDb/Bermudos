@@ -4,7 +4,7 @@ public enum GameState
     Instruct,
     Play,
     EngagedBoss,
-    Win,
+    Won,
 }
 
 public enum AimDirection

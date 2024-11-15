@@ -60,8 +60,7 @@ public class Intro : MonoBehaviour
             {
                 if (scene.name == "MainScene" && scene.isLoaded)
                 {
-                    GameManager.Instance.gameState = GameState.Begin;
-                    GameManager.Instance.HandleGameState(GameManager.Instance.gameState);
+                    GameManager.Instance.HandleGameState(GameState.Begin);
                 }
             };
         }
