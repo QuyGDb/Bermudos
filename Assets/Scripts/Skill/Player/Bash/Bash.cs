@@ -36,13 +36,16 @@ public class Bash : MonoBehaviour
     }
     private void OnDisable()
     {
-        GameManager.Instance.OnGameStateChange -= GameStateChanged_OnBash;
+
         player.bashEvent.OnBash -= OnBashEvent_OnBash;
     }
     private void GameStateChanged_OnBash(GameState gameState)
     {
         if (gameState == GameState.Instruct)
+        {
             InvokeRepeating("InstructBash", 0f, 0.25f);
+            GameManager.Instance.OnGameStateChange -= GameStateChanged_OnBash;
+        }
     }
 
     public void InstructBash()
@@ -53,7 +56,7 @@ public class Bash : MonoBehaviour
             if (collider2d == null || collider2d.GetComponent<Ammo>() == null) return;
             Time.timeScale = 0f;
             isDuring = true;
-            aimCountdown = 10000f;
+            aimCountdown = 10f;
             StaticEventHandler.CallInstructionChangedEvent(instructionBash, displayCount);
         }
     }

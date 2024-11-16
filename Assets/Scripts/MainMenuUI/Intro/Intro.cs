@@ -31,6 +31,7 @@ public class Intro : MonoBehaviour
     {
         tmpWriter.OnFinishWriter.RemoveListener(OnFinishWriter);
         nextBtn.onClick.RemoveListener(OnNextBtnClick);
+        DOTween.Kill(this.transform);
     }
     private void Start()
     {
@@ -41,7 +42,6 @@ public class Intro : MonoBehaviour
     {
         nextBtn.gameObject.SetActive(true);
     }
-
     void OnNextBtnClick()
     {
         introImage.color = new Color(1, 1, 1, 0);
@@ -54,7 +54,6 @@ public class Intro : MonoBehaviour
         }
         else
         {
-
             SceneManager.LoadScene("MainScene");
             SceneManager.sceneLoaded += (Scene scene, LoadSceneMode mode) =>
             {

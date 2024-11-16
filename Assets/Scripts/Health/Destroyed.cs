@@ -61,7 +61,6 @@ public class Destroyed : MonoBehaviour
             {
                 if (GameManager.Instance.saveFileSetup.GetSaveFile().HasData(enemyManagerDetails.enemyManagerDataKey))
                 {
-                    Debug.Log(enemyManagerDetails.enemyManagerDataKey);
                     EnemyManagerData enemyManagerData = GameManager.Instance.saveFileSetup.GetSaveFile().GetData<EnemyManagerData>(enemyManagerDetails.enemyManagerDataKey);
                     enemyManagerData.enemieStateList[enemy.enemyID] = false;
                     GameManager.Instance.saveFileSetup.GetSaveFile().AddOrUpdateData(enemyManagerDetails.enemyManagerDataKey, enemyManagerData);

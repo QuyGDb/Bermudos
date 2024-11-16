@@ -21,7 +21,13 @@ public class Instruction : MonoBehaviour
     }
     private void OnInstructionChanged(string instruction, int displayCount)
     {
-        if (displayCount < 3)
+        if (displayCount == -1)
+        {
+            gameObject.SetActive(true);
+            instructionText.text = instruction;
+            this.displayCount.text = "";
+        }
+        if (displayCount >= 0 && displayCount < 3)
         {
             gameObject.SetActive(true);
             instructionText.text = instruction;

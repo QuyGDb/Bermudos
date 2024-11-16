@@ -8,6 +8,7 @@ public class SettingManager : MonoBehaviour
 {
     [SerializeField] private Button controlsBtn;
     [SerializeField] private Button audioBtn;
+    [SerializeField] private Button backBtn;
     private TextMeshProUGUI controlsText;
     private TextMeshProUGUI audioText;
     [SerializeField] private Image controlsPanel;
@@ -24,8 +25,16 @@ public class SettingManager : MonoBehaviour
     {
         controlsBtn.onClick.AddListener(() => OpenControls());
         audioBtn.onClick.AddListener(() => OpenAudio());
+        backBtn.onClick.AddListener(() =>
+        {
+            gameObject.SetActive(false);
+        });
         aplha = 0.5f;
         startFontSize = 10f;
+    }
+    private void OnDestroy()
+    {
+        DOTween.Kill(this.transform);
     }
     private void OpenControls()
     {
@@ -44,17 +53,17 @@ public class SettingManager : MonoBehaviour
     private void Effect(TextMeshProUGUI currentText, TextMeshProUGUI previousText)
     {
         previousText.fontSize = startFontSize;
-        Debug.Log(previousText.fontSize);
         previousText.color = new Color(audioText.color.r, audioText.color.g, audioText.color.b, aplha);
         float startSize = currentText.fontSize;
         float targetSize = 12.5f;
-        float duration = 1f;
-        currentText.DOFade(1f, 1f).SetEase(Ease.InBounce);
+        var temp = DOTween.KillAll();
+        Debug.Log(temp);
+        currentText.DOFade(1f, 0.5f).SetEase(Ease.InBounce);
         DOTween.To(() => startSize, x =>
         {
             startSize = x;
             currentText.fontSize = startSize;
-        }, targetSize, duration);
+        }, targetSize, 0.5f);
     }
     #region Validation
 #if UNITY_EDITOR 
@@ -62,6 +71,7 @@ public class SettingManager : MonoBehaviour
     {
         HelperUtilities.ValidateCheckNullValue(this, nameof(controlsBtn), controlsBtn);
         HelperUtilities.ValidateCheckNullValue(this, nameof(audioBtn), audioBtn);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(backBtn), backBtn);
         HelperUtilities.ValidateCheckNullValue(this, nameof(controlsPanel), controlsPanel);
         HelperUtilities.ValidateCheckNullValue(this, nameof(audioPanel), audioPanel);
     }

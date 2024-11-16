@@ -25,6 +25,10 @@ public class Note : MonoBehaviour
             StaticEventHandler.CallNoteOpenedEvent(true, noteText);
         }
     }
+    private void OnDestroy()
+    {
+        DOTween.Kill(this.transform);
+    }
     private void OnCollisionExit2D(Collision2D collision)
     {
         if ((playerLayer.value & 1 << collision.gameObject.layer) > 0)

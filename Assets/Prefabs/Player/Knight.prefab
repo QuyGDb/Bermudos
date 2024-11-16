@@ -56,12 +56,12 @@ PrefabInstance:
     - target: {fileID: 756755436442007631, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.53
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 756755436442007631, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.99
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 756755436442007631, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
@@ -370,13 +370,18 @@ PrefabInstance:
     - target: {fileID: 6956262689797343194, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_Mass
-      value: 10000
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6956262689797343194, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 6200000, guid: a92567e49476aa944bcb43c155b45d58, type: 2}
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956262689797343194, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6956262689797343194, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_Constraints
@@ -412,6 +417,12 @@ PrefabInstance:
       propertyPath: m_SortAtRoot
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7990673252058947659, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: instructionBash
+      value: Right-click to activate Bash, then control the direction of the magic
+        ball.
+      objectReference: {fileID: 0}
     - target: {fileID: 8248927959554455306, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_Controller
@@ -425,7 +436,7 @@ PrefabInstance:
     - target: {fileID: 8274898365873951458, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: startingHealth
-      value: 10000
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 9030734883779235822, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}

@@ -18,6 +18,10 @@ public class GameNameMovement : MonoBehaviour
     {
         GameNameAnimation();
     }
+    private void OnDestroy()
+    {
+        DOTween.Kill(this.transform);
+    }
     void GameNameAnimation()
     {
         Vector3 startPosition = rectTransform.anchoredPosition;

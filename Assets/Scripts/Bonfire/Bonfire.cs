@@ -1,3 +1,4 @@
+using Esper.ESave;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -34,10 +35,15 @@ public class Bonfire : MonoBehaviour
         if (icon.gameObject.activeSelf)
         {
             StaticEventHandler.CallRestInBonfireEvent();
+            SaveCheckPointAtBonfire();
 
         }
     }
-
+    private void SaveCheckPointAtBonfire()
+    {
+        GameManager.Instance.saveFileSetup.GetSaveFile().AddOrUpdateData("Checkpoint", "The Forest");
+        GameManager.Instance.saveFileSetup.GetSaveFile().Save();
+    }
     #region Validation
 #if UNITY_EDITOR
     private void OnValidate()

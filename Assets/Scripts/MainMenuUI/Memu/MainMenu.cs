@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,6 +8,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Button continueGameBtn;
     [SerializeField] private Button settingsBtn;
     [SerializeField] private Button exitGameBtn;
+    [SerializeField] private Image SettingPanel;
+    [SerializeField] private Image controlsPanel;
+    [SerializeField] private Image audioPanel;
     private Intro intro;
 
     private void Awake()
@@ -30,7 +31,6 @@ public class MainMenu : MonoBehaviour
     }
     private void OnContinueGameClick()
     {
-        Debug.Log("Continue Game");
         SceneManager.LoadScene("MainScene");
         SceneManager.sceneLoaded += (Scene scene, LoadSceneMode mode) =>
         {
@@ -42,10 +42,28 @@ public class MainMenu : MonoBehaviour
     }
     private void OnSettingsClick()
     {
+        SettingPanel.gameObject.SetActive(true);
+        controlsPanel.gameObject.SetActive(false);
+        audioPanel.gameObject.SetActive(false);
     }
     private void OnExitGameClick()
     {
         Application.Quit();
     }
 
+
+    #region Validation
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        HelperUtilities.ValidateCheckNullValue(this, nameof(newGameBtn), newGameBtn);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(continueGameBtn), continueGameBtn);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(settingsBtn), settingsBtn);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(exitGameBtn), exitGameBtn);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(SettingPanel), SettingPanel);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(controlsPanel), controlsPanel);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(audioPanel), audioPanel);
+    }
+#endif
+    #endregion
 }

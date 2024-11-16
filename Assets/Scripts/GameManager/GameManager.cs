@@ -48,7 +48,6 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         this.gameState = gameState;
         switch (gameState)
         {
-
             case GameState.Begin:
                 Begin();
                 break;
@@ -74,14 +73,16 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         beginSreen.DOColor(new Color(0, 0, 0, 1), 3f).OnComplete(() =>
         {
             SceneManager.LoadScene("Coast", LoadSceneMode.Additive);
+            saveFileSetup.GetSaveFile().AddOrUpdateData("Checkpoint", "Coast");
             beginSreen.DOFillAmount(0, 1.5f).OnComplete(() =>
             {
                 beginSreen.gameObject.SetActive(false);
-
                 HandleGameState(GameState.Instruct);
             });
         });
     }
+
+
     public void Play()
     {
         Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
@@ -96,8 +97,8 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     private void Start()
     {
         InitializeEnemyManagerData();
-        SceneManager.LoadScene("Coast", LoadSceneMode.Additive);
-        HandleGameState(GameState.Instruct);
+        //SceneManager.LoadScene("Coast", LoadSceneMode.Additive);
+        //HandleGameState(GameState.Instruct);
     }
 
     public void InitializeEnemyManagerData()

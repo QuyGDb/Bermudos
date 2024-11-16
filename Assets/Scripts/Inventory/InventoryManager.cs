@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 [DisallowMultipleComponent]
 public class InventoryManager : MonoBehaviour
@@ -18,12 +19,13 @@ public class InventoryManager : MonoBehaviour
                                 .ToList();
         }
     }
-    private List<ItemJson> itemJsonList = new List<ItemJson>();
     public List<ItemSO> itemSOList = new List<ItemSO>();
     private Inventory inventory;
     private SaveFileSetup saveFileSetup;
     private SaveFile saveFile;
-
+    public Image inventoryInstructionImg;
+    private string instructionText = "Drag the item to the hotbar to use it.";
+    private bool isInstruction;
     private void Awake()
     {
         saveFileSetup = GetComponent<SaveFileSetup>();
@@ -44,12 +46,14 @@ public class InventoryManager : MonoBehaviour
     {
         if (gameState == GameState.Instruct)
         {
+            isInstruction = true;
             GameManager.Instance.OnGameStateChange -= Instance_OnGameStateChange;
         }
 
         if (gameState == GameState.Play)
         {
             LoadItemFromJson();
+            GameManager.Instance.OnGameStateChange -= Instance_OnGameStateChange;
         }
 
     }
@@ -58,12 +62,13 @@ public class InventoryManager : MonoBehaviour
         inventory = onInventoryChangedEventArgs.inventory;
         inventory.gameObject.SetActive(false);
     }
+
     private void Start()
     {
         inventory.InitializeInventorySlotList(Settings.inventorySlotQuantity);
         inventory.InitializeHotBarSlotList(Settings.hotBarSlotQuantity);
-
     }
+
     public void ToggleInventory()
     {
         if (inventory.gameObject.activeSelf)
@@ -74,6 +79,11 @@ public class InventoryManager : MonoBehaviour
         {
             inventory.ResetInventory(inventoryItemList);
             LoadItemsToInventory();
+            if (isInstruction && inventoryItemList.Count > 0)
+            {
+                isInstruction = false;
+                StaticEventHandler.CallInstructionChangedEvent(instructionText);
+            }
             inventory.gameObject.SetActive(true);
         }
     }

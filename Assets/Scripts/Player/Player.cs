@@ -1,6 +1,9 @@
+using Esper.ESave;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(MovementByVelocityEvent))]
 [RequireComponent(typeof(IdleEvent))]
@@ -36,6 +39,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public PlayerEffect playerEffect;
     [HideInInspector] public Rage rage;
     [HideInInspector] public InventoryManager inventoryManager;
+    [SerializeField] private Vector2[] spawnPosition = new Vector2[2];
     private void Awake()
     {
         // Load components
@@ -62,18 +66,21 @@ public class Player : MonoBehaviour
         StaticEventHandler.CallPlayerChangedEvent(this);
         // Subscribe to player health event
         healthEvent.OnHealthChanged += HealthEvent_OnHealthChanged;
+        GameManager.Instance.OnGameStateChange += GameStateChanged_OnPlayer;
     }
 
     private void OnDisable()
     {
         // Unsubscribe from player health event
         healthEvent.OnHealthChanged -= HealthEvent_OnHealthChanged;
+
     }
 
     public Vector2 GetPlayerPosition()
     {
         return transform.position;
     }
+
     /// <summary>
     /// Handle health changed event
     /// </summary>
@@ -84,7 +91,33 @@ public class Player : MonoBehaviour
         {
             destroyedEvent.CallDestroyedEvent(new DestroyedEventArgs { playerDied = true });
         }
-
+    }
+    private void GameStateChanged_OnPlayer(GameState gameState)
+    {
+        if (gameState == GameState.Instruct)
+        {
+            gameObject.transform.position = spawnPosition[0];
+            GameManager.Instance.OnGameStateChange -= GameStateChanged_OnPlayer;
+        }
+        if (gameState == GameState.Play)
+        {
+            if (GameManager.Instance.saveFileSetup.GetSaveFile().HasData("Checkpoint"))
+            {
+                string checkpoint = GameManager.Instance.saveFileSetup.GetSaveFile().GetData<string>("Checkpoint");
+                Debug.Log(checkpoint);
+                if (checkpoint == "Coast")
+                {
+                    gameObject.transform.position = spawnPosition[0];
+                    SceneManager.LoadScene("Coast", LoadSceneMode.Additive);
+                }
+                else if (checkpoint == "The Forest")
+                {
+                    gameObject.transform.position = spawnPosition[1];
+                    SceneManager.LoadScene("The Forest", LoadSceneMode.Additive);
+                }
+                GameManager.Instance.OnGameStateChange -= GameStateChanged_OnPlayer;
+            }
+        }
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -109,14 +142,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Item"))
-        {
 
-        }
-
-    }
 
     #region Validation
 #if UNITY_EDITOR

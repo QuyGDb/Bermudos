@@ -93,9 +93,9 @@ public class PlayerControl : MonoBehaviour
 
     private void OnRightMouseClick(InputAction.CallbackContext ctx)
     {
-        if (Time.time > bashCooldownTimer)
+        if (Time.unscaledTime > bashCooldownTimer)
         {
-            bashCooldownTimer = Time.time + Settings.bashCooldown;
+            bashCooldownTimer = Time.unscaledTime + Settings.bashCooldown;
             player.bashEvent.CallOnBashEvent(BashState.ActiveBash);
             StaticEventHandler.CallTriggerBashEvent();
         }
