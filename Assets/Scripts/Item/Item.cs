@@ -13,6 +13,7 @@ public class Item : MonoBehaviour
     public float shakeDuration = 3f;
     public float shakeStrength = 0.1f;
     public int shakeVibrato = 2;
+    public bool isColliding = true;
     private void Start()
     {
         playerLayerMark.value = LayerMask.GetMask("Player");
@@ -36,10 +37,11 @@ public class Item : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((playerLayerMark.value & 1 << collision.gameObject.layer) > 0)
+        if ((playerLayerMark.value & 1 << collision.gameObject.layer) > 0 && isColliding)
         {
             collision.GetComponent<InventoryManager>()?.CollectIntentoryItem(this.itemSO);
             Destroy(this.gameObject);
+            isColliding = false;
         }
     }
 

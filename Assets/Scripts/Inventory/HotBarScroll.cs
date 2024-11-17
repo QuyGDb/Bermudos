@@ -16,18 +16,41 @@ public class HotBarScroll : MonoBehaviour
     private Sprite emptyItemSprite;
     private void Awake()
     {
+        Debug.Log("HotBarScroll Awake");
         itemQuantity = GetComponentInChildren<TextMeshProUGUI>();
-    }
-
-    private void OnEnable()
-    {
         StaticEventHandler.OnItemChanged += StaticEventHandler_OnItemChanged;
         StaticEventHandler.OnMoveItemToHotBar += StaticEventHandler_OnMoveItemToHotBar;
+        GameManager.Instance.OnGameStateChange += OnGameStateChange_HotBar;
     }
-    private void OnDisable()
+
+
+    private void OnDestroy()
     {
+        Debug.Log("HotBarScroll OnDestroy");
         StaticEventHandler.OnItemChanged -= StaticEventHandler_OnItemChanged;
         StaticEventHandler.OnMoveItemToHotBar -= StaticEventHandler_OnMoveItemToHotBar;
+    }
+    private void OnGameStateChange_HotBar(GameState gameState)
+    {
+        if (gameState == GameState.Instruct)
+        {
+            gameObject.SetActive(true);
+            GameManager.Instance.OnGameStateChange -= OnGameStateChange_HotBar;
+        }
+        if (gameState == GameState.Play)
+        {
+            gameObject.SetActive(true);
+            emptyItemSprite = itemIcom.sprite;
+            if (GameManager.Instance.player.inventoryManager.HotBarItem.Count == 0)
+            {
+                return;
+            }
+            currentIndex = 0;
+            itemIcom.sprite = GameManager.Instance.player.inventoryManager.HotBarItem[currentIndex].itemSO.itemIcon;
+            itemQuantity.text = GameManager.Instance.player.inventoryManager.HotBarItem[currentIndex].quantity.ToString();
+            GameManager.Instance.OnGameStateChange -= OnGameStateChange_HotBar;
+
+        }
     }
     private void StaticEventHandler_OnItemChanged(OnInventoryItemChangedEventArgs onInventoryItemChangedEventArgs)
     {
@@ -45,7 +68,7 @@ public class HotBarScroll : MonoBehaviour
         {
             itemIcom.sprite = emptyItemSprite;
             itemQuantity.text = "";
-
+            Debug.Log("Item is empty");
         }
     }
     private void StaticEventHandler_OnMoveItemToHotBar(OnInventoryItemChangedEventArgs onInventoryItemChangedEventArgs)
@@ -59,14 +82,7 @@ public class HotBarScroll : MonoBehaviour
     }
     private void Start()
     {
-        emptyItemSprite = itemIcom.sprite;
-        if (GameManager.Instance.player.inventoryManager.HotBarItem.Count == 0)
-        {
-            return;
-        }
-        currentIndex = 0;
-        itemIcom.sprite = GameManager.Instance.player.inventoryManager.HotBarItem[currentIndex].itemSO.itemIcon;
-        itemQuantity.text = GameManager.Instance.player.inventoryManager.HotBarItem[currentIndex].quantity.ToString();
+        gameObject.SetActive(false);
     }
     private void Update()
     {

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
+[DisallowMultipleComponent]
 public class TransitionPoint : MonoBehaviour
 {
     public TransitionPointDetailsSO TransitionPointDetailsSO;
@@ -15,8 +16,8 @@ public class TransitionPoint : MonoBehaviour
 
         if (collision.CompareTag("Player") && !isCollider)
         {
-
             StartCoroutine(MapTransitionCoroutine(collision));
+
             isCollider = true;
         }
     }
@@ -29,7 +30,15 @@ public class TransitionPoint : MonoBehaviour
             SceneManager.UnloadSceneAsync(TransitionPointDetailsSO.transitionPointName);
         }
         SceneManager.LoadScene(TransitionPointDetailsSO.transitionMap, LoadSceneMode.Additive);
+        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
         collision.GetComponent<Player>().transform.position = TransitionPointDetailsSO.playerSpawnPoint;
+    }
 
+    private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+
+        if (TransitionPointDetailsSO.transitionMap == "North Of The Forest")
+            GameManager.Instance.HandleGameState(GameState.EngagedBoss);
+        SceneManager.sceneLoaded -= SceneManager_sceneLoaded;
     }
 }

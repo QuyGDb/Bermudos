@@ -1,5 +1,5 @@
 ﻿using Esper.ESave;
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -35,11 +35,14 @@ public class InventoryManager : MonoBehaviour
     {
         GameManager.Instance.OnGameStateChange += Instance_OnGameStateChange;
         StaticEventHandler.OnInventoryChanged += StaticEventHandler_OnInventoryChanged;
+        StaticEventHandler.OnExit += StaticEventHandler_OnExit;
     }
+
     private void OnDisable()
     {
         GameManager.Instance.OnGameStateChange -= Instance_OnGameStateChange;
         StaticEventHandler.OnInventoryChanged -= StaticEventHandler_OnInventoryChanged;
+        StaticEventHandler.OnExit -= StaticEventHandler_OnExit;
     }
 
     private void Instance_OnGameStateChange(GameState gameState)
@@ -74,14 +77,21 @@ public class InventoryManager : MonoBehaviour
         if (inventory.gameObject.activeSelf)
         {
             inventory.gameObject.SetActive(false);
+            if (HotBarItem.Count > 0)
+            {
+                isInstruction = false;
+            }
+
+            StaticEventHandler.CallInstructionChangedEvent("", -9, false);
         }
         else
         {
             inventory.ResetInventory(inventoryItemList);
             LoadItemsToInventory();
+
             if (isInstruction && inventoryItemList.Count > 0)
             {
-                isInstruction = false;
+
                 StaticEventHandler.CallInstructionChangedEvent(instructionText);
             }
             inventory.gameObject.SetActive(true);
@@ -160,6 +170,7 @@ public class InventoryManager : MonoBehaviour
                 inventoryItem.quantity = itemJson.quantity;
                 inventoryItem.inventorySlot = itemJson.inventorySlot;
                 inventoryItem.hotbarSlot = itemJson.hotbarSlot;
+                inventoryItem.isOnHotBar = itemJson.isOnHotBar;
                 inventoryItemList.Add(inventoryItem);
             }
 
@@ -171,12 +182,17 @@ public class InventoryManager : MonoBehaviour
         for (int i = 0; i < inventoryItemList.Count; i++)
         {
             InventoryItem inventoryItem = inventoryItemList[i];
-            ItemJson itemJson = new ItemJson(inventoryItem.quantity, inventoryItem.inventorySlot, inventoryItem.hotbarSlot);
+            ItemJson itemJson = new ItemJson(inventoryItem.quantity, inventoryItem.inventorySlot, inventoryItem.hotbarSlot, inventoryItem.isOnHotBar);
             saveFile.AddOrUpdateData(inventoryItem.itemSO.itemName, itemJson);
         }
         saveFile.Save();
     }
     private void OnApplicationQuit()
+    {
+        SaveItemToJson();
+    }
+
+    private void StaticEventHandler_OnExit()
     {
         SaveItemToJson();
     }

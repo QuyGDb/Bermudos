@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Esper.ESave;
 using System.Collections;
 using System.Collections.Generic;
@@ -39,7 +40,8 @@ public class Player : MonoBehaviour
     [HideInInspector] public PlayerEffect playerEffect;
     [HideInInspector] public Rage rage;
     [HideInInspector] public InventoryManager inventoryManager;
-    [SerializeField] private Vector2[] spawnPosition = new Vector2[2];
+    private DieEvent dieEvent;
+    [HideInInspector] public Vector2[] spawnPosition = new Vector2[2];
     private void Awake()
     {
         // Load components
@@ -59,6 +61,7 @@ public class Player : MonoBehaviour
         playerEffect = GetComponent<PlayerEffect>();
         rage = GetComponent<Rage>();
         inventoryManager = GetComponent<InventoryManager>();
+        dieEvent = GetComponent<DieEvent>();
     }
 
     private void OnEnable()
@@ -67,57 +70,74 @@ public class Player : MonoBehaviour
         // Subscribe to player health event
         healthEvent.OnHealthChanged += HealthEvent_OnHealthChanged;
         GameManager.Instance.OnGameStateChange += GameStateChanged_OnPlayer;
+        dieEvent.OnDie += DieEvent_OnDie;
     }
 
     private void OnDisable()
     {
         // Unsubscribe from player health event
         healthEvent.OnHealthChanged -= HealthEvent_OnHealthChanged;
-
+        dieEvent.OnDie -= DieEvent_OnDie;
     }
 
     public Vector2 GetPlayerPosition()
     {
         return transform.position;
     }
+    private void DieEvent_OnDie(DieEvent dieEvent)
+    {
+        if (GameManager.Instance.saveFileSetup.GetSaveFile().HasData("Checkpoint"))
+        {
+            string checkpoint = GameManager.Instance.saveFileSetup.GetSaveFile().GetData<string>("Checkpoint");
+            if (checkpoint == "Coast")
+            {
+                transform.position = spawnPosition[0];
+                if (SceneManager.GetSceneAt(1) != null)
+                {
+                    SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(1).name);
+                }
+                SceneManager.LoadScene("Coast", LoadSceneMode.Additive);
+            }
+            else if (checkpoint == "The Forest")
+            {
+                transform.position = spawnPosition[1];
+                if (SceneManager.GetSceneAt(1) != null)
+                {
+                    SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(1).name);
+                }
+                SceneManager.LoadScene("The Forest", LoadSceneMode.Additive);
+            }
+        }
+        GameResources.Instance.beginUI.SetFloat("_FadeAmount", 0);
+        GameManager.Instance.beginSreen.color = new Color(0, 0, 0, 1);
+        GameManager.Instance.beginSreen.gameObject.SetActive(true);
+        GameManager.Instance.beginSreen.DOFade(0f, 1.5f).SetEase(Ease.InOutSine).OnComplete(() =>
+        {
+            GameManager.Instance.beginSreen.gameObject.SetActive(false);
+            if (GameManager.Instance.gameState == GameState.EngagedBoss)
+                GameManager.Instance.HandleGameState(GameState.Play);
+        });
 
+    }
     /// <summary>
     /// Handle health changed event
     /// </summary>
     private void HealthEvent_OnHealthChanged(HealthEvent healthEvent, HealthEventArgs healthEventArgs)
     {
         // If player has died
-        if (healthEventArgs.healthAmount <= 0f)
+        if (healthEventArgs.healthAmount == 0f)
         {
             destroyedEvent.CallDestroyedEvent(new DestroyedEventArgs { playerDied = true });
         }
     }
     private void GameStateChanged_OnPlayer(GameState gameState)
     {
-        if (gameState == GameState.Instruct)
+        if (gameState == GameState.Intro)
         {
             gameObject.transform.position = spawnPosition[0];
             GameManager.Instance.OnGameStateChange -= GameStateChanged_OnPlayer;
         }
-        if (gameState == GameState.Play)
-        {
-            if (GameManager.Instance.saveFileSetup.GetSaveFile().HasData("Checkpoint"))
-            {
-                string checkpoint = GameManager.Instance.saveFileSetup.GetSaveFile().GetData<string>("Checkpoint");
-                Debug.Log(checkpoint);
-                if (checkpoint == "Coast")
-                {
-                    gameObject.transform.position = spawnPosition[0];
-                    SceneManager.LoadScene("Coast", LoadSceneMode.Additive);
-                }
-                else if (checkpoint == "The Forest")
-                {
-                    gameObject.transform.position = spawnPosition[1];
-                    SceneManager.LoadScene("The Forest", LoadSceneMode.Additive);
-                }
-                GameManager.Instance.OnGameStateChange -= GameStateChanged_OnPlayer;
-            }
-        }
+
     }
     private void OnCollisionStay2D(Collision2D collision)
     {

@@ -1,5 +1,6 @@
 public enum GameState
 {
+    Intro,
     Begin,
     Instruct,
     Play,

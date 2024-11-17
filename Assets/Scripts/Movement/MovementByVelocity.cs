@@ -10,12 +10,14 @@ public class MovementByVelocity : MonoBehaviour
     private Rigidbody2D rigidBody2D;
     private MovementByVelocityEvent movementByVelocityEvent;
     private DestroyedEvent destroyedEvent;
+    private DieEvent dieEvent;
     private void Awake()
     {
         // Load components
         rigidBody2D = GetComponent<Rigidbody2D>();
         movementByVelocityEvent = GetComponent<MovementByVelocityEvent>();
         destroyedEvent = GetComponent<DestroyedEvent>();
+        dieEvent = GetComponent<DieEvent>();
     }
 
     private void OnEnable()
@@ -23,6 +25,7 @@ public class MovementByVelocity : MonoBehaviour
         // Subscribe to movement event
         movementByVelocityEvent.OnMovementByVelocity += MovementByVelocityEvent_OnMovementByVelocity;
         destroyedEvent.OnDestroyed += DestroyedEvent_OnDestroyed;
+        dieEvent.OnDie += DieEvent_OnDie;
     }
 
     private void OnDisable()
@@ -30,6 +33,7 @@ public class MovementByVelocity : MonoBehaviour
         // Unsubscribe from movement event
         movementByVelocityEvent.OnMovementByVelocity -= MovementByVelocityEvent_OnMovementByVelocity;
         destroyedEvent.OnDestroyed -= DestroyedEvent_OnDestroyed;
+        dieEvent.OnDie -= DieEvent_OnDie;
     }
 
 
@@ -40,6 +44,10 @@ public class MovementByVelocity : MonoBehaviour
         {
             movementByVelocityEvent.OnMovementByVelocity -= MovementByVelocityEvent_OnMovementByVelocity;
         }
+    }
+    private void DieEvent_OnDie(DieEvent dieEvent)
+    {
+        movementByVelocityEvent.OnMovementByVelocity += MovementByVelocityEvent_OnMovementByVelocity;
     }
     // On movement event
     private void MovementByVelocityEvent_OnMovementByVelocity(MovementByVelocityEvent movementByVelocityEvent, MovementByVelocityArgs movementByVelocityArgs)

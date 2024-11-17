@@ -11,6 +11,7 @@ using UnityEngine;
 public class AnimatePlayer : MonoBehaviour
 {
     private Player player;
+    private DieEvent dieEvent;
     private Coroutine attackAnimationCoroutine;
     private bool isAttacking;
     private void Awake()
@@ -19,6 +20,7 @@ public class AnimatePlayer : MonoBehaviour
         player = GetComponent<Player>();
         // Initialize aim animation parameters
         player.animator.SetBool(Settings.aimDown, true);
+        dieEvent = GetComponent<DieEvent>();
     }
 
     private void OnEnable()
@@ -33,7 +35,12 @@ public class AnimatePlayer : MonoBehaviour
         player.attackEvent.OnAttack += AttackEvent_OnAttack;
 
         player.destroyedEvent.OnDestroyed += DestroyedEvent_OnDestroyed;
+
+        dieEvent.OnDie += DieEvent_OnDie;
+
+        GameManager.Instance.OnGameStateChange += GameStateChanged_OnPlayer;
     }
+
     private void OnDisable()
     {
         // Unsubscribe from animate event
@@ -45,7 +52,32 @@ public class AnimatePlayer : MonoBehaviour
 
         player.attackEvent.OnAttack -= AttackEvent_OnAttack;
 
+        dieEvent.OnDie -= DieEvent_OnDie;
+
         player.destroyedEvent.OnDestroyed -= DestroyedEvent_OnDestroyed;
+
+
+    }
+
+    private void GameStateChanged_OnPlayer(GameState gameState)
+    {
+        if (gameState == GameState.Intro)
+        {
+            player.idleEvent.OnIdle -= IdleEvent_OnIdle;
+            player.movementByVelocityEvent.OnMovementByVelocity -= MovementByVelocityEvent_OnMovementByVelocity;
+            player.attackEvent.OnAttack -= AttackEvent_OnAttack;
+            player.destroyedEvent.OnDestroyed -= DestroyedEvent_OnDestroyed;
+            InitializeStateAnimationParameters();
+            player.animator.SetBool(Settings.isFaint, true);
+        }
+        if (gameState == GameState.Instruct)
+        {
+            player.idleEvent.OnIdle += IdleEvent_OnIdle;
+            player.movementByVelocityEvent.OnMovementByVelocity += MovementByVelocityEvent_OnMovementByVelocity;
+            player.attackEvent.OnAttack += AttackEvent_OnAttack;
+            player.destroyedEvent.OnDestroyed += DestroyedEvent_OnDestroyed;
+            GameManager.Instance.OnGameStateChange -= GameStateChanged_OnPlayer;
+        }
     }
     private void AnimatePlayer_OnAnimate(AnimateEvent animateEvent, AnimateEventArgs animateEventArgs)
     {
@@ -88,6 +120,13 @@ public class AnimatePlayer : MonoBehaviour
 
     }
 
+    private void DieEvent_OnDie(DieEvent dieEvent)
+    {
+        player.idleEvent.OnIdle += IdleEvent_OnIdle;
+        player.movementByVelocityEvent.OnMovementByVelocity += MovementByVelocityEvent_OnMovementByVelocity;
+        player.attackEvent.OnAttack += AttackEvent_OnAttack;
+
+    }
     private void InitializeAimAnimationParameters()
     {
         player.animator.SetBool(Settings.aimUp, false);

@@ -62,6 +62,11 @@ public class GameResources : MonoBehaviour
     #endregion
     public GameObject playerShadowPrefab;
 
+    #region Tooltip
+    [Tooltip("Begin UI Material")]
+    #endregion
+    public Material beginUI;
+
     #region Validation
 #if UNITY_EDITOR
     private void OnValidate()
@@ -73,6 +78,7 @@ public class GameResources : MonoBehaviour
         HelperUtilities.ValidateCheckNullValue(this, nameof(ammoHitEffectPrefab), ammoHitEffectPrefab);
         HelperUtilities.ValidateCheckNullValue(this, nameof(bloodEffectPrefab), bloodEffectPrefab);
         HelperUtilities.ValidateCheckNullValue(this, nameof(playerShadowPrefab), playerShadowPrefab);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(beginUI), beginUI);
     }
 #endif
     #endregion

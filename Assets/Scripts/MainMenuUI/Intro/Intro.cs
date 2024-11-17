@@ -2,6 +2,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using TMPEffects.Components;
 using TMPro;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class Intro : MonoBehaviour
 {
     [SerializeField] private IntroSO[] introSOList = new IntroSO[4];
     [SerializeField] private Image introImage;
+    [SerializeField] private Image map;
     private TextMeshProUGUI introText;
     private Button nextBtn;
     private int introIndex = 0;
@@ -22,11 +24,10 @@ public class Intro : MonoBehaviour
         tmpWriter = GetComponentInChildren<TMPWriter>();
         introText = GetComponentInChildren<TextMeshProUGUI>();
         nextBtn = GetComponentInChildren<Button>();
+        nextBtn.gameObject.SetActive(false);
+        introImage.enabled = false;
     }
-    private void OnEnable()
-    {
-        tmpWriter.OnFinishWriter.AddListener(OnFinishWriter);
-    }
+
     private void OnDestroy()
     {
         tmpWriter.OnFinishWriter.RemoveListener(OnFinishWriter);
@@ -35,8 +36,17 @@ public class Intro : MonoBehaviour
     }
     private void Start()
     {
-        nextBtn.onClick.AddListener(OnNextBtnClick);
-        OnNextBtnClick();
+
+        map.gameObject.SetActive(true);
+        map.gameObject.transform.DOScale(new Vector3(8f, 8f, 8f), 2.5f).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            map.gameObject.SetActive(false);
+            tmpWriter.OnFinishWriter.AddListener(OnFinishWriter);
+            StartCoroutine(WaitUntilIntroEnable());
+            nextBtn.onClick.AddListener(OnNextBtnClick);
+            introImage.enabled = true;
+        });
+
     }
     void OnFinishWriter(TMPWriter tmpWriter)
     {
@@ -55,14 +65,22 @@ public class Intro : MonoBehaviour
         else
         {
             SceneManager.LoadScene("MainScene");
-            SceneManager.sceneLoaded += (Scene scene, LoadSceneMode mode) =>
-            {
-                if (scene.name == "MainScene" && scene.isLoaded)
-                {
-                    GameManager.Instance.HandleGameState(GameState.Begin);
-                }
-            };
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         introIndex++;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "MainScene" && scene.isLoaded)
+        {
+            GameManager.Instance.HandleGameState(GameState.Intro);
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+    }
+    private IEnumerator WaitUntilIntroEnable()
+    {
+        yield return new WaitForSeconds(2);
+        introImage.color = new Color(1, 1, 1, 1f);
+        OnNextBtnClick();
     }
 }

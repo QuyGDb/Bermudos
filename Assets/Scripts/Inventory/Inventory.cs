@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,9 @@ public class Inventory : MonoBehaviour
     }
     private void OnEnable()
     {
+        transform.localScale = Vector3.zero;
+        DOTween.Kill(this.transform);
+        transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
         StaticEventHandler.OnItemUIEndDragChanged += StaticEventHandler_OnItemUIChanged;
         StaticEventHandler.OnItemUIHoverChanged += StaticEventHandler_OnItemUIHoverChanged;
         StaticEventHandler.OnItemUIClickChanged += StaticEventHandler_OnItemUIClickChanged;
@@ -30,6 +34,10 @@ public class Inventory : MonoBehaviour
         StaticEventHandler.OnItemUIEndDragChanged -= StaticEventHandler_OnItemUIChanged;
         StaticEventHandler.OnItemUIHoverChanged -= StaticEventHandler_OnItemUIHoverChanged;
         StaticEventHandler.OnItemUIClickChanged -= StaticEventHandler_OnItemUIClickChanged;
+    }
+    private void OnDestroy()
+    {
+        DOTween.Kill(this.transform);
     }
     public void ResetInventory(List<InventoryItem> skipList)
     {
@@ -87,6 +95,8 @@ public class Inventory : MonoBehaviour
 
         if (draggedItemUI.ItemUIType == ItemUIType.Inventory && hoverItemUI.ItemUIType == ItemUIType.HotBar)
         {
+            Debug.Log(draggedItemUI.inventoryItem.isOnHotBar);
+
             if (draggedItemUI.inventoryItem.isOnHotBar)
                 return;
             MoveItemToHotBar();

@@ -74,4 +74,8 @@ public static class Settings
     #endregion
 
     public const int maxStack = 10;
+
+    #region Camera
+    public const float orthoSize = 8.4375f;
+    #endregion
 }

@@ -39,7 +39,7 @@ public class PlayerControl : MonoBehaviour
         useItem = GetComponent<ItemConsumer>();
         // Initialize input actions
         inputSystem_Actions = new InputSystem_Actions();
-
+        GameManager.Instance.OnGameStateChange += OnGameStateChange;
     }
     private void OnEnable()
     {
@@ -56,7 +56,7 @@ public class PlayerControl : MonoBehaviour
         beam.Enable();
         rightClick.Enable();
         spaceClick.Enable();
-        openInventory.Enable();
+        //  openInventory.Enable();
         useItemAction.Enable();
         restAction.Enable();
         fire.performed += OnFireClick;
@@ -89,7 +89,20 @@ public class PlayerControl : MonoBehaviour
         useItemAction.performed -= ctx => useItem.UseItemFromHotBar();
         restAction.performed -= ctx => StaticEventHandler.CallPressRestEvent();
     }
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnGameStateChange -= OnGameStateChange;
+    }
 
+    private void OnGameStateChange(GameState gameState)
+    {
+
+        if (gameState == GameState.Play || gameState == GameState.Instruct)
+        {
+            openInventory.Enable();
+            GameManager.Instance.OnGameStateChange -= OnGameStateChange;
+        }
+    }
 
     private void OnRightMouseClick(InputAction.CallbackContext ctx)
     {

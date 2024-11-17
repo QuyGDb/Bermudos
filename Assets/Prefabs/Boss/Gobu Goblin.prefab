@@ -267,7 +267,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 33
+  m_Mass: 1000000
   m_LinearDrag: 1000000
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  startingHealth: 200
+  startingHealth: 20
 --- !u!114 &7430653458981399621
 MonoBehaviour:
   m_ObjectHideFlags: 0

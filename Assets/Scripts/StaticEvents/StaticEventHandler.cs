@@ -71,6 +71,11 @@ public static class StaticEventHandler
     {
         OnRestInBonfire?.Invoke();
     }
+    public static event Action OnExit;
+    public static void CallExitEvent()
+    {
+        OnExit?.Invoke();
+    }
     #endregion
 
     #region UI Events
@@ -107,10 +112,10 @@ public static class StaticEventHandler
     {
         OnMoveItemToHotBar?.Invoke(new OnInventoryItemChangedEventArgs() { inventoryItem = inventoryItem });
     }
-    public static event Action<string, int> OnInstructionChanged;
-    public static void CallInstructionChangedEvent(string instructionText, int displayCount = -1)
+    public static event Action<string, int, bool> OnInstructionChanged;
+    public static void CallInstructionChangedEvent(string instructionText, int displayCount = -1, bool isActive = true)
     {
-        OnInstructionChanged?.Invoke(instructionText, displayCount);
+        OnInstructionChanged?.Invoke(instructionText, displayCount, isActive);
     }
     #endregion
 

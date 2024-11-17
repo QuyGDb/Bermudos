@@ -470,6 +470,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MenuInGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""5893997d-f654-45ee-9514-03320faa6165"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -912,6 +921,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""action"": ""UseItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""50530dc8-2ff3-41c6-8041-cec0afed42b0"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuInGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1002,6 +1022,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         m_UI_OpenInventory = m_UI.FindAction("OpenInventory", throwIfNotFound: true);
         m_UI_UseItem = m_UI.FindAction("UseItem", throwIfNotFound: true);
+        m_UI_MenuInGame = m_UI.FindAction("MenuInGame", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1175,6 +1196,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_TrackedDeviceOrientation;
     private readonly InputAction m_UI_OpenInventory;
     private readonly InputAction m_UI_UseItem;
+    private readonly InputAction m_UI_MenuInGame;
     public struct UIActions
     {
         private @InputSystem_Actions m_Wrapper;
@@ -1191,6 +1213,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
         public InputAction @OpenInventory => m_Wrapper.m_UI_OpenInventory;
         public InputAction @UseItem => m_Wrapper.m_UI_UseItem;
+        public InputAction @MenuInGame => m_Wrapper.m_UI_MenuInGame;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1236,6 +1259,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @UseItem.started += instance.OnUseItem;
             @UseItem.performed += instance.OnUseItem;
             @UseItem.canceled += instance.OnUseItem;
+            @MenuInGame.started += instance.OnMenuInGame;
+            @MenuInGame.performed += instance.OnMenuInGame;
+            @MenuInGame.canceled += instance.OnMenuInGame;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -1276,6 +1302,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @UseItem.started -= instance.OnUseItem;
             @UseItem.performed -= instance.OnUseItem;
             @UseItem.canceled -= instance.OnUseItem;
+            @MenuInGame.started -= instance.OnMenuInGame;
+            @MenuInGame.performed -= instance.OnMenuInGame;
+            @MenuInGame.canceled -= instance.OnMenuInGame;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -1362,5 +1391,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
         void OnOpenInventory(InputAction.CallbackContext context);
         void OnUseItem(InputAction.CallbackContext context);
+        void OnMenuInGame(InputAction.CallbackContext context);
     }
 }

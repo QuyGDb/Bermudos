@@ -5,31 +5,31 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+[DisallowMultipleComponent]
 public class MapTransition : MonoBehaviour
 {
     private Image image;
     private TextMeshProUGUI text;
     private bool isLoadedMap;
-    public float transitonTime = 0.25f;
+    public float transitonTime = 0.5f;
 
     private void Awake()
     {
         image = GetComponent<Image>();
         text = GetComponentInChildren<TextMeshProUGUI>();
+        StaticEventHandler.OnMapTransition += OnMapTransition;
     }
     private void Start()
     {
         image.gameObject.SetActive(false);
         text.gameObject.SetActive(false);
     }
-    private void OnEnable()
-    {
-        StaticEventHandler.OnMapTransition += OnMapTransition;
-    }
+
 
     private void OnDestroy()
     {
-        StaticEventHandler.OnMapTransition += OnMapTransition;
+        DOTween.Kill(this.transform);
+        StaticEventHandler.OnMapTransition -= OnMapTransition;
     }
 
     private void OnMapTransition()

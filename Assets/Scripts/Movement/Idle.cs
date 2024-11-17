@@ -22,6 +22,7 @@ public class Idle : MonoBehaviour
     {
         // Subscribe to idle event
         idleEvent.OnIdle += IdleEvent_OnIdle;
+        GameManager.Instance.OnGameStateChange += GameStateChanged_OnIdle;
     }
 
     private void OnDisable()
@@ -30,15 +31,27 @@ public class Idle : MonoBehaviour
         idleEvent.OnIdle -= IdleEvent_OnIdle;
     }
 
+    private void GameStateChanged_OnIdle(GameState gameState)
+    {
+        if (gameState == GameState.Intro)
+        {
+            rigidBody2D.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+        if (gameState == GameState.Instruct)
+        {
+            rigidBody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+            GameManager.Instance.OnGameStateChange -= GameStateChanged_OnIdle;
+        }
+    }
     private void IdleEvent_OnIdle(IdleEvent idleEvent)
     {
-        MoveRigidBody();
+        IdleRigidBody();
     }
 
     /// <summary>
     /// Move the rigidbody component
     /// </summary>
-    private void MoveRigidBody()
+    private void IdleRigidBody()
     {
         // ensure the rb collision detection is set to continuous
         rigidBody2D.velocity = Vector2.zero;

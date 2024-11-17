@@ -48,7 +48,7 @@ public class Boss : MonoBehaviour
     }
     private void HealthEvent_OnHealthLost(HealthEvent healthEvent, HealthEventArgs healthEventArgs)
     {
-        if (healthEventArgs.healthAmount <= 0)
+        if (healthEventArgs.healthAmount == 0)
         {
             EnemyDestroyed();
         }

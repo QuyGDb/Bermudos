@@ -9,22 +9,32 @@ public class Health : MonoBehaviour
     public int currentHealth;
     public int startingHealth;
     private HealthEvent healthEvent;
-
+    private DieEvent dieEvent;
     private void Awake()
     {
         healthEvent = GetComponent<HealthEvent>();
+        dieEvent = GetComponent<DieEvent>();
     }
     private void OnEnable()
     {
         StaticEventHandler.OnRestInBonfire += StaticEventHandler_OnRestInBonfire;
+        if (dieEvent != null)
+            dieEvent.OnDie += DieEvent_OnDie;
     }
     private void OnDisable()
     {
         StaticEventHandler.OnRestInBonfire -= StaticEventHandler_OnRestInBonfire;
+        if (dieEvent != null)
+            dieEvent.OnDie -= DieEvent_OnDie;
     }
     private void StaticEventHandler_OnRestInBonfire()
     {
         currentHealth = startingHealth;
+    }
+    private void DieEvent_OnDie(DieEvent dieEvent)
+    {
+        currentHealth = 0;
+        IncreaseHealth(startingHealth);
     }
     private void Start()
     {
@@ -43,6 +53,7 @@ public class Health : MonoBehaviour
             currentHealth = startingHealth;
         else
             currentHealth += healthAmount;
+
         healthEvent.CallHealthChangedEvent(((float)currentHealth / (float)startingHealth), currentHealth, 0);
     }
 }

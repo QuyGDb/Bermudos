@@ -11,19 +11,16 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Image SettingPanel;
     [SerializeField] private Image controlsPanel;
     [SerializeField] private Image audioPanel;
-    private Intro intro;
+    [SerializeField] private Intro intro;
 
-    private void Awake()
-    {
-        intro = GetComponentInChildren<Intro>();
-    }
+
     private void Start()
     {
         newGameBtn.onClick.AddListener(OnNewGameClick);
         continueGameBtn.onClick.AddListener(OnContinueGameClick);
         settingsBtn.onClick.AddListener(OnSettingsClick);
         exitGameBtn.onClick.AddListener(OnExitGameClick);
-        intro.gameObject.SetActive(false);
+
     }
     private void OnNewGameClick()
     {
@@ -32,13 +29,17 @@ public class MainMenu : MonoBehaviour
     private void OnContinueGameClick()
     {
         SceneManager.LoadScene("MainScene");
-        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode mode) =>
+        SceneManager.sceneLoaded += LoadContineGameScene;
+
+    }
+
+    private void LoadContineGameScene(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "MainScene" && scene.isLoaded)
         {
-            if (scene.name == "MainScene" && scene.isLoaded)
-            {
-                GameManager.Instance.HandleGameState(GameState.Play);
-            }
-        };
+            GameManager.Instance.TransitionToGame();
+            SceneManager.sceneLoaded -= LoadContineGameScene;
+        }
     }
     private void OnSettingsClick()
     {

@@ -9,11 +9,13 @@ public class Destroyed : MonoBehaviour
 {
     private DestroyedEvent destroyedEvent;
     private Player player;
+    private DieEvent dieEvent;
     private void Awake()
     {
         // Load components
         destroyedEvent = GetComponent<DestroyedEvent>();
         player = GetComponent<Player>();
+        dieEvent = GetComponent<DieEvent>();
     }
 
     private void OnEnable()
@@ -28,11 +30,14 @@ public class Destroyed : MonoBehaviour
         destroyedEvent.OnDestroyed -= DestroyedEvent_OnDestroyed;
     }
 
+
+
     private void DestroyedEvent_OnDestroyed(DestroyedEvent destroyedEvent, DestroyedEventArgs destroyedEventArgs)
     {
         if (destroyedEventArgs.playerDied)
         {
             StartCoroutine(Die());
+
         }
         else if (destroyedEventArgs.bossDied)
         {
@@ -49,8 +54,12 @@ public class Destroyed : MonoBehaviour
     {
 
         yield return new WaitForSeconds(3);
-        gameObject.SetActive(false);
+
         GameManager.Instance.InitializeEnemyManagerData();
+
+        dieEvent.CallDieEvent();
+
+
     }
     private void MarkEnemyAsDead()
     {
