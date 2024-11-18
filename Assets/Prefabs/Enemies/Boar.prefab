@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: -3579813238644532667, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
       propertyPath: m_Mass
-      value: 1.6934239
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 888145117105166357, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
@@ -62,7 +62,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ammoDetailsSO
       value: 
-      objectReference: {fileID: 11400000, guid: 41636122c35ada7478b7113753870a97,
+      objectReference: {fileID: 11400000, guid: fc3bc3e30c6cc064490ca31ed2d6fcd6,
         type: 2}
     - target: {fileID: 2875884459108569505, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}

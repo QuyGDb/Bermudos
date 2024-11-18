@@ -43,7 +43,7 @@ public class Bash : MonoBehaviour
     {
         if (gameState == GameState.Instruct)
         {
-            InvokeRepeating("InstructBash", 0f, 0.25f);
+            InvokeRepeating("InstructBash", 0f, 0.15f);
             GameManager.Instance.OnGameStateChange -= GameStateChanged_OnBash;
         }
     }

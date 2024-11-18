@@ -84,6 +84,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pig
       objectReference: {fileID: 0}
+    - target: {fileID: 6806730682309539077, guid: 235f1d17e61c9274f9cf5132ec8f9b69,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6839855316781763923, guid: 235f1d17e61c9274f9cf5132ec8f9b69,
         type: 3}
       propertyPath: m_Controller

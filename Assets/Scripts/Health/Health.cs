@@ -29,7 +29,8 @@ public class Health : MonoBehaviour
     }
     private void StaticEventHandler_OnRestInBonfire()
     {
-        currentHealth = startingHealth;
+        currentHealth = 0;
+        IncreaseHealth(startingHealth);
     }
     private void DieEvent_OnDie(DieEvent dieEvent)
     {

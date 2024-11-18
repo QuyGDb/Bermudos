@@ -8,11 +8,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 240516308350509418, guid: 235f1d17e61c9274f9cf5132ec8f9b69,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 961111600143636954, guid: 235f1d17e61c9274f9cf5132ec8f9b69,
         type: 3}
       propertyPath: ammoDetailsSO
       value: 
-      objectReference: {fileID: 11400000, guid: f6170834cdbc25a4facf903e0683826b,
+      objectReference: {fileID: 11400000, guid: 41636122c35ada7478b7113753870a97,
         type: 2}
     - target: {fileID: 961111600143636954, guid: 235f1d17e61c9274f9cf5132ec8f9b69,
         type: 3}
@@ -120,6 +125,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rabbit Horned
+      objectReference: {fileID: 0}
+    - target: {fileID: 6806730682309539077, guid: 235f1d17e61c9274f9cf5132ec8f9b69,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6839855316781763923, guid: 235f1d17e61c9274f9cf5132ec8f9b69,
         type: 3}

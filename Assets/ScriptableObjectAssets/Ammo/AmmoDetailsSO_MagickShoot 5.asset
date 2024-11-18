@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02940fc2c995f44ca081338fda9d13b, type: 3}
   m_Name: AmmoDetailsSO_MagickShoot 5
   m_EditorClassIdentifier: 
-  maxSpeed: 11
+  maxSpeed: 13
   damage: 10
   trajectoryMaxHeight: 1
   enemyAmmoType: {fileID: 7400000, guid: 02c003587af0e8345b013dc4dd0bd69f, type: 2}
@@ -25,20 +25,29 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.22070383
-      outSlope: 0.22070383
+      inSlope: 1.9359988
+      outSlope: 1.9359988
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.060000006
+      outWeight: 0.047428824
+    - serializedVersion: 3
+      time: 0.47841033
+      value: 0.37286615
+      inSlope: 0.012446716
+      outSlope: 0.012446716
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.24725743
-      outSlope: -0.24725743
+      inSlope: -1.4882578
+      outSlope: -1.4882578
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.02421379
+      inWeight: 0.068360895
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

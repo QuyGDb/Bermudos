@@ -32,12 +32,8 @@ public class HotBarScroll : MonoBehaviour
     }
     private void OnGameStateChange_HotBar(GameState gameState)
     {
-        if (gameState == GameState.Instruct)
-        {
-            gameObject.SetActive(true);
-            GameManager.Instance.OnGameStateChange -= OnGameStateChange_HotBar;
-        }
-        if (gameState == GameState.Play)
+
+        if (gameState == GameState.Play || gameState == GameState.Instruct)
         {
             gameObject.SetActive(true);
             emptyItemSprite = itemIcom.sprite;
