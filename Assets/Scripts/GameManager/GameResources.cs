@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Tilemaps;
 
+[DisallowMultipleComponent]
 public class GameResources : MonoBehaviour
 {
     private static GameResources instance;
@@ -67,6 +69,27 @@ public class GameResources : MonoBehaviour
     #endregion
     public Material beginUI;
 
+    #region Tooltip
+    [Tooltip("Boss Material")]
+    #endregion
+    public Material boss;
+
+    #region SOUNDS
+
+    public AudioMixerGroup soundsMasterMixerGroup;
+    public AudioMixerGroup musicMasterMixerGroup;
+    public AudioMixerSnapshot musicLowSnapshot;
+    public AudioMixerSnapshot musicOnFullSnapshot;
+    public AudioMixerSnapshot musicOffSnapshot;
+
+    public MusicTrackSO musicTrack1;
+    public MusicTrackSO musicTrack2;
+    public MusicTrackSO musicTrack_Bossfight;
+
+
+    public SoundEffectSO rain;
+
+    #endregion
     #region Validation
 #if UNITY_EDITOR
     private void OnValidate()
@@ -79,6 +102,7 @@ public class GameResources : MonoBehaviour
         HelperUtilities.ValidateCheckNullValue(this, nameof(bloodEffectPrefab), bloodEffectPrefab);
         HelperUtilities.ValidateCheckNullValue(this, nameof(playerShadowPrefab), playerShadowPrefab);
         HelperUtilities.ValidateCheckNullValue(this, nameof(beginUI), beginUI);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(boss), boss);
     }
 #endif
     #endregion

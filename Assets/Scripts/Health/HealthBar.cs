@@ -10,7 +10,7 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private Slider easeHealthBar;
     float lerpSpeed = 0.05f;
 
-    private void Start()
+    private void OnEnable()
     {
         GameManager.Instance.player.healthEvent.OnHealthChanged += HealthEvent_OnHealthChanged;
     }

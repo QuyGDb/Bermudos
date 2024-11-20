@@ -35,7 +35,7 @@ public class Boss : MonoBehaviour
     private void Start()
     {
         StaticEventHandler.CallBossChangedEvent(this);
-
+        GameResources.Instance.boss.SetFloat("_FadeAmount", 0f);
     }
 
 
@@ -48,9 +48,10 @@ public class Boss : MonoBehaviour
     }
     private void HealthEvent_OnHealthLost(HealthEvent healthEvent, HealthEventArgs healthEventArgs)
     {
-        if (healthEventArgs.healthAmount == 0)
+        if (healthEventArgs.healthAmount <= 0)
         {
             EnemyDestroyed();
+            healthEvent.OnHealthChanged -= HealthEvent_OnHealthLost;
         }
     }
     /// <summary>

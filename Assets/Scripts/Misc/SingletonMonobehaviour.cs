@@ -17,6 +17,7 @@ public abstract class SingletonMonobehaviour<T> : MonoBehaviour where T : MonoBe
         if (instance == null)
         {
             instance = this as T;
+
         }
         else
         {

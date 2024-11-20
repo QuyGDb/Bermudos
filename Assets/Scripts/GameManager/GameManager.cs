@@ -18,6 +18,9 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     [SerializeField] private Image wonPanel;
     [SerializeField] private Image wonScreen;
     [SerializeField] private TextMeshProUGUI wonText;
+    [SerializeField] private GameObject healthBar;
+    [SerializeField] private GameObject staminaBar;
+    [SerializeField] private GameObject skillBar;
     private void OnEnable()
     {
         StaticEventHandler.OnPlayerChanged += StaticEventHandler_OnPlayerChanged;
@@ -81,12 +84,15 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             case GameState.Begin:
                 break;
             case GameState.Instruct:
+                Instruct();
                 break;
             case GameState.Play:
                 Play();
                 break;
             case GameState.EngagedBoss:
                 EngagedBoss();
+                MusicManager.Instance.StopPlayingBackgroundMusic();
+                MusicManager.Instance.PlayMusic(GameResources.Instance.musicTrack_Bossfight);
                 break;
             case GameState.Won:
                 WonScene();
@@ -115,6 +121,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
                      wonScreen.gameObject.SetActive(true);
                      wonScreen.transform.DOScale(0, 3).OnComplete(() =>
                      {
+                         MusicManager.Instance.PlayBackgroundMusic();
                          SceneManager.LoadScene("MainMenu");
                      });
                  });
@@ -124,9 +131,17 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         });
 
     }
-
+    private void Instruct()
+    {
+        healthBar.SetActive(true);
+        staminaBar.SetActive(true);
+        skillBar.SetActive(true);
+    }
     public void Intro()
     {
+        healthBar.SetActive(false);
+        staminaBar.SetActive(false);
+        skillBar.SetActive(false);
         GameResources.Instance.beginUI.SetFloat("_FadeAmount", 0);
         beginSreen.gameObject.SetActive(true);
         beginSreen.DOColor(new Color(0, 0, 0, 1), 3f).OnComplete(() =>

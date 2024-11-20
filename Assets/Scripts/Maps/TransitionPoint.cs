@@ -13,7 +13,11 @@ public class TransitionPoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
+        if (GameManager.Instance.gameState == GameState.Instruct && TransitionPointDetailsSO.transitionMap == "North Of The Forest")
+        {
+            StaticEventHandler.CallInstructionChangedEvent("Complete the instructions to enter this map");
+            return;
+        }
         if (collision.CompareTag("Player") && !isCollider)
         {
             StartCoroutine(MapTransitionCoroutine(collision));
@@ -21,6 +25,7 @@ public class TransitionPoint : MonoBehaviour
             isCollider = true;
         }
     }
+
     private IEnumerator MapTransitionCoroutine(Collider2D collision)
     {
         StaticEventHandler.CallMapTransitionEvent();
@@ -41,4 +46,6 @@ public class TransitionPoint : MonoBehaviour
             GameManager.Instance.HandleGameState(GameState.EngagedBoss);
         SceneManager.sceneLoaded -= SceneManager_sceneLoaded;
     }
+
+
 }

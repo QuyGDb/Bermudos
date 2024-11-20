@@ -424,7 +424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxPoise: 1
   currentPoise: 0
-  stunTime: 5
+  stunTime: 3
 --- !u!114 &1795487349944282842
 MonoBehaviour:
   m_ObjectHideFlags: 0

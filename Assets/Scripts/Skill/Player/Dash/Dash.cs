@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Dash : MonoBehaviour
@@ -25,6 +24,7 @@ public class Dash : MonoBehaviour
     {
         if (Time.time > dashCooldownTimer && player.stamina.currentStamina > dashCost)
         {
+            SoundEffectManager.Instance.PlaySoundEffectLoop(player.dashSoundEffect, false);
             PlayDash(dashEventArgs.direction);
             dashCooldownTimer = Time.time + player.movementDetails.dashCooldownTime;
             player.stamina.UseStamina(dashCost);
@@ -48,7 +48,7 @@ public class Dash : MonoBehaviour
             player.movementToPositionEvent.CallMovementToPositionEvent(targetPosition, transform.position, player.movementDetails.dashSpeed, direction, true);
             yield return waitForFixedUpdate;
         }
-
+        SoundEffectManager.Instance.StopSoundEffectLoop();
         transform.position = targetPosition;
         player.playerEffect.isDashing = false;
     }

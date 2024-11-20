@@ -13,6 +13,11 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: -730412518283739450, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: maxPoise
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1286611210233765068, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
       propertyPath: m_Size.x

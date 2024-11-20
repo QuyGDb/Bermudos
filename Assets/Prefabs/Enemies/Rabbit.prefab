@@ -18,6 +18,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.4375
       objectReference: {fileID: 0}
+    - target: {fileID: 3064469315433400473, guid: a418c061c95f5b246b790299d5f0f7d4,
+        type: 3}
+      propertyPath: maxPoise
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3316191411282525691, guid: a418c061c95f5b246b790299d5f0f7d4,
         type: 3}
       propertyPath: m_Sprite
@@ -34,6 +39,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997641477032720138, guid: a418c061c95f5b246b790299d5f0f7d4,
+        type: 3}
+      propertyPath: startingHealth
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7224178153350362238, guid: a418c061c95f5b246b790299d5f0f7d4,
         type: 3}

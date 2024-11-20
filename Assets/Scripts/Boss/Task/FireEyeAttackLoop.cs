@@ -7,8 +7,8 @@ public class FireEyeAttackLoop : Action
 {
     private RangedSkills rangedSkills;
     [Header("EYE LOOP")]
-    public float eyeLoopRate = 0.5f;
-    public float eyeLoopDuration = 5f;
+    public float eyeLoopRate;
+    public float eyeLoopDuration;
     public override void OnAwake()
     {
         rangedSkills = GetComponent<RangedSkills>();

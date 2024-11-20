@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6142266668763282283}
   - component: {fileID: 6040339711964737284}
   - component: {fileID: 4496065145000529897}
-  - component: {fileID: 9065954216237420188}
+  - component: {fileID: 1905977513459501678}
   m_Layer: 0
   m_Name: RainEffect
   m_TagString: Untagged
@@ -4832,7 +4832,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &9065954216237420188
+--- !u!114 &1905977513459501678
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4844,6 +4844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86d993bcbed5f7d48bb8d436538dc238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rainEffect: {fileID: 11400000, guid: afbae69ae21db1945a6974b292a50e1e, type: 2}
 --- !u!1 &5881323870933766686
 GameObject:
   m_ObjectHideFlags: 0

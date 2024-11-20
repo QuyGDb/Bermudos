@@ -119,6 +119,7 @@ public class PlayerControl : MonoBehaviour
         // Play dash animation based on direction
         if (direction != Vector2.zero && Time.time > dashCooldownTimer)
         {
+            SoundEffectManager.Instance.PlaySoundEffect(player.dashSoundEffect);
             dashCooldownTimer = Time.time + Settings.dashCooldown;
             player.dashEvent.CallDashEvent(direction);
             StaticEventHandler.CallTriggerDashEvent();
@@ -127,8 +128,7 @@ public class PlayerControl : MonoBehaviour
 
     private void OnFireClick(InputAction.CallbackContext ctx)
     {
-        player.attackEvent.
-            CallAttackEvent();
+        player.attackEvent.CallAttackEvent();
     }
 
     private void Update()
@@ -193,6 +193,7 @@ public class PlayerControl : MonoBehaviour
                 }
                 // trigger movement event
                 player.movementByVelocityEvent.CallMovementByVelocityEvent(direction, player.movementDetails.GetMoveSpeed());
+                SoundEffectManager.Instance.PlaySoundEffectLoop(player.runSoundEffect, true);
             }
 
         }
@@ -200,8 +201,9 @@ public class PlayerControl : MonoBehaviour
         // else trigger idle event
         else
         {
-
+            SoundEffectManager.Instance.StopSoundEffectLoop();
             player.idleEvent.CallIdleEvent();
+
             // nếu nhân vật di chuyển đường thằng, lastmovedirection sẽ không được cập nhật, previouslastDir sẽ bằng lastmovedir hiện tại ngăn animateEvent được gọi ngoài mong đợi
             if (previousLastDirection != lastMoveDirection)
             {

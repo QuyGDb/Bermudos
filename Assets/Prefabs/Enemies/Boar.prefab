@@ -13,6 +13,11 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: -730412518283739450, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: maxPoise
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 888145117105166357, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -175,6 +180,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].y
       value: -1.0925415
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487484004901044565, guid: 1735eb1787ad19845a8af5decfbbdd2f,
+        type: 3}
+      propertyPath: startingHealth
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5677811548656886291, guid: 1735eb1787ad19845a8af5decfbbdd2f,
         type: 3}

@@ -79,7 +79,6 @@ public class RangedSkills : MonoBehaviour
             eyeLoopDuration -= eyeLoopRate;
             yield return new WaitForSeconds(eyeLoopRate);
         }
-        eyeLoopDuration = 5f;
 
     }
     #endregion

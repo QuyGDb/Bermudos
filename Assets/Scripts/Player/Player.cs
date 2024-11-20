@@ -42,6 +42,10 @@ public class Player : MonoBehaviour
     [HideInInspector] public InventoryManager inventoryManager;
     private DieEvent dieEvent;
     [HideInInspector] public Vector2[] spawnPosition = new Vector2[2];
+    public SoundEffectSO runSoundEffect;
+    public SoundEffectSO dashSoundEffect;
+    public SoundEffectSO attackSoundEffect;
+    private bool isDead;
     private void Awake()
     {
         // Load components
@@ -115,7 +119,10 @@ public class Player : MonoBehaviour
         {
             GameManager.Instance.beginSreen.gameObject.SetActive(false);
             if (GameManager.Instance.gameState == GameState.EngagedBoss)
+            {
+                MusicManager.Instance.PlayBackgroundMusic();
                 GameManager.Instance.HandleGameState(GameState.Play);
+            }
         });
 
     }
@@ -124,10 +131,16 @@ public class Player : MonoBehaviour
     /// </summary>
     private void HealthEvent_OnHealthChanged(HealthEvent healthEvent, HealthEventArgs healthEventArgs)
     {
-        // If player has died
-        if (healthEventArgs.healthAmount == 0f)
+        if (healthEventArgs.healthAmount > 0f)
         {
+            isDead = true;
+        }
+        // If player has died
+        if (healthEventArgs.healthAmount <= 0f && isDead)
+        {
+
             destroyedEvent.CallDestroyedEvent(new DestroyedEventArgs { playerDied = true });
+            isDead = false;
         }
     }
     private void GameStateChanged_OnPlayer(GameState gameState)

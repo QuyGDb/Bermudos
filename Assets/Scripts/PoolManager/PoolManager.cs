@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [DisallowMultipleComponent]
-public class PoolManager : SingletonMonobehaviour<PoolManager>
+public class PoolManager : SingletonMonobehaviourPersistent<PoolManager>
 {
     #region Tooltip
     [Tooltip("Populate this array with prefabs that you want to add to the pool, and specify the number of gameobjects to be created for each.")]
@@ -20,8 +20,9 @@ public class PoolManager : SingletonMonobehaviour<PoolManager>
         public string componentType;
     }
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         // This singleton gameobject will be the object pool parent
         objectPoolTransform = this.gameObject.transform;
 
@@ -30,7 +31,6 @@ public class PoolManager : SingletonMonobehaviour<PoolManager>
         {
             CreatePool(poolArray[i].prefab, poolArray[i].poolSize, poolArray[i].componentType);
         }
-
     }
 
     /// <summary>

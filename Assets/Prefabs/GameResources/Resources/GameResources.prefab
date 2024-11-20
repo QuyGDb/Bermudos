@@ -58,3 +58,18 @@ MonoBehaviour:
   playerShadowPrefab: {fileID: 5521695625464875511, guid: e82eecfad9263684c980c575787fcdee,
     type: 3}
   beginUI: {fileID: 2100000, guid: 03a30e0498c4cdb4480cef50b20de30b, type: 2}
+  boss: {fileID: 2100000, guid: 4528f279141bdfa42a862672447e22f8, type: 2}
+  soundsMasterMixerGroup: {fileID: 619867438998851607, guid: a4fc7b891c94955439162095adbfcffa,
+    type: 2}
+  musicMasterMixerGroup: {fileID: 633754984285908233, guid: a4fc7b891c94955439162095adbfcffa,
+    type: 2}
+  musicLowSnapshot: {fileID: 24500006, guid: a4fc7b891c94955439162095adbfcffa, type: 2}
+  musicOnFullSnapshot: {fileID: 2896418816887610571, guid: a4fc7b891c94955439162095adbfcffa,
+    type: 2}
+  musicOffSnapshot: {fileID: -6249828938523090262, guid: a4fc7b891c94955439162095adbfcffa,
+    type: 2}
+  musicTrack1: {fileID: 11400000, guid: 57625ec44a209b9498e34e45c30f3ba9, type: 2}
+  musicTrack2: {fileID: 11400000, guid: c55e1d5c414d69b4c9008e90df3f9e24, type: 2}
+  musicTrack_Bossfight: {fileID: 11400000, guid: b54f284cc922dde458b1b64ba601c2a1,
+    type: 2}
+  rain: {fileID: 11400000, guid: afbae69ae21db1945a6974b292a50e1e, type: 2}

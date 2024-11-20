@@ -16,7 +16,6 @@ public class HotBarScroll : MonoBehaviour
     private Sprite emptyItemSprite;
     private void Awake()
     {
-        Debug.Log("HotBarScroll Awake");
         itemQuantity = GetComponentInChildren<TextMeshProUGUI>();
         StaticEventHandler.OnItemChanged += StaticEventHandler_OnItemChanged;
         StaticEventHandler.OnMoveItemToHotBar += StaticEventHandler_OnMoveItemToHotBar;
@@ -26,7 +25,6 @@ public class HotBarScroll : MonoBehaviour
 
     private void OnDestroy()
     {
-        Debug.Log("HotBarScroll OnDestroy");
         StaticEventHandler.OnItemChanged -= StaticEventHandler_OnItemChanged;
         StaticEventHandler.OnMoveItemToHotBar -= StaticEventHandler_OnMoveItemToHotBar;
     }
@@ -64,7 +62,6 @@ public class HotBarScroll : MonoBehaviour
         {
             itemIcom.sprite = emptyItemSprite;
             itemQuantity.text = "";
-            Debug.Log("Item is empty");
         }
     }
     private void StaticEventHandler_OnMoveItemToHotBar(OnInventoryItemChangedEventArgs onInventoryItemChangedEventArgs)

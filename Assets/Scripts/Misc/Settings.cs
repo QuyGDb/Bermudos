@@ -78,4 +78,13 @@ public static class Settings
     #region Camera
     public const float orthoSize = 8.4375f;
     #endregion
+
+    #region AUDIO
+    public const float musicFadeOutTime = 0.5f;  // Defualt Music Fade Out Transition
+    public const float musicFadeInTime = 0.5f;  // Default Music Fade In Transition
+    #endregion
+
+    #region Stamina
+    public const int attackCost = 10;
+    #endregion
 }
