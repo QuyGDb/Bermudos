@@ -73,3 +73,6 @@ MonoBehaviour:
   musicTrack_Bossfight: {fileID: 11400000, guid: b54f284cc922dde458b1b64ba601c2a1,
     type: 2}
   rain: {fileID: 11400000, guid: afbae69ae21db1945a6974b292a50e1e, type: 2}
+  getHurtEnemy: {fileID: 11400000, guid: d384c5e7b6558f4409d986241080a78c, type: 2}
+  getHurtPlayer: {fileID: 11400000, guid: 911f0af43d719cd4ea4d8236831dbd41, type: 2}
+  clickButton: {fileID: 11400000, guid: 952df63b8505bbf4b82cdfdd68ef41ad, type: 2}

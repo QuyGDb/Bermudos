@@ -1,14 +1,12 @@
-
 using DG.Tweening;
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using TMPEffects.Components;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+[DisallowMultipleComponent]
 public class Intro : MonoBehaviour
 {
     [SerializeField] private IntroSO[] introSOList = new IntroSO[4];
@@ -83,4 +81,15 @@ public class Intro : MonoBehaviour
         introImage.color = new Color(1, 1, 1, 1f);
         OnNextBtnClick();
     }
+
+    #region Validation
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        HelperUtilities.ValidateCheckEnumerableValues(this, nameof(introSOList), introSOList);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(introImage), introImage);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(map), map);
+    }
+#endif
+    #endregion
 }

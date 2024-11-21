@@ -7,13 +7,14 @@ public class Item : MonoBehaviour
     private float timeToDestroy = 10f;
     private LayerMask playerLayerMark;
     public ItemSO itemSO;
-    public float jumDuration = 0.5f;
-    public int numJumps = 1;
-    public float jumpPower = 1f;
-    public float shakeDuration = 3f;
-    public float shakeStrength = 0.1f;
-    public int shakeVibrato = 2;
-    public bool isColliding = true;
+    private float jumDuration = 0.5f;
+    private int numJumps = 2;
+    private float jumpPower = 1f;
+    private float shakeDuration = 0.46f;
+    private float shakeStrength = 0.5f;
+    private int shakeVibrato = 3;
+    private bool isColliding = true;
+    [SerializeField] private SoundEffectSO dropItemSoundEffect;
     private void Start()
     {
         playerLayerMark.value = LayerMask.GetMask("Player");
@@ -39,6 +40,7 @@ public class Item : MonoBehaviour
     {
         if ((playerLayerMark.value & 1 << collision.gameObject.layer) > 0 && isColliding)
         {
+            SoundEffectManager.Instance.PlaySoundEffect(dropItemSoundEffect);
             collision.GetComponent<InventoryManager>()?.CollectIntentoryItem(this.itemSO);
             Destroy(this.gameObject);
             isColliding = false;

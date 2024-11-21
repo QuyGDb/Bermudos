@@ -1,8 +1,4 @@
 using DG.Tweening;
-using Esper.ESave;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -45,6 +41,7 @@ public class Player : MonoBehaviour
     public SoundEffectSO runSoundEffect;
     public SoundEffectSO dashSoundEffect;
     public SoundEffectSO attackSoundEffect;
+    public SoundEffectSO dieSoundEffect;
     private bool isDead;
     private void Awake()
     {
@@ -90,6 +87,7 @@ public class Player : MonoBehaviour
     }
     private void DieEvent_OnDie(DieEvent dieEvent)
     {
+        SoundEffectManager.Instance.PlaySoundEffect(dieSoundEffect);
         if (GameManager.Instance.saveFileSetup.GetSaveFile().HasData("Checkpoint"))
         {
             string checkpoint = GameManager.Instance.saveFileSetup.GetSaveFile().GetData<string>("Checkpoint");
@@ -115,7 +113,7 @@ public class Player : MonoBehaviour
         GameResources.Instance.beginUI.SetFloat("_FadeAmount", 0);
         GameManager.Instance.beginSreen.color = new Color(0, 0, 0, 1);
         GameManager.Instance.beginSreen.gameObject.SetActive(true);
-        GameManager.Instance.beginSreen.DOFade(0f, 1.5f).SetEase(Ease.InOutSine).OnComplete(() =>
+        GameManager.Instance.beginSreen.DOFade(0f, 2f).SetEase(Ease.InOutSine).OnComplete(() =>
         {
             GameManager.Instance.beginSreen.gameObject.SetActive(false);
             if (GameManager.Instance.gameState == GameState.EngagedBoss)
@@ -176,12 +174,15 @@ public class Player : MonoBehaviour
     }
 
 
-
     #region Validation
 #if UNITY_EDITOR
     private void OnValidate()
     {
         HelperUtilities.ValidateCheckNullValue(this, nameof(movementDetails), movementDetails);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(runSoundEffect), runSoundEffect);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(dashSoundEffect), dashSoundEffect);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(attackSoundEffect), attackSoundEffect);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(dieSoundEffect), dieSoundEffect);
     }
 
 

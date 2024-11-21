@@ -6,6 +6,7 @@ public class Bonfire : MonoBehaviour
 {
     private LayerMask playerLayer;
     [SerializeField] private SpriteRenderer icon;
+    [SerializeField] private SoundEffectSO restSoundEffect;
     private void Awake()
     {
         playerLayer = LayerMask.GetMask("Player");
@@ -36,7 +37,7 @@ public class Bonfire : MonoBehaviour
         {
             StaticEventHandler.CallRestInBonfireEvent();
             SaveCheckPointAtBonfire();
-
+            SoundEffectManager.Instance.PlaySoundEffect(restSoundEffect);
         }
     }
     private void SaveCheckPointAtBonfire()

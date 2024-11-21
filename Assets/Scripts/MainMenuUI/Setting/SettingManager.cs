@@ -23,10 +23,11 @@ public class SettingManager : MonoBehaviour
     }
     private void Start()
     {
-        controlsBtn.onClick.AddListener(() => OpenControls());
-        audioBtn.onClick.AddListener(() => OpenAudio());
+        controlsBtn.onClick.AddListener(OpenControls);
+        audioBtn.onClick.AddListener(OpenAudio);
         backBtn.onClick.AddListener(() =>
         {
+            SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.clickButton);
             gameObject.SetActive(false);
         });
         aplha = 0.5f;
@@ -40,14 +41,14 @@ public class SettingManager : MonoBehaviour
     {
         audioPanel.gameObject.SetActive(false);
         controlsPanel.gameObject.SetActive(true);
-
+        SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.clickButton);
         Effect(controlsText, audioText);
     }
     private void OpenAudio()
     {
         controlsPanel.gameObject.SetActive(false);
         audioPanel.gameObject.SetActive(true);
-
+        SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.clickButton);
         Effect(audioText, controlsText);
     }
     private void Effect(TextMeshProUGUI currentText, TextMeshProUGUI previousText)

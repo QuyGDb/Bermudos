@@ -8,7 +8,7 @@ public class MusicManager : SingletonMonobehaviourPersistent<MusicManager>
     private AudioClip currentAudioClip = null;
     private Coroutine fadeOutMusicCoroutine;
     private Coroutine fadeInMusicCoroutine;
-    public int musicVolume = 10;
+    public float musicVolume = 10;
     bool isPlayingFirstClip = true;
     protected override void Awake()
     {
@@ -27,7 +27,7 @@ public class MusicManager : SingletonMonobehaviourPersistent<MusicManager>
         // Check if volume levels have been saved in playerprefs - if so retrieve and set them
         if (PlayerPrefs.HasKey("musicVolume"))
         {
-            musicVolume = PlayerPrefs.GetInt("musicVolume");
+            musicVolume = PlayerPrefs.GetFloat("musicVolume");
         }
 
         SetMusicVolume(musicVolume);
@@ -38,7 +38,7 @@ public class MusicManager : SingletonMonobehaviourPersistent<MusicManager>
     private void OnDisable()
     {
         // Save volume settings in playerprefs
-        PlayerPrefs.SetInt("musicVolume", musicVolume);
+        PlayerPrefs.SetFloat("musicVolume", musicVolume);
     }
     public void PlayBackgroundMusic()
     {
@@ -128,35 +128,22 @@ public class MusicManager : SingletonMonobehaviourPersistent<MusicManager>
     }
 
     /// <summary>
-    /// Increase music volume
+    /// Change music volume
     /// </summary>
-    public void IncreaseMusicVolume()
+    public void ChangeMusicVolume(float musicVolume)
     {
         int maxMusicVolume = 20;
-
         if (musicVolume >= maxMusicVolume) return;
-
-        musicVolume += 1;
-
+        this.musicVolume = musicVolume;
         SetMusicVolume(musicVolume);
     }
 
-    /// <summary>
-    /// Decrease music volume
-    /// </summary>
-    public void DecreaseMusicVolume()
-    {
-        if (musicVolume == 0) return;
 
-        musicVolume -= 1;
-
-        SetMusicVolume(musicVolume);
-    }
 
     /// <summary>
     /// Set music volume
     /// </summary>
-    public void SetMusicVolume(int musicVolume)
+    public void SetMusicVolume(float musicVolume)
     {
         float muteDecibels = -80f;
 

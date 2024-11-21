@@ -5,7 +5,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class Rage : MonoBehaviour
 {
-    public float maxRage = 10;
+    [HideInInspector] public float maxRage = 10;
     [HideInInspector] public float currentRage = 0;
 
     public void IncreaseRage(float amount)

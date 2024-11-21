@@ -165,3 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f14ddf2774802bf4f9bf0e62e6938f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  amountScaleY: 0
+  beamSoundEffect: {fileID: 11400000, guid: 6ded893acb07ec44db39a0a3e66e0700, type: 2}
+  beamPlayerSoundEffect: {fileID: 11400000, guid: 6650d2567e710904f97cf3fda68613a4,
+    type: 2}

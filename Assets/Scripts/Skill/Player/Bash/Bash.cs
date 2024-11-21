@@ -13,14 +13,17 @@ public class Bash : MonoBehaviour
     private Player player;
     private Arrow arrow;
     private BashState bashState;
+    [SerializeField] private SoundEffectSO duringBashSoundEffect;
+    [SerializeField] private SoundEffectSO releaseBashSoundEffect;
+    [TextArea]
+    [SerializeField] private string instructionBash;
     private bool isDuring;
     private bool isRelease;
+    private bool isDuringSoundPlaying = false;
     private float aimCountdown;
     private float bashForce = 10f;
     private int bashCost = 10;
     private float bashRadius = 2.5f;
-    [TextArea]
-    [SerializeField] private string instructionBash;
     private int displayCount = 0;
     private void Awake()
     {
@@ -117,7 +120,14 @@ public class Bash : MonoBehaviour
         {
             isRelease = true;
             if (collider2d != null)
+            {
+                if (!isDuringSoundPlaying)
+                {
+                    SoundEffectManager.Instance.PlaySoundEffect(duringBashSoundEffect);
+                    isDuringSoundPlaying = true;
+                }
                 arrow.MakeArrow(HelperUtilities.GetMouseWorldPosition(), collider2d.transform.position);
+            }
         }
     }
 
@@ -130,6 +140,11 @@ public class Bash : MonoBehaviour
             collider2d.gameObject.layer = LayerMask.NameToLayer("BashAmmo");
             MoveAmmoByBash();
             arrow.ClearArrow();
+            if (isDuringSoundPlaying)
+            {
+                SoundEffectManager.Instance.PlaySoundEffect(releaseBashSoundEffect);
+                isDuringSoundPlaying = false;
+            }
 
             ProcessInstructionBashInRealseState();
         }

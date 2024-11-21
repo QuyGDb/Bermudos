@@ -32,6 +32,8 @@ public class DealDamage : MonoBehaviour
     private void DealDamageEvent_OnDealDamage(DealDamageEvent dealDamageEvent, DealDamageEventAgrs dealDamageEventAgrs)
     {
         GameManager.Instance.player.stamina.UseStamina(attackCost);
+        SoundEffectManager.Instance.PlaySoundEffect(GameManager.Instance.player.attackSoundEffect);
+
         Collider2D[] hitColliders = new Collider2D[1];
         int numColliders = Physics2D.OverlapCollider(GetComponent<Collider2D>(), contactFilter2D, hitColliders);
         for (int i = 0; i < numColliders; i++)
@@ -41,6 +43,7 @@ public class DealDamage : MonoBehaviour
             {
                 GameManager.Instance.player.rage.IncreaseRage(Settings.rageAmount);
                 DealDamageHandle(collider);
+
 
             }
         }

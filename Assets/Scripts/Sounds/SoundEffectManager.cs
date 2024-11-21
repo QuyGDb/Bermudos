@@ -4,14 +4,13 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class SoundEffectManager : SingletonMonobehaviourPersistent<SoundEffectManager>
 {
-    public int soundsVolume = 8;
+    public float soundsVolume = 8;
     private SoundEffect loopSound;
-    private SoundEffectSO currentSoundEffectSO;
     private void Start()
     {
         if (PlayerPrefs.HasKey("soundsVolume"))
         {
-            soundsVolume = PlayerPrefs.GetInt("soundsVolume");
+            soundsVolume = PlayerPrefs.GetFloat("soundsVolume");
         }
 
         SetSoundsVolume(soundsVolume);
@@ -20,7 +19,7 @@ public class SoundEffectManager : SingletonMonobehaviourPersistent<SoundEffectMa
     private void OnDisable()
     {
         // Save volume settings in playerprefs
-        PlayerPrefs.SetInt("soundsVolume", soundsVolume);
+        PlayerPrefs.SetFloat("soundsVolume", soundsVolume);
     }
 
     /// <summary>
@@ -38,8 +37,6 @@ public class SoundEffectManager : SingletonMonobehaviourPersistent<SoundEffectMa
     public void PlaySoundEffectLoop(SoundEffectSO soundEffect, bool isLoop)
     {
 
-        if (currentSoundEffectSO == soundEffect) return;
-        currentSoundEffectSO = soundEffect;
         loopSound = (SoundEffect)PoolManager.Instance.ReuseComponent(soundEffect.soundPrefab, Vector3.zero, Quaternion.identity);
         loopSound.SetSound(soundEffect, isLoop);
         loopSound.gameObject.SetActive(true);
@@ -50,7 +47,6 @@ public class SoundEffectManager : SingletonMonobehaviourPersistent<SoundEffectMa
         if (loopSound != null)
         {
             loopSound.gameObject.SetActive(false);
-            currentSoundEffectSO = null;
         }
     }
     /// <summary>
@@ -64,35 +60,23 @@ public class SoundEffectManager : SingletonMonobehaviourPersistent<SoundEffectMa
 
     //
     /// <summary>
-    /// Increase sounds volume
+    /// Change sounds volume
     /// </summary>
-    public void IncreaseSoundsVolume()
+    public void ChangeSoundsVolume(float soundsVolume)
     {
         int maxSoundsVolume = 20;
 
         if (soundsVolume >= maxSoundsVolume) return;
 
-        soundsVolume += 1;
-
+        this.soundsVolume = soundsVolume;
         SetSoundsVolume(soundsVolume); ;
     }
 
-    /// <summary>
-    /// Decrease sounds volume
-    /// </summary>
-    public void DecreaseSoundsVolume()
-    {
-        if (soundsVolume == 0) return;
-
-        soundsVolume -= 1;
-
-        SetSoundsVolume(soundsVolume);
-    }
 
     /// <summary>
     /// Set sounds volume
     /// </summary>
-    private void SetSoundsVolume(int soundsVolume)
+    private void SetSoundsVolume(float soundsVolume)
     {
         float muteDecibels = -80f;
 

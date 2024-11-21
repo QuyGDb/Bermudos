@@ -45,6 +45,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2490704293199175983, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
+      propertyPath: runSoundEffect
+      value: 
+      objectReference: {fileID: 11400000, guid: 49637fed0a42dab419293eda8a17626b,
+        type: 2}
+    - target: {fileID: -2490704293199175983, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: dashSoundEffect
+      value: 
+      objectReference: {fileID: 11400000, guid: 86fba21e429b00743af6b178193c3adf,
+        type: 2}
+    - target: {fileID: -2490704293199175983, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: attackSoundEffect
+      value: 
+      objectReference: {fileID: 11400000, guid: fbf8281385f882a468edf7890f8e74aa,
+        type: 2}
+    - target: {fileID: -2490704293199175983, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
       propertyPath: spawnPosition.Array.data[0].x
       value: 2
       objectReference: {fileID: 0}
@@ -443,6 +461,18 @@ PrefabInstance:
       value: Right-click to activate Bash, then control the direction of the magic
         ball.
       objectReference: {fileID: 0}
+    - target: {fileID: 7990673252058947659, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: duringBashSoundEffect
+      value: 
+      objectReference: {fileID: 11400000, guid: ead36161a8a1cb34e99f7c085c95a5fa,
+        type: 2}
+    - target: {fileID: 7990673252058947659, guid: 0b592955ea58ad641b5e3c091f45626d,
+        type: 3}
+      propertyPath: releaseBashSoundEffect
+      value: 
+      objectReference: {fileID: 11400000, guid: a09685258196bc74ea860d59b5245233,
+        type: 2}
     - target: {fileID: 8248927959554455306, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: m_Controller
@@ -456,7 +486,7 @@ PrefabInstance:
     - target: {fileID: 8274898365873951458, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
       propertyPath: startingHealth
-      value: 600
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 9030734883779235822, guid: 0b592955ea58ad641b5e3c091f45626d,
         type: 3}
@@ -786,6 +816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d49baa0ffa85f3544b1b1b9cca35f00b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useItemSoundEffect: {fileID: 11400000, guid: 00cf194b582c6f14e88c6ce16a906df1, type: 2}
 --- !u!114 &2720571153121953159
 MonoBehaviour:
   m_ObjectHideFlags: 0

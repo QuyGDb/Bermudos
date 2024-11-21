@@ -46,6 +46,10 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
+        if (GetComponent<Player>() != null)
+            SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.getHurtPlayer);
+        else
+            SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.getHurtEnemy);
         healthEvent.CallHealthChangedEvent(((float)currentHealth / (float)startingHealth), currentHealth, damageAmount);
     }
     public void IncreaseHealth(int healthAmount)

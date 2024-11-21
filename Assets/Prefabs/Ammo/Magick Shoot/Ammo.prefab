@@ -176,9 +176,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 884d4abf206e5674caf8fa186044ff5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ammoDetailsSO: {fileID: 0}
   poiseAmount: 1
   stunDuration: 2
   ammoState: 0
+  shootSoundEffect: {fileID: 11400000, guid: d370efddf765d0648934ffbe51721110, type: 2}
 --- !u!114 &7537481418755544126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +193,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa0c2e49964770e4d97a2da68b797e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationClip: {fileID: 0}
 --- !u!95 &-1943024400675916027
 Animator:
   serializedVersion: 5

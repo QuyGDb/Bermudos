@@ -12,20 +12,30 @@ public class Beam : MonoBehaviour
     private LayerMask enemyLayerMask;
     private LayerMask bossLayerMask;
     private LayerMask playerLayerMask;
+    private LayerMask bashAmmoLayerMask;
     [HideInInspector] public float amountScaleY;
+    [SerializeField] private SoundEffectSO beamSoundEffect;
+    [SerializeField] private SoundEffectSO beamPlayerSoundEffect;
     private void Awake()
     {
         animator = GetComponent<Animator>();
         enemyLayerMask = LayerMask.GetMask("Enemy");
         bossLayerMask = LayerMask.GetMask("Boss");
         playerLayerMask = LayerMask.GetMask("Player");
+        bashAmmoLayerMask = LayerMask.GetMask("BashAmmo");
     }
     private void LateUpdate()
     {
         float targetScaleY = Mathf.Lerp(0, 1, animator.GetCurrentAnimatorStateInfo(0).normalizedTime / 1.5f);
         transform.localScale = new Vector3(transform.localScale.x, targetScaleY * amountScaleY, transform.localScale.z);
     }
-
+    private void Start()
+    {
+        if ((bashAmmoLayerMask.value & 1 << gameObject.layer) > 0)
+            SoundEffectManager.Instance.PlaySoundEffect(beamPlayerSoundEffect);
+        else
+            SoundEffectManager.Instance.PlaySoundEffect(beamSoundEffect);
+    }
     public void EyeAttackEnd()
     {
         Destroy(this.gameObject);

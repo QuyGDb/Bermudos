@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [DisallowMultipleComponent]
-public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerUpHandler
+public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [HideInInspector] public int itemId;
     public Image SelectorImg;
@@ -103,9 +103,7 @@ public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler,
         HelperUtilities.ValidateCheckNullValue(this, nameof(quantityText), quantityText);
     }
 
-    public void OnPointerUp(PointerEventData eventData)
-    {
-    }
+
 #endif
     #endregion
 }

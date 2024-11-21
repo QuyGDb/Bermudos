@@ -62,6 +62,7 @@ public class InventoryManager : MonoBehaviour
     }
     private void StaticEventHandler_OnInventoryChanged(OnInventoryChangedEventArgs onInventoryChangedEventArgs)
     {
+        Debug.Log("Inventory Changed");
         inventory = onInventoryChangedEventArgs.inventory;
         inventory.gameObject.SetActive(false);
     }
@@ -78,22 +79,15 @@ public class InventoryManager : MonoBehaviour
         {
             inventory.gameObject.SetActive(false);
             if (HotBarItem.Count > 0)
-            {
                 isInstruction = false;
-            }
-
             StaticEventHandler.CallInstructionChangedEvent("", -9, false);
         }
         else
         {
             inventory.ResetInventory(inventoryItemList);
             LoadItemsToInventory();
-
             if (isInstruction && inventoryItemList.Count > 0)
-            {
-
                 StaticEventHandler.CallInstructionChangedEvent(instructionText);
-            }
             inventory.gameObject.SetActive(true);
         }
     }

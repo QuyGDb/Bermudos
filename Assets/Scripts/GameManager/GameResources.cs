@@ -88,6 +88,9 @@ public class GameResources : MonoBehaviour
 
 
     public SoundEffectSO rain;
+    public SoundEffectSO getHurtEnemy;
+    public SoundEffectSO getHurtPlayer;
+    public SoundEffectSO clickButton;
 
     #endregion
     #region Validation
@@ -103,6 +106,18 @@ public class GameResources : MonoBehaviour
         HelperUtilities.ValidateCheckNullValue(this, nameof(playerShadowPrefab), playerShadowPrefab);
         HelperUtilities.ValidateCheckNullValue(this, nameof(beginUI), beginUI);
         HelperUtilities.ValidateCheckNullValue(this, nameof(boss), boss);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(soundsMasterMixerGroup), soundsMasterMixerGroup);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(musicMasterMixerGroup), musicMasterMixerGroup);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(musicLowSnapshot), musicLowSnapshot);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(musicOnFullSnapshot), musicOnFullSnapshot);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(musicOffSnapshot), musicOffSnapshot);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(musicTrack1), musicTrack1);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(musicTrack2), musicTrack2);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(musicTrack_Bossfight), musicTrack_Bossfight);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(rain), rain);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(getHurtEnemy), getHurtEnemy);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(getHurtPlayer), getHurtPlayer);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(clickButton), clickButton);
     }
 #endif
     #endregion

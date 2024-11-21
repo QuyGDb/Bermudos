@@ -200,3 +200,5 @@ MonoBehaviour:
   shakeDuration: 0.46
   shakeStrength: 0.5
   shakeVibrato: 3
+  dropItemSoundEffect: {fileID: 11400000, guid: 293fe25ffc77f744396f28f085dcaabc,
+    type: 2}

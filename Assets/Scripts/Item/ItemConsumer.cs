@@ -14,6 +14,7 @@ public class ItemConsumer : MonoBehaviour
     private int smallHealthPotionAmount = 20;
     private int ragePotionAmount = 2;
     private InventoryItem currentInventoryItem;
+    [SerializeField] private SoundEffectSO useItemSoundEffect;
     int normalDamage;
     private void Awake()
     {
@@ -66,6 +67,7 @@ public class ItemConsumer : MonoBehaviour
     }
     void UsePotion(string potionName)
     {
+        SoundEffectManager.Instance.PlaySoundEffect(useItemSoundEffect);
         switch (potionName)
         {
             case "Attack Potion":

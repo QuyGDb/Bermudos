@@ -9,7 +9,6 @@ using UnityEngine.InputSystem;
 public class PlayerControl : MonoBehaviour
 {
     private Player player;
-    private MovementByVelocityEvent movementByVelocityEvent;
     private InputSystem_Actions inputSystem_Actions;
     private InputAction move;
     private InputAction fire;
@@ -27,14 +26,12 @@ public class PlayerControl : MonoBehaviour
     private Vector2 previousLastDirection;
     private float dashCooldownTimer;
     private float bashCooldownTimer;
-
+    private bool isRunningSoundPlaying = false;
     private void Awake()
     {
         // Load components
         player = GetComponent<Player>();
         beamByPlayer = GetComponent<BeamByPlayer>();
-        movementByVelocityEvent = GetComponent<MovementByVelocityEvent>();
-
         inventoryManager = GetComponent<InventoryManager>();
         useItem = GetComponent<ItemConsumer>();
         // Initialize input actions
@@ -128,7 +125,11 @@ public class PlayerControl : MonoBehaviour
 
     private void OnFireClick(InputAction.CallbackContext ctx)
     {
-        player.attackEvent.CallAttackEvent();
+        if (player.stamina.currentStamina > 10)
+        {
+            player.attackEvent.CallAttackEvent();
+        }
+
     }
 
     private void Update()
@@ -193,7 +194,11 @@ public class PlayerControl : MonoBehaviour
                 }
                 // trigger movement event
                 player.movementByVelocityEvent.CallMovementByVelocityEvent(direction, player.movementDetails.GetMoveSpeed());
-                SoundEffectManager.Instance.PlaySoundEffectLoop(player.runSoundEffect, true);
+                if (!isRunningSoundPlaying)
+                {
+                    SoundEffectManager.Instance.PlaySoundEffectLoop(player.runSoundEffect, true);
+                    isRunningSoundPlaying = true;
+                }
             }
 
         }
@@ -201,7 +206,11 @@ public class PlayerControl : MonoBehaviour
         // else trigger idle event
         else
         {
-            SoundEffectManager.Instance.StopSoundEffectLoop();
+            if (isRunningSoundPlaying)
+            {
+                SoundEffectManager.Instance.StopSoundEffectLoop();
+                isRunningSoundPlaying = false;
+            }
             player.idleEvent.CallIdleEvent();
 
             // nếu nhân vật di chuyển đường thằng, lastmovedirection sẽ không được cập nhật, previouslastDir sẽ bằng lastmovedir hiện tại ngăn animateEvent được gọi ngoài mong đợi

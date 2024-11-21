@@ -28,7 +28,8 @@ public class Ammo : MonoBehaviour, IFireable
     [SerializeField] private float stunDuration;
     public AmmoState ammoState;
     private bool isColliding = false;
-
+    [SerializeField] private SoundEffectSO shootSoundEffect;
+    private bool isFirstOnEnable = true;
     private void Awake()
     {
         enemyEffect = GetComponent<EnemyEffect>();
@@ -40,6 +41,12 @@ public class Ammo : MonoBehaviour, IFireable
     private void OnEnable()
     {
         trajectoryStartPoint = transform.position;
+        if (isFirstOnEnable)
+        {
+            isFirstOnEnable = false;
+            return;
+        }
+        SoundEffectManager.Instance.PlaySoundEffect(shootSoundEffect);
     }
     private void Start()
     {

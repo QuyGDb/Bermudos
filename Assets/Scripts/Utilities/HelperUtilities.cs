@@ -197,7 +197,7 @@ public static class HelperUtilities
     /// <summary>
     /// Convert the linear volume scale to decibels
     /// </summary>
-    public static float LinearToDecibels(int linear)
+    public static float LinearToDecibels(float linear)
     {
         float linearScaleRange = 20f;
 

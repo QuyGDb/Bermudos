@@ -24,13 +24,14 @@ public class MainMenu : MonoBehaviour
     }
     private void OnNewGameClick()
     {
+        SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.clickButton);
         intro.gameObject.SetActive(true);
     }
     private void OnContinueGameClick()
     {
         SceneManager.LoadScene("MainScene");
         SceneManager.sceneLoaded += LoadContineGameScene;
-
+        SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.clickButton);
     }
 
     private void LoadContineGameScene(Scene scene, LoadSceneMode mode)
@@ -46,9 +47,11 @@ public class MainMenu : MonoBehaviour
         SettingPanel.gameObject.SetActive(true);
         controlsPanel.gameObject.SetActive(false);
         audioPanel.gameObject.SetActive(false);
+        SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.clickButton);
     }
     private void OnExitGameClick()
     {
+        SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.clickButton);
         Application.Quit();
     }
 

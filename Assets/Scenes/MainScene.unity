@@ -3161,10 +3161,10 @@ RectTransform:
   - {fileID: 2098878011}
   - {fileID: 1461843186}
   - {fileID: 1466104593}
+  - {fileID: 317543323}
   - {fileID: 1440254578}
   - {fileID: 260593252}
   - {fileID: 1521243155}
-  - {fileID: 317543323}
   - {fileID: 1180610685}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5202,26 +5202,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1167162158751166489, guid: 4da382adfd65e324db7ee50f29d89047,
         type: 3}
-      propertyPath: runSoundEffect
+      propertyPath: dieSoundEffect
       value: 
-      objectReference: {fileID: 11400000, guid: 49637fed0a42dab419293eda8a17626b,
+      objectReference: {fileID: 11400000, guid: 3cf6445ce016c04429a2d9ebd659e266,
         type: 2}
-    - target: {fileID: 1167162158751166489, guid: 4da382adfd65e324db7ee50f29d89047,
+    - target: {fileID: 1420036283694525569, guid: 4da382adfd65e324db7ee50f29d89047,
         type: 3}
-      propertyPath: dashSoundEffect
-      value: 
-      objectReference: {fileID: 11400000, guid: 86fba21e429b00743af6b178193c3adf,
-        type: 2}
-    - target: {fileID: 1167162158751166489, guid: 4da382adfd65e324db7ee50f29d89047,
-        type: 3}
-      propertyPath: attackSoundEffect
-      value: 
-      objectReference: {fileID: 11400000, guid: fbf8281385f882a468edf7890f8e74aa,
-        type: 2}
-    - target: {fileID: 4579019873083341866, guid: 4da382adfd65e324db7ee50f29d89047,
-        type: 3}
-      propertyPath: startingHealth
-      value: 100
+      propertyPath: maxRage
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5178334074821809799, guid: 4da382adfd65e324db7ee50f29d89047,
         type: 3}
