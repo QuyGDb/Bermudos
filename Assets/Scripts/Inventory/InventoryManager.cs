@@ -65,12 +65,13 @@ public class InventoryManager : MonoBehaviour
         Debug.Log("Inventory Changed");
         inventory = onInventoryChangedEventArgs.inventory;
         inventory.gameObject.SetActive(false);
+        inventory.InitializeInventorySlotList(Settings.inventorySlotQuantity);
+        inventory.InitializeHotBarSlotList(Settings.hotBarSlotQuantity);
     }
 
     private void Start()
     {
-        inventory.InitializeInventorySlotList(Settings.inventorySlotQuantity);
-        inventory.InitializeHotBarSlotList(Settings.hotBarSlotQuantity);
+
     }
 
     public void ToggleInventory()

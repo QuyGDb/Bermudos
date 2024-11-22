@@ -25,7 +25,7 @@ public class SoundEffectSO : ScriptableObject
     #endregion
     [Range(0f, 1f)]
     public float soundEffectVolume = 1f;
-    [Range(0f, 5f)]
+    [Range(0f, 3f)]
     public float soundEffectPitch = 1f;
 
     #region Validation

@@ -8,7 +8,7 @@ public class MusicManager : SingletonMonobehaviourPersistent<MusicManager>
     private AudioClip currentAudioClip = null;
     private Coroutine fadeOutMusicCoroutine;
     private Coroutine fadeInMusicCoroutine;
-    public float musicVolume = 10;
+    public float musicVolume = 20;
     bool isPlayingFirstClip = true;
     protected override void Awake()
     {

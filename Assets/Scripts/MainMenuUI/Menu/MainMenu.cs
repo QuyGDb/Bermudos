@@ -1,3 +1,4 @@
+using Esper.ESave;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,10 +13,26 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Image controlsPanel;
     [SerializeField] private Image audioPanel;
     [SerializeField] private Intro intro;
-
-
+    private SaveFileSetup saveFileSetup;
+    bool isfirstTime = true;
+    private void Awake()
+    {
+        saveFileSetup = GetComponent<SaveFileSetup>();
+    }
     private void Start()
     {
+        if (saveFileSetup.GetSaveFile().HasData("FirstTime"))
+        {
+            saveFileSetup.GetSaveFile().AddOrUpdateData("FirstTime", false);
+            saveFileSetup.GetSaveFile().Save();
+            isfirstTime = false;
+        }
+        else
+        {
+            saveFileSetup.GetSaveFile().AddOrUpdateData("FirstTime", true);
+            saveFileSetup.GetSaveFile().Save();
+            isfirstTime = true;
+        }
         newGameBtn.onClick.AddListener(OnNewGameClick);
         continueGameBtn.onClick.AddListener(OnContinueGameClick);
         settingsBtn.onClick.AddListener(OnSettingsClick);
@@ -29,6 +46,7 @@ public class MainMenu : MonoBehaviour
     }
     private void OnContinueGameClick()
     {
+        if (isfirstTime) return;
         SceneManager.LoadScene("MainScene");
         SceneManager.sceneLoaded += LoadContineGameScene;
         SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.clickButton);
@@ -36,6 +54,7 @@ public class MainMenu : MonoBehaviour
 
     private void LoadContineGameScene(Scene scene, LoadSceneMode mode)
     {
+
         if (scene.name == "MainScene" && scene.isLoaded)
         {
             GameManager.Instance.TransitionToGame();

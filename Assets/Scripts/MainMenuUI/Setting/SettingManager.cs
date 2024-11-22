@@ -58,7 +58,6 @@ public class SettingManager : MonoBehaviour
         float startSize = currentText.fontSize;
         float targetSize = 12.5f;
         var temp = DOTween.KillAll();
-        Debug.Log(temp);
         currentText.DOFade(1f, 0.5f).SetEase(Ease.InBounce);
         DOTween.To(() => startSize, x =>
         {

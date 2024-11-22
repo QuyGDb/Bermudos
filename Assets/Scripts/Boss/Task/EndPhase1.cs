@@ -14,6 +14,7 @@ public class EndPhase1 : Action
     private RangedSkills rangedSkills;
     private MeleeSkills meleeSkills;
     private bool isEyeLoopDeath = false;
+    [SerializeField] private SoundEffectSO transitionSoundEffect;
     public override void OnAwake()
     {
         animator = GetComponent<Animator>();
@@ -22,6 +23,7 @@ public class EndPhase1 : Action
     }
     public override void OnStart()
     {
+        SoundEffectManager.Instance.PlaySoundEffect(transitionSoundEffect);
         rangedSkills.StopAllCoroutines();
         meleeSkills.StopAllCoroutines();
         transitionTime2 = transitionTime;

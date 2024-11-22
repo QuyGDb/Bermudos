@@ -16,7 +16,7 @@ public class Inventory : MonoBehaviour
     private ItemUI pressedItemUI;
     private ItemUI previousPressedItemUI;
 
-    private void Awake()
+    private void Start()
     {
         StaticEventHandler.CallInventoryChangedEvent(this);
     }

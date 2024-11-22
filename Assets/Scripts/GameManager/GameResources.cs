@@ -92,6 +92,9 @@ public class GameResources : MonoBehaviour
     public SoundEffectSO getHurtPlayer;
     public SoundEffectSO clickButton;
 
+    //Map
+    public SoundEffectSO flowingWater;
+    public SoundEffectSO waweOceanEffect;
     #endregion
     #region Validation
 #if UNITY_EDITOR

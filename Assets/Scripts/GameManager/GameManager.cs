@@ -79,6 +79,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         switch (gameState)
         {
             case GameState.Intro:
+                SaveBossState(0);
                 Intro();
                 break;
             case GameState.Begin:
@@ -95,6 +96,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
                 MusicManager.Instance.PlayMusic(GameResources.Instance.musicTrack_Bossfight);
                 break;
             case GameState.Won:
+                SaveBossState(1);
                 WonScene();
                 break;
             default:
@@ -102,7 +104,10 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         }
         OnGameStateChange?.Invoke(gameState);
     }
-
+    private void SaveBossState(int isBossDefeated)
+    {
+        PlayerPrefs.SetInt("isBossDefeated", isBossDefeated);
+    }
     private void WonScene()
     {
         SceneManager.UnloadSceneAsync("North Of The Forest");
@@ -129,7 +134,6 @@ public class GameManager : SingletonMonobehaviour<GameManager>
              });
 
         });
-
     }
     private void Instruct()
     {

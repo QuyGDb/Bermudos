@@ -30263,7 +30263,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cb94036c6115984784004251bad9750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapName: The Forest
   NorthOfTheForestToTheForest: {fileID: 0}
+  waweEffect: {fileID: 0}
+  isHasWater: 0
 --- !u!1 &5126801907900273427
 GameObject:
   m_ObjectHideFlags: 0

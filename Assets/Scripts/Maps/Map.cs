@@ -1,57 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.UI;
-using UnityEngine.Tilemaps;
+
 
 public class Map : MonoBehaviour
 {
-    [SerializeField] private GameObject NorthOfTheForestToTheForest;
-    [SerializeField] private SoundEffectSO waweEffect;
-    [SerializeField] private bool isHasWater;
+    [SerializeField] private string mapName;
     private float repeatInterval = 10f;
+    [SerializeField] private List<Enviroment> enviroments;
     private void Start()
     {
         StaticEventHandler.CallMapChangedEvent(this);
-        if (isHasWater && waweEffect != null)
+        foreach (var enviroment in enviroments)
         {
-            InvokeRepeating(nameof(PlayWaveSoundEffect), 0f, repeatInterval);
+            if (enviroment == Enviroment.Water)
+            {
+                InvokeRepeating(nameof(PlayFlowingWaterSoundEffect), 0, repeatInterval);
+            }
+            if (enviroment == Enviroment.Sea)
+            {
+                SoundEffectManager.Instance.PlaySoundEffectPersistent(GameResources.Instance.waweOceanEffect, true);
+            }
         }
-    }
-    private void OnEnable()
-    {
-        GameManager.Instance.OnGameStateChange += OnGameStateChanged_Map;
-    }
 
+    }
     private void OnDisable()
     {
-        CancelInvoke(nameof(PlayWaveSoundEffect));
-        GameManager.Instance.OnGameStateChange -= OnGameStateChanged_Map;
+        CancelInvoke(nameof(PlayFlowingWaterSoundEffect));
+        SoundEffectManager.Instance.StopSoundEffectLoop(GameResources.Instance.waweOceanEffect);
     }
-    private void PlayWaveSoundEffect()
+    private void PlayFlowingWaterSoundEffect()
     {
-        SoundEffectManager.Instance.PlaySoundEffect(waweEffect);
-    }
-    private void OnGameStateChanged_Map(GameState gameState)
-    {
-
-        if (gameState == GameState.EngagedBoss && NorthOfTheForestToTheForest != null)
-        {
-            NorthOfTheForestToTheForest.SetActive(false);
-        }
-        if (gameState == GameState.Won)
-        {
-            NorthOfTheForestToTheForest.SetActive(true);
-        }
+        SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.flowingWater);
     }
 
-    #region Validation
-#if UNITY_EDITOR
-    private void OnValidate()
+    public int GetBossState()
     {
-        HelperUtilities.ValidateCheckNullValue(this, nameof(NorthOfTheForestToTheForest), NorthOfTheForestToTheForest);
-        HelperUtilities.ValidateCheckNullValue(this, nameof(waweEffect), waweEffect);
+        if (PlayerPrefs.HasKey("isBossDefeated"))
+        {
+            return PlayerPrefs.GetInt("isBossDefeated");
+        }
+        else
+        {
+            return 0;
+        }
     }
-#endif
-    #endregion
+
 }

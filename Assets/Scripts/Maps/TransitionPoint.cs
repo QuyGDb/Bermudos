@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 [DisallowMultipleComponent]
 public class TransitionPoint : MonoBehaviour
 {
-    public TransitionPointDetailsSO TransitionPointDetailsSO;
+    [SerializeField] private TransitionPointDetailsSO TransitionPointDetailsSO;
     private bool isCollider = false;
     private WaitForSeconds waitForSeconds = new WaitForSeconds(0.1f);
 

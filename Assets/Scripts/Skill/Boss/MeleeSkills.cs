@@ -14,11 +14,13 @@ public class MeleeSkills : MonoBehaviour
     private ContactFilter2D contactFilter2D;
     private Coroutine activeSkillCoroutine;
     private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
+    [SerializeField] private SoundEffectSO slashSoundEffect;
     public bool isAttacking;
     public float speed;
     public float cooldown;
     private float previousDistance;
     int count = 0;
+
     private void Awake()
     {
         boss = GetComponent<Boss>();
@@ -33,13 +35,11 @@ public class MeleeSkills : MonoBehaviour
         contactFilter2D.useLayerMask = true;
         contactFilter2D.useTriggers = true;
     }
-    private void Update()
-    {
 
-    }
     public void DealDamage(int damage)
     {
         weapon.GetWeaponCollider();
+        SoundEffectManager.Instance.PlaySoundEffect(slashSoundEffect);
         Collider2D[] hitColliders = new Collider2D[1];
         int numColliders = Physics2D.OverlapCollider(weapon.polygonCollider2D, contactFilter2D, hitColliders);
         for (int i = 0; i < numColliders; i++)
@@ -50,6 +50,7 @@ public class MeleeSkills : MonoBehaviour
                 collider.GetComponent<ReceiveDamage>()?.TakeDamage(damage);
                 collider.GetComponent<PlayerEffect>()?.DamagePushEfect(transform.position);
                 collider.GetComponent<PlayerEffect>()?.CallDamageFlashEffect(GameResources.Instance.damegeFlashMaterial, GameResources.Instance.litMaterial, collider.GetComponentsInChildren<SpriteRenderer>());
+
             }
         }
     }

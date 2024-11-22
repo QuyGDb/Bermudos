@@ -13,12 +13,12 @@ public class RainEffect : MonoBehaviour
         if (appearanceRate == 0 || (SceneManager.GetSceneAt(0).name == "MainMenu"))
         {
             gameObject.SetActive(true);
-            SoundEffectManager.Instance.PlaySoundEffectLoop(rainEffect, true);
+            SoundEffectManager.Instance.PlaySoundEffectPersistent(rainEffect, true);
         }
 
     }
     private void OnDisable()
     {
-        SoundEffectManager.Instance.StopSoundEffectLoop();
+        SoundEffectManager.Instance.StopSoundEffectLoop(rainEffect);
     }
 }

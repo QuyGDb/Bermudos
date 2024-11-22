@@ -378,6 +378,7 @@ MonoBehaviour:
   bossUI: {fileID: 161447795}
   boss: {fileID: 4630120901667707226, guid: b73350252361e3643b93a212138d73b7, type: 3}
   bossContainer: {fileID: 252544744}
+  bossHealthBar: {fileID: 1768839337}
 --- !u!114 &274268734
 MonoBehaviour:
   m_ObjectHideFlags: 0

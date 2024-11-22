@@ -41,7 +41,6 @@ public class Boss : MonoBehaviour
 
     public IEnumerator BossAttack()
     {
-
         animator.SetTrigger(Settings.Hop);
         yield return null;
         animator.SetTrigger(Settings.EyeLoopDeath);

@@ -196,7 +196,7 @@ public class PlayerControl : MonoBehaviour
                 player.movementByVelocityEvent.CallMovementByVelocityEvent(direction, player.movementDetails.GetMoveSpeed());
                 if (!isRunningSoundPlaying)
                 {
-                    SoundEffectManager.Instance.PlaySoundEffectLoop(player.runSoundEffect, true);
+                    SoundEffectManager.Instance.PlaySoundEffectPersistent(player.runSoundEffect, true);
                     isRunningSoundPlaying = true;
                 }
             }
@@ -208,7 +208,7 @@ public class PlayerControl : MonoBehaviour
         {
             if (isRunningSoundPlaying)
             {
-                SoundEffectManager.Instance.StopSoundEffectLoop();
+                SoundEffectManager.Instance.StopSoundEffectLoop(player.runSoundEffect);
                 isRunningSoundPlaying = false;
             }
             player.idleEvent.CallIdleEvent();

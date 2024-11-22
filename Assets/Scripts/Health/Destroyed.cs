@@ -74,6 +74,7 @@ public class Destroyed : MonoBehaviour
                     enemyManagerData.enemieStateList[enemy.enemyID] = false;
                     GameManager.Instance.saveFileSetup.GetSaveFile().AddOrUpdateData(enemyManagerDetails.enemyManagerDataKey, enemyManagerData);
                     GameManager.Instance.saveFileSetup.GetSaveFile().Save();
+                    Debug.Log("Enemy Marked as dead" + enemy.enemyID);
                 }
 
             }

@@ -6,10 +6,10 @@ using UnityEngine;
 public class SkillsAction : Action
 {
     [HideInInspector] public Animator animator;
-
     public BossAnimationState bossAnimationState;
     public float normalizedTime;
-    public bool isFirstUpdate;
+    [HideInInspector] public bool isFirstUpdate;
+
     // Animator parameters - Boss
     private int Idle = Animator.StringToHash("Idle");
     private int ouch = Animator.StringToHash("ouch");

@@ -90,4 +90,11 @@ public enum ItemUIType
     Inventory,
     HotBar
 }
+public enum Enviroment
+{
+    None,
+    Water,
+    Sea,
+
+}
 

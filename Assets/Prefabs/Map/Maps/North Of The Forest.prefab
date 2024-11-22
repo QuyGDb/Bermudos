@@ -12490,7 +12490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5733607718386424039}
   - component: {fileID: 1222958956848111345}
-  - component: {fileID: -6978566183509203694}
+  - component: {fileID: 8871517057266835635}
   m_Layer: 14
   m_Name: North Of The Forest
   m_TagString: Untagged
@@ -12564,7 +12564,7 @@ PolygonCollider2D:
       - {x: -1, y: 1}
       - {x: 30, y: 1}
   m_UseDelaunayMesh: 0
---- !u!114 &-6978566183509203694
+--- !u!114 &8871517057266835635
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12573,12 +12573,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4330448577896301983}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cb94036c6115984784004251bad9750, type: 3}
+  m_Script: {fileID: 11500000, guid: 8dd8e1af0c232654caf94cdef5260e8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapName: North Of The Forest
+  enviroments: 
   NorthOfTheForestToTheForest: {fileID: 3427271957074800131}
-  waweEffect: {fileID: 0}
-  isWater: 0
 --- !u!1 &5126801907900273427
 GameObject:
   m_ObjectHideFlags: 0

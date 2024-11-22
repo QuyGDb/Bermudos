@@ -95,10 +95,11 @@ public class Bash : MonoBehaviour
 
     private void Prepare()
     {
+        if (player.stamina.currentStamina < bashCost) return;
         player.stamina.UseStamina(bashCost);
         collider2d = Physics2D.OverlapCircle(transform.position, bashRadius, layerMask.value);
         if (collider2d == null || collider2d.GetComponent<Ammo>() == null) return;
-        if (player.stamina.currentStamina > bashCost)
+        if (player.stamina.currentStamina >= bashCost)
         {
             Time.timeScale = 0f;
             isDuring = true;

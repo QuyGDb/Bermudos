@@ -10,11 +10,13 @@ public class Spinny : Action
     Weapon weapon;
     DealContactDamage dealContactDamage;
     Rigidbody2D rb;
-    public float speed = 5f;
-    public int damage = 10;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private int damage = 10;
     private bool isColliding = false;
     MeleeSkills meleeSkills;
     BoxCollider2D boxCollider2D;
+    [SerializeField] private SoundEffectSO spinnySoundEffect;
+    [SerializeField] float spinnyTime = 5f;
     public override void OnAwake()
     {
         animator = GetComponent<Animator>();
@@ -35,6 +37,8 @@ public class Spinny : Action
         animator.SetTrigger(Settings.spinny2);
         direction = (GameManager.Instance.player.transform.position - transform.position).normalized;
         dealContactDamage.contactDamageAmount = damage;
+        SoundEffectManager.Instance.PlaySoundEffectPersistent(spinnySoundEffect, true);
+        spinnyTime = 5f;
     }
     public override void OnFixedUpdate()
     {
@@ -42,9 +46,14 @@ public class Spinny : Action
     }
     public override TaskStatus OnUpdate()
     {
-        if (isColliding)
+        if (isColliding || spinnyTime < 0)
             return TaskStatus.Success;
-        return TaskStatus.Running;
+        else
+        {
+            spinnyTime -= Time.deltaTime;
+            return TaskStatus.Running;
+        }
+
 
     }
     public override void OnLateUpdate()
@@ -59,6 +68,7 @@ public class Spinny : Action
 
     public override void OnEnd()
     {
+        SoundEffectManager.Instance.StopSoundEffectLoop(spinnySoundEffect);
         rb.drag = 100000;
         Physics2D.IgnoreCollision(boxCollider2D, GameManager.Instance.player.GetComponent<BoxCollider2D>(), false);
         rb.velocity = Vector2.zero;

@@ -1,11 +1,13 @@
+using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [DisallowMultipleComponent]
 public class SoundEffectManager : SingletonMonobehaviourPersistent<SoundEffectManager>
 {
-    public float soundsVolume = 8;
-    private SoundEffect loopSound;
+    public float soundsVolume = 10;
+    List<SoundEffect> soundEffects = new List<SoundEffect>();
     private void Start()
     {
         if (PlayerPrefs.HasKey("soundsVolume"))
@@ -34,19 +36,25 @@ public class SoundEffectManager : SingletonMonobehaviourPersistent<SoundEffectMa
         StartCoroutine(DisableSound(sound, soundEffect.soundEffectClip.length));
 
     }
-    public void PlaySoundEffectLoop(SoundEffectSO soundEffect, bool isLoop)
+    public void PlaySoundEffectPersistent(SoundEffectSO soundEffect, bool isLoop)
     {
 
-        loopSound = (SoundEffect)PoolManager.Instance.ReuseComponent(soundEffect.soundPrefab, Vector3.zero, Quaternion.identity);
+        var loopSound = (SoundEffect)PoolManager.Instance.ReuseComponent(soundEffect.soundPrefab, Vector3.zero, Quaternion.identity);
         loopSound.SetSound(soundEffect, isLoop);
         loopSound.gameObject.SetActive(true);
+        soundEffects.Add(loopSound);
     }
 
-    public void StopSoundEffectLoop()
+    public void StopSoundEffectLoop(SoundEffectSO soundEffect)
     {
-        if (loopSound != null)
+        foreach (var sound in soundEffects)
         {
-            loopSound.gameObject.SetActive(false);
+            if (sound.soundEffect == soundEffect)
+            {
+                sound.gameObject.SetActive(false);
+                soundEffects.Remove(sound);
+                return;
+            }
         }
     }
     /// <summary>

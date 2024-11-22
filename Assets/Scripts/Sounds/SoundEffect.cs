@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundEffect : MonoBehaviour
 {
     private AudioSource audioSource;
-
+    [HideInInspector] public SoundEffectSO soundEffect;
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -31,6 +31,8 @@ public class SoundEffect : MonoBehaviour
     {
         audioSource.volume = soundEffect.soundEffectVolume;
         audioSource.clip = soundEffect.soundEffectClip;
+        audioSource.pitch = soundEffect.soundEffectPitch;
+        this.soundEffect = soundEffect;
         audioSource.loop = isLoop;
     }
 

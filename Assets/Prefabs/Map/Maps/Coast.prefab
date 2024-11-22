@@ -28724,7 +28724,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cb94036c6115984784004251bad9750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NorthOfTheForestToTheForest: {fileID: 0}
+  mapName: Coast
+  enviroments: 02000000
 --- !u!1 &9057728873864649947
 GameObject:
   m_ObjectHideFlags: 0

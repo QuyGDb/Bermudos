@@ -11,9 +11,16 @@ public class BossManager : MonoBehaviour
     [SerializeField] GameObject bossUI;
     [SerializeField] GameObject boss;
     [SerializeField] GameObject bossContainer;
-
+    [SerializeField] GameObject bossHealthBar;
     private void Start()
     {
+        if (GetBossState() == 1)
+        {
+            bossHealthBar.SetActive(false);
+            GameManager.Instance.HandleGameState(GameState.Play);
+            gameObject.SetActive(false);
+            return;
+        }
         backgroundrectTransform.DOSizeDelta(new Vector2(2200, 600), 1f).SetEase(Ease.OutBack).OnComplete(() =>
         {
             bossUI.transform.DOLocalMove(new Vector2(50, -11), 1).SetEase(Ease.OutBack).OnComplete(() =>
@@ -24,17 +31,25 @@ public class BossManager : MonoBehaviour
                     SpawnBoss();
                     gameObject.SetActive(false);
                 });
-
             });
         });
     }
 
     void SpawnBoss()
     {
-
         Instantiate(boss, new Vector3(14, 15, 0), Quaternion.identity, bossContainer.transform);
     }
-
+    private int GetBossState()
+    {
+        if (PlayerPrefs.HasKey("isBossDefeated"))
+        {
+            return PlayerPrefs.GetInt("isBossDefeated");
+        }
+        else
+        {
+            return 0;
+        }
+    }
 
     private void OnDestroy()
     {
@@ -48,6 +63,7 @@ public class BossManager : MonoBehaviour
         HelperUtilities.ValidateCheckNullValue(this, nameof(bossUI), bossUI);
         HelperUtilities.ValidateCheckNullValue(this, nameof(boss), boss);
         HelperUtilities.ValidateCheckNullValue(this, nameof(bossContainer), bossContainer);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(bossHealthBar), bossHealthBar);
     }
 #endif
     #endregion

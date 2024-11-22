@@ -31,6 +31,7 @@ public class DealDamage : MonoBehaviour
 
     private void DealDamageEvent_OnDealDamage(DealDamageEvent dealDamageEvent, DealDamageEventAgrs dealDamageEventAgrs)
     {
+        weapon.GetWeaponCollider();
         GameManager.Instance.player.stamina.UseStamina(attackCost);
         SoundEffectManager.Instance.PlaySoundEffect(GameManager.Instance.player.attackSoundEffect);
 
