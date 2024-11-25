@@ -13,7 +13,6 @@ public class EnemyManager : MonoBehaviour
 
     private void Start()
     {
-
         if (GameManager.Instance.saveFileSetup.GetSaveFile().HasData(enemyManagerDetailsSO.enemyManagerDataKey))
         {
             enemyManagerData = GameManager.Instance.saveFileSetup.GetSaveFile().GetData<EnemyManagerData>(enemyManagerDetailsSO.enemyManagerDataKey);

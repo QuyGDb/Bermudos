@@ -64,6 +64,22 @@ public class GameManager : SingletonMonobehaviour<GameManager>
                 SceneManager.LoadScene("The Forest", LoadSceneMode.Additive);
             }
         }
+#if UNITY_WEBGL
+        if (PlayerPrefs.HasKey("Checkpoint"))
+        {
+            string checkpoint = PlayerPrefs.GetString("Checkpoint");
+            if (checkpoint == "Coast")
+            {
+                player.transform.position = player.spawnPosition[0];
+                SceneManager.LoadScene("Coast", LoadSceneMode.Additive);
+            }
+            else if (checkpoint == "The Forest")
+            {
+                player.transform.position = player.spawnPosition[1];
+                SceneManager.LoadScene("The Forest", LoadSceneMode.Additive);
+            }
+        }
+#endif
         GameResources.Instance.beginUI.SetFloat("_FadeAmount", 0);
         beginSreen.color = new Color(0, 0, 0, 1);
         beginSreen.gameObject.SetActive(true);
@@ -153,6 +169,11 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             SceneManager.LoadScene("Coast", LoadSceneMode.Additive);
             saveFileSetup.GetSaveFile().AddOrUpdateData("Checkpoint", "Coast");
             saveFileSetup.GetSaveFile().Save();
+#if UNITY_WEBGL
+            string data = JsonUtility.ToJson("Coast");
+            PlayerPrefs.SetString("Checkpoint", data);
+            PlayerPrefs.Save();
+#endif
             GameResources.Instance.beginUI.DOFloat(1, "_FadeAmount", 2f).OnComplete(() =>
             {
                 beginSreen.gameObject.SetActive(false);
@@ -178,8 +199,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     private void Start()
     {
         InitializeEnemyManagerData();
-        //SceneManager.LoadScene("Coast", LoadSceneMode.Additive);
-        //HandleGameState(GameState.Instruct);
+
     }
 
     public void InitializeEnemyManagerData()

@@ -47,21 +47,5 @@
       "backgroundTask": false
     },
     "id": "Inventorry"
-  },
-  "SaveFileName": {
-    "$type": "Esper.ESave.SavableObjects.SavableData`1[[Esper.ESave.SaveFileSetupData, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-    "value": {
-      "$type": "Esper.ESave.SaveFileSetupData, ESave, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "fileName": "SaveFileName",
-      "saveLocation": 0,
-      "filePath": "Example/Path",
-      "fileType": 0,
-      "encryptionMethod": 0,
-      "aesKey": "",
-      "aesIV": "",
-      "addToStorage": true,
-      "backgroundTask": false
-    },
-    "id": "SaveFileName"
   }
 }

@@ -26,12 +26,38 @@ public class MainMenu : MonoBehaviour
             saveFileSetup.GetSaveFile().AddOrUpdateData("FirstTime", false);
             saveFileSetup.GetSaveFile().Save();
             isfirstTime = false;
+#if UNITY_WEBGL
+            if (PlayerPrefs.HasKey("FirstTime"))
+            {
+                string data = PlayerPrefs.GetString("FirstTime");
+                isfirstTime = JsonUtility.FromJson<bool>(data);
+            }
+            else
+            {
+                string data = JsonUtility.ToJson(isfirstTime);
+                PlayerPrefs.SetString("FirstTime", data);
+                PlayerPrefs.Save();
+            }
+#endif
         }
         else
         {
             saveFileSetup.GetSaveFile().AddOrUpdateData("FirstTime", true);
             saveFileSetup.GetSaveFile().Save();
             isfirstTime = true;
+#if UNITY_WEBGL
+            if (PlayerPrefs.HasKey("FirstTime"))
+            {
+                string data = PlayerPrefs.GetString("FirstTime");
+                isfirstTime = JsonUtility.FromJson<bool>(data);
+            }
+            else
+            {
+                string data = JsonUtility.ToJson(isfirstTime);
+                PlayerPrefs.SetString("FirstTime", data);
+                PlayerPrefs.Save();
+            }
+#endif
         }
         newGameBtn.onClick.AddListener(OnNewGameClick);
         continueGameBtn.onClick.AddListener(OnContinueGameClick);

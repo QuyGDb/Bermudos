@@ -1728,7 +1728,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 8.4375
+  orthographic size: 9.40625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5276,6 +5276,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Knight
       objectReference: {fileID: 0}
+    - target: {fileID: 9143596877034837735, guid: 4da382adfd65e324db7ee50f29d89047,
+        type: 3}
+      propertyPath: saveFileData.fileName
+      value: Inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143596877034837735, guid: 4da382adfd65e324db7ee50f29d89047,
+        type: 3}
+      propertyPath: saveFileData.saveLocation
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6197,7 +6207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveFileData:
     fileName: EnemyManagerData
-    saveLocation: 1
+    saveLocation: 0
     filePath: RPGSaveLoad
     fileType: 0
     encryptionMethod: 0

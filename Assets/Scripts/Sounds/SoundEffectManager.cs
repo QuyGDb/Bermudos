@@ -18,11 +18,6 @@ public class SoundEffectManager : SingletonMonobehaviourPersistent<SoundEffectMa
         SetSoundsVolume(soundsVolume);
     }
 
-    private void OnDisable()
-    {
-        // Save volume settings in playerprefs
-        PlayerPrefs.SetFloat("soundsVolume", soundsVolume);
-    }
 
     /// <summary>
     /// Play the sound effect
