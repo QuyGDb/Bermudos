@@ -44,6 +44,11 @@ public class Bonfire : MonoBehaviour
     {
         GameManager.Instance.saveFileSetup.GetSaveFile().AddOrUpdateData("Checkpoint", "The Forest");
         GameManager.Instance.saveFileSetup.GetSaveFile().Save();
+#if UNITY_WEBGL
+        string data = JsonUtility.ToJson("The Forest");
+        PlayerPrefs.SetString("Checkpoint", data);
+        PlayerPrefs.Save();
+#endif
     }
     #region Validation
 #if UNITY_EDITOR

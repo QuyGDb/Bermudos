@@ -153,6 +153,11 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             SceneManager.LoadScene("Coast", LoadSceneMode.Additive);
             saveFileSetup.GetSaveFile().AddOrUpdateData("Checkpoint", "Coast");
             saveFileSetup.GetSaveFile().Save();
+#if UNITY_WEBGL
+            string data = JsonUtility.ToJson("Coast");
+            PlayerPrefs.SetString("Checkpoint", data);
+            PlayerPrefs.Save();
+#endif
             GameResources.Instance.beginUI.DOFloat(1, "_FadeAmount", 2f).OnComplete(() =>
             {
                 beginSreen.gameObject.SetActive(false);
@@ -178,8 +183,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     private void Start()
     {
         InitializeEnemyManagerData();
-        //SceneManager.LoadScene("Coast", LoadSceneMode.Additive);
-        //HandleGameState(GameState.Instruct);
+
     }
 
     public void InitializeEnemyManagerData()

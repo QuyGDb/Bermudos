@@ -15,8 +15,18 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(SetVolumeCoroutine());
         musicSlider.onValueChanged.RemoveAllListeners();
         sfxSlider.onValueChanged.RemoveAllListeners();
-        musicSlider.onValueChanged.AddListener((value) => MusicManager.Instance.ChangeMusicVolume(value * normalizedValue));
-        sfxSlider.onValueChanged.AddListener((value) => SoundEffectManager.Instance.ChangeSoundsVolume(value * normalizedValue));
+        musicSlider.onValueChanged.AddListener((value) =>
+        {
+            MusicManager.Instance.ChangeMusicVolume(value * normalizedValue);
+            PlayerPrefs.SetFloat("musicVolume", value * normalizedValue);
+            PlayerPrefs.Save();
+        });
+        sfxSlider.onValueChanged.AddListener((value) =>
+        {
+            SoundEffectManager.Instance.ChangeSoundsVolume(value * normalizedValue);
+            PlayerPrefs.SetFloat("soundsVolume", value * normalizedValue);
+            PlayerPrefs.Save();
+        });
     }
     private IEnumerator SetVolumeCoroutine()
     {

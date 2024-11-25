@@ -35,11 +35,6 @@ public class MusicManager : SingletonMonobehaviourPersistent<MusicManager>
         PlayBackgroundMusic();
     }
 
-    private void OnDisable()
-    {
-        // Save volume settings in playerprefs
-        PlayerPrefs.SetFloat("musicVolume", musicVolume);
-    }
     public void PlayBackgroundMusic()
     {
         if (isPlayingFirstClip)

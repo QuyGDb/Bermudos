@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 using UnityEngine.UI;
 
 [DisallowMultipleComponent]
@@ -62,7 +63,6 @@ public class InventoryManager : MonoBehaviour
     }
     private void StaticEventHandler_OnInventoryChanged(OnInventoryChangedEventArgs onInventoryChangedEventArgs)
     {
-        Debug.Log("Inventory Changed");
         inventory = onInventoryChangedEventArgs.inventory;
         inventory.gameObject.SetActive(false);
         inventory.InitializeInventorySlotList(Settings.inventorySlotQuantity);
@@ -168,7 +168,6 @@ public class InventoryManager : MonoBehaviour
                 inventoryItem.isOnHotBar = itemJson.isOnHotBar;
                 inventoryItemList.Add(inventoryItem);
             }
-
         }
     }
     private void SaveItemToJson()
@@ -181,6 +180,17 @@ public class InventoryManager : MonoBehaviour
             saveFile.AddOrUpdateData(inventoryItem.itemSO.itemName, itemJson);
         }
         saveFile.Save();
+
+#if UNITY_WEBGL
+
+        for (int i = 0; i < inventoryItemList.Count; i++)
+        {
+            InventoryItem inventoryItem = inventoryItemList[i];
+            ItemJson itemJson = new ItemJson(inventoryItem.quantity, inventoryItem.inventorySlot, inventoryItem.hotbarSlot, inventoryItem.isOnHotBar);
+            string data = JsonUtility.ToJson(itemJson);
+            PlayerPrefs.SetString(inventoryItem.itemSO.itemName, data);
+        }
+#endif
     }
     private void OnApplicationQuit()
     {
