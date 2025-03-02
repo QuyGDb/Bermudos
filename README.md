@@ -55,3 +55,7 @@ Ngoài ra:
 Allin1Shader giúp tạo các hiệu ứng đồ họa như glow, dissolve, hologram một cách dễ dàng.
 
 TMPEffect hỗ trợ tạo hiệu ứng động cho TextMeshPro 
+
+Link game: https://quygdb.itch.io/bermudos
+
+Unity Version: 2022.3.44

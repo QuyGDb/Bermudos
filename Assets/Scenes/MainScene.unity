@@ -5283,6 +5283,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9143596877034837735, guid: 4da382adfd65e324db7ee50f29d89047,
         type: 3}
+      propertyPath: saveFileData.filePath
+      value: Data/RPGSaveLoad
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143596877034837735, guid: 4da382adfd65e324db7ee50f29d89047,
+        type: 3}
       propertyPath: saveFileData.saveLocation
       value: 0
       objectReference: {fileID: 0}
@@ -7249,6 +7254,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 641442160706989407, guid: d6a8956c875e55d4f826b651fc6eb18f,
+        type: 3}
+      propertyPath: saveFileData.filePath
+      value: Data/RPG_DB
+      objectReference: {fileID: 0}
+    - target: {fileID: 641442160706989407, guid: d6a8956c875e55d4f826b651fc6eb18f,
+        type: 3}
+      propertyPath: saveFileData.saveLocation
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6211466364256849115, guid: d6a8956c875e55d4f826b651fc6eb18f,
         type: 3}
       propertyPath: m_LocalPosition.x
