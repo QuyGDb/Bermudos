@@ -5,13 +5,16 @@
 🛠 Bermudos là tựa game nghiêm túc đầu tiên của tôi, được phát triển sau khi hoàn thành khóa học Unity 2D Dungeon Gunner Roguelike Development Course. Đây là cách tôi áp dụng và nâng cao những kiến thức đã học.
 
 2️⃣ Thể loại
+
 🎮 Phiêu lưu, ARPG
 
 3️⃣ Cốt truyện
+
 🏝 Bermudos là một hòn đảo bí ẩn, được đồn đại có thể ban tặng bất kỳ điều ước nào. Ryu, nhân vật chính của chúng ta, là một nhà thám hiểm đang tìm kiếm bí ẩn của hòn đảo. 
 Trong game, người chơi sẽ hóa thân thành Ryu, khám phá Bermudos, đối mặt với thử thách và giải mã những bí mật ẩn giấu.
 
 🔥 4️⃣ Điểm Nhấn
+
 4.1 🤖 AI Boss dùng Behaviour Tree
 
 📌 Trong dự án Bermudos, tôi đã sử dụng Behavior Tree để xây dựng AI cho boss.
@@ -74,11 +77,15 @@ Trong game, người chơi sẽ hóa thân thành Ryu, khám phá Bermudos, đ�
  
 
 5️⃣ 🎨 Các Công Cụ Hỗ Trợ
+
 ✨ Allin1Shader:
 
 Hỗ trợ tạo hiệu ứng đồ họa như glow, dissolve, hologram dễ dàng
+
 🔤 TMPEffect:
 
 Hỗ trợ hiệu ứng động cho TextMeshPro
+
 📌 Unity Version: 2022.3.44
+
 🔗 Link game: https://quygdb.itch.io/bermudos
